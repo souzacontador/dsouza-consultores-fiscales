@@ -1,3 +1,4 @@
+import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import { Section } from '../components/ui'
 import { CONTACT } from '../data/site'
@@ -7,6 +8,7 @@ import { CONTACT } from '../data/site'
 export default function AvisoPrivacidad() {
   return (
     <>
+      <Seo path="/aviso-de-privacidad" />
       <Hero
         eyebrow="Legal"
         title="Aviso de Privacidad"

@@ -5,6 +5,7 @@ import { CONTACT } from '../../data/site'
 export default function Cta({
   title = 'Agenda tu diagnóstico fiscal',
   subtitle = 'En una primera conversación por WhatsApp entendemos tu caso y te decimos con claridad cómo podemos ayudarte a cumplir sin sustos. Sin compromiso.',
+  ctaLabel, // texto opcional del botón (por defecto, el de WhatsAppButton)
 }) {
   return (
     <Section bg="ink">
@@ -15,7 +16,7 @@ export default function Cta({
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-white/75">{subtitle}</p>
         <div className="mt-8 flex justify-center">
-          <WhatsAppButton />
+          <WhatsAppButton>{ctaLabel}</WhatsAppButton>
         </div>
         <p className="mt-6 text-sm text-white/60">
           {CONTACT.hours} · {CONTACT.city} · {CONTACT.phoneDisplay}

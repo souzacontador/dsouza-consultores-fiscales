@@ -3,11 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A2540" />
+
+    <!-- Meta por defecto (inicio). react-helmet-async las sobrescribe por ruta. -->
+    <title>Contador en Mexicali | DSouza Consultores Fiscales</title>
     <meta
       name="description"
-      content="DSouza Consultores Fiscales — despacho contable y fiscal en Mexicali. Contabilidad al día, asesoría fiscal preventiva y auditoría algorítmica de CFDI: detecta los focos rojos antes que el SAT."
+      content="Contabilidad, asesoría fiscal preventiva y auditoría de CFDI en Mexicali. Detecta los focos rojos antes que el SAT y agenda tu diagnóstico fiscal."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph (por defecto: inicio) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DSouza Consultores Fiscales" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content="Contador en Mexicali | DSouza Consultores Fiscales" />
+    <meta
+      property="og:description"
+      content="Contabilidad, asesoría fiscal preventiva y auditoría de CFDI en Mexicali. Detecta los focos rojos antes que el SAT."
+    />
+    <meta property="og:url" content="https://dsouza-consultores-fiscales.vercel.app" />
+    <meta property="og:image" content="https://dsouza-consultores-fiscales.vercel.app/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contador en Mexicali | DSouza Consultores Fiscales" />
+    <meta
+      name="twitter:description"
+      content="Contabilidad, asesoría fiscal preventiva y auditoría de CFDI en Mexicali. Detecta los focos rojos antes que el SAT."
+    />
+    <meta name="twitter:image" content="https://dsouza-consultores-fiscales.vercel.app/og-image.png" />
 
     <!-- Tipografías: Lora (títulos) + Inter (texto), con display: swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +42,41 @@
       rel="stylesheet"
     />
 
-    <title>DSouza Consultores Fiscales | Contabilidad y fiscalización algorítmica en Mexicali</title>
+    <!-- Datos estructurados del negocio (AccountingService / LocalBusiness).
+         geo = centroide del C.P. 21280 (OpenStreetMap). [VERIFICAR] afinar al pin
+         exacto de la oficina desde Google Maps cuando se cree la ficha de Google. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AccountingService",
+        "name": "DSouza Consultores Fiscales",
+        "description": "Despacho contable y fiscal en Mexicali: contabilidad al día, asesoría fiscal preventiva, auditoría algorítmica de CFDI y capacitación.",
+        "image": "https://dsouza-consultores-fiscales.vercel.app/og-image.png",
+        "url": "https://dsouza-consultores-fiscales.vercel.app",
+        "email": "daniel@dsouzaconsultores.mx",
+        "telephone": "+526862567293",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Molino del Rey No. 311, Col. Insurgentes Este",
+          "addressLocality": "Mexicali",
+          "addressRegion": "B.C.",
+          "postalCode": "21280",
+          "addressCountry": "MX"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.6289,
+          "longitude": -115.45
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "areaServed": "Mexicali, Baja California"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,6 @@
 import { Section, SectionHeader } from '../ui'
 import { CONTACT } from '../../data/site'
-import { IconLinkedIn, IconRadar, IconShield, IconChat } from '../Icons'
+import { IconLinkedIn, IconRadar, IconShield, IconChat, IconUser } from '../Icons'
 
 // Equipo. No se inventan años de experiencia, certificaciones ni premios.
 // Cualquier dato específico debe verificarse antes de publicar.
@@ -17,22 +17,27 @@ export default function Equipo({ bg = 'tint' }) {
         {/* Titular */}
         <article className="card md:col-span-3">
           <div className="flex items-center gap-4">
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-md bg-secondary font-heading text-2xl font-bold text-primary">
-              DS
+            {/* Placeholder de foto profesional — reemplazar por retrato real */}
+            <span
+              role="img"
+              aria-label="Espacio reservado para la foto profesional del titular"
+              className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-md border border-line bg-tint text-muted"
+            >
+              <IconUser className="h-9 w-9" />
             </span>
             <div>
               <h3 className="font-heading text-xl font-semibold text-secondary">
-                Daniel Souza Vázquez
+                C.P. Daniel Souza Vázquez
               </h3>
-              {/* [VERIFICAR] título profesional y forma de presentarlo */}
               <p className="text-sm text-muted">Titular · DSouza Consultores Fiscales</p>
+              {/* [VERIFICAR] cédula profesional, colegios y certificaciones — no publicar sin confirmar */}
             </div>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-muted">
-            Lidera el despacho con un enfoque preventivo y técnico: entender cómo el SAT, el IMSS y
-            el INFONAVIT fiscalizan con algoritmos, para detectar los focos rojos en CFDI y
-            operaciones antes de que lo haga la autoridad. Su prioridad es que cada cliente entienda
-            su riesgo real y tome decisiones informadas.
+            Contador enfocado en asesoría fiscal y en cómo el SAT, el IMSS y el INFONAVIT fiscalizan
+            con algoritmos e inteligencia artificial. Su especialidad es leer CFDI y operaciones con
+            esa misma lógica para detectar focos rojos a tiempo, con criterio preventivo y
+            explicaciones claras.
           </p>
           <a
             href={CONTACT.linkedin}

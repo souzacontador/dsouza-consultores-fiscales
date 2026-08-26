@@ -15,33 +15,41 @@ export default function MediaTexto({
   icon = 'radar',
   mediaCaption,
   mediaKicker,
+  media = null, // ReactNode: imagen/ilustración. Si se pasa, sustituye al panel de ícono.
   whatsapp = false,
   secondary, // { label, to }
 }) {
   return (
     <Section bg={bg}>
+      {/* En móvil el media va primero (arriba); en desktop alterna con reverse. */}
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         {/* Media */}
         <div className={reverse ? 'lg:order-2' : ''}>
-          <div className="relative overflow-hidden rounded-md border border-line bg-tint p-8 shadow-card">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-2xl"
-            />
-            <span className="relative grid h-14 w-14 place-items-center rounded-md bg-secondary text-primary">
-              <ResolveIcon name={icon} className="h-7 w-7" />
-            </span>
-            {mediaKicker && (
-              <p className="relative mt-6 text-sm font-semibold uppercase tracking-wider text-primary-dark">
-                {mediaKicker}
-              </p>
-            )}
-            {mediaCaption && (
-              <p className="relative mt-2 font-heading text-xl font-semibold leading-snug text-secondary">
-                {mediaCaption}
-              </p>
-            )}
-          </div>
+          {media ? (
+            <div className="aspect-[4/3] overflow-hidden rounded-md border border-line shadow-card">
+              {media}
+            </div>
+          ) : (
+            <div className="relative overflow-hidden rounded-md border border-line bg-tint p-8 shadow-card">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-2xl"
+              />
+              <span className="relative grid h-14 w-14 place-items-center rounded-md bg-secondary text-primary">
+                <ResolveIcon name={icon} className="h-7 w-7" />
+              </span>
+              {mediaKicker && (
+                <p className="relative mt-6 text-sm font-semibold uppercase tracking-wider text-primary-dark">
+                  {mediaKicker}
+                </p>
+              )}
+              {mediaCaption && (
+                <p className="relative mt-2 font-heading text-xl font-semibold leading-snug text-secondary">
+                  {mediaCaption}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Texto */}

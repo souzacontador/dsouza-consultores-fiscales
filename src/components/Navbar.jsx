@@ -50,7 +50,7 @@ export default function Navbar() {
         <Brand />
 
         {/* Navegación de escritorio */}
-        <ul className="hidden items-center gap-1 xl:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.to}>
               <NavLink
@@ -82,7 +82,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-            className="grid h-10 w-10 place-items-center rounded-md border border-line text-secondary hover:bg-tint xl:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-line text-secondary hover:bg-tint lg:hidden"
           >
             {open ? <IconClose className="h-6 w-6" /> : <IconMenu className="h-6 w-6" />}
           </button>
@@ -91,7 +91,7 @@ export default function Navbar() {
 
       {/* Menú móvil desplegable */}
       {open && (
-        <div id="mobile-menu" className="container-site xl:hidden">
+        <div id="mobile-menu" className="container-site lg:hidden">
           <ul className="mt-3 flex flex-col gap-1 border-t border-line pt-3">
             {NAV_LINKS.map((link) => (
               <li key={link.to}>

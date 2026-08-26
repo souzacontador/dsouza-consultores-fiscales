@@ -3,6 +3,10 @@
 // Fuente única para contacto, CTA y contenido de bloques.
 // ============================================================
 
+// URL de producción (base para canonical, Open Graph y sitemap).
+// [VERIFICAR] Actualizar al dominio propio cuando se conecte (p. ej. https://dsouzaconsultores.mx).
+export const SITE_URL = 'https://dsouza-consultores-fiscales.vercel.app'
+
 // CTA principal — enlace real de WhatsApp (usar SIEMPRE esta constante).
 export const WHATSAPP_URL =
   'https://wa.me/526862567293?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20diagn%C3%B3stico%20fiscal'
@@ -21,8 +25,20 @@ export const CONTACT = {
     'https://maps.google.com/maps?q=Av.%20Molino%20del%20Rey%20311%2C%20Insurgentes%20Este%2C%2021280%20Mexicali%2C%20B.C.&z=15&output=embed',
 }
 
-// Navegación — las 8 páginas del sitio.
+// Navegación principal (navbar). Testimonios y Calculadoras Premium salen
+// del navbar hasta tener testimonios reales / contenido: siguen accesibles
+// vía footer, /calculadoras y URL directa.
 export const NAV_LINKS = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Servicios', to: '/servicios' },
+  { label: 'Nosotros', to: '/nosotros' },
+  { label: 'Recursos', to: '/recursos' },
+  { label: 'Calculadoras', to: '/calculadoras' },
+  { label: 'Contacto', to: '/contacto' },
+]
+
+// Enlaces rápidos del footer — las 8 páginas completas.
+export const FOOTER_LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/servicios' },
   { label: 'Nosotros', to: '/nosotros' },
@@ -59,10 +75,10 @@ export const SERVICES = [
 
 // Señales de confianza — genéricas y verificables (sin cifras inventadas).
 export const TRUST_SIGNALS = [
+  'Especialización en fiscalización algorítmica del SAT, IMSS e INFONAVIT',
   'Despacho establecido en Mexicali, B.C.',
-  'Especialista en fiscalización algorítmica del SAT, IMSS e INFONAVIT',
+  'Atención directa del titular del despacho',
   'Enfoque preventivo: primero el riesgo, luego el trámite',
-  'Atención directa con el contador responsable',
 ]
 
 // Diferenciadores — bloque "Por qué".
@@ -89,55 +105,46 @@ export const REASONS = [
   },
 ]
 
-// Proceso — cómo trabajamos.
+// Proceso — cómo trabajamos (3 pasos).
 export const PROCESS = [
   {
     step: '01',
-    title: 'Diagnóstico fiscal',
-    desc: 'Revisamos tu situación actual, tus CFDI y tus obligaciones para ubicar los focos rojos y priorizar lo urgente.',
+    title: 'Escríbeme por WhatsApp',
+    desc: 'Cuéntame tu situación en un mensaje, sin formularios largos ni compromiso. Te respondo en horario de oficina.',
   },
   {
     step: '02',
-    title: 'Mapa de riesgo',
-    desc: 'Te entregamos un semáforo claro: qué está en orden, qué conviene corregir y qué requiere atención inmediata.',
+    title: 'Diagnóstico fiscal de tu situación',
+    desc: 'Reviso tus obligaciones y tus CFDI con la lógica de los algoritmos del SAT y ubicamos juntos los focos rojos.',
   },
   {
     step: '03',
-    title: 'Corrección y puesta al día',
-    desc: 'Ordenamos contabilidad y obligaciones, y corregimos a tiempo lo que la autoridad podría observar.',
-  },
-  {
-    step: '04',
-    title: 'Acompañamiento continuo',
-    desc: 'Mantenemos tu cumplimiento al día mes con mes y te avisamos cuando algo en tu operación cambia tu riesgo.',
+    title: 'Plan de acción y acompañamiento mensual',
+    desc: 'Te entrego prioridades claras y damos seguimiento a tu cumplimiento cada mes, corrigiendo a tiempo lo que la autoridad podría observar.',
   },
 ]
 
-// Preguntas frecuentes.
+// Preguntas frecuentes (Inicio).
 export const FAQS = [
   {
-    q: '¿Qué es un diagnóstico fiscal y qué incluye?',
-    a: 'Es una revisión inicial de tu situación: obligaciones ante SAT, IMSS e INFONAVIT, y una lectura de tus CFDI y operaciones con la lógica de los algoritmos de fiscalización. Termina con un mapa de riesgo con semáforo y las prioridades a atender. Sirve para saber dónde estás parado antes de tomar decisiones.',
+    q: '¿Qué incluye el diagnóstico fiscal?',
+    a: 'Una revisión inicial de tu situación: tus obligaciones ante SAT, IMSS e INFONAVIT y una lectura de tus CFDI y operaciones con la lógica de los algoritmos de fiscalización. Termina con un mapa de riesgo con semáforo y las prioridades a atender, para que sepas dónde estás parado antes de tomar decisiones.',
   },
   {
-    q: '¿Qué significa "auditoría algorítmica"?',
-    a: 'El SAT cruza de forma automática tus comprobantes, declaraciones, DIOT y nómina para detectar inconsistencias. La auditoría algorítmica aplica esa misma forma de analizar a tus datos, para encontrar los focos rojos antes de que la autoridad los marque. No es una promesa de invisibilidad ante el SAT: es prevención informada.',
+    q: '¿Qué es la auditoría algorítmica de CFDI?',
+    a: 'El SAT cruza de forma automática tus comprobantes, declaraciones, DIOT y nómina para detectar inconsistencias. La auditoría algorítmica aplica esa misma forma de analizar a tus CFDI y operaciones, para encontrar los focos rojos antes de que la autoridad los marque. No es una promesa de invisibilidad ante el SAT: es prevención informada.',
   },
   {
-    q: '¿Pueden garantizar que no me va a fiscalizar el SAT?',
-    a: 'No, y desconfía de quien lo prometa. Ninguna autoridad se puede "garantizar". Lo que sí hacemos es reducir tu exposición: corregir a tiempo, sustentar tus operaciones y dejarte en la mejor posición posible si llega una revisión.',
+    q: '¿Me sirve si ya tengo contador?',
+    a: 'Sí. No busco reemplazar a tu contador, sino sumar una mirada preventiva y de riesgo que muchas veces no entra en el trabajo del día a día. Puedo revisar tu situación, señalar focos rojos y proponer correcciones; si lo prefieres, trabajo de la mano con quien ya lleva tu contabilidad.',
   },
   {
-    q: '¿Trabajan con PyMEs y profesionistas independientes?',
-    a: 'Sí. Nuestro enfoque está pensado para PyMEs, profesionistas independientes y empresas de servicios que quieren cumplir bien y entender su riesgo real, sin un área fiscal interna.',
+    q: '¿Trabajas con clientes fuera de Mexicali?',
+    a: 'Soy un despacho establecido en Mexicali, B.C., y atiendo de forma presencial en la ciudad. Buena parte del trabajo —diagnóstico, revisión de CFDI, contabilidad y asesoría— también se puede llevar a distancia, así que puedo apoyar a clientes de otras zonas.',
   },
   {
-    q: '¿Atienden solo en Mexicali?',
-    a: 'Somos un despacho establecido en Mexicali, B.C., y atendemos de forma presencial en la ciudad. Buena parte del trabajo —diagnóstico, contabilidad y asesoría— también se puede llevar a distancia para clientes de otras zonas.',
-  },
-  {
-    q: '¿Cómo empiezo?',
-    a: 'Escríbenos por WhatsApp para agendar tu diagnóstico fiscal. En esa primera conversación entendemos tu caso y te decimos con claridad cómo podemos ayudarte, sin compromiso.',
+    q: '¿Qué pasa si ya recibí una carta invitación del SAT?',
+    a: 'Escríbeme cuanto antes: aún estás a tiempo de responder de forma ordenada. Reviso qué detectó la autoridad, evalúo el riesgo real de tus operaciones y definimos una estrategia para atenderla. No prometo resultados garantizados ante el SAT, pero sí trabajar para dejarte en la mejor posición posible.',
   },
 ]
 

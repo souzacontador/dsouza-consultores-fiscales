@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { WhatsAppButton } from '../ui'
-import { IconArrowRight } from '../Icons'
+import { IconArrowRight, IconCheck } from '../Icons'
 
 // Hero reutilizable. Renderiza SIEMPRE el único H1 de la página.
 // layout: 'centered' (páginas interiores) | 'split' (Inicio, con visual a la derecha)
@@ -12,6 +12,7 @@ export default function Hero({
   layout = 'centered',
   visual = null,
   ctaLabel,
+  trustSignal = null, // señal de confianza discreta bajo los CTAs (opcional)
 }) {
   const isSplit = layout === 'split'
 
@@ -50,6 +51,17 @@ export default function Hero({
                 </Link>
               )}
             </div>
+
+            {trustSignal && (
+              <p
+                className={`mt-5 flex items-center gap-2 text-sm text-muted ${
+                  isSplit ? 'justify-start' : 'justify-center'
+                }`}
+              >
+                <IconCheck className="h-4 w-4 shrink-0 text-primary-dark" aria-hidden />
+                {trustSignal}
+              </p>
+            )}
           </div>
 
           {isSplit && visual && <div className="relative">{visual}</div>}

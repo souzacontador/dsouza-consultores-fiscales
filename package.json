@@ -6,15 +6,18 @@
   "description": "Sitio de conversión de DSouza Consultores Fiscales — despacho contable y fiscal en Mexicali, B.C.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && node scripts/postbuild-meta.mjs",
+    "preview": "vite preview",
+    "og": "node scripts/generate-og.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",

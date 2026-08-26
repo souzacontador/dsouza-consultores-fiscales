@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { CONTACT, NAV_LINKS, SERVICES, WHATSAPP_URL } from '../data/site'
+import { CONTACT, FOOTER_LINKS, SERVICES, WHATSAPP_URL } from '../data/site'
 import { IconLinkedIn, IconWhatsApp, IconMapPin, IconClock, IconMail } from './Icons'
 
 export default function Footer() {
@@ -36,7 +36,7 @@ export default function Footer() {
               Enlaces rápidos
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {NAV_LINKS.map((link) => (
+              {FOOTER_LINKS.map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="transition-colors hover:text-primary">
                     {link.label}

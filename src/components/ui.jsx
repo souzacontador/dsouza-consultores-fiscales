@@ -1,8 +1,11 @@
+import { track } from '@vercel/analytics'
 import { WHATSAPP_URL } from '../data/site'
 import { IconWhatsApp } from './Icons'
 
 // --- Botón CTA de WhatsApp (acción primaria del sitio) ---
 // variant: 'primary' (acento) | 'on-ink' (sobre fondo oscuro)
+// Cada clic se registra en Vercel Analytics con la página de origen,
+// para medir el objetivo del sitio (diagnósticos agendados vía WhatsApp).
 export function WhatsAppButton({ variant = 'primary', className = '', children }) {
   const cls = variant === 'on-ink' ? 'btn-on-ink' : 'btn-primary'
   return (
@@ -10,6 +13,7 @@ export function WhatsAppButton({ variant = 'primary', className = '', children }
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => track('whatsapp_click', { page: window.location.pathname })}
       className={`${cls} ${className}`}
     >
       <IconWhatsApp className="h-5 w-5" />

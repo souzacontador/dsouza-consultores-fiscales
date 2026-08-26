@@ -45,13 +45,45 @@ npm run preview  # previsualiza el build
 
 Ambos casos ya incluyen el rewrite `/* → index.html` para que las rutas no den 404.
 
+## Medición y tráfico (condiciones para el objetivo de 4 diagnósticos/mes)
+
+**Medición (ya integrada en el código):** cada clic en un botón de WhatsApp se
+registra como evento `whatsapp_click` con la página de origen, vía Vercel
+Analytics. **Falta un paso manual:** en el dashboard de Vercel → proyecto →
+pestaña **Analytics** → *Enable Web Analytics* (gratis). Sin eso, el script no
+carga y no se mide nada.
+
+**Tráfico (acciones fuera del código, en orden de impacto):**
+1. **Google Business Profile** (gratis, ~20 min): crear la ficha en
+   business.google.com con la dirección real, horario, teléfono y link al sitio.
+   Para búsquedas locales "contador Mexicali / cerca de mí" rinde más que todo
+   el SEO on-page.
+2. **Dominio propio** (p. ej. `dsouzaconsultores.mx`): comprarlo y conectarlo en
+   Vercel → Settings → Domains. Al hacerlo, actualizar `SITE_URL` en
+   `src/data/site.js` y las URLs de `public/sitemap.xml`, `public/robots.txt` e
+   `index.html`.
+3. **Contenido en LinkedIn** enlazando al sitio (skills del despacho:
+   `linkedin-fiscal-mx`, `generador-contenido-fiscal-social`).
+
+## Scripts
+
+- `npm run dev` — desarrollo · `npm run build` — build + pre-render de metadatos
+  por ruta (`scripts/postbuild-meta.mjs`) · `npm run og` — regenera
+  `public/og-image.png` desde `scripts/og-image.svg`.
+
 ## Pendientes / DoD (por marcar en prompts posteriores)
 
-- [ ] Reemplazar **testimonios de ejemplo** por reales (buscar `TESTIMONIO DE EJEMPLO` en el código).
+- [ ] **Activar Web Analytics** en el dashboard de Vercel (ver arriba).
+- [ ] Reemplazar **testimonios de ejemplo** por reales (buscar `TESTIMONIO DE EJEMPLO`).
+      `/testimonios` está fuera del navbar (sigue en footer) hasta tener 1–2 reales.
 - [ ] Revisar y validar legalmente el **Aviso de Privacidad** (LFPDPPP).
-- [ ] Verificar datos marcados `[VERIFICAR]` (p. ej. título profesional del titular).
-- [ ] Sustituir el panel visual del hero y de media-texto por imágenes reales si se desean.
-- [ ] Confirmar contenido de **Recursos** y **Calculadoras** (hoy en “próximamente”).
+- [ ] Verificar datos `[VERIFICAR]`: cédula/colegios del titular, fecha de
+      fundación, geo exacta del JSON-LD (hoy: centroide del C.P. 21280) y
+      `SITE_URL` al conectar dominio propio.
+- [ ] Conectar **backend real del formulario** (hoy compone el mensaje hacia
+      WhatsApp; correo visible como vía secundaria) — `TODO` en `Contacto.jsx`.
+- [ ] Quitar `noindex` de **Recursos/Calculadoras/Premium** (en `src/data/seoMeta.js`)
+      y devolverlas al `sitemap.xml` cuando publiquen contenido real.
 
 ## Notas de contenido (reglas del proyecto)
 

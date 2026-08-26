@@ -3,115 +3,205 @@ import { Section } from '../ui'
 import { CONTACT, WHATSAPP_URL } from '../../data/site'
 import { IconMapPin, IconClock, IconMail, IconWhatsApp } from '../Icons'
 
-const WHATSAPP_BASE = 'https://wa.me/526862567293'
+// Validación de campos con mensajes claros en español.
+function validate(f) {
+  const e = {}
+  if (!f.nombre.trim()) e.nombre = 'Escribe tu nombre.'
+  if (!f.correo.trim()) e.correo = 'Escribe tu correo.'
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.correo.trim()))
+    e.correo = 'Escribe un correo válido, por ejemplo nombre@dominio.com.'
+  if (f.telefono.trim() && f.telefono.replace(/\D/g, '').length < 10)
+    e.telefono = 'Escribe un teléfono a 10 dígitos, o déjalo vacío.'
+  if (!f.mensaje.trim()) e.mensaje = 'Cuéntanos brevemente tu situación.'
+  else if (f.mensaje.trim().length < 10)
+    e.mensaje = 'Da un poco más de detalle (mínimo 10 caracteres).'
+  return e
+}
+
+function Spinner() {
+  return (
+    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+      <path className="opacity-90" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4Z" />
+    </svg>
+  )
+}
 
 // Bloque de contacto: formulario + columna de datos + mapa embebido.
 export default function Contacto() {
   const [form, setForm] = useState({ nombre: '', correo: '', telefono: '', mensaje: '' })
+  const [errors, setErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [sent, setSent] = useState(false)
 
-  const update = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
+  const update = (e) => {
+    const { name, value } = e.target
+    setForm((f) => ({ ...f, [name]: value }))
+    // Limpia el error del campo mientras el usuario lo corrige.
+    setErrors((prev) => (prev[name] ? { ...prev, [name]: undefined } : prev))
+  }
 
-  // El formulario compone un mensaje de WhatsApp con los datos capturados.
   const handleSubmit = (e) => {
     e.preventDefault()
+    setSent(false)
+    const errs = validate(form)
+    setErrors(errs)
+    const firstError = ['nombre', 'correo', 'telefono', 'mensaje'].find((k) => errs[k])
+    if (firstError) {
+      document.getElementById(firstError)?.focus()
+      return
+    }
+
+    // Sin backend disponible: el envío compone el mensaje hacia WhatsApp
+    // (canal principal del despacho y fiable en cualquier dispositivo).
+    // TODO: conectar backend de formulario
+    setSubmitting(true)
     const text = [
       'Hola, quiero información sobre un diagnóstico fiscal.',
       `Nombre: ${form.nombre}`,
+      `Correo: ${form.correo}`,
       form.telefono && `Teléfono: ${form.telefono}`,
-      form.correo && `Correo: ${form.correo}`,
-      form.mensaje && `Mensaje: ${form.mensaje}`,
+      '',
+      form.mensaje,
     ]
-      .filter(Boolean)
+      .filter((line) => line !== false && line !== undefined)
       .join('\n')
-    window.open(`${WHATSAPP_BASE}?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
+
+    setTimeout(() => {
+      window.open(
+        `https://wa.me/526862567293?text=${encodeURIComponent(text)}`,
+        '_blank',
+        'noopener'
+      )
+      setSubmitting(false)
+      setSent(true)
+    }, 300)
   }
+
+  // Atributos accesibles por campo con error.
+  const fieldProps = (name) => ({
+    id: name,
+    name,
+    value: form[name],
+    onChange: update,
+    'aria-invalid': errors[name] ? 'true' : undefined,
+    'aria-describedby': errors[name] ? `${name}-error` : undefined,
+    className: `field-input ${errors[name] ? 'border-danger focus:border-danger focus:ring-danger/30' : ''}`,
+  })
+
+  const ErrorMsg = ({ name }) =>
+    errors[name] ? (
+      <p id={`${name}-error`} role="alert" className="mt-1.5 text-sm font-medium text-danger">
+        {errors[name]}
+      </p>
+    ) : null
 
   return (
     <Section bg="base">
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-        {/* Formulario */}
+        {/* Formulario (primero en móvil) */}
         <div>
           <span className="eyebrow">Escríbenos</span>
           <h2 className="font-heading text-3xl font-semibold leading-tight text-secondary sm:text-4xl">
             Cuéntanos tu caso
           </h2>
           <p className="lead mt-3">
-            Completa el formulario y continúa la conversación por WhatsApp con tus datos ya listos.
-            Te respondemos en horario de oficina.
+            Completa el formulario y te respondemos en horario de oficina. ¿Prefieres algo más
+            directo? Escríbenos por WhatsApp aquí al lado.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5" noValidate>
             <div>
               <label htmlFor="nombre" className="field-label">
-                Nombre
+                Nombre <span className="text-danger">*</span>
               </label>
               <input
-                id="nombre"
-                name="nombre"
                 type="text"
                 required
-                value={form.nombre}
-                onChange={update}
+                aria-required="true"
                 autoComplete="name"
-                className="field-input"
                 placeholder="Tu nombre"
+                {...fieldProps('nombre')}
               />
+              <ErrorMsg name="nombre" />
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="correo" className="field-label">
-                  Correo
+                  Correo <span className="text-danger">*</span>
                 </label>
                 <input
-                  id="correo"
-                  name="correo"
                   type="email"
-                  value={form.correo}
-                  onChange={update}
+                  required
+                  aria-required="true"
                   autoComplete="email"
-                  className="field-input"
                   placeholder="tucorreo@ejemplo.com"
+                  {...fieldProps('correo')}
                 />
+                <ErrorMsg name="correo" />
               </div>
               <div>
                 <label htmlFor="telefono" className="field-label">
-                  Teléfono
+                  Teléfono <span className="text-muted">(opcional)</span>
                 </label>
                 <input
-                  id="telefono"
-                  name="telefono"
                   type="tel"
-                  value={form.telefono}
-                  onChange={update}
                   autoComplete="tel"
-                  className="field-input"
                   placeholder="686 000 0000"
+                  {...fieldProps('telefono')}
                 />
+                <ErrorMsg name="telefono" />
               </div>
             </div>
 
             <div>
               <label htmlFor="mensaje" className="field-label">
-                Mensaje
+                Mensaje <span className="text-danger">*</span>
               </label>
               <textarea
-                id="mensaje"
-                name="mensaje"
                 rows={4}
-                value={form.mensaje}
-                onChange={update}
-                className="field-input resize-none"
+                required
+                aria-required="true"
                 placeholder="Cuéntanos brevemente tu situación o tu duda."
+                {...fieldProps('mensaje')}
+                className={`${fieldProps('mensaje').className} resize-none`}
               />
+              <ErrorMsg name="mensaje" />
             </div>
 
-            <button type="submit" className="btn-primary w-full sm:w-auto">
-              <IconWhatsApp className="h-5 w-5" />
-              Enviar por WhatsApp
+            <button
+              type="submit"
+              disabled={submitting}
+              className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+            >
+              {submitting ? (
+                <>
+                  <Spinner />
+                  Enviando…
+                </>
+              ) : (
+                <>
+                  <IconWhatsApp className="h-5 w-5" />
+                  Enviar por WhatsApp
+                </>
+              )}
             </button>
+
+            {/* Mensaje de estado accesible */}
+            {sent && (
+              <p role="status" className="rounded-md border border-line bg-tint px-4 py-3 text-sm text-secondary">
+                Se abrió WhatsApp con tu mensaje ya redactado: solo confirma el envío. Si no
+                ocurrió, escríbenos directo al {CONTACT.phoneDisplay}.
+              </p>
+            )}
             <p className="text-xs text-muted">
-              Al enviar, se abrirá WhatsApp con tu mensaje ya redactado para que solo confirmes.
+              Al enviar se abrirá WhatsApp con tu mensaje ya redactado para que solo confirmes.
+              ¿Prefieres correo? Escríbenos a{' '}
+              <a href={`mailto:${CONTACT.email}`} className="font-medium text-primary-dark hover:text-secondary">
+                {CONTACT.email}
+              </a>
+              .
             </p>
           </form>
         </div>
@@ -158,7 +248,7 @@ export default function Contacto() {
             </a>
           </div>
 
-          {/* Mapa embebido de la dirección */}
+          {/* Mapa embebido de la dirección (carga diferida) */}
           <div className="overflow-hidden rounded-md border border-line shadow-card">
             <iframe
               title={`Ubicación de ${CONTACT.brand} en ${CONTACT.city}`}

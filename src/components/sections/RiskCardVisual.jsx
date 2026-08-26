@@ -23,8 +23,12 @@ const TAG = {
 
 export default function RiskCardVisual() {
   return (
-    <div className="relative mx-auto max-w-md">
-      <div className="rounded-md border border-line bg-base p-6 shadow-card-hover">
+    <div
+      className="relative mx-auto max-w-md"
+      role="img"
+      aria-label="Ilustración de ejemplo: un mapa de riesgo fiscal con semáforo que clasifica CFDI, deducciones, retenciones y operaciones en verde, ámbar y rojo, leído con lógica algorítmica antes de que lo detecte el SAT."
+    >
+      <div aria-hidden className="rounded-md border border-line bg-base p-6 shadow-card-hover">
         <div className="flex items-center justify-between border-b border-line pb-4">
           <div className="flex items-center gap-2.5">
             <span className="grid h-9 w-9 place-items-center rounded-md bg-secondary text-primary">

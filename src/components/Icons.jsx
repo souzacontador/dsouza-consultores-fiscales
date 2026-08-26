@@ -137,6 +137,50 @@ export function IconClose(props) {
   )
 }
 
+export function IconStar(props) {
+  return (
+    <svg viewBox="0 0 24 24" width={24} height={24} fill="currentColor" aria-hidden {...props}>
+      <path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5Z" />
+    </svg>
+  )
+}
+
+export function IconDocument(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 3h8l4 4v14H6V3Z" />
+      <path d="M14 3v4h4M9 12h6M9 16h4" />
+    </svg>
+  )
+}
+
+export function IconCalculator(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15v3M8 18h4" />
+    </svg>
+  )
+}
+
+export function IconSparkles(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6L12 4Z" />
+      <path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z" />
+    </svg>
+  )
+}
+
+export function IconUser(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6" />
+    </svg>
+  )
+}
+
 // Marca: WhatsApp (glifo relleno para reconocimiento).
 export function IconWhatsApp(props) {
   return (

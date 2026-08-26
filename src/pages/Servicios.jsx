@@ -1,62 +1,77 @@
+import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
-import Servicios from '../components/sections/Servicios'
 import MediaTexto from '../components/sections/MediaTexto'
 import Testimonios from '../components/sections/Testimonios'
 import Cta from '../components/sections/Cta'
+import { IloContabilidad, IloAuditoria } from '../components/sections/illustrations'
+
+// Cita ilustrativa destacada de esta página.
+const SERVICIOS_QUOTE = [
+  {
+    // TESTIMONIO DE EJEMPLO — reemplazar por real
+    quote:
+      'Por fin entendí en qué operaciones estaba mi riesgo y qué corregir primero. El mapa con semáforo hizo que priorizar fuera obvio para todo el equipo.',
+    name: 'Empresaria de servicios',
+    role: 'Mexicali, B.C.',
+  },
+]
 
 export default function ServiciosPage() {
   return (
     <>
+      <Seo path="/servicios" />
       <Hero
         eyebrow="Servicios"
-        title="Contabilidad, prevención y auditoría algorítmica en un solo despacho"
-        subtitle="Tres frentes integrados para que cumplas al día, corrijas a tiempo y entiendas tu riesgo real frente al SAT, el IMSS y el INFONAVIT."
+        title="Servicios contables y fiscales con visión algorítmica"
+        subtitle="Contabilidad al día, asesoría fiscal preventiva, auditoría algorítmica de CFDI y capacitación — cuatro frentes para que cumplas con el SAT, el IMSS y el INFONAVIT y entiendas tu riesgo real."
         secondary={{ label: 'Ir a contacto', to: '/contacto' }}
+        ctaLabel="Agenda tu diagnóstico"
       />
-
-      {/* Resumen de los 4 servicios (sin CTA para no duplicar la acción primaria) */}
-      <Servicios bg="tint" showCta={false} />
 
       <MediaTexto
         bg="base"
-        icon="shield"
-        eyebrow="Asesoría fiscal preventiva"
-        title="Corrige antes de la carta invitación, no después"
+        media={<IloContabilidad />}
+        eyebrow="Contabilidad y asesoría preventiva"
+        title="Tu contabilidad al día y tu riesgo bajo control"
         paragraphs={[
-          'La mayoría de los contadores reacciona cuando ya llegó el requerimiento o la revisión electrónica. Para entonces, las opciones se reducen y los costos suben.',
-          'Revisamos el riesgo de tus operaciones con anticipación y ajustamos a tiempo, cuando todavía se puede corregir de forma ordenada y sin sanciones evitables.',
+          'Llevo tu contabilidad y tus obligaciones en orden, y además reviso el riesgo de tus operaciones con anticipación — no solo capturo, timbro y declaro.',
+          'Así corregimos a tiempo, cuando todavía se puede hacer de forma ordenada, antes de que llegue una carta invitación o una revisión electrónica.',
         ]}
         bullets={[
-          'Revisión periódica de tus obligaciones y operaciones',
-          'Detección temprana de inconsistencias entre CFDI y declaraciones',
-          'Recomendaciones claras y priorizadas, no tecnicismos sueltos',
+          'Contabilidad al día, sin sorpresas a fin de mes',
+          'Obligaciones ante SAT, IMSS e INFONAVIT cubiertas y en orden',
+          'Revisión del riesgo de tus operaciones antes de que la autoridad actúe',
+          'Reportes claros mes a mes, en lenguaje de negocio',
         ]}
-        mediaKicker="Enfoque preventivo"
-        mediaCaption="Primero el riesgo, luego el trámite."
-        secondary={{ label: 'Ver el proceso', to: '/nosotros' }}
+        whatsapp
       />
 
       <MediaTexto
         bg="tint"
         reverse
-        icon="radar"
-        eyebrow="Auditoría algorítmica de CFDI"
-        title="Leemos tu información como la lee el algoritmo del SAT"
+        media={<IloAuditoria />}
+        eyebrow="Auditoría algorítmica y capacitación"
+        title="Un mapa de riesgo con semáforo, y equipos que entienden la IA fiscal"
         paragraphs={[
-          'El SAT, el IMSS y el INFONAVIT cruzan de forma automática tus comprobantes, tu nómina, tu DIOT y tus declaraciones para detectar inconsistencias.',
-          'Aplicamos esa misma lógica a tus datos y te entregamos un mapa de riesgo con semáforo: qué está en orden, qué conviene revisar y qué requiere atención inmediata.',
+          'Analizo tus CFDI y operaciones con la misma lógica con la que fiscalizan el SAT, el IMSS y el INFONAVIT, y te entrego un mapa de riesgo con semáforo: qué está en orden, qué conviene revisar y qué requiere atención.',
+          'Y formo a tu equipo, contadores y empresarios en cómo la autoridad fiscaliza con inteligencia artificial, con casos y simulaciones para que la prevención sea parte de la operación.',
         ]}
         bullets={[
-          'Análisis de CFDI y operaciones con criterio de fiscalización',
-          'Mapa de riesgo con semáforo, fácil de priorizar',
-          'Acompañamiento para corregir lo que aparezca en foco rojo',
+          'Análisis de tus CFDI y operaciones con criterio de fiscalización',
+          'Mapa de riesgo con semáforo (verde, ámbar, rojo) y prioridades',
+          'Informe con los focos rojos detectados y recomendaciones concretas',
+          'Capacitación con casos y simulaciones para equipo, contadores y empresarios',
         ]}
-        mediaKicker="Mapa de riesgo"
-        mediaCaption="Focos rojos detectados antes que la autoridad."
-        whatsapp
       />
 
-      <Testimonios bg="base" />
+      <Testimonios
+        bg="base"
+        variant="featured"
+        items={SERVICIOS_QUOTE}
+        title="La tranquilidad de entender tu riesgo"
+        subtitle="Ejemplo ilustrativo del tipo de claridad que buscamos entregar. Se reemplazará por un testimonio real con autorización del cliente."
+      />
+
       <Cta />
     </>
   )

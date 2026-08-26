@@ -1,14 +1,17 @@
+import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import Contacto from '../components/sections/Contacto'
 
 export default function ContactoPage() {
   return (
     <>
+      <Seo path="/contacto" />
       <Hero
         eyebrow="Contacto"
-        title="Agenda tu diagnóstico fiscal"
-        subtitle="Cuéntanos tu caso y da el primer paso hacia un cumplimiento sin sustos. Te atendemos directamente, en horario de oficina y sin compromiso."
+        title="Hablemos de tu situación fiscal"
+        subtitle="Cuéntanos tu caso y te respondemos en horario hábil (Lun–Vie 9:00–18:00). Atención directa del titular, sin compromiso."
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
+        ctaLabel="Agenda tu diagnóstico"
       />
       <Contacto />
     </>
