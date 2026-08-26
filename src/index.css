@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   TOKENS DE DISEÑO — única fuente de verdad de color/estilo.
+   Los componentes NUNCA usan hex; consumen estas variables
+   a través de las clases de Tailwind (bg-primary, text-ink, …)
+   o de las clases semánticas de @layer components más abajo.
+   ============================================================ */
+:root {
+  /* Los colores se guardan como canales RGB (sin coma) para que Tailwind
+     pueda aplicar modificadores de opacidad: rgb(var(--x) / <alpha>).
+     Equivalencias hex de referencia en el comentario de cada línea. */
+
+  /* Paleta de marca */
+  --color-primary: 0 184 217; /* #00B8D9 */
+  --color-primary-dark: 0 152 181; /* #0098B5 */
+  --color-secondary: 10 37 64; /* #0A2540 */
+  --color-secondary-dark: 6 24 41; /* #061829 */
+  --color-accent: 245 166 35; /* #F5A623 */
+  --color-accent-dark: 217 138 12; /* #D98A0C */
+
+  /* Superficies y texto */
+  --color-base: 255 255 255; /* #FFFFFF */
+  --color-tint: 243 247 250; /* #F3F7FA — tinte suave para alternar secciones */
+  --color-ink: 10 37 64; /* #0A2540 — texto/títulos principales */
+  --color-muted: 82 101 122; /* #52657A — texto secundario */
+  --color-line: 226 233 240; /* #E2E9F0 — bordes y divisores */
+
+  /* Estados (semáforo de riesgo) */
+  --color-danger: 229 72 77; /* #E5484D */
+
+  /* Marca de terceros (solo para su ícono) */
+  --color-whatsapp: 37 211 102; /* #25D366 */
+
+  /* Radio de esquinas consistente (botones, cards, inputs) */
+  --radius-md: 0.625rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base font-body text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-secondary;
+    text-wrap: balance;
+  }
+
+  /* Foco visible accesible en toda la interfaz */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-base;
+  }
+}
+
+@layer components {
+  /* --- Rejilla de sección (gramática Nexora) --- */
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-base {
+    @apply bg-base;
+  }
+
+  .section-tint {
+    @apply bg-tint;
+  }
+
+  .section-ink {
+    @apply bg-secondary text-white;
+  }
+
+  /* Etiqueta opcional (eyebrow) sobre el H2 */
+  .eyebrow {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-primary-dark;
+  }
+
+  .section-ink .eyebrow {
+    @apply text-primary;
+  }
+
+  /* --- Botones --- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-base font-semibold leading-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-secondary hover:bg-accent-dark focus-visible:ring-accent;
+  }
+
+  .btn-secondary {
+    @apply btn border border-line bg-base text-secondary hover:border-primary hover:text-primary-dark focus-visible:ring-primary;
+  }
+
+  .btn-on-ink {
+    @apply btn border border-white/30 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white;
+  }
+
+  /* --- Tarjetas --- */
+  .card {
+    @apply rounded-md border border-line bg-base p-6 shadow-card;
+  }
+
+  /* --- Campos de formulario --- */
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-secondary;
+  }
+
+  .field-input {
+    @apply w-full rounded-md border border-line bg-base px-4 py-3 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30;
+  }
+
+  /* --- Tipografía de apoyo --- */
+  .lead {
+    @apply text-lg leading-relaxed text-muted sm:text-xl;
+  }
+
+  .prose-body {
+    @apply space-y-4 text-base leading-relaxed text-muted;
+  }
+}
