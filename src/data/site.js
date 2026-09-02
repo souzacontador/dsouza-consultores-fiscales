@@ -4,8 +4,8 @@
 // ============================================================
 
 // URL de producción (base para canonical, Open Graph y sitemap).
-// [VERIFICAR] Actualizar al dominio propio cuando se conecte (p. ej. https://dsouzaconsultores.mx).
-export const SITE_URL = 'https://dsouza-consultores-fiscales.vercel.app'
+// Dominio propio conectado en Vercel; dsouza-consultores-fiscales.vercel.app queda como alias.
+export const SITE_URL = 'https://dsouzaconsultores.mx'
 
 // CTA principal — enlace real de WhatsApp (usar SIEMPRE esta constante).
 export const WHATSAPP_URL =

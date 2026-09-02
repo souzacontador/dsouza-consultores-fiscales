@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dsouza-consultores-fiscales.vercel.app/sitemap.xml
+Sitemap: https://dsouzaconsultores.mx/sitemap.xml
