@@ -60,7 +60,7 @@ carga y no se mide nada.
    el SEO on-page.
 2. **Dominio propio** (p. ej. `dsouzaconsultores.mx`): comprarlo y conectarlo en
    Vercel → Settings → Domains. Al hacerlo, actualizar `SITE_URL` en
-   `src/data/site.js` y las URLs de `public/sitemap.xml`, `public/robots.txt` e
+   `src/data/site.js` y las URLs de `public/robots.txt` e
    `index.html`.
 3. **Contenido en LinkedIn** enlazando al sitio (skills del despacho:
    `linkedin-fiscal-mx`, `generador-contenido-fiscal-social`).
@@ -78,7 +78,7 @@ carga y no se mide nada.
   `souzacontador/dsouza-app` a `public/calculadoras/<slug>/` y regenera
   `src/data/calculadoras.json`. Para una calculadora nueva: súbela a su carpeta
   en dsouza-app y añade su slug + textos de tarjeta en `CALCULADORAS` dentro
-  de `scripts/sync-calculadoras.mjs`; luego agrega su URL al `sitemap.xml`.
+  de `scripts/sync-calculadoras.mjs`. El sitemap la incluye solo en el build.
 
 ## Publicar un boletín nuevo (flujo)
 
@@ -86,8 +86,11 @@ carga y no se mide nada.
    `Boletin-Fiscal-DSouza-DD-DD-mmm-AAAA.html` (y opcionalmente su
    `…-preview.png` 1200×630).
 2. En este proyecto: `npm run boletines` → revisa `src/data/boletines.json`.
-3. Agrega la URL nueva a `public/sitemap.xml` (bloque de boletines).
-4. `git commit` + `git push` → Vercel publica y aparece en `/recursos`.
+3. `git commit` + `git push` → Vercel publica y aparece en `/recursos`.
+
+El `sitemap.xml` se genera solo en cada build (`scripts/generate-sitemap.mjs`)
+a partir de las rutas indexables, `boletines.json` y `calculadoras.json`; no
+existe un sitemap manual que actualizar.
 
 Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
 `scripts/sync-boletines.mjs`.
@@ -103,8 +106,9 @@ Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
       `SITE_URL` al conectar dominio propio.
 - [ ] Conectar **backend real del formulario** (hoy compone el mensaje hacia
       WhatsApp; correo visible como vía secundaria) — `TODO` en `Contacto.jsx`.
-- [ ] Quitar `noindex` de **Recursos/Calculadoras/Premium** (en `src/data/seoMeta.js`)
-      y devolverlas al `sitemap.xml` cuando publiquen contenido real.
+- [ ] Quitar `noindex` de **Calculadoras Premium** (en `src/data/seoMeta.js`)
+      cuando publique contenido real; el sitemap la incluirá solo.
+      (Recursos y Calculadoras ya están indexadas y con contenido.)
 
 ## Notas de contenido (reglas del proyecto)
 
