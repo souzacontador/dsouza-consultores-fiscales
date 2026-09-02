@@ -17,8 +17,8 @@ const DOT = {
 
 const TAG = {
   ok: { text: 'En orden', cls: 'bg-primary/10 text-primary-dark' },
-  warn: { text: 'Revisar', cls: 'bg-accent/15 text-accent-dark' },
-  risk: { text: 'Atención', cls: 'bg-danger/10 text-danger' },
+  warn: { text: 'Revisar', cls: 'bg-accent/15 text-status-warn' },
+  risk: { text: 'Atención', cls: 'bg-danger/10 text-status-risk' },
 }
 
 export default function RiskCardVisual() {

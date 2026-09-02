@@ -14,7 +14,7 @@ export default function Proceso({ bg = 'tint' }) {
       <ol className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-3">
         {PROCESS.map((item) => (
           <li key={item.step} className="card relative">
-            <span aria-hidden className="font-heading text-4xl font-bold text-primary/25">
+            <span aria-hidden className="font-heading text-4xl font-bold text-primary/40">
               {item.step}
             </span>
             <h3 className="mt-2 font-heading text-lg font-semibold text-secondary">

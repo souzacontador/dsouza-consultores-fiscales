@@ -32,6 +32,11 @@ export default {
         muted: withOpacity('--color-muted'),
         line: withOpacity('--color-line'),
         danger: withOpacity('--color-danger'),
+        // Texto de estado accesible para los chips del semáforo de riesgo
+        status: {
+          warn: withOpacity('--color-status-warn'),
+          risk: withOpacity('--color-status-risk'),
+        },
         // Marca WhatsApp (para el ícono, no como color de UI arbitrario)
         whatsapp: withOpacity('--color-whatsapp'),
       },

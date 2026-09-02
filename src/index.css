@@ -15,7 +15,7 @@
 
   /* Paleta de marca */
   --color-primary: 0 184 217; /* #00B8D9 */
-  --color-primary-dark: 0 152 181; /* #0098B5 */
+  --color-primary-dark: 0 115 138; /* #00738A — cian oscuro, ≥4.5:1 sobre blanco y tintes claros (WCAG AA) */
   --color-secondary: 10 37 64; /* #0A2540 */
   --color-secondary-dark: 6 24 41; /* #061829 */
   --color-accent: 245 166 35; /* #F5A623 */
@@ -29,7 +29,10 @@
   --color-line: 226 233 240; /* #E2E9F0 — bordes y divisores */
 
   /* Estados (semáforo de riesgo) */
-  --color-danger: 229 72 77; /* #E5484D */
+  --color-danger: 229 72 77; /* #E5484D — punto/fondo del semáforo */
+  /* Texto de estado accesible (≥4.5:1 sobre sus tintes claros) para chips */
+  --color-status-warn: 143 94 0; /* #8F5E00 — ámbar oscuro */
+  --color-status-risk: 193 39 45; /* #C1272D — rojo oscuro */
 
   /* Marca de terceros (solo para su ícono) */
   --color-whatsapp: 37 211 102; /* #25D366 */
