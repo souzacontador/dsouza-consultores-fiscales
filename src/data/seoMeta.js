@@ -28,10 +28,9 @@ export const SEO_META = {
       'Lo que buscamos que vivan PyMEs, profesionistas y empresas de servicios con nuestra asesoría fiscal preventiva en Mexicali. Agenda tu diagnóstico.',
   },
   '/recursos': {
-    title: 'Recursos fiscales | DSouza Consultores Fiscales',
+    title: 'Boletín fiscal semanal | DSouza Consultores',
     description:
-      'Artículos, guías y boletines sobre fiscalización algorítmica y capacitación fiscal en Mexicali. Contenido educativo próximamente; escríbenos.',
-    noindex: true, // sin contenido aún — quitar cuando se publique la biblioteca
+      'Boletines fiscales semanales de DSouza Consultores: novedades del SAT, IMSS e INFONAVIT, plazos clave y qué hacer a tiempo. Léelos gratis en Mexicali y en línea.',
   },
   '/calculadoras': {
     title: 'Calculadoras fiscales | DSouza Consultores',

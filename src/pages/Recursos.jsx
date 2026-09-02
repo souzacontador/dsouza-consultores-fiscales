@@ -1,26 +1,83 @@
+import { track } from '@vercel/analytics'
 import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import EstadoVacio from '../components/sections/EstadoVacio'
-import { IconDocument, IconLedger, IconChat, IconMail } from '../components/Icons'
+import { Section, SectionHeader } from '../components/ui'
+import { IconDocument, IconLedger, IconChat, IconArrowRight } from '../components/Icons'
+import boletines from '../data/boletines.json'
 
+// Boletines: HTML autocontenidos copiados desde el repo BOLETIN-DSOUZA a
+// public/boletines/ (ver scripts/sync-boletines.mjs). Abren en pestaña nueva
+// porque no llevan la navegación del sitio.
 export default function Recursos() {
+  const total = boletines.length
+
   return (
     <>
       <Seo path="/recursos" />
+
       <Hero
         eyebrow="Recursos"
         title="Recursos para entender cómo te fiscalizan"
-        subtitle="Estamos preparando contenido educativo sobre fiscalización algorítmica: artículos, guías y boletines para que veas venir los focos rojos antes que el SAT."
+        subtitle={`Boletines fiscales semanales con lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} ediciones publicadas; artículos y guías en camino.`}
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
         ctaLabel="Pregunta por WhatsApp"
       />
 
+      <Section bg="base" id="boletines">
+        <SectionHeader
+          eyebrow="Boletines fiscales"
+          title="Boletín Fiscal Semanal DSouza"
+          subtitle="Novedades de fiscalización, plazos clave y qué hacer al respecto. Del más reciente al más antiguo."
+        />
+
+        <ul className="mt-12 grid gap-6 md:grid-cols-2">
+          {boletines.map((b, i) => (
+            <li key={b.slug} className="card flex flex-col overflow-hidden !p-0 transition-shadow hover:shadow-card-hover">
+              <a
+                href={`/boletines/${b.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('boletin_open', { boletin: b.slug })}
+                className="group flex h-full flex-col focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label={`Leer ${b.title} (abre en pestaña nueva)`}
+              >
+                <img
+                  src={b.preview}
+                  alt={`Vista previa del ${b.title}`}
+                  width="1200"
+                  height="630"
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className="aspect-[1200/630] w-full border-b border-line object-cover"
+                />
+                <div className="flex flex-1 flex-col p-6">
+                  <time dateTime={b.dateISO} className="text-sm font-semibold uppercase tracking-wider text-primary-dark">
+                    {b.dateLabel}
+                  </time>
+                  <h3 className="mt-2 font-heading text-lg font-semibold leading-snug text-secondary group-hover:text-primary-dark">
+                    {b.title}
+                  </h3>
+                  {b.description && (
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{b.description}</p>
+                  )}
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-secondary">
+                    Leer boletín
+                    <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       <EstadoVacio
-        bg="base"
+        bg="tint"
         icon={<IconDocument className="h-8 w-8" />}
         statusLabel="Próximamente"
-        title="Nuestra biblioteca está en camino"
-        description="Muy pronto encontrarás aquí material práctico para entender tu riesgo fiscal y cómo prevenirlo. Mientras tanto, escríbenos y resolvemos tu duda directamente."
+        title="Artículos y guías en camino"
+        description="Además de los boletines, estamos preparando material práctico para entender tu riesgo fiscal y cómo prevenirlo."
         items={[
           {
             icon: <IconLedger className="h-5 w-5" />,
@@ -32,13 +89,8 @@ export default function Recursos() {
             label: 'Guías descargables',
             desc: 'Checklists y pasos para ordenar tu cumplimiento.',
           },
-          {
-            icon: <IconMail className="h-5 w-5" />,
-            label: 'Boletines fiscales',
-            desc: 'Novedades de fiscalización algorítmica, en lenguaje simple.',
-          },
         ]}
-        ctaLabel="Avísame cuando esté listo"
+        ctaLabel="Avísame cuando estén listos"
       />
     </>
   )

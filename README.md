@@ -70,6 +70,22 @@ carga y no se mide nada.
 - `npm run dev` — desarrollo · `npm run build` — build + pre-render de metadatos
   por ruta (`scripts/postbuild-meta.mjs`) · `npm run og` — regenera
   `public/og-image.png` desde `scripts/og-image.svg`.
+- `npm run boletines` — sincroniza los boletines desde el repo público
+  `souzacontador/BOLETIN-DSOUZA` a `public/boletines/` y regenera
+  `src/data/boletines.json` (título, descripción y fecha leídos de cada archivo).
+  Genera la vista previa 1200×630 solo para los boletines que no la traigan.
+
+## Publicar un boletín nuevo (flujo)
+
+1. Sube el boletín al repo `BOLETIN-DSOUZA` con la convención
+   `Boletin-Fiscal-DSouza-DD-DD-mmm-AAAA.html` (y opcionalmente su
+   `…-preview.png` 1200×630).
+2. En este proyecto: `npm run boletines` → revisa `src/data/boletines.json`.
+3. Agrega la URL nueva a `public/sitemap.xml` (bloque de boletines).
+4. `git commit` + `git push` → Vercel publica y aparece en `/recursos`.
+
+Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
+`scripts/sync-boletines.mjs`.
 
 ## Pendientes / DoD (por marcar en prompts posteriores)
 

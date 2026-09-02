@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Boletín Fiscal Semanal DSouza Consultores — Semana del 21 al 24 de abril de 2026. Complemento CFDI Hidrocarburos, reforma LFPIORPI, SCJN-UIF, Plan Maestro SAT 2026, Declaración Anual PF 2025, Jornada 40 horas.">
+<meta name="author" content="C.P. Daniel Souza Vázquez — DSouza Consultores Fiscales">
+<meta name="theme-color" content="#0D2B52">
+<title>Boletín Fiscal Semanal | 21–24 abr 2026 | DSouza Consultores Fiscales</title>
+<style>
+  :root{
+    --azul-oscuro:#0D2B52;
+    --azul-medio:#1B5FA8;
+    --azul-claro:#3B8FD4;
+    --azul-suave:#E8F1FB;
+    --rojo-alerta:#C0392B;
+    --rojo-suave:#FDECEA;
+    --ambar:#D97706;
+    --ambar-suave:#FEF3C7;
+    --verde:#047857;
+    --verde-suave:#D1FAE5;
+    --gris-900:#111827;
+    --gris-700:#374151;
+    --gris-500:#6B7280;
+    --gris-300:#D1D5DB;
+    --gris-100:#F3F4F6;
+    --gris-50:#F9FAFB;
+    --blanco:#FFFFFF;
+    --sombra-sm:0 1px 2px rgba(13,43,82,.06);
+    --sombra-md:0 4px 12px rgba(13,43,82,.08);
+    --sombra-lg:0 10px 30px rgba(13,43,82,.12);
+    --radio:12px;
+    --radio-sm:8px;
+    --trans:all .25s ease;
+    --fuente-serif:'Georgia','Cambria','Times New Roman',serif;
+    --fuente-sans:'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif;
+  }
+  [data-tema="oscuro"]{
+    --azul-oscuro:#3B8FD4;
+    --azul-medio:#60A5FA;
+    --azul-claro:#93C5FD;
+    --azul-suave:#1E3A5F;
+    --rojo-suave:#3F1D1A;
+    --ambar-suave:#3E2E0F;
+    --verde-suave:#14352A;
+    --gris-900:#F3F4F6;
+    --gris-700:#D1D5DB;
+    --gris-500:#9CA3AF;
+    --gris-300:#4B5563;
+    --gris-100:#1F2937;
+    --gris-50:#111827;
+    --blanco:#0F172A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{
+    font-family:var(--fuente-sans);
+    background:var(--gris-50);
+    color:var(--gris-900);
+    line-height:1.65;
+    font-size:16px;
+    transition:var(--trans);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ====== BARRA DE PROGRESO ====== */
+  .progreso{
+    position:fixed;top:0;left:0;height:3px;width:0;
+    background:linear-gradient(90deg,var(--azul-claro),var(--azul-medio));
+    z-index:1000;transition:width .1s linear;
+  }
+
+  /* ====== BARRA SUPERIOR FIJA ====== */
+  .barra-superior{
+    position:sticky;top:0;z-index:900;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--gris-300);
+    padding:10px 20px;
+  }
+  [data-tema="oscuro"] .barra-superior{background:rgba(15,23,42,.95)}
+  .barra-contenido{
+    max-width:1200px;margin:0 auto;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .marca-mini{
+    display:flex;align-items:center;gap:10px;
+    font-weight:700;color:var(--azul-oscuro);font-size:14px;
+  }
+  .marca-mini svg{flex-shrink:0}
+  .barra-acciones{
+    margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+  }
+  .btn-accion{
+    background:transparent;border:1px solid var(--gris-300);
+    color:var(--gris-700);padding:7px 12px;border-radius:var(--radio-sm);
+    cursor:pointer;font-size:13px;font-weight:500;
+    display:inline-flex;align-items:center;gap:6px;transition:var(--trans);
+    font-family:inherit;
+  }
+  .btn-accion:hover{background:var(--azul-medio);color:#fff;border-color:var(--azul-medio)}
+  .btn-accion.activo{background:var(--azul-medio);color:#fff;border-color:var(--azul-medio)}
+
+  /* ====== ENCABEZADO HERO ====== */
+  .hero{
+    background:linear-gradient(135deg,var(--azul-oscuro) 0%,var(--azul-medio) 55%,var(--azul-claro) 100%);
+    color:#fff;padding:60px 20px 70px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);
+    border-radius:50%;
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
+    border-radius:50%;
+  }
+  .hero-contenido{
+    max-width:1000px;margin:0 auto;position:relative;z-index:2;
+  }
+  .hero-etiqueta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.18);padding:6px 14px;border-radius:30px;
+    font-size:12px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.25);margin-bottom:20px;
+  }
+  .hero-etiqueta::before{
+    content:"";width:8px;height:8px;background:#7EE787;border-radius:50%;
+    box-shadow:0 0 10px #7EE787;animation:pulso 2s infinite;
+  }
+  @keyframes pulso{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.6;transform:scale(1.2)}
+  }
+  .hero h1{
+    font-family:var(--fuente-serif);
+    font-size:clamp(28px,5vw,48px);line-height:1.15;
+    font-weight:700;margin-bottom:12px;letter-spacing:-.5px;
+  }
+  .hero h2{
+    font-size:clamp(16px,2.5vw,22px);font-weight:400;
+    opacity:.95;margin-bottom:24px;
+  }
+  .hero-meta{
+    display:flex;gap:24px;flex-wrap:wrap;font-size:14px;
+    padding-top:20px;border-top:1px solid rgba(255,255,255,.2);
+  }
+  .hero-meta div{display:flex;align-items:center;gap:8px}
+  .hero-meta strong{font-weight:600}
+
+  /* ====== CONTENEDOR PRINCIPAL ====== */
+  .contenedor{
+    max-width:1200px;margin:0 auto;padding:40px 20px;
+    display:grid;grid-template-columns:260px 1fr;gap:40px;
+  }
+  @media(max-width:900px){
+    .contenedor{grid-template-columns:1fr;padding:24px 16px}
+    .indice{position:static!important;max-height:none!important}
+  }
+
+  /* ====== ÍNDICE LATERAL ====== */
+  .indice{
+    position:sticky;top:80px;align-self:start;
+    max-height:calc(100vh - 100px);overflow-y:auto;
+    background:var(--blanco);padding:20px;border-radius:var(--radio);
+    border:1px solid var(--gris-300);box-shadow:var(--sombra-sm);
+  }
+  .indice h3{
+    font-size:11px;letter-spacing:2px;color:var(--gris-500);
+    text-transform:uppercase;margin-bottom:14px;font-weight:700;
+  }
+  .indice ul{list-style:none}
+  .indice li{margin-bottom:2px}
+  .indice a{
+    display:block;color:var(--gris-700);text-decoration:none;
+    padding:8px 10px;border-radius:6px;font-size:13.5px;
+    border-left:3px solid transparent;transition:var(--trans);
+    line-height:1.4;
+  }
+  .indice a:hover{background:var(--azul-suave);color:var(--azul-oscuro)}
+  .indice a.activo{
+    background:var(--azul-suave);color:var(--azul-oscuro);
+    border-left-color:var(--azul-medio);font-weight:600;
+  }
+  .indice .num{
+    display:inline-block;width:20px;color:var(--azul-medio);font-weight:700;
+  }
+
+  /* ====== ÁREA DE CONTENIDO ====== */
+  .contenido section{
+    background:var(--blanco);border-radius:var(--radio);
+    padding:32px;margin-bottom:28px;box-shadow:var(--sombra-sm);
+    border:1px solid var(--gris-300);transition:var(--trans);
+  }
+  .contenido section:hover{box-shadow:var(--sombra-md)}
+  .contenido h2.titulo-seccion{
+    font-family:var(--fuente-serif);
+    font-size:clamp(22px,3vw,30px);color:var(--azul-oscuro);
+    padding-bottom:14px;margin-bottom:22px;
+    border-bottom:3px solid var(--azul-medio);
+    display:flex;align-items:center;gap:12px;
+  }
+  .contenido h2.titulo-seccion .icono{
+    width:36px;height:36px;border-radius:8px;
+    background:var(--azul-suave);display:inline-flex;align-items:center;justify-content:center;
+    color:var(--azul-medio);
+  }
+  .contenido p{margin-bottom:14px;color:var(--gris-700);line-height:1.75}
+  .contenido p strong{color:var(--gris-900)}
+
+  /* ====== RESUMEN EJECUTIVO ====== */
+  .resumen{
+    background:linear-gradient(135deg,var(--azul-suave) 0%,#fff 100%)!important;
+    border-left:6px solid var(--azul-medio)!important;
+  }
+  [data-tema="oscuro"] .resumen{background:linear-gradient(135deg,var(--azul-suave) 0%,var(--blanco) 100%)!important}
+  .resumen-texto{
+    font-size:16.5px;line-height:1.8;color:var(--gris-700);
+    text-align:justify;hyphens:auto;
+  }
+  .resumen-texto strong{color:var(--azul-oscuro);font-weight:600}
+
+  /* ====== FILTROS DE PRIORIDAD ====== */
+  .filtros{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;
+    padding:14px 18px;background:var(--gris-100);border-radius:var(--radio);
+    align-items:center;
+  }
+  .filtros-etiqueta{
+    font-size:12px;font-weight:700;color:var(--gris-500);
+    text-transform:uppercase;letter-spacing:1px;margin-right:8px;
+  }
+  .chip{
+    padding:6px 14px;border-radius:20px;border:1px solid var(--gris-300);
+    background:#fff;cursor:pointer;font-size:13px;font-weight:500;
+    color:var(--gris-700);transition:var(--trans);font-family:inherit;
+  }
+  [data-tema="oscuro"] .chip{background:var(--gris-100)}
+  .chip:hover{border-color:var(--azul-medio);color:var(--azul-medio)}
+  .chip.activo{background:var(--azul-oscuro);color:#fff;border-color:var(--azul-oscuro)}
+  .chip.activo[data-prioridad="alta"]{background:var(--rojo-alerta);border-color:var(--rojo-alerta)}
+  .chip.activo[data-prioridad="media"]{background:var(--ambar);border-color:var(--ambar)}
+
+  /* ====== TARJETAS DE NOTICIAS ====== */
+  .noticia{
+    border:1px solid var(--gris-300);border-radius:var(--radio);
+    margin-bottom:20px;overflow:hidden;transition:var(--trans);
+    background:var(--blanco);
+  }
+  .noticia:hover{box-shadow:var(--sombra-md);transform:translateY(-2px)}
+  .noticia.oculta{display:none}
+  .noticia-cabecera{
+    padding:20px 24px;cursor:pointer;
+    display:flex;gap:16px;align-items:flex-start;
+    border-left:5px solid var(--azul-medio);
+    background:linear-gradient(to right,var(--azul-suave),transparent 60%);
+  }
+  [data-tema="oscuro"] .noticia-cabecera{background:linear-gradient(to right,var(--azul-suave),transparent 60%)}
+  .noticia[data-prioridad="alta"] .noticia-cabecera{
+    border-left-color:var(--rojo-alerta);
+    background:linear-gradient(to right,var(--rojo-suave),transparent 60%);
+  }
+  .noticia[data-prioridad="media"] .noticia-cabecera{
+    border-left-color:var(--ambar);
+    background:linear-gradient(to right,var(--ambar-suave),transparent 60%);
+  }
+  .noticia-numero{
+    flex-shrink:0;width:44px;height:44px;border-radius:50%;
+    background:var(--azul-oscuro);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;font-family:var(--fuente-serif);
+  }
+  .noticia[data-prioridad="alta"] .noticia-numero{background:var(--rojo-alerta)}
+  .noticia[data-prioridad="media"] .noticia-numero{background:var(--ambar)}
+  .noticia-titulo-wrap{flex:1;min-width:0}
+  .noticia-titulo{
+    font-family:var(--fuente-serif);font-size:19px;line-height:1.35;
+    color:var(--azul-oscuro);font-weight:700;margin-bottom:8px;
+  }
+  [data-tema="oscuro"] .noticia-titulo{color:var(--azul-oscuro)}
+  .noticia-meta{
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:3px 10px;border-radius:20px;font-weight:600;
+    font-size:11px;letter-spacing:.5px;text-transform:uppercase;
+  }
+  .badge-alta{background:var(--rojo-alerta);color:#fff}
+  .badge-media{background:var(--ambar);color:#fff}
+  .badge-baja{background:var(--verde);color:#fff}
+  .badge-neutral{background:var(--gris-300);color:var(--gris-700)}
+  .noticia-toggle{
+    flex-shrink:0;align-self:center;color:var(--azul-medio);
+    transition:transform .3s;
+  }
+  .noticia.abierta .noticia-toggle{transform:rotate(180deg)}
+  .noticia-cuerpo{
+    padding:0 24px;max-height:0;overflow:hidden;
+    transition:max-height .4s ease,padding .3s ease;
+  }
+  .noticia.abierta .noticia-cuerpo{
+    max-height:5000px;padding:8px 24px 24px;
+  }
+  .campo{
+    margin-bottom:14px;padding-left:14px;
+    border-left:2px solid var(--gris-300);
+  }
+  .campo-etiqueta{
+    display:block;font-size:12px;font-weight:700;
+    color:var(--rojo-alerta);text-transform:uppercase;
+    letter-spacing:.5px;margin-bottom:4px;
+  }
+  .campo-valor{font-size:15px;color:var(--gris-700);line-height:1.7}
+  .campo-valor ul{margin:8px 0 0 22px}
+  .campo-valor li{margin-bottom:6px;line-height:1.6}
+  .campo-valor .sub-ul{margin-left:18px;margin-top:4px;list-style:circle}
+  .fuentes{
+    font-style:italic;font-size:13px;color:var(--gris-500);
+    margin-top:10px;padding-top:10px;border-top:1px dashed var(--gris-300);
+  }
+  .recuadro-facilidad{
+    background:var(--verde-suave);border:1px solid var(--verde);
+    border-radius:var(--radio-sm);padding:14px 16px;margin-top:14px;
+  }
+  .recuadro-facilidad .campo-etiqueta{color:var(--verde)}
+  .recuadro-facilidad .campo-valor{color:var(--gris-700)}
+
+  /* ====== ALERTAS DE CUMPLIMIENTO ====== */
+  .alertas{display:grid;grid-template-columns:1fr;gap:14px}
+  .alerta-item{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 20px;border-radius:var(--radio-sm);
+    background:var(--rojo-suave);border-left:5px solid var(--rojo-alerta);
+  }
+  .alerta-item[data-tipo="vencimiento"]{
+    background:var(--ambar-suave);border-left-color:var(--ambar);
+  }
+  .alerta-item[data-tipo="ventana"]{
+    background:var(--verde-suave);border-left-color:var(--verde);
+  }
+  .alerta-icono{
+    flex-shrink:0;width:40px;height:40px;border-radius:50%;
+    background:var(--rojo-alerta);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+  }
+  .alerta-item[data-tipo="vencimiento"] .alerta-icono{background:var(--ambar)}
+  .alerta-item[data-tipo="ventana"] .alerta-icono{background:var(--verde)}
+  .alerta-contenido strong{
+    display:block;color:var(--gris-900);font-size:15px;margin-bottom:4px;
+  }
+  .alerta-contenido{font-size:14px;color:var(--gris-700);line-height:1.6}
+
+  /* ====== TABLA DE VENCIMIENTOS ====== */
+  .tabla-wrap{overflow-x:auto;border-radius:var(--radio-sm);border:1px solid var(--gris-300)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead{background:var(--azul-oscuro);color:#fff}
+  thead th{padding:14px 12px;text-align:left;font-weight:600;font-size:13px;letter-spacing:.5px}
+  tbody td{padding:14px 12px;border-top:1px solid var(--gris-300);vertical-align:top;line-height:1.55}
+  tbody tr{transition:var(--trans)}
+  tbody tr:hover{background:var(--azul-suave)}
+  tbody tr td:first-child{font-weight:600;color:var(--azul-oscuro)}
+
+  /* ====== COMENTARIO PROFESIONAL ====== */
+  .comentario{
+    background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio))!important;
+    color:#fff!important;position:relative;
+  }
+  .comentario::before{
+    content:"\201C";position:absolute;top:20px;left:30px;
+    font-family:var(--fuente-serif);font-size:140px;line-height:1;
+    color:rgba(255,255,255,.15);pointer-events:none;
+  }
+  .comentario .titulo-seccion{color:#fff!important;border-bottom-color:rgba(255,255,255,.3)!important}
+  .comentario .titulo-seccion .icono{background:rgba(255,255,255,.15);color:#fff}
+  .comentario p{color:rgba(255,255,255,.95);font-size:16.5px;line-height:1.8;text-align:justify}
+  .comentario p strong{color:#FFE8A3}
+
+  /* ====== CIERRE / CONTACTO ====== */
+  .cierre-contenido{
+    display:flex;gap:24px;align-items:center;flex-wrap:wrap;
+    padding:24px;background:var(--azul-suave);border-radius:var(--radio-sm);
+  }
+  .cierre-logo{
+    width:70px;height:70px;border-radius:50%;background:var(--azul-oscuro);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:var(--fuente-serif);font-weight:700;font-size:28px;flex-shrink:0;
+  }
+  .cierre-texto{flex:1;min-width:240px}
+  .cierre-texto strong{display:block;color:var(--azul-oscuro);font-size:17px;margin-bottom:4px}
+  .cierre-cta{
+    display:inline-block;background:var(--azul-medio);color:#fff;
+    padding:12px 22px;border-radius:var(--radio-sm);text-decoration:none;
+    font-weight:600;margin-top:12px;transition:var(--trans);
+  }
+  .cierre-cta:hover{background:var(--azul-oscuro);transform:translateY(-1px)}
+
+  /* ====== PIE ====== */
+  footer{
+    background:var(--azul-oscuro);color:#fff;padding:40px 20px 24px;
+    text-align:center;margin-top:40px;
+  }
+  footer h4{
+    font-family:var(--fuente-serif);font-size:20px;margin-bottom:6px;
+  }
+  footer p{font-size:14px;opacity:.9;margin-bottom:4px}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.5)}
+  .footer-separador{
+    width:60px;height:3px;background:var(--azul-claro);
+    margin:16px auto;border-radius:2px;
+  }
+  .footer-nota{
+    font-size:12px;opacity:.7;margin-top:20px;
+    padding-top:16px;border-top:1px solid rgba(255,255,255,.15);
+  }
+
+  /* ====== BOTÓN IR ARRIBA ====== */
+  .ir-arriba{
+    position:fixed;bottom:24px;right:24px;width:44px;height:44px;
+    border-radius:50%;background:var(--azul-medio);color:#fff;
+    border:none;cursor:pointer;display:none;align-items:center;justify-content:center;
+    box-shadow:var(--sombra-lg);z-index:800;transition:var(--trans);
+  }
+  .ir-arriba:hover{background:var(--azul-oscuro);transform:translateY(-2px)}
+  .ir-arriba.visible{display:flex}
+
+  /* ====== ACCIONES DEL LECTOR ====== */
+  .acciones-lector{
+    display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;
+  }
+
+  /* ====== IMPRESIÓN ====== */
+  @media print{
+    .barra-superior,.indice,.ir-arriba,.filtros,.acciones-lector,
+    .noticia-toggle,.progreso{display:none!important}
+    .contenedor{grid-template-columns:1fr;max-width:100%;padding:0}
+    .hero{padding:30px 20px;page-break-after:avoid}
+    .noticia-cuerpo{max-height:none!important;padding:8px 24px 24px!important}
+    .noticia{page-break-inside:avoid;break-inside:avoid}
+    section{page-break-inside:avoid;break-inside:avoid;box-shadow:none!important;border:1px solid #ccc!important}
+    body{background:#fff;font-size:11pt}
+    .comentario{background:#fff!important;color:#000!important}
+    .comentario p{color:#000!important}
+    .comentario .titulo-seccion{color:var(--azul-oscuro)!important}
+    a[href]::after{content:" (" attr(href) ")";font-size:9pt;color:#666}
+  }
+
+  /* ====== ANIMACIONES ====== */
+  @keyframes aparecer{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .contenido section{animation:aparecer .5s ease backwards}
+  .contenido section:nth-child(1){animation-delay:.05s}
+  .contenido section:nth-child(2){animation-delay:.1s}
+  .contenido section:nth-child(3){animation-delay:.15s}
+  .contenido section:nth-child(4){animation-delay:.2s}
+
+  /* ====== ACCESIBILIDAD ====== */
+  :focus-visible{outline:3px solid var(--azul-claro);outline-offset:2px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto}
+  }
+</style>
+<link rel="canonical" href="https://dsouza-consultores-fiscales.vercel.app/boletines/Boletin-Fiscal-DSouza-21-24-abr-2026.html">
+</head>
+<body>
+
+<!-- BARRA DE PROGRESO DE LECTURA -->
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+
+<!-- BARRA SUPERIOR -->
+<nav class="barra-superior" aria-label="Navegación principal">
+  <div class="barra-contenido">
+    <div class="marca-mini">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="#0D2B52"/>
+        <text x="16" y="21" text-anchor="middle" fill="#fff" font-family="Georgia" font-weight="700" font-size="14">DS</text>
+      </svg>
+      <span>DSouza Consultores — Boletín Fiscal</span>
+    </div>
+    <div class="barra-acciones">
+      <button class="btn-accion" id="btnTema" aria-label="Cambiar tema" title="Modo claro / oscuro">
+        <span id="iconoTema">🌙</span>
+        <span id="textoTema">Oscuro</span>
+      </button>
+      <button class="btn-accion" onclick="window.print()" title="Imprimir o guardar como PDF" aria-label="Imprimir">
+        🖨️ <span>Imprimir</span>
+      </button>
+      <button class="btn-accion" id="btnCompartir" title="Compartir enlace" aria-label="Compartir">
+        🔗 <span>Compartir</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-contenido">
+    <span class="hero-etiqueta">En circulación · Edición semanal</span>
+    <h1>Boletín Fiscal Semanal</h1>
+    <h2>Noticias y novedades fiscales · DSouza Consultores Fiscales</h2>
+    <div class="hero-meta">
+      <div>📅 <strong>Semana del 21 al 24 de abril de 2026</strong></div>
+      <div>✍️ <strong>C.P. Daniel Souza Vázquez</strong></div>
+      <div>📍 <strong>Mexicali, Baja California</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="contenedor">
+
+  <!-- ÍNDICE LATERAL -->
+  <aside class="indice" aria-label="Tabla de contenidos">
+    <h3>📑 En esta edición</h3>
+    <ul>
+      <li><a href="#resumen"><span class="num">•</span>Resumen ejecutivo</a></li>
+      <li><a href="#noticias"><span class="num">•</span>Noticias fiscales</a></li>
+      <li><a href="#n1"><span class="num">1.</span>Complemento Hidrocarburos</a></li>
+      <li><a href="#n1b"><span class="num">1B.</span>Actualización técnica 22 abr</a></li>
+      <li><a href="#n2"><span class="num">2.</span>Reforma LFPIORPI</a></li>
+      <li><a href="#n3"><span class="num">3.</span>SCJN valida UIF</a></li>
+      <li><a href="#n4"><span class="num">4.</span>Plan Maestro SAT 2026</a></li>
+      <li><a href="#n5"><span class="num">5.</span>Declaración Anual PF</a></li>
+      <li><a href="#n6"><span class="num">6.</span>Jornada 40 horas</a></li>
+      <li><a href="#alertas"><span class="num">•</span>Alertas de cumplimiento</a></li>
+      <li><a href="#tabla"><span class="num">•</span>Tabla de vencimientos</a></li>
+      <li><a href="#comentario"><span class="num">•</span>Comentario profesional</a></li>
+      <li><a href="#cierre"><span class="num">•</span>Cierre / Contacto</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="contenido">
+
+    <!-- RESUMEN EJECUTIVO -->
+    <section id="resumen" class="resumen">
+      <h2 class="titulo-seccion">
+        <span class="icono">📊</span>
+        Resumen ejecutivo
+      </h2>
+      <p class="resumen-texto">
+        La semana estuvo dominada por dos frentes de alta urgencia: la entrada en vigor del nuevo <strong>Complemento CFDI para Hidrocarburos</strong> —que a partir del 24 de abril hace inválidos los comprobantes de gasolina y diésel que no lo incluyan— y el endurecimiento del <strong>régimen antilavado</strong>, marcado por la primera reforma al Reglamento de la LFPIORPI en trece años y por la validación de la <strong>SCJN</strong> para que la <strong>UIF</strong> bloquee cuentas bancarias sin orden judicial. En paralelo, el <strong>Plan Maestro SAT 2026</strong> ya opera con inteligencia artificial en tiempo real sobre plataformas digitales, y la <strong>Declaración Anual de Personas Físicas</strong> correspondiente al ejercicio 2025 vence el <strong>30 de abril de 2026</strong>. En materia laboral, la reforma a la LFT que instaura la <strong>jornada máxima de 40 horas semanales</strong> —con vigencia gradual desde 2027— ya activa obligaciones de cumplimiento: registro electrónico de jornada, adecuación de contratos y gestión de datos biométricos, con multas de hasta <strong>$586,550 pesos</strong> y riesgo penal por incumplimiento.
+      </p>
+    </section>
+
+    <!-- NOTICIAS FISCALES -->
+    <section id="noticias">
+      <h2 class="titulo-seccion">
+        <span class="icono">📰</span>
+        Noticias fiscales relevantes
+      </h2>
+
+      <div class="acciones-lector">
+        <button class="btn-accion" id="btnExpandir">➕ Expandir todas</button>
+        <button class="btn-accion" id="btnContraer">➖ Contraer todas</button>
+      </div>
+
+      <div class="filtros" role="group" aria-label="Filtro por prioridad">
+        <span class="filtros-etiqueta">Filtrar:</span>
+        <button class="chip activo" data-filtro="todas">Todas (7)</button>
+        <button class="chip" data-filtro="alta" data-prioridad="alta">🔴 Alta</button>
+        <button class="chip" data-filtro="media" data-prioridad="media">🟡 Media</button>
+      </div>
+
+      <!-- NOTICIA 1 -->
+      <article class="noticia abierta" id="n1" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="true">
+          <div class="noticia-numero">1</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Complemento Concepto de Hidrocarburos y Petrolíferos: obligatorio a partir de hoy</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">📅 Vigente desde 24 abr 2026</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">A partir del <strong>24 de abril de 2026</strong> es obligatorio incluir el «Complemento Concepto para la Facturación de Hidrocarburos y Petrolíferos v1.0» en todos los CFDI 4.0 que amparen ventas de gasolinas, diésel y petrolíferos. El complemento exige cinco atributos obligatorios, entre ellos el número de permiso vigente ante la Comisión Nacional de Energía (CNE). Los CFDI emitidos sin este nodo son <strong>inválidos ante el SAT</strong>; el receptor no podrá deducirlos ni acreditar el Impuesto al Valor Agregado (IVA) correspondiente.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Resolución Miscelánea Fiscal (RMF) 2026; Anexo 20 del SAT; normativa CNE.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Gasolineras y distribuidores de combustibles; compradores corporativos que deducen gastos de combustible.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">24 de abril de 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">Verificar de inmediato con su proveedor de software de facturación que ya soporta el nuevo nodo XML. Si sus proveedores de combustible emiten CFDI sin el complemento, <strong>rechácelos y exija reemisión</strong>. Los comprobantes defectuosos recibidos a partir de hoy ya no son deducibles.</div>
+          </div>
+          <p class="fuentes"><strong>Fuentes:</strong> Parallax Radio; IDC Online; LLB Solutions — 30 mar–14 abr 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 1B -->
+      <article class="noticia" id="n1b" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">1B</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Complemento de Hidrocarburos: actualización técnica del 22 de abril — qué debe verificar en su sistema de timbrado</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">⚙️ Actualización técnica</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">El <strong>22 de abril de 2026</strong>, el SAT actualizó el estándar técnico, la matriz de errores y el catálogo de tipos de permiso del Complemento Concepto de Hidrocarburos y Petrolíferos. El ajuste más relevante es la <strong>habilitación de coexistencia con el complemento Carta Porte</strong>: a partir de esta actualización, un mismo CFDI 4.0 puede integrar simultáneamente la operación de hidrocarburos, el permiso regulatorio y la información del traslado de mercancías. Antes, el complemento solo podía convivir con Timbre Fiscal Digital, Consumo de Combustibles y Estado de Cuenta de Combustibles.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Cambios técnicos concretos</span>
+            <div class="campo-valor">
+              <ol style="margin-left:22px;margin-top:6px">
+                <li>Código <strong>CCHYP106</strong> en la matriz de errores: actualizado para reflejar la nueva permisión de coexistencia con Carta Porte.</li>
+                <li>Catálogo <strong>c_TipoPermiso</strong>: incorpora tres nuevos registros —<strong>PER09, PER10 y PER11</strong>—, todos clasificados como Comercialización, con nomenclaturas diferenciadas para operaciones ante la CNE, CNIH y otras dependencias del sector (vigentes desde el 17 de abril de 2026).</li>
+              </ol>
+              <p style="margin-top:10px"><em>La estructura del nodo HidroYPetro y sus atributos no se modificaron.</em></p>
+            </div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Anexo 20 del SAT; estándar técnico del Complemento Concepto de Hidrocarburos y Petrolíferos v1.0; catálogo c_TipoPermiso actualizado al 17 de abril de 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Empresas del sector hidrocarburos (gasolineras, distribuidores, comercializadoras); empresas de logística que transportan petrolíferos y emiten CFDI con Carta Porte.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">Catálogo c_TipoPermiso (PER09–PER11): vigente desde el <strong>17 de abril de 2026</strong>. Actualización de matriz de errores y coexistencia con Carta Porte: <strong>22 de abril de 2026</strong>.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">Verificar con su proveedor de timbrado que la versión del catálogo c_TipoPermiso ya incluye <strong>PER09, PER10 y PER11</strong>, y que el validador de coexistencia permite emitir CFDI con Hidrocarburos + Carta Porte activos simultáneamente. Un CFDI emitido con el catálogo anterior puede generar errores de validación ante el SAT y quedar como comprobante inválido.</div>
+          </div>
+          <p class="fuentes"><strong>Fuente:</strong> DSouza Consultores Fiscales, con base en actualización técnica SAT — 22 abr 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 2 -->
+      <article class="noticia" id="n2" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">2</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Reforma al Reglamento de la LFPIORPI: primera actualización desde 2013</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">⚖️ Antilavado</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">El <strong>27 de marzo de 2026</strong> se publicó en el Diario Oficial de la Federación (DOF) el Decreto que reforma el Reglamento de la Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita (LFPIORPI), con vigencia desde el 28 de marzo. Es la <strong>primera modificación desde 2013</strong>. La reforma consolida las facultades de supervisión y sanción del SAT y la UIF, <strong>presume la veracidad de sus bases de datos</strong> —invirtiendo la carga probatoria hacia el contribuyente—, amplía la conservación de documentos a <strong>diez años</strong> y eleva los estándares de gestión de riesgos y trazabilidad documental. El 16 de marzo, la UIF y la Comisión Nacional Bancaria y de Valores (CNBV) suscribieron además un Convenio de Colaboración para intensificar el intercambio de información antilavado entre el sistema bancario y los sujetos obligados.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">DOF 27 de marzo de 2026, Decreto que reforma el Reglamento de la LFPIORPI; Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Sujetos obligados en Actividades Vulnerables: notarios, agentes aduanales, inmobiliarias, joyerías y, en ciertos supuestos, contadores y asesores fiscales.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">28 de marzo de 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">Verificar si su actividad lo clasifica como sujeto obligado. Actualizar el programa de cumplimiento: políticas de identificación de clientes (KYC), matrices de riesgo y reportes de operaciones inusuales. <strong>Considerar el cumplimiento espontáneo</strong>, disponible por única ocasión, para regularizar antes de recibir un requerimiento formal.</div>
+          </div>
+          <p class="fuentes"><strong>Fuentes:</strong> DOF; Holland & Knight; RSM México; Hogan Lovells; IMCP Nota Fiscal 2026-51 — 27 mar–16 abr 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 3 -->
+      <article class="noticia" id="n3" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">3</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">SCJN valida que la UIF puede bloquear cuentas bancarias sin orden judicial</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">⚖️ Jurisprudencia</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">El <strong>9 de abril de 2026</strong>, la SCJN validó, por <strong>seis votos contra tres</strong>, la facultad de la UIF para bloquear cuentas bancarias sin intervención del Ministerio Público, sin orden judicial y sin solicitud de autoridades extranjeras. Basta la existencia de «<strong>indicios razonables</strong>» de operaciones ilícitas para activar la medida.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Sentencia SCJN, 9 de abril de 2026 (Expansión); Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Toda persona física o moral con cuentas bancarias en México; en especial quienes realizan operaciones en efectivo, divisas, bienes raíces o con proveedores de perfil de riesgo elevado.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">Criterio vigente desde el 9 de abril de 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">Mantener un <strong>expediente de cumplimiento antilavado</strong> actualizado con evidencia de materialidad de operaciones. Revisar el perfil transaccional de los últimos doce meses. <em>Una empresa puede quedar sin acceso a sus cuentas en horas; el expediente de cumplimiento es la primera línea de defensa.</em></div>
+          </div>
+          <p class="fuentes"><strong>Fuentes:</strong> Expansión — 9 abr 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 4 -->
+      <article class="noticia" id="n4" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">4</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Plan Maestro SAT 2026: fiscalización algorítmica con IA en tiempo real</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">🤖 Fiscalización digital</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">Desde el <strong>1.° de abril de 2026</strong>, en cumplimiento del <strong>artículo 30-B del CFF</strong>, las plataformas digitales —Mercado Libre, Uber Eats, Amazon, Airbnb y otras— están obligadas a dar al SAT acceso en línea y en tiempo real a su información. El Plan Maestro 2026 opera con inteligencia artificial que cruza masivamente los CFDI: <strong>si la retención mensual difiere más del 5% del cálculo anual proyectado, el sistema emite de forma automática una carta invitación</strong> al contribuyente.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Artículo 30-B del CFF; Plan Maestro de Fiscalización SAT 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Vendedores y prestadores de servicios en plataformas digitales; contribuyentes de todos los regímenes cuyos CFDI presentan inconsistencias con sus declaraciones.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">1.° de abril de 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">Verificar que las retenciones reportadas en CFDI coincidan con los ingresos declarados. Revisar la consistencia entre comprobantes emitidos y declaraciones presentadas. <strong>Cualquier discrepancia, por mínima que parezca, puede activar una revisión electrónica automatizada.</strong></div>
+          </div>
+          <p class="fuentes"><strong>Fuentes:</strong> Blog HIXSA; Blog Alegra; Blog Gigstack — abril 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 5 -->
+      <article class="noticia" id="n5" data-prioridad="alta">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">5</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Declaración Anual de Personas Físicas 2025: faltan pocos días para el vencimiento</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-alta">🔴 Prioridad alta</span>
+              <span class="badge badge-neutral">⏰ Vence 30 abr 2026</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">El plazo para presentar la Declaración Anual del ISR del ejercicio 2025 para personas físicas <strong>vence el 30 de abril de 2026</strong>. Al 18 de abril, el SAT reportó <strong>6.5 millones de declaraciones presentadas</strong>.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Artículo 150 de la LISR; Resolución Miscelánea Fiscal 2026.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Personas físicas en todos los regímenes: asalariados con dos o más empleadores, actividad empresarial y profesional, arrendamiento, RESICO-PF, enajenación de bienes e intereses.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">Vencimiento: <strong>30 de abril de 2026</strong>. Sin prórroga anunciada.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">
+              <ul>
+                <li>Presentar la declaración antes del 30 de abril para evitar recargos y multas.</li>
+                <li>Verificar que los saldos a favor queden correctamente solicitados.</li>
+                <li>Revisar las deducciones personales: gastos médicos, donativos, colegiaturas, etc. Contactar a su contador si aún no ha iniciado el proceso.</li>
+                <li>Si resulta saldo a favor en ISR, marcar el recuadro de devolución automática dentro de la misma declaración: puede solicitarse <strong>hasta el 31 de julio de 2026</strong> (no solo hasta el 30 de abril).
+                  <ul class="sub-ul">
+                    <li>Saldos ≤ $10,000 con Contraseña.</li>
+                    <li>De $10,001 a $150,000 requieren e.firma.</li>
+                    <li>Superiores a $150,000 deben tramitarse por el <strong>FED</strong> (Formato Electrónico de Devoluciones).</li>
+                  </ul>
+                </li>
+                <li>La CLABE bancaria debe estar activa y a nombre del contribuyente (mismo RFC).</li>
+              </ul>
+              <p style="margin-top:10px">El SAT tiene hasta <strong>40 días hábiles</strong>; en la práctica, devoluciones sin observaciones llegan en 5 a 15 días.</p>
+            </div>
+          </div>
+          <div class="recuadro-facilidad">
+            <span class="campo-etiqueta">🎁 Facilidad RMF 2026 — Devolución Automática (Regla 2.3.2 RMF 2026 · Arts. 22 y 22-B CFF)</span>
+            <div class="campo-valor">
+              Las personas físicas con saldo a favor en ISR de la declaración anual 2025 pueden acceder al <strong>Sistema Automático de Devoluciones</strong> marcando el recuadro correspondiente en la propia declaración. El plazo para ejercer esta facilidad se extiende <strong>hasta el 31 de julio de 2026</strong>. Montos superiores a $150,000 pesos no aplican al esquema automático y deben tramitarse por el FED.
+            </div>
+          </div>
+          <p class="fuentes"><strong>Fuentes:</strong> Infobae México; SAT — publicado 18 abr 2026.</p>
+        </div>
+      </article>
+
+      <!-- NOTICIA 6 -->
+      <article class="noticia" id="n6" data-prioridad="media">
+        <header class="noticia-cabecera" role="button" tabindex="0" aria-expanded="false">
+          <div class="noticia-numero">6</div>
+          <div class="noticia-titulo-wrap">
+            <h3 class="noticia-titulo">Jornada de 40 horas: 5 riesgos legales para las empresas en la transición</h3>
+            <div class="noticia-meta">
+              <span class="badge badge-media">🟡 Prioridad media</span>
+              <span class="badge badge-neutral">👥 Materia laboral</span>
+            </div>
+          </div>
+          <div class="noticia-toggle">▼</div>
+        </header>
+        <div class="noticia-cuerpo">
+          <div class="campo">
+            <span class="campo-etiqueta">Qué pasó</span>
+            <div class="campo-valor">El <strong>24 de abril de 2026</strong>, El Economista documentó los cinco principales riesgos legales que enfrentan las empresas durante la implementación gradual de la reforma a la LFT que reduce la jornada semanal a <strong>40 horas</strong>. La reducción opera de forma escalonada: <strong>dos horas por año a partir del 1.° de enero de 2027</strong> hasta alcanzar la meta en 2030. La reforma introduce, además, la obligación de llevar un <strong>registro electrónico de la jornada laboral</strong> —reloj checador digital— bajo supervisión de la STPS.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Fundamento legal</span>
+            <div class="campo-valor">Artículo 61 LFT; artículo 1000 LFT (multas); artículo 21 de la Ley General para Prevenir, Sancionar y Erradicar los Delitos en Materia de Trata de Personas (riesgo penal); LFPDPPP para datos biométricos.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">A quién aplica</span>
+            <div class="campo-valor">Todos los patrones con trabajadores sujetos a la LFT; en especial empresas con esquemas de jornada flexible, turnos especiales (vigilancia, transporte, 12x12, 24x24) o que usen controles biométricos de asistencia.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Desde cuándo</span>
+            <div class="campo-valor">La reforma está aprobada. La reducción gradual inicia el <strong>1.° de enero de 2027</strong>. La obligación del registro electrónico de jornada <strong>ya es exigible</strong> para efectos de cumplimiento y defensa laboral.</div>
+          </div>
+          <div class="campo">
+            <span class="campo-etiqueta">Qué debe hacer el cliente</span>
+            <div class="campo-valor">
+              <ul>
+                <li>Revisar contratos y reglamentos internos para adecuarlos a los nuevos límites de jornada.</li>
+                <li>Implementar —o auditar— el sistema de registro electrónico de asistencia con controles biométricos y obtener el <strong>consentimiento expreso</strong> de los trabajadores para el uso de datos sensibles (huella dactilar, reconocimiento facial).</li>
+                <li>Establecer reglas claras de autorización de tiempo extraordinario y documentar cada incidencia. Revisar esquemas de jornada especial (4x10, 12x12, 24x24) con asesoría laboral antes de 2027; la falta de regulación expresa genera riesgo de que la STPS o un tribunal los considere tiempo extra.</li>
+                <li>Considerar que el incumplimiento puede derivar en <strong>multas de hasta $586,550 pesos (5,000 veces la UMA)</strong> y, en casos extremos, <strong>responsabilidad penal</strong> por explotación laboral bajo el Art. 21 de la Ley de Trata.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="fuentes"><strong>Fuente:</strong> El Economista, Nancy Escutia — 24 abr 2026. <a href="https://www.eleconomista.com.mx/capital-humano/5-riesgos-legales-transicion-jornada-40-horas-20260424-810093.html" target="_blank" rel="noopener">Ver artículo original ↗</a></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ALERTAS DE CUMPLIMIENTO -->
+    <section id="alertas">
+      <h2 class="titulo-seccion">
+        <span class="icono">⚠️</span>
+        Alertas de cumplimiento
+      </h2>
+      <div class="alertas">
+        <div class="alerta-item" data-tipo="urgente">
+          <div class="alerta-icono">!</div>
+          <div class="alerta-contenido">
+            <strong>24 de abril de 2026 — Complemento CFDI Hidrocarburos obligatorio</strong>
+            CFDI de combustible sin complemento = comprobante inválido e indeducible.
+          </div>
+        </div>
+        <div class="alerta-item" data-tipo="vencimiento">
+          <div class="alerta-icono">⏱</div>
+          <div class="alerta-contenido">
+            <strong>30 de abril de 2026 — Declaración Anual ISR Personas Físicas</strong>
+            Ejercicio 2025. Sin prórroga anunciada.
+          </div>
+        </div>
+        <div class="alerta-item" data-tipo="ventana">
+          <div class="alerta-icono">✓</div>
+          <div class="alerta-contenido">
+            <strong>10 de mayo de 2026 — Ventana transitoria para regularización (Art. 141 CFF)</strong>
+            Oportunidad de cumplimiento espontáneo en materia antilavado.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA DE VENCIMIENTOS -->
+    <section id="tabla">
+      <h2 class="titulo-seccion">
+        <span class="icono">📅</span>
+        Tabla de vencimientos y acciones
+      </h2>
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th>
+              <th>Acción requerida</th>
+              <th>Responsable sugerido</th>
+              <th>Fecha límite</th>
+              <th>Prioridad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Complemento CFDI Hidrocarburos</td>
+              <td>Verificar actualización de software; rechazar CFDI sin complemento.</td>
+              <td>Contador / Sistemas</td>
+              <td>24 abr 2026</td>
+              <td><span class="badge badge-alta">Alta</span></td>
+            </tr>
+            <tr>
+              <td>Declaración Anual PF 2025</td>
+              <td>Presentar declaración ISR antes del 30 abr. Si hay saldo a favor, marcar devolución automática (Regla 2.3.2 RMF 2026): plazo hasta 31 jul 2026. CLABE activa a nombre del contribuyente.</td>
+              <td>Contribuyente / Contador</td>
+              <td>30 abr 2026</td>
+              <td><span class="badge badge-alta">Alta</span></td>
+            </tr>
+            <tr>
+              <td>Reforma Reglamento LFPIORPI</td>
+              <td>Revisar si aplica como sujeto obligado; actualizar programa PLD.</td>
+              <td>Contador / Asesor jurídico</td>
+              <td>Inmediato</td>
+              <td><span class="badge badge-alta">Alta</span></td>
+            </tr>
+            <tr>
+              <td>Sentencia UIF–SCJN</td>
+              <td>Actualizar expediente de materialidad de operaciones.</td>
+              <td>Contador</td>
+              <td>Inmediato</td>
+              <td><span class="badge badge-alta">Alta</span></td>
+            </tr>
+            <tr>
+              <td>Reforma LFT — Jornada 40 horas</td>
+              <td>Revisar contratos, implementar registro electrónico de jornada con consentimiento de datos biométricos y auditar esquemas de jornada especial.</td>
+              <td>Contador / Asesor laboral</td>
+              <td>Inmediato (preparación); 1 ene 2027 (vigencia)</td>
+              <td><span class="badge badge-media">Media</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- COMENTARIO PROFESIONAL -->
+    <section id="comentario" class="comentario">
+      <h2 class="titulo-seccion">
+        <span class="icono">💬</span>
+        Comentario profesional de DSouza Consultores Fiscales
+      </h2>
+      <p>
+        La semana pone en evidencia la convergencia de dos procesos que se aceleran de forma simultánea: <strong>la digitalización total de la fiscalización</strong> y <strong>el endurecimiento del régimen antilavado</strong>. El SAT ya no espera detectar errores en la declaración anual; los detecta en tiempo real con inteligencia artificial mientras el contribuyente factura. La SCJN, por su parte, eliminó el último requisito procesal que contenía a la UIF. En este entorno, el <strong>expediente de cumplimiento</strong> —CFDI correctos, contratos con materialidad, programa PLD actualizado— deja de ser un trámite administrativo y se convierte en el <strong>activo más importante</strong> que cualquier empresa puede tener.
+      </p>
+    </section>
+
+    <!-- CIERRE / CONTACTO -->
+    <section id="cierre">
+      <h2 class="titulo-seccion">
+        <span class="icono">✉️</span>
+        Cierre
+      </h2>
+      <div class="cierre-contenido">
+        <div class="cierre-logo">DS</div>
+        <div class="cierre-texto">
+          <strong>DSouza Consultores Fiscales — C.P. Daniel Souza Vázquez</strong>
+          En DSouza Consultores Fiscales estamos a su disposición para revisar su situación fiscal y de cumplimiento ante las disposiciones de esta semana. Le invitamos a contactarnos para una asesoría personalizada.
+          <br>
+          <a href="mailto:daniel@dsouzaconsultores.mx?subject=Asesor%C3%ADa%20-%20Bolet%C3%ADn%20Fiscal%2021-24%20abr%202026" class="cierre-cta">📧 Solicitar asesoría personalizada</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- PIE -->
+<footer>
+  <h4>DSouza Consultores Fiscales</h4>
+  <p>C.P. Daniel Souza Vázquez · Asesoría Fiscal y Capacitación</p>
+  <div class="footer-separador"></div>
+  <p>📍 Av. Molino del Rey # 311, Colonia Insurgentes Este, C.P. 21280, Mexicali, B.C.</p>
+  <p>✉️ <a href="mailto:daniel@dsouzaconsultores.mx">daniel@dsouzaconsultores.mx</a></p>
+  <p class="footer-nota">
+    Boletín Fiscal Semanal · Edición del 21 al 24 de abril de 2026<br>
+    Este documento es informativo y no constituye asesoría profesional individualizada. Para aplicar cualquier disposición a un caso concreto, consulte a su contador o asesor fiscal de confianza.
+  </p>
+</footer>
+
+<!-- BOTÓN IR ARRIBA -->
+<button class="ir-arriba" id="irArriba" aria-label="Volver al inicio" title="Volver al inicio">↑</button>
+
+<script>
+(function(){
+  'use strict';
+
+  // ============ BARRA DE PROGRESO ============
+  const barraProgreso = document.getElementById('progreso');
+  const btnIrArriba = document.getElementById('irArriba');
+  function actualizarProgreso(){
+    const scroll = window.scrollY;
+    const alto = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = alto > 0 ? (scroll / alto) * 100 : 0;
+    barraProgreso.style.width = pct + '%';
+    btnIrArriba.classList.toggle('visible', scroll > 500);
+  }
+  window.addEventListener('scroll', actualizarProgreso, { passive: true });
+  actualizarProgreso();
+
+  // ============ IR ARRIBA ============
+  btnIrArriba.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============ MODO OSCURO ============
+  const btnTema = document.getElementById('btnTema');
+  const iconoTema = document.getElementById('iconoTema');
+  const textoTema = document.getElementById('textoTema');
+  const temaGuardado = localStorage.getItem('dsouza-tema');
+  if (temaGuardado === 'oscuro'){
+    document.documentElement.setAttribute('data-tema', 'oscuro');
+    iconoTema.textContent = '☀️';
+    textoTema.textContent = 'Claro';
+  }
+  btnTema.addEventListener('click', () => {
+    const actual = document.documentElement.getAttribute('data-tema');
+    if (actual === 'oscuro'){
+      document.documentElement.removeAttribute('data-tema');
+      iconoTema.textContent = '🌙';
+      textoTema.textContent = 'Oscuro';
+      localStorage.setItem('dsouza-tema', 'claro');
+    } else {
+      document.documentElement.setAttribute('data-tema', 'oscuro');
+      iconoTema.textContent = '☀️';
+      textoTema.textContent = 'Claro';
+      localStorage.setItem('dsouza-tema', 'oscuro');
+    }
+  });
+
+  // ============ COMPARTIR — abre Outlook con asunto y cuerpo prellenados ============
+  document.getElementById('btnCompartir').addEventListener('click', () => {
+    const asunto = encodeURIComponent('Boletín Fiscal Semanal | 21–24 abr 2026 | DSouza Consultores Fiscales');
+    const cuerpo = encodeURIComponent(
+      'Estimado(a),\n\n' +
+      'Le comparto el Boletín Fiscal Semanal correspondiente a la semana del 21 al 24 de abril de 2026, ' +
+      'elaborado por DSouza Consultores Fiscales.\n\n' +
+      'Temas destacados esta semana:\n' +
+      '• Complemento CFDI Hidrocarburos: obligatorio desde el 24 de abril.\n' +
+      '• Reforma Reglamento LFPIORPI: primera actualización desde 2013.\n' +
+      '• SCJN valida que la UIF puede bloquear cuentas sin orden judicial.\n' +
+      '• Plan Maestro SAT 2026: fiscalización algorítmica con IA en tiempo real.\n' +
+      '• Declaración Anual PF 2025: vence el 30 de abril de 2026.\n' +
+      '• Jornada 40 horas: 5 riesgos legales para las empresas.\n\n' +
+      'Adjunto encontrará el boletín completo en formato HTML. ' +
+      'Ábralo en cualquier navegador para leerlo de forma interactiva.\n\n' +
+      'Quedo a sus órdenes para cualquier consulta.\n\n' +
+      'Atentamente,\n' +
+      'C.P. Daniel Souza Vázquez\n' +
+      'DSouza Consultores Fiscales\n' +
+      'daniel@dsouzaconsultores.mx'
+    );
+    window.location.href = 'mailto:?subject=' + asunto + '&body=' + cuerpo;
+    mostrarToast('📧 Abriendo cliente de correo… recuerde adjuntar el archivo .html');
+  });
+
+  function mostrarToast(texto){
+    const t = document.createElement('div');
+    t.textContent = texto;
+    t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#0D2B52;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:2000;font-size:14px;font-family:inherit';
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), 2800);
+  }
+
+  // ============ TARJETAS COLAPSABLES ============
+  document.querySelectorAll('.noticia-cabecera').forEach(cab => {
+    const toggle = () => {
+      const noticia = cab.closest('.noticia');
+      noticia.classList.toggle('abierta');
+      cab.setAttribute('aria-expanded', noticia.classList.contains('abierta'));
+    };
+    cab.addEventListener('click', toggle);
+    cab.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+
+  document.getElementById('btnExpandir').addEventListener('click', () => {
+    document.querySelectorAll('.noticia').forEach(n => {
+      n.classList.add('abierta');
+      n.querySelector('.noticia-cabecera').setAttribute('aria-expanded','true');
+    });
+  });
+  document.getElementById('btnContraer').addEventListener('click', () => {
+    document.querySelectorAll('.noticia').forEach(n => {
+      n.classList.remove('abierta');
+      n.querySelector('.noticia-cabecera').setAttribute('aria-expanded','false');
+    });
+  });
+
+  // ============ FILTROS DE PRIORIDAD ============
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('activo'));
+      chip.classList.add('activo');
+      const filtro = chip.dataset.filtro;
+      document.querySelectorAll('.noticia').forEach(n => {
+        if (filtro === 'todas' || n.dataset.prioridad === filtro){
+          n.classList.remove('oculta');
+        } else {
+          n.classList.add('oculta');
+        }
+      });
+    });
+  });
+
+  // ============ ÍNDICE ACTIVO AL HACER SCROLL ============
+  const enlaces = document.querySelectorAll('.indice a');
+  const objetivos = Array.from(enlaces).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const observador = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const id = entry.target.id;
+        enlaces.forEach(a => {
+          a.classList.toggle('activo', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+  objetivos.forEach(o => observador.observe(o));
+
+  // Si el enlace lleva a una noticia específica, abrirla automáticamente
+  enlaces.forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.getAttribute('href').substring(1);
+      const noticia = document.getElementById(id);
+      if (noticia && noticia.classList.contains('noticia')){
+        noticia.classList.add('abierta');
+        noticia.querySelector('.noticia-cabecera').setAttribute('aria-expanded','true');
+      }
+    });
+  });
+
+  // Si la URL tiene ancla de noticia al cargar
+  if (location.hash){
+    const destino = document.querySelector(location.hash);
+    if (destino && destino.classList.contains('noticia')){
+      destino.classList.add('abierta');
+      destino.querySelector('.noticia-cabecera').setAttribute('aria-expanded','true');
+    }
+  }
+
+  // ============ ATAJOS DE TECLADO ============
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'p' && (e.ctrlKey || e.metaKey)) return; // permitir ctrl+P nativo
+    if (e.key === 't' && !e.ctrlKey && !e.metaKey){ btnTema.click(); }
+    if (e.key === 'e' && !e.ctrlKey && !e.metaKey){ document.getElementById('btnExpandir').click(); }
+    if (e.key === 'c' && !e.ctrlKey && !e.metaKey){ document.getElementById('btnContraer').click(); }
+  });
+})();
+</script>
+</body>
+</html>
