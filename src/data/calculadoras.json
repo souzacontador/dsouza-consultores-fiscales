@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "iva-retenciones",
+    "title": "Calculadora de IVA y Retenciones",
+    "description": "Desglose de IVA, retención de ⅔ de IVA e ISR por régimen fiscal y tipo de operación. Cálculo desde el gasto o desde el monto pagado.",
+    "icon": "calculator",
+    "path": "/calculadoras/iva-retenciones/",
+    "pageTitle": "Calculadora de IVA y Retenciones 2026 · DSouza Consultores Fiscales",
+    "sizeKB": 728
+  },
+  {
+    "slug": "equivalencias-dlls",
+    "title": "Equivalencias en Dólares (USD)",
+    "description": "Tipo de cambio USD/MXN aplicable a cada día de 2026, con conversión de montos, gráfica de evolución y cierres mensuales.",
+    "icon": "currency",
+    "path": "/calculadoras/equivalencias-dlls/",
+    "pageTitle": "2026 Equivalencias Dlls — DSouza Consultores",
+    "sizeKB": 160
+  }
+]

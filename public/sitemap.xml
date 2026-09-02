@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Solo URLs indexables. Calculadoras y Premium (noindex mientras estén
-     vacías) se agregarán cuando publiquen contenido real.
-     Los boletines se sincronizan con scripts/sync-boletines.mjs. -->
+<!-- Solo URLs indexables. Calculadoras Premium (noindex mientras esté vacía)
+     se agregará cuando publique contenido real.
+     Boletines: scripts/sync-boletines.mjs · Calculadoras: scripts/sync-calculadoras.mjs -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dsouza-consultores-fiscales.vercel.app/</loc>
@@ -24,6 +24,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dsouza-consultores-fiscales.vercel.app/calculadoras</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dsouza-consultores-fiscales.vercel.app/testimonios</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -32,6 +37,16 @@
     <loc>https://dsouza-consultores-fiscales.vercel.app/contacto</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dsouza-consultores-fiscales.vercel.app/calculadoras/iva-retenciones/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dsouza-consultores-fiscales.vercel.app/calculadoras/equivalencias-dlls/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dsouza-consultores-fiscales.vercel.app/boletines/Boletin-Fiscal-DSouza-19-28-ago-2026.html</loc>

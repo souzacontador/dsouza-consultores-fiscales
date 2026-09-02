@@ -33,10 +33,9 @@ export const SEO_META = {
       'Boletines fiscales semanales de DSouza Consultores: novedades del SAT, IMSS e INFONAVIT, plazos clave y qué hacer a tiempo. Léelos gratis en Mexicali y en línea.',
   },
   '/calculadoras': {
-    title: 'Calculadoras fiscales | DSouza Consultores',
+    title: 'Calculadoras fiscales 2026 | DSouza Consultores',
     description:
-      'Herramientas gratuitas para estimar tus contribuciones y entender el impacto fiscal de tus operaciones. En construcción; solicita un cálculo hoy.',
-    noindex: true, // sin contenido aún
+      'Calculadora de IVA y retenciones y equivalencias USD/MXN 2026, gratuitas. Herramientas de apoyo de DSouza Consultores Fiscales en Mexicali.',
   },
   '/calculadoras-premium': {
     title: 'Calculadoras premium | DSouza Consultores',

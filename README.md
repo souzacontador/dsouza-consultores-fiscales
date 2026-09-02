@@ -74,6 +74,11 @@ carga y no se mide nada.
   `souzacontador/BOLETIN-DSOUZA` a `public/boletines/` y regenera
   `src/data/boletines.json` (título, descripción y fecha leídos de cada archivo).
   Genera la vista previa 1200×630 solo para los boletines que no la traigan.
+- `npm run calculadoras` — sincroniza las calculadoras desde el repo público
+  `souzacontador/dsouza-app` a `public/calculadoras/<slug>/` y regenera
+  `src/data/calculadoras.json`. Para una calculadora nueva: súbela a su carpeta
+  en dsouza-app y añade su slug + textos de tarjeta en `CALCULADORAS` dentro
+  de `scripts/sync-calculadoras.mjs`; luego agrega su URL al `sitemap.xml`.
 
 ## Publicar un boletín nuevo (flujo)
 

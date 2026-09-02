@@ -9,7 +9,8 @@
     "build": "vite build && node scripts/postbuild-meta.mjs",
     "preview": "vite preview",
     "og": "node scripts/generate-og.mjs",
-    "boletines": "node scripts/sync-boletines.mjs && node scripts/generate-boletin-preview.mjs --keep"
+    "boletines": "node scripts/sync-boletines.mjs && node scripts/generate-boletin-preview.mjs --keep",
+    "calculadoras": "node scripts/sync-calculadoras.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

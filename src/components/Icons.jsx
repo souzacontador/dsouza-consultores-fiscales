@@ -172,6 +172,15 @@ export function IconSparkles(props) {
   )
 }
 
+export function IconCurrency(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 6.5v11M14.8 9.2c-.4-1-1.5-1.5-2.8-1.5-1.6 0-2.7.8-2.7 1.9 0 2.6 5.6 1.2 5.6 3.9 0 1.2-1.2 2-2.9 2-1.5 0-2.6-.6-3-1.6" />
+    </svg>
+  )
+}
+
 export function IconUser(props) {
   return (
     <svg {...base} {...props}>

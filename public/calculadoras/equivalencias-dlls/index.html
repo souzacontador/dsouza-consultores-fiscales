@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Equivalencias Dlls — DSouza Consultores</title>
+<meta name="description" content="Consulta interactiva de equivalencias y tipos de cambio del dolar (USD) aplicables al ejercicio fiscal 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   2026 EQUIVALENCIAS DLLS — Hoja de estilos
+   Paleta oficial DSouza Consultores (tokens de marca)
+   ============================================================ */
+:root{
+  /* Azul Meridiano (color institucional) */
+  --azul-900:#061726; --azul-800:#0A2540; --azul-700:#123253;
+  --azul-600:#1B4A78; --azul-500:#26639D; --azul-400:#4E7CA6;
+  --azul-200:#AEC5DC; --azul-100:#D6E2EE; --azul-50:#EFF4F9;
+  /* Cian Algoritmico (acento unico estructural) */
+  --cian-500:#00B8D9; --cian-600:#0093AD; --cian-700:#00768C;
+  --cian-100:#D0F1F8; --cian-50:#ECFAFD;
+  /* Ambar Conversion (alertas / destacados) */
+  --ambar-500:#F5A623; --ambar-700:#8A5A00; --ambar-100:#FDF0D9; --ambar-300:#F9C670;
+  /* Acento algoritmico */
+  --acento-500:#7AA7FF; --acento-300:#A9C4FF; --acento-100:#E4EDFF;
+  /* Neutros */
+  --canvas:#F7F6F4; --canvas-alt:#EFEDE9; --superficie:#FFFFFF;
+  --superficie-alt:#FCFBFA; --hairline:#E3E1DE; --hairline-fuerte:#CFCCC7;
+  /* Tinta */
+  --tinta-900:#14181D; --tinta-700:#2B3138; --tinta-500:#545C68; --tinta-400:#616977;
+  /* Semantico */
+  --ok-tx:#1B5E45; --ok-bg:#E7F4EE; --ok-bd:#B9DFCC; --ok-sd:#2E8B67;
+  --warn-tx:#8A5A00; --warn-bg:#FDF3E0; --warn-bd:#F3DCAF; --warn-sd:#F5A623;
+  --err-tx:#A81D14; --err-bg:#FCEAE8; --err-bd:#F0BDB8; --err-sd:#B3261E;
+  --info-tx:#123253; --info-bg:#EFF4F9; --info-bd:#D6E2EE; --info-sd:#1B4A78;
+  /* Tipografia */
+  --f-tit:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --f-cuerpo:'IBM Plex Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+  --f-datos:'IBM Plex Mono',Consolas,'Courier New',monospace;
+  --fs-root:17px;
+  /* Forma */
+  --r-tarjeta:14px; --r-boton:10px; --r-etiqueta:6px;
+  --sombra-sutil:0 1px 2px rgba(10,37,64,.05),0 4px 12px rgba(10,37,64,.05);
+  --sombra-media:0 2px 4px rgba(10,37,64,.06),0 12px 28px rgba(10,37,64,.07);
+  --foco:0 0 0 3px rgba(0,184,217,.45);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:var(--fs-root);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--tinta-700);
+  font-family:var(--f-cuerpo);font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--f-tit);color:var(--azul-800);line-height:1.18;margin:0 0 .5rem}
+p{margin:0 0 .75rem}
+a{color:var(--cian-700)}
+:focus-visible{outline:none;box-shadow:var(--foco);border-radius:4px}
+.oculto{display:none !important}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- Encabezado ---------- */
+.masthead{
+  background:linear-gradient(135deg,var(--azul-800) 0%,var(--azul-700) 55%,var(--azul-600) 100%);
+  color:#fff;padding:1.25rem 1rem 1rem;position:relative;overflow:hidden;
+}
+.masthead::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  background:radial-gradient(circle,rgba(122,167,255,.30) 0%,rgba(122,167,255,0) 70%);pointer-events:none;
+}
+.mh-in{max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;position:relative;z-index:1}
+.logo-caja{
+  flex:0 0 auto;border-radius:12px;background:#FFFFFF;
+  padding:.55rem .8rem;box-shadow:var(--sombra-sutil);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-caja img{display:block;width:150px;max-width:38vw;height:auto}
+.mh-tx{flex:1 1 260px;min-width:0}
+.mh-tx .eyebrow{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cian-500);font-weight:600;margin:0 0 .15rem}
+.mh-tx h1{color:#fff;font-size:clamp(1.5rem,1.1rem+1.8vw,2.35rem);margin:0 0 .2rem}
+.mh-tx .sub{color:var(--azul-100);font-size:.98rem;margin:0}
+.mh-tx .firma{color:rgba(255,255,255,.72);font-size:.85rem;margin:.3rem 0 0}
+.mh-ctrl{flex:0 0 auto;display:flex;gap:.4rem;align-items:center}
+.btn-fs{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.30);color:#fff;
+  border-radius:8px;padding:.3rem .6rem;font-size:.85rem;cursor:pointer;font-family:var(--f-cuerpo);
+  min-width:44px;min-height:38px;
+}
+.btn-fs:hover,.btn-fs[aria-pressed="true"]{background:var(--cian-600);border-color:var(--cian-500)}
+
+/* ---------- Nota normativa ---------- */
+.nota-norm{
+  max-width:1440px;margin:0 auto;padding:.85rem 1rem;background:var(--info-bg);
+  border-bottom:1px solid var(--info-bd);color:var(--info-tx);font-size:.93rem;
+}
+.nota-norm strong{color:var(--azul-800)}
+
+/* ---------- Pestanas ---------- */
+.tabs-wrap{background:var(--superficie);border-bottom:1px solid var(--hairline);position:sticky;top:0;z-index:40;box-shadow:0 1px 3px rgba(10,37,64,.05)}
+.tabs{max-width:1440px;margin:0 auto;display:flex;gap:.15rem;overflow-x:auto;padding:0 .5rem;scrollbar-width:thin}
+.tab{
+  flex:0 0 auto;background:none;border:none;border-bottom:3px solid transparent;
+  padding:.85rem .95rem;font-family:var(--f-cuerpo);font-size:.97rem;font-weight:500;
+  color:var(--tinta-500);cursor:pointer;white-space:nowrap;min-height:48px;
+  transition:color .15s,border-color .15s;
+}
+.tab:hover{color:var(--azul-700)}
+.tab[aria-selected="true"]{color:var(--azul-800);border-bottom-color:var(--cian-500);font-weight:600}
+
+/* ---------- Layout ---------- */
+.contenedor{max-width:1440px;margin:0 auto;padding:1.25rem 1rem 3rem}
+.panel{animation:aparece .22s ease}
+@keyframes aparece{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.seccion{
+  background:var(--superficie);border:1px solid var(--hairline);border-radius:var(--r-tarjeta);
+  padding:1.15rem;margin-bottom:1.25rem;box-shadow:var(--sombra-sutil);
+}
+.seccion > h2{
+  font-size:1.22rem;margin:0 0 .85rem;padding-bottom:.55rem;
+  border-bottom:2px solid var(--azul-50);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;
+}
+.seccion > h2 .pill{font-family:var(--f-cuerpo);font-size:.78rem;font-weight:600;background:var(--cian-50);color:var(--cian-700);border:1px solid var(--cian-100);padding:.15rem .5rem;border-radius:999px}
+.seccion > h3{font-size:1.05rem;margin:1.1rem 0 .55rem}
+
+/* ---------- Formularios ---------- */
+.rejilla-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:.8rem}
+.campo{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.campo label{font-size:.85rem;font-weight:600;color:var(--tinta-500)}
+input,select,textarea{
+  font-family:var(--f-cuerpo);font-size:.97rem;padding:.55rem .65rem;
+  border:1px solid var(--hairline-fuerte);border-radius:8px;background:var(--superficie);
+  color:var(--tinta-900);min-height:44px;width:100%;
+}
+input[type="number"],input[type="date"]{font-family:var(--f-datos)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--cian-500);box-shadow:var(--foco)}
+.acciones{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.btn{
+  font-family:var(--f-cuerpo);font-size:.95rem;font-weight:600;border-radius:var(--r-boton);
+  padding:.6rem 1.05rem;cursor:pointer;border:1px solid transparent;min-height:46px;
+  display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  transition:background .15s,box-shadow .15s,transform .06s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primario{background:var(--cian-700);color:#fff}
+.btn-primario:hover{background:var(--cian-600)}
+.btn-secundario{background:var(--superficie);color:var(--azul-700);border-color:var(--azul-200)}
+.btn-secundario:hover{background:var(--azul-50)}
+.btn-oscuro{background:var(--azul-800);color:#fff}
+.btn-oscuro:hover{background:var(--azul-600)}
+.btn-ambar{background:var(--ambar-500);color:#3a2900;border-color:var(--ambar-300)}
+.btn-ambar:hover{background:var(--ambar-300)}
+.btn-peligro{background:var(--err-sd);color:#fff}
+.btn-peligro:hover{background:var(--err-tx)}
+.btn-mini{padding:.32rem .6rem;font-size:.85rem;min-height:36px;border-radius:7px}
+
+/* ---------- Tarjetas indicadores ---------- */
+.rejilla-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:.8rem}
+.kpi{
+  background:linear-gradient(160deg,var(--superficie) 0%,var(--superficie-alt) 100%);
+  border:1px solid var(--hairline);border-left:4px solid var(--cian-500);
+  border-radius:12px;padding:.85rem .9rem;box-shadow:var(--sombra-sutil);
+}
+.kpi.k-azul{border-left-color:var(--azul-600)}
+.kpi.k-ambar{border-left-color:var(--ambar-500)}
+.kpi.k-ok{border-left-color:var(--ok-sd)}
+.kpi.k-err{border-left-color:var(--err-sd)}
+.kpi .et{font-size:.79rem;font-weight:600;text-transform:uppercase;letter-spacing:.045em;color:var(--tinta-500);margin:0 0 .3rem;line-height:1.3}
+.kpi .vl{font-family:var(--f-datos);font-size:1.42rem;font-weight:600;color:var(--azul-800);line-height:1.15;word-break:break-word}
+.kpi .vl.txt{font-family:var(--f-cuerpo);font-size:1.02rem;font-weight:600}
+.kpi .nt{font-size:.79rem;color:var(--tinta-400);margin:.22rem 0 0}
+
+.kpi-dia{
+  grid-column:1/-1;border-left-width:6px;padding:1.3rem 1.5rem;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 2rem;
+}
+.kpi-dia .fecha-grande{font-family:var(--f-tit);font-size:1.25rem;font-weight:600;color:var(--azul-800)}
+.kpi-dia .tc-grande{font-family:var(--f-datos);font-size:clamp(2.1rem,6vw,3rem);font-weight:600;color:var(--azul-800);line-height:1.1}
+.kpi-dia .tc-grande small{font-size:.45em;font-weight:400;color:var(--tinta-500)}
+.kpi-dia .variacion{font-size:1rem;font-family:var(--f-datos)}
+
+.conv-res{
+  font-family:var(--f-datos);font-size:1.3rem;font-weight:600;color:var(--azul-800);
+  background:var(--cian-50);border:1px solid var(--cian-100);border-radius:10px;
+  padding:.55rem .8rem;min-height:44px;display:flex;align-items:center;
+}
+.conv-res:empty{display:none}
+
+/* ---------- Tablas ---------- */
+.tabla-caja{overflow-x:auto;border:1px solid var(--hairline);border-radius:10px;background:var(--superficie);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.94rem}
+thead th{
+  background:var(--azul-800);color:#fff;font-weight:600;text-align:left;
+  padding:.62rem .7rem;white-space:nowrap;position:sticky;top:0;z-index:2;font-size:.9rem;
+}
+thead th.orden{cursor:pointer;user-select:none}
+thead th.orden:hover{background:var(--azul-600)}
+thead th .flecha{opacity:.42;margin-left:.25rem;font-size:.8rem}
+thead th.activo .flecha{opacity:1;color:var(--cian-500)}
+tbody td{padding:.5rem .7rem;border-bottom:1px solid var(--hairline);vertical-align:middle;line-height:1.45}
+tbody tr:nth-child(even){background:var(--superficie-alt)}
+tbody tr:hover{background:var(--cian-50)}
+.num{font-family:var(--f-datos);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tc{font-family:var(--f-datos);text-align:right;font-weight:600;color:var(--azul-800);white-space:nowrap;font-variant-numeric:tabular-nums}
+.centro{text-align:center}
+tfoot td{background:var(--azul-50);font-weight:600;padding:.55rem .7rem;border-top:2px solid var(--azul-200)}
+.et-tag{display:inline-block;font-size:.76rem;font-weight:600;padding:.13rem .48rem;border-radius:var(--r-etiqueta);white-space:nowrap;border:1px solid}
+.t-nuevo{background:var(--ok-bg);color:var(--ok-tx);border-color:var(--ok-bd)}
+.t-rep{background:var(--warn-bg);color:var(--warn-tx);border-color:var(--warn-bd)}
+.t-sube{color:var(--err-tx)}
+.t-baja{color:var(--ok-tx)}
+.t-igual{color:var(--tinta-400)}
+.vacio{padding:2.4rem 1rem;text-align:center;color:var(--tinta-500);font-style:italic}
+
+/* ---------- Paginacion ---------- */
+.paginacion{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;margin-top:.85rem;font-size:.9rem}
+.pg-btns{display:flex;gap:.28rem;flex-wrap:wrap;align-items:center}
+.pg-btns button{
+  background:var(--superficie);border:1px solid var(--azul-200);color:var(--azul-700);
+  border-radius:7px;padding:.35rem .62rem;cursor:pointer;font-family:var(--f-cuerpo);
+  font-size:.9rem;min-width:42px;min-height:40px;
+}
+.pg-btns button:hover:not(:disabled){background:var(--azul-50)}
+.pg-btns button[aria-current="page"]{background:var(--azul-800);color:#fff;border-color:var(--azul-800);font-weight:600}
+.pg-btns button:disabled{opacity:.38;cursor:not-allowed}
+.pg-ctrl{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.pg-ctrl select{width:auto;min-width:92px;min-height:40px;padding:.3rem .5rem}
+
+/* ---------- Grafica ---------- */
+.grafica-caja{position:relative;width:100%;height:clamp(280px,44vw,440px)}
+.leyenda-nota{font-size:.85rem;color:var(--tinta-400);margin:.6rem 0 0}
+
+/* ---------- Avisos ---------- */
+.aviso{padding:.8rem .95rem;border-radius:10px;border:1px solid;margin:.75rem 0;font-size:.94rem;display:flex;gap:.55rem;align-items:flex-start}
+.aviso .ic{flex:0 0 auto;font-weight:700}
+.a-ok{background:var(--ok-bg);color:var(--ok-tx);border-color:var(--ok-bd)}
+.a-warn{background:var(--warn-bg);color:var(--warn-tx);border-color:var(--warn-bd)}
+.a-err{background:var(--err-bg);color:var(--err-tx);border-color:var(--err-bd)}
+.a-info{background:var(--info-bg);color:var(--info-tx);border-color:var(--info-bd)}
+
+/* ---------- Toast ---------- */
+#toasts{position:fixed;right:1rem;bottom:1rem;z-index:200;display:flex;flex-direction:column;gap:.5rem;max-width:min(400px,92vw)}
+.toast{
+  padding:.75rem .95rem;border-radius:10px;box-shadow:var(--sombra-media);
+  font-size:.93rem;border-left:4px solid;background:var(--superficie);animation:entra .25s ease;
+}
+@keyframes entra{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.toast.ok{border-left-color:var(--ok-sd);color:var(--ok-tx)}
+.toast.warn{border-left-color:var(--warn-sd);color:var(--warn-tx)}
+.toast.err{border-left-color:var(--err-sd);color:var(--err-tx)}
+.toast.info{border-left-color:var(--cian-500);color:var(--info-tx)}
+
+/* ---------- Modal ---------- */
+.modal-fondo{position:fixed;inset:0;background:rgba(6,23,38,.62);z-index:150;display:flex;align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
+.modal{background:var(--superficie);border-radius:var(--r-tarjeta);max-width:640px;width:100%;box-shadow:var(--sombra-media);max-height:92vh;display:flex;flex-direction:column}
+.modal-cab{padding:1rem 1.15rem;border-bottom:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.modal-cab h3{margin:0;font-size:1.1rem}
+.modal-cuerpo{padding:1.15rem;overflow-y:auto}
+.modal-pie{padding:.9rem 1.15rem;border-top:1px solid var(--hairline);display:flex;gap:.55rem;justify-content:flex-end;flex-wrap:wrap}
+.cerrar-x{background:none;border:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--tinta-500);padding:.2rem .45rem;border-radius:6px}
+.cerrar-x:hover{background:var(--canvas-alt);color:var(--tinta-900)}
+
+/* ---------- Ayuda ---------- */
+.ayuda h3{color:var(--azul-700);margin-top:1.4rem}
+.ayuda ol,.ayuda ul{padding-left:1.35rem;line-height:1.65}
+.ayuda li{margin-bottom:.42rem}
+.ayuda code{background:var(--azul-50);padding:.1rem .35rem;border-radius:4px;font-family:var(--f-datos);font-size:.9em;color:var(--azul-700)}
+details{border:1px solid var(--hairline);border-radius:10px;padding:.7rem .9rem;margin-bottom:.6rem;background:var(--superficie-alt)}
+details summary{cursor:pointer;font-weight:600;color:var(--azul-700);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.55rem;border-bottom:1px solid var(--hairline);padding-bottom:.45rem}
+
+/* ---------- Pie ---------- */
+.pie{background:var(--azul-800);color:var(--azul-100);padding:1.5rem 1rem;font-size:.88rem;text-align:center}
+.pie strong{color:#fff}
+.pie .mini{color:rgba(255,255,255,.60);font-size:.82rem;margin-top:.5rem}
+
+/* ---------- Objetivos táctiles en pantallas touch ---------- */
+@media (pointer:coarse){
+  .btn-mini{min-height:44px;padding:.5rem .75rem}
+  .pg-btns button{min-height:44px;min-width:44px}
+  .btn-fs{min-height:44px;min-width:48px}
+  .cerrar-x{min-height:44px;min-width:44px}
+}
+
+/* ---------- Marca de agua ---------- */
+.marca-agua{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.marca-agua span{
+  font-family:var(--f-tit);font-size:clamp(3rem,9vw,7rem);font-weight:700;
+  color:var(--azul-800);opacity:.045;transform:rotate(-28deg);
+  white-space:nowrap;user-select:none;letter-spacing:.02em;
+}
+.contenedor,.masthead,.tabs-wrap,.nota-norm,.pie{position:relative;z-index:1}
+@media print{
+  .marca-agua{display:flex !important;position:fixed}
+  .marca-agua span{opacity:.06}
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:720px){
+  :root{--fs-root:16px}
+  .contenedor{padding:.9rem .7rem 2.5rem}
+  .seccion{padding:.9rem;border-radius:11px}
+  .mh-in{gap:.7rem}
+  .logo-caja{padding:.4rem .55rem}
+  .logo-caja img{width:112px}
+  .tab{padding:.7rem .7rem;font-size:.9rem}
+  table{font-size:1rem}          /* legibilidad ≥16px: la tabla se desplaza de lado si no cabe */
+  thead th,tbody td{padding:.5rem .55rem}
+  .kpi .vl{font-size:1.22rem}
+  .paginacion{justify-content:center}
+  .acciones .btn{flex:1 1 132px}
+}
+@media (min-width:481px) and (max-width:720px){
+  /* Celular grande y horizontal: dos indicadores por renglón */
+  .rejilla-kpi{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:721px) and (max-width:1023px){
+  /* Tableta: se aprovecha el ancho sin apretar la lectura */
+  :root{--fs-root:16.5px}
+  .contenedor{padding:1.1rem 1.1rem 2.8rem}
+  .rejilla-kpi{grid-template-columns:repeat(3,1fr)}
+  .rejilla-filtros{grid-template-columns:repeat(3,1fr)}
+  .grafica-caja{height:clamp(300px,40vw,400px)}
+}
+@media (min-width:1024px){
+  .dos-col{display:grid;grid-template-columns:2fr 1fr;gap:1.25rem;align-items:start}
+  .rejilla-kpi{grid-template-columns:repeat(4,1fr)}
+  .seccion{padding:1.4rem}
+}
+@media (min-width:1440px){
+  /* Monitor amplio: se limita la medida para que la tabla no quede desangelada */
+  :root{--fs-root:17.5px}
+  .grafica-caja{height:460px}
+}
+@media print{
+  .tabs-wrap,.acciones,.paginacion,.mh-ctrl,#toasts,.no-imp{display:none !important}
+  #zonaResultados{display:block !important}
+  body{background:#fff}
+  .seccion{box-shadow:none;break-inside:avoid}
+}
+</style>
+<link rel="canonical" href="https://dsouza-consultores-fiscales.vercel.app/calculadoras/equivalencias-dlls/">
+</head>
+<body>
+<div class="marca-agua" aria-hidden="true"><span>C.P. Daniel Souza</span></div>
+<div id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<!-- ===================== ENCABEZADO ===================== -->
+<header class="masthead">
+  <div class="mh-in">
+    <div class="logo-caja">
+      <img src="data:image/png;base64,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" alt="C.P. Daniel Souza Vázquez — Asesoría Fiscal y Capacitación">
+    </div>
+    <div class="mh-tx">
+      <p class="eyebrow">Ejercicio fiscal 2026</p>
+      <h1>2026 Equivalencias Dlls</h1>
+      <p class="sub">Equivalencia del Dólar (USD) &middot; Tipo de cambio aplicable a 2026</p>
+      <p class="firma">C.P. Daniel Souza Vázquez &middot; DSouza Consultores</p>
+    </div>
+    <div class="mh-ctrl no-imp">
+      <button class="btn-fs" id="fsA"  aria-pressed="true"  title="Tamaño de texto normal">A</button>
+      <button class="btn-fs" id="fsA1" aria-pressed="false" title="Texto grande">A+</button>
+      <button class="btn-fs" id="fsA2" aria-pressed="false" title="Texto muy grande">A++</button>
+    </div>
+  </div>
+</header>
+
+<div class="nota-norm">
+  El tipo de cambio que se muestra para cada día es el <strong>aplicable a ese día</strong>
+  (el Diario Oficial de la Federación lo publica el día hábil anterior).
+</div>
+
+<!-- ===================== PESTAÑAS ===================== -->
+<div class="tabs-wrap no-imp">
+  <div class="tabs" role="tablist" aria-label="Secciones de la aplicación">
+    <button class="tab" role="tab" aria-selected="true"  data-panel="pConsulta">Consulta</button>
+    <button class="tab tab-edicion oculto" role="tab" aria-selected="false" data-panel="pGeneral">Tabla general</button>
+    <button class="tab tab-edicion oculto" role="tab" aria-selected="false" data-panel="pActualiza">Actualización de datos</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="pExporta">Exportación</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="pAyuda">Ayuda</button>
+    <button class="tab" id="btnCandado" title="Acceso del despacho" aria-label="Modo edición del despacho" style="margin-left:auto">🔒</button>
+  </div>
+</div>
+
+<main class="contenedor">
+<!-- ===================== PANEL: CONSULTA ===================== -->
+<section class="panel" id="pConsulta" role="tabpanel">
+
+  <div class="seccion no-imp">
+    <h2>Filtros de consulta</h2>
+    <div class="rejilla-filtros">
+      <div class="campo">
+        <label for="fFecha">Consultar una fecha</label>
+        <input type="date" id="fFecha" min="2026-01-01" max="2026-12-31">
+      </div>
+      <div class="campo">
+        <label for="fMes">Ver un mes completo</label>
+        <select id="fMes">
+          <option value="">Elija un mes…</option>
+          <option value="1">Enero</option><option value="2">Febrero</option>
+          <option value="3">Marzo</option><option value="4">Abril</option>
+          <option value="5">Mayo</option><option value="6">Junio</option>
+          <option value="7">Julio</option><option value="8">Agosto</option>
+          <option value="9">Septiembre</option><option value="10">Octubre</option>
+          <option value="11">Noviembre</option><option value="12">Diciembre</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="fIni">O un periodo: desde</label>
+        <input type="date" id="fIni" min="2026-01-01" max="2026-12-31">
+      </div>
+      <div class="campo">
+        <label for="fFin">hasta</label>
+        <input type="date" id="fFin" min="2026-01-01" max="2026-12-31">
+      </div>
+    </div>
+    <details class="no-imp" style="margin-top:.9rem">
+      <summary>Más filtros</summary>
+      <div class="rejilla-filtros" style="margin-top:.7rem">
+        <div class="campo" id="campoEjercicio">
+          <label for="fEjercicio">Ejercicio</label>
+          <select id="fEjercicio"><option value="">Todos</option></select>
+        </div>
+        <div class="campo" id="campoMoneda">
+          <label for="fMoneda">Moneda / equivalencia</label>
+          <select id="fMoneda"><option value="">Todas</option></select>
+        </div>
+        <div class="campo">
+          <label for="fBuscar">Búsqueda general</label>
+          <input type="search" id="fBuscar" placeholder="Fecha, mes, valor…" autocomplete="off">
+        </div>
+      </div>
+    </details>
+    <div class="acciones">
+      <button class="btn btn-primario"   id="btnConsultar">Consultar</button>
+      <button class="btn btn-secundario" id="btnLimpiar">Limpiar filtros</button>
+      <button class="btn btn-secundario" id="btnHoy">T.C. más reciente</button>
+    </div>
+    <div id="avisoFiltros"></div>
+  </div>
+
+  <div class="seccion">
+    <h2>Resumen de la consulta <span class="pill" id="pillMoneda">USD / MXN</span></h2>
+    <div class="rejilla-kpi" id="kpis"></div>
+
+    <h3 style="margin:1.2rem 0 .6rem;font-size:1.05rem">Convertir un monto</h3>
+    <div class="rejilla-filtros">
+      <div class="campo">
+        <label for="convMonto">Monto</label>
+        <input type="number" id="convMonto" min="0" step="0.01" placeholder="Ej. 1,500.00" inputmode="decimal">
+      </div>
+      <div class="campo">
+        <label for="convDir">Conversión</label>
+        <select id="convDir">
+          <option value="usd">Dólares → Pesos</option>
+          <option value="mxn">Pesos → Dólares</option>
+        </select>
+      </div>
+      <div class="campo" style="justify-content:flex-end">
+        <div class="conv-res" id="convRes" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="leyenda-nota" id="convNota"></p>
+  </div>
+
+  <div class="seccion">
+    <h2>Evolución del tipo de cambio</h2>
+    <div id="avisoGrafica" class="no-imp"></div>
+    <div class="grafica-caja"><canvas id="grafica" aria-label="Gráfica de evolución del tipo de cambio"></canvas></div>
+    <div class="acciones no-imp">
+      <button class="btn btn-secundario btn-mini" id="btnGrafLinea"  aria-pressed="true">Línea</button>
+      <button class="btn btn-secundario btn-mini" id="btnGrafArea"   aria-pressed="false">Área</button>
+      <button class="btn btn-secundario btn-mini" id="btnGrafCierre" aria-pressed="false">Cierres mensuales</button>
+      <button class="btn btn-secundario btn-mini" id="btnGrafPNG">Descargar gráfica (PNG)</button>
+    </div>
+    <p class="leyenda-nota">Pase el cursor (o toque en móvil) sobre la línea para ver el valor exacto a cuatro decimales.</p>
+  </div>
+
+  <div class="seccion">
+    <h2 style="justify-content:space-between">
+      <span style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">Resultados de la consulta <span class="pill" id="pillTotal">0 registros</span></span>
+      <button class="btn btn-secundario btn-mini no-imp" id="btnToggleTabla" aria-expanded="false" aria-controls="zonaResultados">Mostrar tabla ▾</button>
+    </h2>
+    <div id="zonaResultados" class="oculto">
+    <div class="tabla-caja">
+      <table id="tablaConsulta">
+        <thead>
+          <tr>
+            <th class="orden" data-campo="fecha">Fecha <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="diaSemana">Día <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="mes">Mes <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="dia">Día del mes <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="moneda">Moneda <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="tc" style="text-align:right">Tipo de cambio <span class="flecha">↕</span></th>
+            <th style="text-align:right">Variación</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoConsulta"></tbody>
+      </table>
+    </div>
+    <div class="paginacion no-imp">
+      <div class="pg-ctrl">
+        <label for="porPagina" style="font-size:.9rem;font-weight:600;color:var(--tinta-500)">Registros por página</label>
+        <select id="porPagina">
+          <option value="15">15</option><option value="31" selected>31</option>
+          <option value="50">50</option><option value="100">100</option>
+          <option value="todos">Todos</option>
+        </select>
+        <span id="rangoPg" style="color:var(--tinta-500)"></span>
+      </div>
+      <div class="pg-btns" id="pgBtns"></div>
+    </div>
+    </div><!-- /zonaResultados -->
+  </div>
+
+  <div class="seccion">
+    <h2>Tipo de cambio al cierre de mes</h2>
+    <div class="tabla-caja">
+      <table id="tablaCierres">
+        <thead>
+          <tr>
+            <th>Mes</th><th style="text-align:right">T.C. Fin mes</th>
+            <th style="text-align:right" class="col-valida oculto">Último día con dato</th>
+            <th style="text-align:right" class="col-valida oculto">Diferencia</th>
+            <th class="centro col-valida oculto">Validación</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoCierres"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<!-- ===================== PANEL: TABLA GENERAL ===================== -->
+<section class="panel oculto" id="pGeneral" role="tabpanel">
+  <div class="seccion">
+    <h2>Tabla general de equivalencias y tipos de cambio <span class="pill" id="pillGeneral">0 registros</span></h2>
+    <p style="color:var(--tinta-500);font-size:.93rem">
+      Contiene la totalidad de los registros cargados en la aplicación, sin filtros de consulta.
+      Desde aquí puede agregar, editar o eliminar registros. Todo cambio se conserva en el navegador
+      mediante <code>localStorage</code>; ningún dato se envía a servidores externos.
+    </p>
+    <div class="acciones no-imp">
+      <button class="btn btn-primario"   id="btnNuevoReg">＋ Agregar registro</button>
+      <button class="btn btn-secundario" id="btnRespaldo">Descargar respaldo (JSON)</button>
+      <button class="btn btn-secundario" id="btnRestaurar">Restaurar respaldo</button>
+      <button class="btn btn-secundario" id="btnRestablecer">Restablecer datos originales</button>
+      <button class="btn btn-peligro"    id="btnBorrarLocal">Limpiar datos guardados</button>
+      <input type="file" id="inputRespaldo" accept=".json,application/json" class="oculto">
+    </div>
+    <div class="rejilla-filtros" style="margin-top:1rem">
+      <div class="campo">
+        <label for="gBuscar">Buscar en la tabla general</label>
+        <input type="search" id="gBuscar" placeholder="Fecha, mes o valor…" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="gMes">Filtrar por mes</label>
+        <select id="gMes">
+          <option value="">Todos los meses</option>
+          <option value="1">01 · Enero</option><option value="2">02 · Febrero</option>
+          <option value="3">03 · Marzo</option><option value="4">04 · Abril</option>
+          <option value="5">05 · Mayo</option><option value="6">06 · Junio</option>
+          <option value="7">07 · Julio</option><option value="8">08 · Agosto</option>
+          <option value="9">09 · Septiembre</option><option value="10">10 · Octubre</option>
+          <option value="11">11 · Noviembre</option><option value="12">12 · Diciembre</option>
+        </select>
+      </div>
+    </div>
+    <div class="tabla-caja" style="margin-top:.9rem">
+      <table id="tablaGeneral">
+        <thead>
+          <tr>
+            <th class="orden" data-campo="fecha">Fecha <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="mes">Mes <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="dia">Día <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="moneda">Moneda <span class="flecha">↕</span></th>
+            <th class="orden" data-campo="tc" style="text-align:right">Tipo de cambio <span class="flecha">↕</span></th>
+            <th class="centro">Publicación</th>
+            <th class="centro no-imp">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoGeneral"></tbody>
+      </table>
+    </div>
+    <div class="paginacion no-imp">
+      <div class="pg-ctrl">
+        <label for="gPorPagina" style="font-size:.9rem;font-weight:600;color:var(--tinta-500)">Registros por página</label>
+        <select id="gPorPagina">
+          <option value="15">15</option><option value="31" selected>31</option>
+          <option value="50">50</option><option value="100">100</option>
+          <option value="todos">Todos</option>
+        </select>
+        <span id="gRangoPg" style="color:var(--tinta-500)"></span>
+      </div>
+      <div class="pg-btns" id="gPgBtns"></div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Cierres mensuales — edición</h2>
+    <div class="tabla-caja">
+      <table id="tablaCierresEd">
+        <thead><tr><th>Mes</th><th style="text-align:right">T.C. Fin mes</th><th class="centro no-imp">Acciones</th></tr></thead>
+        <tbody id="cuerpoCierresEd"></tbody>
+      </table>
+    </div>
+    <div class="acciones no-imp"><button class="btn btn-secundario" id="btnNuevoCierre">＋ Capturar cierre de mes</button></div>
+  </div>
+</section>
+
+<!-- ===================== PANEL: ACTUALIZACIÓN ===================== -->
+<section class="panel oculto" id="pActualiza" role="tabpanel">
+  <div class="seccion">
+    <h2>Importar una nueva versión del archivo</h2>
+    <div class="aviso a-info">
+      <span class="ic">i</span>
+      <span>El archivo se procesa <strong>íntegramente en su navegador</strong>. No se transmite a ningún servidor.
+      Las macros contenidas en archivos <code>.xlsm</code> <strong>no se ejecutan</strong>: solo se leen valores de celda.</span>
+    </div>
+    <div class="rejilla-filtros">
+      <div class="campo">
+        <label for="inputArchivo">Archivo Excel (.xlsx, .xls, .xlsm) o CSV</label>
+        <input type="file" id="inputArchivo" accept=".xlsx,.xls,.xlsm,.csv,.txt">
+      </div>
+      <div class="campo">
+        <label for="modoImport">Modo de actualización</label>
+        <select id="modoImport">
+          <option value="nuevos">Agregar únicamente registros nuevos</option>
+          <option value="actualizar" selected>Agregar nuevos y actualizar existentes</option>
+          <option value="reemplazar">Reemplazar completamente la información</option>
+        </select>
+      </div>
+    </div>
+    <p class="leyenda-nota">
+      Se reconocen dos formatos: <strong>(a)</strong> matriz cruzada día × mes, idéntica al archivo original
+      &laquo;2026 Equivalencias Dlls&raquo;; y <strong>(b)</strong> tabla plana con columnas de fecha y tipo de cambio.
+      La detección es automática.
+    </p>
+    <div id="avisoImport"></div>
+  </div>
+
+  <div class="seccion oculto" id="secVistaPrevia">
+    <h2>Vista previa de la actualización <span class="pill" id="pillModo"></span></h2>
+    <div class="rejilla-kpi" id="kpisPrevia"></div>
+    <h3>Detalle de los cambios</h3>
+    <div class="rejilla-filtros" style="margin-bottom:.7rem">
+      <div class="campo">
+        <label for="filtroPrevia">Mostrar</label>
+        <select id="filtroPrevia">
+          <option value="">Todos los renglones</option>
+          <option value="nuevo">Solo registros nuevos</option>
+          <option value="modificado">Solo registros modificados</option>
+          <option value="duplicado">Solo duplicados (sin cambio)</option>
+          <option value="rechazado">Solo rechazados</option>
+          <option value="eliminado">Solo eliminados</option>
+        </select>
+      </div>
+    </div>
+    <div class="tabla-caja">
+      <table id="tablaPrevia">
+        <thead><tr>
+          <th>Situación</th><th>Fecha</th><th>Moneda</th>
+          <th style="text-align:right">Valor actual</th><th style="text-align:right">Valor del archivo</th>
+          <th>Observación</th>
+        </tr></thead>
+        <tbody id="cuerpoPrevia"></tbody>
+      </table>
+    </div>
+    <p class="leyenda-nota" id="notaPrevia"></p>
+    <div class="acciones">
+      <button class="btn btn-primario" id="btnAplicar">Aplicar los cambios</button>
+      <button class="btn btn-secundario" id="btnCancelarImport">Cancelar actualización</button>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Validaciones que se aplican a toda importación</h2>
+    <ul style="line-height:1.7;padding-left:1.3rem;margin:0">
+      <li>La fecha debe ser válida y existir en el calendario (se rechaza 30 de febrero, 31 de abril, etc.).</li>
+      <li>El tipo de cambio debe ser numérico; se admite texto con coma decimal o separador de miles y se convierte.</li>
+      <li>No se aceptan campos obligatorios vacíos (fecha y tipo de cambio).</li>
+      <li>No se aceptan tipos de cambio negativos ni iguales a cero.</li>
+      <li>Se rechazan valores fuera del rango razonable de 1 a 100 pesos por dólar, para evitar cargas erróneas.</li>
+      <li>Los duplicados se detectan por la clave <code>fecha + moneda</code>; el último renglón del archivo prevalece.</li>
+      <li>Si se eligió un ejercicio en el filtro, se advierte cuando el archivo contiene registros de otro ejercicio.</li>
+      <li>Los valores importados se comparan uno a uno con los existentes antes de aplicar cambio alguno.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== PANEL: EXPORTACIÓN ===================== -->
+<section class="panel oculto" id="pExporta" role="tabpanel">
+  <div class="seccion">
+    <h2>Exportar la consulta actual</h2>
+    <p style="color:var(--tinta-500)">
+      Se exporta exactamente lo que arroja la pestaña <strong>Consulta</strong> con los filtros aplicados en este momento.
+      Los valores conservan sus cuatro decimales originales, sin redondeo.
+    </p>
+    <div class="rejilla-kpi" id="kpisExporta"></div>
+    <div class="acciones">
+      <button class="btn btn-oscuro"     id="btnXlsx">Exportar a Excel (.xlsx)</button>
+      <button class="btn btn-primario"   id="btnPdf">Exportar a PDF</button>
+      <button class="btn btn-secundario" id="btnCsv">CSV (coma)</button>
+      <button class="btn btn-secundario" id="btnCsvPyc">CSV (punto y coma)</button>
+      <button class="btn btn-secundario" id="btnImprimir">Imprimir</button>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Exportar la tabla general completa</h2>
+    <p style="color:var(--tinta-500)">Incluye la totalidad de los registros cargados y los cierres mensuales, sin aplicar filtros.</p>
+    <div class="acciones">
+      <button class="btn btn-oscuro"     id="btnXlsxTodo">Excel completo (.xlsx)</button>
+      <button class="btn btn-secundario" id="btnCsvTodo">CSV completo (coma)</button>
+      <button class="btn btn-secundario" id="btnCsvTodoPyc">CSV completo (punto y coma)</button>
+      <button class="btn btn-ambar"      id="btnXlsxMatriz">Excel en formato matriz día × mes</button>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Contenido de cada archivo</h2>
+    <details><summary>Excel (.xlsx)</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Hoja <strong>Resumen</strong>: ejercicio, periodo, filtros aplicados e indicadores estadísticos.</li>
+        <li>Hoja <strong>Detalle</strong>: encabezados originales, fechas como fechas reales y tipo de cambio como número.</li>
+        <li>Hoja <strong>Cierres</strong>: tipo de cambio al fin de cada mes.</li>
+        <li>Nombre del archivo: <code>2026_Equivalencias_Dlls_Consulta.xlsx</code></li>
+      </ul>
+    </details>
+    <details><summary>PDF</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Título &laquo;2026 Equivalencias Dlls&raquo; y subtítulo &laquo;Consulta de equivalencias y tipos de cambio&raquo;.</li>
+        <li>Fecha y hora de generación, filtros aplicados y resumen estadístico.</li>
+        <li>Tabla de resultados con encabezados repetidos en cada página y numeración de páginas.</li>
+        <li>Orientación horizontal. Nombre del archivo: <code>2026_Equivalencias_Dlls_Consulta.pdf</code></li>
+      </ul>
+    </details>
+    <details><summary>CSV</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Codificación UTF-8 con marca de orden de bytes (BOM).</li>
+        <li>Hay <strong>dos botones</strong>: separador <strong>coma</strong> (configuración regional México y sistemas contables) y separador <strong>punto y coma</strong> (equipos con configuración europea). Si uno se abre en una sola columna, use el otro.</li>
+        <li>Nombres: <code>2026_Equivalencias_Dlls_Consulta_coma.csv</code> y <code>2026_Equivalencias_Dlls_Consulta_puntoycoma.csv</code></li>
+      </ul>
+    </details>
+  </div>
+</section>
+<!-- ===================== PANEL: AYUDA ===================== -->
+<section class="panel oculto ayuda" id="pAyuda" role="tabpanel">
+  <div class="seccion">
+    <h2>Guía de uso</h2>
+
+    <h3>1. Qué contiene esta aplicación</h3>
+    <p>
+      La aplicación reproduce la hoja <code>resumen</code> del archivo <strong>2026 Equivalencias Dlls</strong>,
+      convirtiendo la matriz de días por meses en una tabla consultable. Se cargaron
+      <strong id="ayudaN">—</strong> registros diarios del ejercicio 2026 y <strong id="ayudaC">—</strong> cierres mensuales.
+      Los meses aún sin publicar en el archivo original no se cargan; podrá capturarlos o importarlos conforme se publiquen.
+    </p>
+
+    <h3>2. Modo edición del despacho (candado 🔒)</h3>
+    <p>
+      Las pestañas <strong>Tabla general</strong> y <strong>Actualización de datos</strong> están reservadas al despacho.
+      Para activarlas, pulse el candado al final de la barra de pestañas y capture la clave de acceso.
+      El candado queda abierto en ese navegador hasta que usted lo vuelva a pulsar para bloquearlo.
+      Aviso honesto: es un candado de cortesía para evitar ediciones accidentales; no es un mecanismo de seguridad.
+      Los lectores de la aplicación solo consultan y exportan.
+    </p>
+
+    <h3>3. Cargar o actualizar el archivo «2026 Equivalencias Dlls»</h3>
+    <p>Además de importar archivos, cada nueva versión de esta aplicación trae sus propios datos incrustados
+    con una <strong>fecha de corte</strong>. Al abrir una versión más reciente, los datos del archivo se aplican
+    automáticamente y las capturas manuales de fechas que el archivo no incluye se conservan. Un aviso en pantalla
+    lo confirma.</p>
+    <ol>
+      <li>Active el modo edición (candado) y abra la pestaña <strong>Actualización de datos</strong>.</li>
+      <li>Pulse el selector de archivo y elija su <code>.xlsx</code>, <code>.xls</code>, <code>.xlsm</code> o <code>.csv</code>.</li>
+      <li>Elija el modo: <em>solo nuevos</em>, <em>nuevos y actualizar existentes</em>, o <em>reemplazar todo</em>.</li>
+      <li>Revise la <strong>vista previa</strong>: nuevos, modificados, duplicados, rechazados y, en su caso, los que se eliminarían.</li>
+      <li>Pulse <strong>Aplicar los cambios</strong>. Mientras no lo haga, nada se modifica.</li>
+    </ol>
+    <p>Se reconocen automáticamente dos formatos: la matriz día × mes del archivo original, y cualquier tabla plana que tenga una columna de fecha y una de tipo de cambio.</p>
+
+    <h3>4. Consultar el tipo de cambio</h3>
+    <ul>
+      <li><strong>Un día concreto (lo más común):</strong> elija la fecha en <em>Consultar una fecha</em>; el resumen y la tabla se enfocan a ese día de inmediato.</li>
+      <li><strong>Un mes completo:</strong> elíjalo en <em>Ver un mes completo</em>.</li>
+      <li><strong>Un periodo:</strong> capture <em>desde</em> y <em>hasta</em>.</li>
+      <li><strong>Todo el ejercicio:</strong> pulse <em>Limpiar filtros</em>; es también la vista con la que abre la aplicación, encabezada por el <strong>T.C. más reciente</strong>.</li>
+      <li><strong>Convertir un monto:</strong> en el resumen, capture la cantidad y elija la dirección (dólares a pesos o pesos a dólares); la conversión usa el tipo de cambio de la fecha consultada, o el más reciente.</li>
+      <li>Elegir una fecha concreta limpia automáticamente el mes y el periodo (y viceversa), para no combinar filtros contradictorios.</li>
+      <li><strong>Más filtros:</strong> ahí viven la búsqueda general (por fecha, mes o valor) y, cuando exista más de uno, los selectores de ejercicio y de moneda. Con una sola opción se ocultan solos.</li>
+    </ul>
+
+    <h3>5. Días que repiten el tipo de cambio anterior</h3>
+    <p>
+      En el archivo original, los sábados, domingos y días inhábiles conservan el tipo de cambio del día hábil previo,
+      porque el Diario Oficial de la Federación no publica en esas fechas. La aplicación los identifica con la etiqueta
+      <span class="et-tag t-rep">Repite anterior</span> y los distingue de una
+      <span class="et-tag t-nuevo">Publicación nueva</span>. Este señalamiento es informativo:
+      <strong>no altera ningún cálculo</strong> y el valor se conserva íntegro.
+    </p>
+
+    <h3>6. Actualizar la tabla general</h3>
+    <ul>
+      <li><strong>Requisito:</strong> modo edición activo (candado de la barra de pestañas).</li>
+      <li><strong>Agregar:</strong> pestaña <em>Tabla general</em> → botón <strong>＋ Agregar registro</strong>.</li>
+      <li><strong>Editar:</strong> botón <em>Editar</em> en el renglón; se valida antes de guardar.</li>
+      <li><strong>Eliminar:</strong> botón <em>Eliminar</em>; siempre pide confirmación previa.</li>
+      <li><strong>Cierres de mes:</strong> se capturan y editan en su propia tabla, al final de la pestaña.</li>
+      <li><strong>Respaldo:</strong> <em>Descargar respaldo (JSON)</em> guarda una copia completa; <em>Restaurar respaldo</em> la recupera.</li>
+      <li><strong>Restablecer:</strong> devuelve los datos exactamente como venían del archivo original.</li>
+      <li><strong>Limpiar datos guardados:</strong> borra lo almacenado en este navegador y recarga los datos originales.</li>
+    </ul>
+
+    <h3>7. Exportar a Excel, PDF y CSV</h3>
+    <ol>
+      <li>Aplique en <strong>Consulta</strong> los filtros que desee.</li>
+      <li>Vaya a <strong>Exportación</strong>; el recuadro superior confirma cuántos registros se exportarán.</li>
+      <li>Elija el formato. El archivo se descarga a su carpeta de descargas habitual.</li>
+    </ol>
+    <p>Los tres formatos contienen únicamente los resultados filtrados. Para obtener todo sin filtros, use los botones de la sección <em>Exportar la tabla general completa</em>. La opción <em>Excel en formato matriz día × mes</em> devuelve el archivo con la misma disposición visual del original.</p>
+
+    <h3>8. Privacidad y marca</h3>
+    <ul>
+      <li>Todo el procesamiento ocurre en su navegador. Ningún dato viaja a internet.</li>
+      <li>Los cambios se conservan en <code>localStorage</code> de este navegador y este equipo.</li>
+      <li>Las macros de los archivos Excel no se ejecutan: la lectura es solo de valores.</li>
+      <li>Las únicas peticiones externas son la descarga de las bibliotecas y de las tipografías desde sus CDN públicos.</li>
+      <li>La marca de agua «C.P. Daniel Souza» aparece en el fondo de la aplicación, en la gráfica (incluido el PNG descargado), en cada página del PDF y en la hoja Resumen del Excel, como sello de autoría del despacho.</li>
+    </ul>
+  </div>
+
+  <div class="seccion">
+    <h2>Ficha técnica</h2>
+    <details open><summary>Bibliotecas utilizadas</summary>
+      <ul style="padding-left:1.3rem">
+        <li><strong>SheetJS (xlsx)</strong> 0.20.3 — lectura e importación de Excel y generación de los archivos .xlsx.</li>
+        <li><strong>Chart.js</strong> 4.4.4 — gráfica de evolución del tipo de cambio.</li>
+        <li><strong>jsPDF</strong> 2.5.2 y <strong>jsPDF-AutoTable</strong> 3.8.4 — generación del PDF con encabezados repetidos.</li>
+        <li><strong>Google Fonts</strong> — IBM Plex Sans, IBM Plex Mono y Source Serif 4.</li>
+        <li>Sin framework ni dependencias adicionales. HTML5, CSS3 y JavaScript estándar.</li>
+      </ul>
+    </details>
+    <details><summary>Supuestos técnicos adoptados</summary>
+      <ul style="padding-left:1.3rem">
+        <li>El archivo contiene una sola hoja, <code>resumen</code>, con la matriz de días 1–31 en filas y los meses Ene–Dic en columnas.</li>
+        <li>Existe una sola moneda: dólar estadounidense frente al peso mexicano. Se etiqueta <strong>USD/MXN</strong>. La aplicación admite varias monedas si en el futuro se importan.</li>
+        <li>Las celdas con espacio duro se interpretan como ausencia de dato, no como cero.</li>
+        <li>Los ceros de la fila «T.C. Fin mes» en octubre, noviembre y diciembre se descartan por no ser tipos de cambio válidos.</li>
+        <li>Se conservan cuatro decimales, conforme al formato numérico del archivo. No se redondea en ningún cálculo ni en la presentación.</li>
+        <li>El promedio es aritmético simple sobre los registros filtrados.</li>
+        <li>2026 no es año bisiesto: febrero tiene 28 días.</li>
+        <li>Un día «repite anterior» cuando su valor coincide exactamente con el del día calendario inmediato previo.</li>
+        <li>La clave de identidad de cada registro es <code>fecha + moneda</code>.</li>
+      </ul>
+    </details>
+    <details><summary>Validaciones implementadas</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Fecha existente en el calendario; se rechazan fechas imposibles.</li>
+        <li>Tipo de cambio numérico, positivo y dentro del rango 1 a 100.</li>
+        <li>Conversión de números almacenados como texto (coma decimal, separador de miles, espacios duros).</li>
+        <li>Campos obligatorios no vacíos.</li>
+        <li>Detección de duplicados por <code>fecha + moneda</code> antes de aplicar cambios.</li>
+        <li>Comparación registro por registro entre el archivo importado y los datos existentes.</li>
+        <li>Advertencia cuando el archivo contiene registros de un ejercicio distinto al filtrado.</li>
+        <li>Validación cruzada del cierre mensual contra el último día con dato de cada mes.</li>
+        <li>Confirmación obligatoria antes de eliminar o reemplazar.</li>
+        <li>Coherencia de rango: la fecha final no puede ser anterior a la inicial.</li>
+      </ul>
+    </details>
+    <details><summary>Limitaciones conocidas</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Los datos persisten en <code>localStorage</code>: son propios de este navegador y este equipo. No se comparten entre dispositivos ni entre navegadores.</li>
+        <li>La navegación privada o el borrado del historial pueden eliminar los datos guardados. Descargue el respaldo JSON periódicamente.</li>
+        <li>Sin conexión a internet las bibliotecas no cargan; la aplicación muestra los datos, pero la gráfica y las exportaciones quedan deshabilitadas. Cada biblioteca intenta dos CDN distintos (cdnjs y jsDelivr/SheetJS) antes de darse por vencida.</li>
+        <li>No hay conexión automática con el Diario Oficial de la Federación ni con el Banco de México: la actualización es manual o por importación.</li>
+        <li>La importación no ejecuta ni interpreta fórmulas de Excel; lee el valor calculado de cada celda.</li>
+        <li>El PDF de consultas muy extensas puede ocupar decenas de páginas; conviene filtrar antes de exportar.</li>
+        <li>La clave del modo edición vive en el propio archivo HTML: cualquier persona con conocimientos técnicos puede encontrarla. Protege contra ediciones accidentales, no contra un usuario decidido.</li>
+        <li>No hay control de usuarios, bitácora de cambios ni firma electrónica.</li>
+        <li>El detector de «repite anterior» no distingue un día inhábil de una coincidencia fortuita de valores.</li>
+      </ul>
+    </details>
+    <details><summary>Mejoras futuras recomendadas</summary>
+      <ul style="padding-left:1.3rem">
+        <li>Consumo directo de la API del Banco de México (SIE) para actualizar el tipo de cambio FIX de forma automática.</li>
+        <li>Calendario oficial de días inhábiles del SAT y del DOF, para clasificar con certeza los días sin publicación.</li>
+        <li>Registro histórico de varios ejercicios (2020–2026) con comparativo interanual.</li>
+        <li>Incorporación de otras monedas: euro, dólar canadiense, yen, conforme al Anexo del DOF.</li>
+        <li>Calculadora de conversión: monto en dólares por tipo de cambio de una fecha, con soporte del artículo 20 del Código Fiscal de la Federación.</li>
+        <li>Cálculo de la ganancia o pérdida cambiaria por operación, para el ajuste anual por inflación.</li>
+        <li>Conversión a aplicación instalable (PWA) con funcionamiento sin conexión.</li>
+        <li>Bitácora de auditoría de altas, bajas y cambios, con usuario y sello de tiempo.</li>
+        <li>Bibliotecas incrustadas en el propio archivo para uso totalmente sin conexión.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+</main>
+
+<!-- ===================== MODALES ===================== -->
+<div class="modal-fondo oculto" id="modalReg" role="dialog" aria-modal="true" aria-labelledby="modalRegTit">
+  <div class="modal">
+    <div class="modal-cab">
+      <h3 id="modalRegTit">Registro</h3>
+      <button class="cerrar-x" id="cerrarModalReg" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-cuerpo">
+      <div class="rejilla-filtros">
+        <div class="campo">
+          <label for="mFecha">Fecha <span style="color:var(--err-tx)">*</span></label>
+          <input type="date" id="mFecha" required>
+        </div>
+        <div class="campo">
+          <label for="mMoneda">Moneda / equivalencia <span style="color:var(--err-tx)">*</span></label>
+          <input type="text" id="mMoneda" value="USD/MXN" list="listaMonedas">
+          <datalist id="listaMonedas"></datalist>
+        </div>
+        <div class="campo">
+          <label for="mTc">Tipo de cambio <span style="color:var(--err-tx)">*</span></label>
+          <input type="number" id="mTc" step="0.0001" min="0.0001" max="100" placeholder="17.4530">
+        </div>
+      </div>
+      <p class="leyenda-nota">Se admiten hasta cuatro decimales. El valor debe ser mayor que cero y menor que 100.</p>
+      <div id="avisoModal"></div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn btn-secundario" id="btnCancelarReg">Cancelar</button>
+      <button class="btn btn-primario"   id="btnGuardarReg">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-fondo oculto" id="modalConf" role="dialog" aria-modal="true" aria-labelledby="modalConfTit">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-cab">
+      <h3 id="modalConfTit">Confirmar</h3>
+      <button class="cerrar-x" id="cerrarModalConf" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-cuerpo"><p id="textoConf" style="margin:0"></p></div>
+    <div class="modal-pie">
+      <button class="btn btn-secundario" id="btnConfNo">Cancelar</button>
+      <button class="btn btn-peligro"    id="btnConfSi">Sí, continuar</button>
+    </div>
+  </div>
+</div>
+
+<footer class="pie">
+  <p><strong>2026 Equivalencias Dlls</strong> &middot; Equivalencia del Dólar (USD) &middot; Ejercicio fiscal 2026</p>
+  <p>C.P. Daniel Souza Vázquez &middot; DSouza Consultores &middot; Mexicali, Baja California</p>
+  <p><a href="mailto:daniel@dsouzaconsultores.mx" style="color:var(--cian-500);text-decoration:none">daniel@dsouzaconsultores.mx</a> &middot; <a href="tel:+526862567293" style="color:var(--cian-500);text-decoration:none">(686) 256-7293</a></p>
+  <p class="mini">Herramienta de consulta informativa; no sustituye la publicación oficial del Diario Oficial de la Federación.</p>
+</footer>
+
+<script>
+/* ============================================================
+   Cargador de bibliotecas con CDN de respaldo.
+   Si la primera dirección falla (bloqueo, 404, caída del CDN),
+   se intenta automáticamente la siguiente. Al completarse una
+   carga se avisa a la aplicación para que pinte lo pendiente.
+   ============================================================ */
+(function(){
+  function carga(urls, alTerminar){
+    var i = 0;
+    (function intento(){
+      if(i >= urls.length){ if(alTerminar) alTerminar(false); return; }
+      var s = document.createElement("script");
+      s.src = urls[i++];
+      s.onload  = function(){ if(alTerminar) alTerminar(true); };
+      s.onerror = function(){ s.parentNode && s.parentNode.removeChild(s); intento(); };
+      document.head.appendChild(s);
+    })();
+  }
+  function avisa(){ if(window.__alCargarLib) window.__alCargarLib(); }
+
+  carga([
+    "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.20.3/xlsx.full.min.js",
+    "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"
+  ], avisa);
+
+  carga([
+    "https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.js"
+  ], avisa);
+
+  /* AutoTable requiere que jsPDF exista antes de cargarse: en cadena. */
+  carga([
+    "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js",
+    "https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"
+  ], function(ok){
+    if(!ok){ avisa(); return; }
+    carga([
+      "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js",
+      "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"
+    ], avisa);
+  });
+})();
+</script>
+<script>
+"use strict";
+/* ============================================================
+   2026 EQUIVALENCIAS DLLS — Lógica de la aplicación
+   Módulos: datos · estado · utilidades · persistencia ·
+            consulta · presentación · gráfica · CRUD ·
+            importación · exportación
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   MÓDULO 1. DATOS ORIGINALES
+   Extraídos de la hoja "resumen" del archivo 2026 Equivalencias Dlls.
+   Formato compacto [fecha ISO, tipo de cambio] para reducir peso.
+   ------------------------------------------------------------ */
+const ORIGEN = {
+  archivo: "2026 Equivalencias Dlls",
+  hoja: "resumen",
+  version: "2026-08-28",   // fecha de corte de los datos incrustados; se actualiza en cada versión del archivo
+  ejercicio: 2026,
+  moneda: "USD/MXN",
+  decimales: 4,
+  nota: "En esta tabla se indica el tipo de cambio publicado el día anterior al correspondiente; es decir, se indica el tipo de cambio aplicable al día señalado.",
+  serie: [
+    ["2026-01-01",17.9528], ["2026-01-02",17.9528], ["2026-01-03",18.0012], ["2026-01-04",18.0012], ["2026-01-05",18.0012], ["2026-01-06",17.8803],
+    ["2026-01-07",17.8905], ["2026-01-08",17.9697], ["2026-01-09",17.9587], ["2026-01-10",17.9807], ["2026-01-11",17.9807], ["2026-01-12",17.9807],
+    ["2026-01-13",17.9842], ["2026-01-14",17.9075], ["2026-01-15",17.8540], ["2026-01-16",17.8167], ["2026-01-17",17.6897], ["2026-01-18",17.6897],
+    ["2026-01-19",17.6897], ["2026-01-20",17.6867], ["2026-01-21",17.5990], ["2026-01-22",17.6008], ["2026-01-23",17.4520], ["2026-01-24",17.4828],
+    ["2026-01-25",17.4828], ["2026-01-26",17.4828], ["2026-01-27",17.4545], ["2026-01-28",17.2830], ["2026-01-29",17.2357], ["2026-01-30",17.2322],
+    ["2026-01-31",17.2532], ["2026-02-01",17.2532], ["2026-02-02",17.2532], ["2026-02-03",17.2532], ["2026-02-04",17.3310], ["2026-02-05",17.2350],
+    ["2026-02-06",17.2925], ["2026-02-07",17.4070], ["2026-02-08",17.4070], ["2026-02-09",17.4070], ["2026-02-10",17.2988], ["2026-02-11",17.1907],
+    ["2026-02-12",17.2315], ["2026-02-13",17.2155], ["2026-02-14",17.2000], ["2026-02-15",17.2000], ["2026-02-16",17.2000], ["2026-02-17",17.1798],
+    ["2026-02-18",17.1723], ["2026-02-19",17.1753], ["2026-02-20",17.1392], ["2026-02-21",17.2700], ["2026-02-22",17.2700], ["2026-02-23",17.2700],
+    ["2026-02-24",17.1722], ["2026-02-25",17.2162], ["2026-02-26",17.1910], ["2026-02-27",17.1700], ["2026-02-28",17.2563], ["2026-03-01",17.2563],
+    ["2026-03-02",17.2563], ["2026-03-03",17.2193], ["2026-03-04",17.3485], ["2026-03-05",17.7228], ["2026-03-06",17.5445], ["2026-03-07",17.6770],
+    ["2026-03-08",17.6770], ["2026-03-09",17.6770], ["2026-03-10",17.7962], ["2026-03-11",17.7687], ["2026-03-12",17.5037], ["2026-03-13",17.6543],
+    ["2026-03-14",17.8368], ["2026-03-15",17.8368], ["2026-03-16",17.8368], ["2026-03-17",17.8368], ["2026-03-18",17.9218], ["2026-03-19",17.6922],
+    ["2026-03-20",17.6690], ["2026-03-21",17.8117], ["2026-03-22",17.8117], ["2026-03-23",17.8117], ["2026-03-24",17.8998], ["2026-03-25",17.7780],
+    ["2026-03-26",17.8047], ["2026-03-27",17.7548], ["2026-03-28",17.7957], ["2026-03-29",17.7957], ["2026-03-30",17.7957], ["2026-03-31",18.0667],
+    ["2026-04-01",18.1033], ["2026-04-02",18.0033], ["2026-04-03",18.0033], ["2026-04-04",18.0033], ["2026-04-05",18.0033], ["2026-04-06",18.0033],
+    ["2026-04-07",17.8117], ["2026-04-08",17.7932], ["2026-04-09",17.7580], ["2026-04-10",17.4157], ["2026-04-11",17.3593], ["2026-04-12",17.3593],
+    ["2026-04-13",17.3593], ["2026-04-14",17.3033], ["2026-04-15",17.3470], ["2026-04-16",17.2688], ["2026-04-17",17.2623], ["2026-04-18",17.2723],
+    ["2026-04-19",17.2723], ["2026-04-20",17.2723], ["2026-04-21",17.2447], ["2026-04-22",17.3200], ["2026-04-23",17.3323], ["2026-04-24",17.3287],
+    ["2026-04-25",17.3587], ["2026-04-26",17.3587], ["2026-04-27",17.3587], ["2026-04-28",17.4052], ["2026-04-29",17.3838], ["2026-04-30",17.4030],
+    ["2026-05-01",17.4948], ["2026-05-02",17.4948], ["2026-05-03",17.4948], ["2026-05-04",17.4948], ["2026-05-05",17.5118], ["2026-05-06",17.5157],
+    ["2026-05-07",17.3752], ["2026-05-08",17.2530], ["2026-05-09",17.2400], ["2026-05-10",17.2400], ["2026-05-11",17.2400], ["2026-05-12",17.2105],
+    ["2026-05-13",17.1908], ["2026-05-14",17.2520], ["2026-05-15",17.1878], ["2026-05-16",17.2130], ["2026-05-17",17.2130], ["2026-05-18",17.2130],
+    ["2026-05-19",17.3477], ["2026-05-20",17.2928], ["2026-05-21",17.3968], ["2026-05-22",17.2938], ["2026-05-23",17.3305], ["2026-05-24",17.3305],
+    ["2026-05-25",17.3305], ["2026-05-26",17.3213], ["2026-05-27",17.2720], ["2026-05-28",17.3232], ["2026-05-29",17.3793], ["2026-05-30",17.3213],
+    ["2026-05-31",17.3213], ["2026-06-01",17.3213], ["2026-06-02",17.3505], ["2026-06-03",17.3780], ["2026-06-04",17.2945], ["2026-06-05",17.3328],
+    ["2026-06-06",17.2888], ["2026-06-07",17.2888], ["2026-06-08",17.2888], ["2026-06-09",17.4755], ["2026-06-10",17.4453], ["2026-06-11",17.4312],
+    ["2026-06-12",17.3898], ["2026-06-13",17.3833], ["2026-06-14",17.3833], ["2026-06-15",17.3833], ["2026-06-16",17.2067], ["2026-06-17",17.2008],
+    ["2026-06-18",17.2023], ["2026-06-19",17.1892], ["2026-06-20",17.3688], ["2026-06-21",17.3688], ["2026-06-22",17.3688], ["2026-06-23",17.3247],
+    ["2026-06-24",17.3480], ["2026-06-25",17.5505], ["2026-06-26",17.6213], ["2026-06-27",17.5260], ["2026-06-28",17.5260], ["2026-06-29",17.5260],
+    ["2026-06-30",17.4700], ["2026-07-01",17.5053], ["2026-07-02",17.4693], ["2026-07-03",17.5368], ["2026-07-04",17.4725], ["2026-07-05",17.4725],
+    ["2026-07-06",17.4725], ["2026-07-07",17.4758], ["2026-07-08",17.4342], ["2026-07-09",17.4958], ["2026-07-10",17.5993], ["2026-07-11",17.5350],
+    ["2026-07-12",17.5350], ["2026-07-13",17.5350], ["2026-07-14",17.4842], ["2026-07-15",17.5023], ["2026-07-16",17.4278], ["2026-07-17",17.3910],
+    ["2026-07-18",17.4418], ["2026-07-19",17.4418], ["2026-07-20",17.4418], ["2026-07-21",17.5242], ["2026-07-22",17.4315], ["2026-07-23",17.3975],
+    ["2026-07-24",17.3973], ["2026-07-25",17.5130], ["2026-07-26",17.5130], ["2026-07-27",17.5130], ["2026-07-28",17.4635], ["2026-07-29",17.4440],
+    ["2026-07-30",17.4312], ["2026-07-31",17.5133], ["2026-08-01",17.3562], ["2026-08-02",17.3562], ["2026-08-03",17.3562], ["2026-08-04",17.3288],
+    ["2026-08-05",17.3317], ["2026-08-06",17.2717], ["2026-08-07",17.2317], ["2026-08-08",17.2195], ["2026-08-09",17.2195], ["2026-08-10",17.2195],
+    ["2026-08-11",17.1387], ["2026-08-12",17.1408], ["2026-08-13",17.1092], ["2026-08-14",17.0627], ["2026-08-15",17.0530], ["2026-08-16",17.0530],
+    ["2026-08-17",17.0530], ["2026-08-18",17.0218], ["2026-08-19",17.0245], ["2026-08-20",17.0638], ["2026-08-21",16.9593], ["2026-08-22",16.9583],
+    ["2026-08-23",16.9583], ["2026-08-24",16.9583], ["2026-08-25",16.9018], ["2026-08-26",16.9647], ["2026-08-27",16.9460], ["2026-08-28",16.9660]
+  ],
+  cierres: [ [1,17.2532], [2,17.2563], [3,18.0667], [4,17.4030], [5,17.3213], [6,17.4700], [7,17.5133] ]
+};
+
+const MESES_CORTO = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+const MESES_LARGO = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const DIAS_SEMANA = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const DIAS_CORTO  = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const CLAVE_LS    = "dsouza_equivalencias_dlls_2026_v1";
+const CLAVE_FS    = "dsouza_equivalencias_fsroot_v1";
+const CLAVE_EDIT  = "dsouza_equivalencias_edicion_v1";
+/* Clave del modo edición del despacho. Es un candado de cortesía en el navegador:
+   disuade la edición casual por parte de clientes, pero NO es seguridad real. */
+const CLAVE_EDICION = "DSV2026";
+const MARCA_AGUA = "C.P. Daniel Souza";
+
+/* ------------------------------------------------------------
+   MÓDULO 2. ESTADO DE LA APLICACIÓN
+   ------------------------------------------------------------ */
+const S = {
+  registros: [],      // [{fecha,moneda,tc,repetido}]
+  cierres: [],        // [{mes,moneda,tc}]
+  resultados: [],     // resultado de la consulta vigente
+  filtros: {},
+  ordenCampo: "fecha", ordenAsc: true,
+  pagina: 1, porPagina: 31,
+  gOrdenCampo: "fecha", gOrdenAsc: true,
+  gPagina: 1, gPorPagina: 31,
+  grafica: null, tipoGrafica: "linea",
+  edicion: null,      // clave del registro en edición
+  edicionCierre: null,
+  previa: null,       // resultado del análisis de importación
+  confirmarCb: null
+};
+
+/* ------------------------------------------------------------
+   MÓDULO 3. UTILIDADES
+   ------------------------------------------------------------ */
+const $  = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+/** Convierte "2026-03-15" a "15/03/2026". */
+function fechaMX(iso){
+  if(!iso || iso.length < 10) return "";
+  const [a,m,d] = iso.split("-");
+  return d + "/" + m + "/" + a;
+}
+/** Construye una fecha local (evita el corrimiento por zona horaria de new Date("ISO")). */
+function fechaLocal(iso){
+  const [a,m,d] = iso.split("-").map(Number);
+  return new Date(a, m-1, d);
+}
+/** Número de serie de Excel para una fecha ISO (días desde el 30/12/1899).
+    Se usa en las exportaciones: Excel almacena las fechas exactamente así, de modo
+    que la celda se comporta como fecha real sin depender de objetos Date. */
+function serialExcel(iso){
+  const [a,m,d] = iso.split("-").map(Number);
+  return Math.round((Date.UTC(a, m-1, d) - Date.UTC(1899, 11, 30)) / 86400000);
+}
+/** Índice del día de la semana, 0 = domingo. */
+function diaSemana(iso){ return fechaLocal(iso).getDay(); }
+/** Verifica que la fecha exista realmente en el calendario. */
+function fechaValida(iso){
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return false;
+  const [a,m,d] = iso.split("-").map(Number);
+  if(m < 1 || m > 12 || d < 1) return false;
+  const f = new Date(a, m-1, d);
+  return f.getFullYear()===a && f.getMonth()===m-1 && f.getDate()===d;
+}
+/** Formatea con exactamente 4 decimales, sin redondeo adicional del dato de origen. */
+function fmtTC(v){
+  if(v === null || v === undefined || isNaN(v)) return "";
+  return Number(v).toFixed(ORIGEN.decimales);
+}
+/** Convierte a número admitiendo texto con coma decimal, separadores de miles y espacios duros. */
+function aNumero(v){
+  if(v === null || v === undefined) return null;
+  if(typeof v === "number") return isFinite(v) ? v : null;
+  let s = String(v).replace(/ /g," ").replace(/\s/g,"").replace(/[$]/g,"");
+  if(s === "") return null;
+  // Si trae coma y punto, la coma es separador de miles.
+  if(s.includes(",") && s.includes(".")) s = s.replace(/,/g,"");
+  else if(s.includes(",") && !s.includes(".")) s = s.replace(",",".");
+  const n = parseFloat(s);
+  return isFinite(n) ? n : null;
+}
+/** Redondea a 4 decimales de forma estable (elimina ruido binario del punto flotante). */
+function r4(n){ return Math.round((n + Number.EPSILON) * 10000) / 10000; }
+/** Clave de identidad de un registro. */
+function clave(r){ return r.fecha + "|" + r.moneda; }
+/** Escapa texto para insertar en HTML. */
+function esc(t){
+  return String(t == null ? "" : t)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+/** Aviso flotante temporal. */
+function toast(msg, tipo){
+  const cont = $("#toasts");
+  const d = document.createElement("div");
+  d.className = "toast " + (tipo || "info");
+  d.textContent = msg;
+  cont.appendChild(d);
+  setTimeout(() => { d.style.opacity = "0"; d.style.transition = "opacity .3s"; }, 3600);
+  setTimeout(() => d.remove(), 3950);
+}
+/** Aviso fijo dentro de un contenedor. */
+function aviso(sel, msg, tipo){
+  const c = $(sel);
+  if(!c) return;
+  if(!msg){ c.innerHTML = ""; return; }
+  const ic = tipo === "a-ok" ? "✓" : tipo === "a-err" ? "!" : tipo === "a-warn" ? "!" : "i";
+  c.innerHTML = '<div class="aviso ' + tipo + '"><span class="ic">' + ic + '</span><span>' + msg + '</span></div>';
+}
+/** Descarga un Blob con el nombre indicado. */
+function descargar(blob, nombre){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = nombre;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+/** Comprueba que una biblioteca externa esté disponible. */
+function hayLib(nombre){
+  if(nombre === "xlsx")  return typeof XLSX !== "undefined";
+  if(nombre === "chart") return typeof Chart !== "undefined";
+  if(nombre === "pdf")   return typeof window.jspdf !== "undefined";
+  return false;
+}
+/** Diálogo de confirmación. */
+function confirmar(texto, cb){
+  $("#textoConf").innerHTML = texto;
+  S.confirmarCb = cb;
+  $("#modalConf").classList.remove("oculto");
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 4. PERSISTENCIA LOCAL (localStorage)
+   ------------------------------------------------------------ */
+function guardarLocal(){
+  try{
+    localStorage.setItem(CLAVE_LS, JSON.stringify({
+      v: 1, guardado: new Date().toISOString(),
+      origenVersion: ORIGEN.version,
+      registros: S.registros, cierres: S.cierres
+    }));
+    return true;
+  }catch(e){
+    toast("No fue posible guardar en este navegador: " + e.message, "err");
+    return false;
+  }
+}
+function cargarLocal(){
+  try{
+    const raw = localStorage.getItem(CLAVE_LS);
+    if(!raw) return false;
+    const d = JSON.parse(raw);
+    if(!d || !Array.isArray(d.registros) || d.registros.length === 0) return false;
+
+    /* Fusión de versiones: si este archivo HTML trae datos más recientes que los
+       guardados en el navegador, los datos del archivo mandan. Las capturas manuales
+       de fechas que el archivo NO trae se conservan. Así, distribuir una nueva
+       versión del archivo nunca muestra información vieja. */
+    if(d.origenVersion !== ORIGEN.version){
+      const guardados = d.registros;
+      const cierresGuardados = Array.isArray(d.cierres) ? d.cierres : [];
+      cargarOriginales();
+      const enArchivo = {};
+      S.registros.forEach(r => { enArchivo[clave(r)] = true; });
+      let conservadas = 0;
+      guardados.forEach(r => {
+        if(r && r.fecha && !enArchivo[r.fecha + "|" + (r.moneda || ORIGEN.moneda)]){
+          const v = aNumero(r.tc);
+          if(fechaValida(r.fecha) && v !== null && v > 0 && v < 100){
+            S.registros.push({ fecha:r.fecha, moneda:r.moneda || ORIGEN.moneda, tc:r4(v) });
+            conservadas++;
+          }
+        }
+      });
+      const mesesArchivo = {};
+      S.cierres.forEach(c => { mesesArchivo[c.mes] = true; });
+      cierresGuardados.forEach(c => { if(c && c.mes && !mesesArchivo[c.mes]) S.cierres.push(c); });
+      normalizar(); guardarLocal();
+      S.avisoFusion = "Este archivo trae datos con corte al " + fechaMX(ORIGEN.version)
+        + ". Se actualizó la información" + (conservadas > 0
+          ? " y se conservaron " + conservadas + " captura(s) manual(es) de fechas que el archivo no incluye."
+          : ".");
+      return true;
+    }
+
+    S.registros = d.registros;
+    S.cierres   = Array.isArray(d.cierres) ? d.cierres : [];
+    return true;
+  }catch(e){ return false; }
+}
+function cargarOriginales(){
+  S.registros = ORIGEN.serie.map(p => ({ fecha:p[0], moneda:ORIGEN.moneda, tc:r4(p[1]) }));
+  S.cierres   = ORIGEN.cierres.map(c => ({ mes:c[0], moneda:ORIGEN.moneda, tc:r4(c[1]) }));
+  marcarRepetidos();
+}
+/** Marca los días cuyo valor coincide con el del día calendario inmediato anterior. */
+function marcarRepetidos(){
+  const porMoneda = {};
+  S.registros.forEach(r => { (porMoneda[r.moneda] = porMoneda[r.moneda] || []).push(r); });
+  Object.values(porMoneda).forEach(lista => {
+    lista.sort((a,b) => a.fecha < b.fecha ? -1 : 1);
+    let prev = null;
+    lista.forEach(r => {
+      r.repetido = (prev !== null && Math.abs(r.tc - prev) < 1e-9);
+      prev = r.tc;
+    });
+  });
+}
+/** Ordena la serie y recalcula banderas. Se invoca tras cualquier alta, baja o cambio. */
+function normalizar(){
+  S.registros.sort((a,b) => a.fecha < b.fecha ? -1 : a.fecha > b.fecha ? 1 : (a.moneda < b.moneda ? -1 : 1));
+  S.cierres.sort((a,b) => a.mes - b.mes);
+  marcarRepetidos();
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 5. CONSULTA Y FILTRADO
+   ------------------------------------------------------------ */
+function leerFiltros(){
+  return {
+    ejercicio: $("#fEjercicio").value,
+    fecha:     $("#fFecha").value,
+    mes:       $("#fMes").value,
+    ini:       $("#fIni").value,
+    fin:       $("#fFin").value,
+    moneda:    $("#fMoneda").value,
+    texto:     $("#fBuscar").value.trim().toLowerCase()
+  };
+}
+
+function aplicarFiltros(){
+  const f = leerFiltros();
+  aviso("#avisoFiltros", "", "");
+
+  if(f.ini && f.fin && f.fin < f.ini){
+    aviso("#avisoFiltros","La <strong>fecha final</strong> no puede ser anterior a la <strong>fecha inicial</strong>. Se corrigió el orden automáticamente.","a-warn");
+    const t = f.ini; f.ini = f.fin; f.fin = t;
+    $("#fIni").value = f.ini; $("#fFin").value = f.fin;
+  }
+
+  let res = S.registros.filter(r => {
+    const [a,m,d] = r.fecha.split("-").map(Number);
+    if(f.ejercicio && String(a) !== f.ejercicio)  return false;
+    if(f.fecha     && r.fecha !== f.fecha)        return false;
+    if(f.mes       && String(m) !== f.mes)        return false;
+    if(f.ini       && r.fecha < f.ini)            return false;
+    if(f.fin       && r.fecha > f.fin)            return false;
+    if(f.moneda    && r.moneda !== f.moneda)      return false;
+    if(f.texto){
+      const heno = [
+        r.fecha, fechaMX(r.fecha), r.moneda, fmtTC(r.tc),
+        MESES_LARGO[m-1], MESES_CORTO[m-1], DIAS_SEMANA[diaSemana(r.fecha)], String(d), String(a)
+      ].join(" ").toLowerCase();
+      if(!heno.includes(f.texto)) return false;
+    }
+    return true;
+  });
+
+  S.filtros = f;
+  S.resultados = res;
+  S.pagina = 1;
+  ordenarResultados();
+  pintarConsulta();
+}
+
+function ordenarResultados(){
+  const c = S.ordenCampo, asc = S.ordenAsc ? 1 : -1;
+  S.resultados.sort((x,y) => {
+    let vx, vy;
+    switch(c){
+      case "tc":        vx = x.tc; vy = y.tc; break;
+      case "mes":       vx = +x.fecha.slice(5,7); vy = +y.fecha.slice(5,7); break;
+      case "dia":       vx = +x.fecha.slice(8,10); vy = +y.fecha.slice(8,10); break;
+      case "diaSemana": vx = diaSemana(x.fecha); vy = diaSemana(y.fecha); break;
+      case "moneda":    vx = x.moneda; vy = y.moneda; break;
+      default:          vx = x.fecha; vy = y.fecha;
+    }
+    if(vx < vy) return -1*asc;
+    if(vx > vy) return  1*asc;
+    return x.fecha < y.fecha ? -1 : 1;
+  });
+}
+
+/** Estadísticas por moneda; nunca se mezclan monedas distintas. */
+function estadisticas(lista){
+  const porMon = {};
+  lista.forEach(r => { (porMon[r.moneda] = porMon[r.moneda] || []).push(r); });
+  return Object.keys(porMon).sort().map(mon => {
+    const arr = porMon[mon].slice().sort((a,b) => a.fecha < b.fecha ? -1 : 1);
+    const vals = arr.map(r => r.tc);
+    const suma = vals.reduce((s,v) => s+v, 0);
+    return {
+      moneda: mon, n: arr.length,
+      primero: arr[0].fecha, ultimo: arr[arr.length-1].fecha,
+      min: Math.min.apply(null, vals), max: Math.max.apply(null, vals),
+      prom: suma / vals.length, ultimoTC: arr[arr.length-1].tc,
+      nuevos: arr.filter(r => !r.repetido).length
+    };
+  });
+}
+
+/** Texto legible del periodo consultado. */
+function textoPeriodo(){
+  const f = S.filtros;
+  if(f.fecha) return "Día " + fechaMX(f.fecha);
+  if(f.ini && f.fin) return "Del " + fechaMX(f.ini) + " al " + fechaMX(f.fin);
+  if(f.ini) return "Desde el " + fechaMX(f.ini);
+  if(f.fin) return "Hasta el " + fechaMX(f.fin);
+  if(f.mes) return MESES_LARGO[+f.mes-1];
+  return "Ejercicio completo";
+}
+/** Texto de los filtros activos, para exportaciones. */
+function textoFiltros(){
+  const f = S.filtros, p = [];
+  if(f.ejercicio) p.push("Ejercicio: " + f.ejercicio);
+  if(f.fecha)     p.push("Fecha consultada: " + fechaMX(f.fecha));
+  if(f.mes)       p.push("Mes: " + MESES_LARGO[+f.mes-1]);
+  if(f.ini)       p.push("Desde: " + fechaMX(f.ini));
+  if(f.fin)       p.push("Hasta: " + fechaMX(f.fin));
+  if(f.moneda)    p.push("Moneda: " + f.moneda);
+  if(f.texto)     p.push('Búsqueda: "' + f.texto + '"');
+  return p.length ? p.join(" · ") : "Sin filtros: ejercicio completo";
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 6. PRESENTACIÓN — indicadores, tabla y paginación
+   ------------------------------------------------------------ */
+/** T.C. de referencia para el convertidor: el de la fecha consultada,
+    o el más reciente de la consulta vigente (o de toda la serie). */
+function tcReferencia(){
+  const base = S.resultados.length ? S.resultados : S.registros;
+  if(base.length === 0) return null;
+  const est = estadisticas(base);
+  return { tc: est[0].ultimoTC, fecha: est[0].ultimo, moneda: est[0].moneda };
+}
+
+function pintarConvertidor(){
+  const res = $("#convRes"), nota = $("#convNota");
+  if(!res) return;
+  const ref = tcReferencia();
+  if(!ref){ res.textContent = ""; nota.textContent = ""; return; }
+  const monto = aNumero($("#convMonto").value);
+  const dir = $("#convDir").value;
+  const fmtM = (n, mon) => "$" + n.toLocaleString("es-MX", { minimumFractionDigits:2, maximumFractionDigits:2 }) + " " + mon;
+  if(monto === null || monto <= 0){
+    res.textContent = "";
+    nota.textContent = "Capture un monto; se convierte con el T.C. $" + fmtTC(ref.tc) + " del " + fechaMX(ref.fecha) + ".";
+    return;
+  }
+  if(dir === "usd"){
+    res.textContent = fmtM(monto, "USD") + " = " + fmtM(monto * ref.tc, "MXN");
+  }else{
+    res.textContent = fmtM(monto, "MXN") + " = " + fmtM(monto / ref.tc, "USD");
+  }
+  nota.textContent = "Con el T.C. $" + fmtTC(ref.tc) + " del " + fechaMX(ref.fecha)
+    + ". Cálculo informativo con el tipo de cambio del archivo; verifique el aplicable a su operación.";
+}
+
+/** Muestra u oculta la tabla de resultados y sincroniza el botón. */
+function fijarTablaVisible(visible){
+  $("#zonaResultados").classList.toggle("oculto", !visible);
+  const b = $("#btnToggleTabla");
+  b.textContent = visible ? "Ocultar tabla ▴" : "Mostrar tabla ▾";
+  b.setAttribute("aria-expanded", String(visible));
+}
+
+function pintarConsulta(){
+  pintarKPIs();
+  pintarTablaConsulta();
+  pintarGrafica();
+  pintarCierres();
+  pintarKPIsExporta();
+  pintarConvertidor();
+  $("#pillTotal").textContent = S.resultados.length.toLocaleString("es-MX") + " registro" + (S.resultados.length === 1 ? "" : "s");
+
+  /* Despliegue automático: al consultar activamente un mes o un periodo la tabla
+     se abre sola; con una fecha única (la tarjeta ya responde) o sin filtros
+     (vista inicial del ejercicio) permanece oculta. El botón manual siempre manda después. */
+  const f = S.filtros;
+  if(f.fecha) fijarTablaVisible(false);
+  else if(f.mes || f.ini || f.fin) fijarTablaVisible(true);
+}
+
+function pintarKPIs(){
+  const cont = $("#kpis");
+  const est  = estadisticas(S.resultados);
+  if(est.length === 0){
+    cont.innerHTML = '<div class="kpi k-err" style="grid-column:1/-1"><p class="et">Sin resultados</p>'
+      + '<p class="vl txt">La consulta no arrojó registros</p>'
+      + '<p class="nt">Ajuste o limpie los filtros para volver a mostrar información.</p></div>';
+    return;
+  }
+
+  /* Vista de UNA fecha: la respuesta es un número, no un tablero.
+     Una sola tarjeta protagonista con la variación contra el día anterior. */
+  if(S.filtros.fecha && S.resultados.length === est.length){
+    cont.innerHTML = S.resultados.map(r => {
+      let prev = null;
+      const lista = S.registros.filter(x => x.moneda === r.moneda);
+      const i = lista.findIndex(x => x.fecha === r.fecha);
+      if(i > 0) prev = lista[i-1].tc;
+      let varTxt = "";
+      if(prev !== null){
+        const dif = r4(r.tc - prev);
+        if(dif > 0)      varTxt = '<span class="variacion t-sube">▲ subió ' + fmtTC(dif) + ' vs el día anterior</span>';
+        else if(dif < 0) varTxt = '<span class="variacion t-baja">▼ bajó ' + fmtTC(Math.abs(dif)) + ' vs el día anterior</span>';
+        else             varTxt = '<span class="variacion t-igual">= sin cambio vs el día anterior</span>';
+      }
+      const monTxt = est.length > 1 ? " · " + esc(r.moneda) : "";
+      return '<div class="kpi kpi-dia k-azul">'
+        + '<span class="fecha-grande">' + DIAS_SEMANA[diaSemana(r.fecha)] + " " + fechaMX(r.fecha) + monTxt + '</span>'
+        + '<span class="tc-grande">$' + fmtTC(r.tc) + ' <small>pesos por dólar</small></span>'
+        + varTxt
+        + '</div>';
+    }).join("");
+    return;
+  }
+
+  /* Vista de mes, periodo o ejercicio: cinco esenciales por moneda.
+     Sin ningún filtro activo (vista inicial), la pregunta número uno del
+     empresario se responde a cero clics: el T.C. más reciente en grande. */
+  let html = "";
+  const sinFiltros = !S.filtros.fecha && !S.filtros.mes && !S.filtros.ini && !S.filtros.fin && !S.filtros.texto;
+  if(sinFiltros){
+    est.forEach(e => {
+      const lista = S.registros.filter(x => x.moneda === e.moneda);
+      const i = lista.findIndex(x => x.fecha === e.ultimo);
+      const prev = i > 0 ? lista[i-1].tc : null;
+      let varTxt = "";
+      if(prev !== null){
+        const dif = r4(e.ultimoTC - prev);
+        if(dif > 0)      varTxt = '<span class="variacion t-sube">▲ subió ' + fmtTC(dif) + ' vs el día anterior</span>';
+        else if(dif < 0) varTxt = '<span class="variacion t-baja">▼ bajó ' + fmtTC(Math.abs(dif)) + ' vs el día anterior</span>';
+        else             varTxt = '<span class="variacion t-igual">= sin cambio vs el día anterior</span>';
+      }
+      const monTxt = est.length > 1 ? " · " + esc(e.moneda) : "";
+      html += '<div class="kpi kpi-dia k-ambar">'
+        + '<span class="fecha-grande">T.C. más reciente — ' + DIAS_SEMANA[diaSemana(e.ultimo)] + " " + fechaMX(e.ultimo) + monTxt + '</span>'
+        + '<span class="tc-grande">$' + fmtTC(e.ultimoTC) + ' <small>pesos por dólar</small></span>'
+        + varTxt
+        + '</div>';
+    });
+  }
+  est.forEach(e => {
+    const suf = est.length > 1 ? " · " + e.moneda : "";
+    html += tarjeta("Periodo consultado" + suf, textoPeriodo(),
+                    "con datos del " + fechaMX(e.primero) + " al " + fechaMX(e.ultimo), "k-azul", true);
+    html += tarjeta("Tipo de cambio mínimo" + suf, fmtTC(e.min), "pesos por dólar", "k-ok");
+    html += tarjeta("Tipo de cambio máximo" + suf, fmtTC(e.max), "pesos por dólar", "k-err");
+    html += tarjeta("Promedio del periodo" + suf, fmtTC(e.prom), "pesos por dólar", "");
+    html += tarjeta("Último T.C. disponible" + suf, fmtTC(e.ultimoTC), "al " + fechaMX(e.ultimo), "k-ambar");
+  });
+  cont.innerHTML = html;
+}
+
+function tarjeta(et, vl, nt, cls, esTexto){
+  return '<div class="kpi ' + (cls||"") + '">'
+    + '<p class="et">' + esc(et) + '</p>'
+    + '<p class="vl' + (esTexto ? " txt" : "") + '">' + esc(vl) + '</p>'
+    + (nt ? '<p class="nt">' + esc(nt) + '</p>' : "")
+    + '</div>';
+}
+
+function pintarTablaConsulta(){
+  const tb = $("#cuerpoConsulta");
+  const total = S.resultados.length;
+  if(total === 0){
+    tb.innerHTML = '<tr><td colspan="7" class="vacio">No se encontraron registros con los filtros aplicados. Pulse «Limpiar filtros» para ver todo el ejercicio.</td></tr>';
+    $("#pgBtns").innerHTML = ""; $("#rangoPg").textContent = "";
+    return;
+  }
+  const pp   = S.porPagina === "todos" ? total : S.porPagina;
+  const tot  = Math.max(1, Math.ceil(total / pp));
+  if(S.pagina > tot) S.pagina = tot;
+  const ini  = (S.pagina - 1) * pp;
+  const pag  = S.resultados.slice(ini, ini + pp);
+
+  // La variación se calcula contra el día inmediato anterior de la misma moneda en la serie completa.
+  const idx = {};
+  S.registros.forEach((r,i) => { idx[clave(r)] = i; });
+
+  tb.innerHTML = pag.map(r => {
+    const [a,m,d] = r.fecha.split("-").map(Number);
+    const ds = diaSemana(r.fecha);
+    // valor previo dentro de la serie completa
+    let prev = null;
+    const i = idx[clave(r)];
+    for(let k = i-1; k >= 0; k--){
+      if(S.registros[k].moneda === r.moneda){ prev = S.registros[k].tc; break; }
+    }
+    let varHtml = '<span class="t-igual">—</span>';
+    if(prev !== null){
+      const dif = r4(r.tc - prev);
+      if(dif > 0)      varHtml = '<span class="t-sube">▲ +' + fmtTC(dif) + "</span>";
+      else if(dif < 0) varHtml = '<span class="t-baja">▼ ' + fmtTC(dif) + "</span>";
+      else             varHtml = '<span class="t-igual">= 0.0000</span>';
+    }
+    return "<tr>"
+      + '<td class="num">' + fechaMX(r.fecha) + "</td>"
+      + "<td>" + DIAS_SEMANA[ds] + "</td>"
+      + "<td>" + MESES_LARGO[m-1] + "</td>"
+      + '<td class="num">' + d + "</td>"
+      + "<td>" + esc(r.moneda) + "</td>"
+      + '<td class="tc">' + fmtTC(r.tc) + "</td>"
+      + '<td class="num">' + varHtml + "</td>"
+      + "</tr>";
+  }).join("");
+
+  $("#rangoPg").textContent = "Mostrando " + (ini+1).toLocaleString("es-MX") + " a "
+    + Math.min(ini+pp, total).toLocaleString("es-MX") + " de " + total.toLocaleString("es-MX");
+  pintarPaginacion("#pgBtns", S.pagina, tot, (p) => { S.pagina = p; pintarTablaConsulta(); });
+}
+
+function pintarPaginacion(sel, actual, total, cb){
+  const cont = $(sel);
+  if(total <= 1){ cont.innerHTML = ""; return; }
+  const nums = [];
+  const push = (n) => { if(!nums.includes(n) && n >= 1 && n <= total) nums.push(n); };
+  push(1); push(2);
+  for(let i = actual-1; i <= actual+1; i++) push(i);
+  push(total-1); push(total);
+  nums.sort((a,b) => a-b);
+  let html = '<button data-pg="' + (actual-1) + '"' + (actual===1?" disabled":"") + ' aria-label="Página anterior">‹</button>';
+  let ult = 0;
+  nums.forEach(n => {
+    if(n - ult > 1) html += '<span style="padding:0 .2rem;color:var(--tinta-400)">…</span>';
+    html += '<button data-pg="' + n + '"' + (n===actual?' aria-current="page"':"") + ">" + n + "</button>";
+    ult = n;
+  });
+  html += '<button data-pg="' + (actual+1) + '"' + (actual===total?" disabled":"") + ' aria-label="Página siguiente">›</button>';
+  cont.innerHTML = html;
+  cont.querySelectorAll("button[data-pg]").forEach(b => {
+    b.onclick = () => { const p = +b.dataset.pg; if(p >= 1 && p <= total) cb(p); };
+  });
+}
+
+function pintarCierres(){
+  const ultimoPorMes = {};
+  S.registros.filter(r => r.moneda === ORIGEN.moneda).forEach(r => {
+    ultimoPorMes[+r.fecha.slice(5,7)] = r.tc;
+  });
+  const tb = $("#cuerpoCierres");
+  /* Las columnas de validación cruzada son control interno del despacho:
+     solo se muestran con el modo edición activo. El lector ve Mes y T.C. */
+  const conValida = edicionActiva();
+  $$("#tablaCierres .col-valida").forEach(th => th.classList.toggle("oculto", !conValida));
+  const nCols = conValida ? 5 : 2;
+  if(S.cierres.length === 0){
+    tb.innerHTML = '<tr><td colspan="' + nCols + '" class="vacio">No hay cierres mensuales capturados.</td></tr>';
+  }else{
+    tb.innerHTML = S.cierres.map(c => {
+      const ud  = ultimoPorMes[c.mes];
+      const dif = (ud === undefined) ? null : r4(c.tc - ud);
+      const ok  = dif !== null && Math.abs(dif) < 1e-9;
+      const val = ud === undefined
+        ? '<span class="et-tag t-rep">Sin serie diaria</span>'
+        : (ok ? '<span class="et-tag t-nuevo">Coincide</span>'
+              : '<span class="et-tag t-rep">Difiere</span>');
+      let fila = "<tr><td><strong>" + MESES_LARGO[c.mes-1] + "</strong></td>"
+        + '<td class="tc">' + fmtTC(c.tc) + "</td>";
+      if(conValida){
+        fila += '<td class="tc" style="font-weight:400">' + (ud === undefined ? "—" : fmtTC(ud)) + "</td>"
+          + '<td class="num">' + (dif === null ? "—" : fmtTC(dif)) + "</td>"
+          + '<td class="centro">' + val + "</td>";
+      }
+      return fila + "</tr>";
+    }).join("");
+  }
+  // tabla editable
+  const tbe = $("#cuerpoCierresEd");
+  if(tbe){
+    tbe.innerHTML = S.cierres.length === 0
+      ? '<tr><td colspan="3" class="vacio">Sin cierres capturados.</td></tr>'
+      : S.cierres.map(c =>
+          "<tr><td><strong>" + MESES_LARGO[c.mes-1] + "</strong></td>"
+          + '<td class="tc">' + fmtTC(c.tc) + "</td>"
+          + '<td class="centro no-imp">'
+          + '<button class="btn btn-secundario btn-mini" data-edc="' + c.mes + '">Editar</button> '
+          + '<button class="btn btn-peligro btn-mini" data-delc="' + c.mes + '">Eliminar</button></td></tr>'
+        ).join("");
+    tbe.querySelectorAll("[data-edc]").forEach(b => b.onclick = () => editarCierre(+b.dataset.edc));
+    tbe.querySelectorAll("[data-delc]").forEach(b => b.onclick = () => eliminarCierre(+b.dataset.delc));
+  }
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 7. GRÁFICA (Chart.js)
+   ------------------------------------------------------------ */
+const COLORES = ["#00B8D9","#1B4A78","#F5A623","#2E8B67","#7AA7FF","#B3261E","#8A5A00","#26639D"];
+
+function pintarGrafica(){
+  if(!hayLib("chart")){
+    /* La biblioteca puede estar aún descargándose (o cargando desde el CDN de
+       respaldo). Se conserva el lienzo y se reintenta cuando termine la carga;
+       si a los 8 segundos sigue sin llegar, el aviso escala a advertencia. */
+    aviso("#avisoGrafica", "Cargando la gráfica…", "a-info");
+    return;
+  }
+  aviso("#avisoGrafica", "", "");
+  const ctx = $("#grafica");
+  if(!ctx) return;
+  if(S.grafica){ S.grafica.destroy(); S.grafica = null; }
+
+  let labels = [], datasets = [];
+
+  if(S.tipoGrafica === "cierre"){
+    labels = S.cierres.map(c => MESES_CORTO[c.mes-1]);
+    datasets = [{
+      label: "T.C. al cierre de mes · " + ORIGEN.moneda,
+      data: S.cierres.map(c => c.tc),
+      borderColor: COLORES[1], backgroundColor: "rgba(27,74,120,.18)",
+      borderWidth: 2.5, pointRadius: 5, pointHoverRadius: 8, tension: .18, fill: true
+    }];
+  }else{
+    const porMon = {};
+    S.resultados.forEach(r => { (porMon[r.moneda] = porMon[r.moneda] || []).push(r); });
+    const fechas = Array.from(new Set(S.resultados.map(r => r.fecha))).sort();
+    labels = fechas.map(fechaMX);
+    datasets = Object.keys(porMon).sort().map((mon,i) => {
+      const mapa = {};
+      porMon[mon].forEach(r => { mapa[r.fecha] = r.tc; });
+      return {
+        label: mon,
+        data: fechas.map(f => mapa[f] !== undefined ? mapa[f] : null),
+        borderColor: COLORES[i % COLORES.length],
+        backgroundColor: (S.tipoGrafica === "area")
+          ? COLORES[i % COLORES.length] + "33" : "transparent",
+        borderWidth: 2.2,
+        pointRadius: fechas.length > 90 ? 0 : (fechas.length > 45 ? 1.6 : 3),
+        pointHoverRadius: 7, tension: .16, spanGaps: true,
+        fill: S.tipoGrafica === "area"
+      };
+    });
+  }
+
+  /* Plugin: marca de agua discreta dentro del área de la gráfica.
+     Queda incluida también en el PNG que se descarga. */
+  const pluginMarcaAgua = {
+    id: "marcaAguaDSV",
+    afterDraw(chart){
+      const g = chart.ctx, area = chart.chartArea;
+      if(!area) return;
+      g.save();
+      g.translate((area.left + area.right) / 2, (area.top + area.bottom) / 2);
+      g.rotate(-0.35);
+      g.font = "600 " + Math.max(16, Math.round(area.width / 16)) + "px 'Source Serif 4', Georgia, serif";
+      g.fillStyle = "rgba(10,37,64,0.07)";
+      g.textAlign = "center"; g.textBaseline = "middle";
+      g.fillText(MARCA_AGUA, 0, 0);
+      g.restore();
+    }
+  };
+
+  S.grafica = new Chart(ctx, {
+    type: "line",
+    plugins: [pluginMarcaAgua],
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        title: {
+          display: true,
+          text: "2026 Equivalencias Dlls — evolución del tipo de cambio",
+          font: { family: "'Source Serif 4', Georgia, serif", size: 16, weight: "700" },
+          color: "#0A2540", padding: { bottom: 4 }
+        },
+        subtitle: {
+          display: true, text: textoPeriodo() + " · " + S.resultados.length + " registros",
+          font: { family: "'IBM Plex Sans', sans-serif", size: 12 },
+          color: "#545C68", padding: { bottom: 10 }
+        },
+        legend: {
+          display: true, position: "top",
+          labels: { font: { family: "'IBM Plex Sans', sans-serif", size: 12 }, color: "#2B3138", usePointStyle: true, boxWidth: 10 }
+        },
+        tooltip: {
+          backgroundColor: "#0A2540", titleFont: { family: "'IBM Plex Sans', sans-serif", size: 13 },
+          bodyFont: { family: "'IBM Plex Mono', monospace", size: 13 },
+          padding: 11, cornerRadius: 8, displayColors: true,
+          callbacks: {
+            label: (c) => "  " + c.dataset.label + ": $ " + fmtTC(c.parsed.y) + " MXN"
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: S.tipoGrafica === "cierre" ? "Mes" : "Fecha (dd/mm/aaaa)",
+                   font: { family: "'IBM Plex Sans', sans-serif", size: 12, weight: "600" }, color: "#545C68" },
+          ticks: { maxRotation: 60, minRotation: 0, autoSkip: true, maxTicksLimit: 14,
+                   font: { family: "'IBM Plex Mono', monospace", size: 10 }, color: "#616977" },
+          grid: { color: "rgba(227,225,222,.7)" }
+        },
+        y: {
+          title: { display: true, text: "Pesos por dólar (MXN)",
+                   font: { family: "'IBM Plex Sans', sans-serif", size: 12, weight: "600" }, color: "#545C68" },
+          ticks: { callback: (v) => fmtTC(v), font: { family: "'IBM Plex Mono', monospace", size: 11 }, color: "#616977" },
+          grid: { color: "rgba(227,225,222,.7)" }
+        }
+      }
+    }
+  });
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 8. TABLA GENERAL Y OPERACIONES DE ALTA, CAMBIO Y BAJA
+   ------------------------------------------------------------ */
+function generalFiltrada(){
+  const txt = ($("#gBuscar") ? $("#gBuscar").value.trim().toLowerCase() : "");
+  const mes = ($("#gMes") ? $("#gMes").value : "");
+  return S.registros.filter(r => {
+    const m = +r.fecha.slice(5,7);
+    if(mes && String(m) !== mes) return false;
+    if(txt){
+      const heno = [r.fecha, fechaMX(r.fecha), r.moneda, fmtTC(r.tc), MESES_LARGO[m-1]].join(" ").toLowerCase();
+      if(!heno.includes(txt)) return false;
+    }
+    return true;
+  });
+}
+
+function pintarGeneral(){
+  let lista = generalFiltrada();
+  const c = S.gOrdenCampo, asc = S.gOrdenAsc ? 1 : -1;
+  lista.sort((x,y) => {
+    let vx, vy;
+    switch(c){
+      case "tc":     vx = x.tc; vy = y.tc; break;
+      case "mes":    vx = +x.fecha.slice(5,7); vy = +y.fecha.slice(5,7); break;
+      case "dia":    vx = +x.fecha.slice(8,10); vy = +y.fecha.slice(8,10); break;
+      case "moneda": vx = x.moneda; vy = y.moneda; break;
+      default:       vx = x.fecha; vy = y.fecha;
+    }
+    if(vx < vy) return -1*asc;
+    if(vx > vy) return  1*asc;
+    return 0;
+  });
+
+  $("#pillGeneral").textContent = S.registros.length.toLocaleString("es-MX") + " registros en total";
+  const tb = $("#cuerpoGeneral"), total = lista.length;
+  if(total === 0){
+    tb.innerHTML = '<tr><td colspan="7" class="vacio">No hay registros que mostrar.</td></tr>';
+    $("#gPgBtns").innerHTML = ""; $("#gRangoPg").textContent = "";
+    return;
+  }
+  const pp  = S.gPorPagina === "todos" ? total : S.gPorPagina;
+  const tot = Math.max(1, Math.ceil(total / pp));
+  if(S.gPagina > tot) S.gPagina = tot;
+  const ini = (S.gPagina - 1) * pp;
+
+  tb.innerHTML = lista.slice(ini, ini+pp).map(r => {
+    const m = +r.fecha.slice(5,7), d = +r.fecha.slice(8,10);
+    const tag = r.repetido
+      ? '<span class="et-tag t-rep">Repite anterior</span>'
+      : '<span class="et-tag t-nuevo">Publicación nueva</span>';
+    const k = esc(clave(r));
+    return "<tr>"
+      + '<td class="num">' + fechaMX(r.fecha) + "</td>"
+      + "<td>" + MESES_LARGO[m-1] + "</td>"
+      + '<td class="num">' + d + "</td>"
+      + "<td>" + esc(r.moneda) + "</td>"
+      + '<td class="tc">' + fmtTC(r.tc) + "</td>"
+      + '<td class="centro">' + tag + "</td>"
+      + '<td class="centro no-imp">'
+      + '<button class="btn btn-secundario btn-mini" data-ed="' + k + '">Editar</button> '
+      + '<button class="btn btn-peligro btn-mini" data-del="' + k + '">Eliminar</button>'
+      + "</td></tr>";
+  }).join("");
+
+  tb.querySelectorAll("[data-ed]").forEach(b => b.onclick = () => abrirModalReg(b.dataset.ed));
+  tb.querySelectorAll("[data-del]").forEach(b => b.onclick = () => eliminarRegistro(b.dataset.del));
+
+  $("#gRangoPg").textContent = "Mostrando " + (ini+1).toLocaleString("es-MX") + " a "
+    + Math.min(ini+pp, total).toLocaleString("es-MX") + " de " + total.toLocaleString("es-MX");
+  pintarPaginacion("#gPgBtns", S.gPagina, tot, (p) => { S.gPagina = p; pintarGeneral(); });
+}
+
+function abrirModalReg(k){
+  aviso("#avisoModal", "", "");
+  S.edicion = k || null;
+  const dl = $("#listaMonedas");
+  dl.innerHTML = Array.from(new Set(S.registros.map(r => r.moneda)))
+    .map(m => '<option value="' + esc(m) + '">').join("");
+  if(k){
+    const r = S.registros.find(x => clave(x) === k);
+    if(!r){ toast("No se encontró el registro.", "err"); return; }
+    $("#modalRegTit").textContent = "Editar registro del " + fechaMX(r.fecha);
+    $("#mFecha").value = r.fecha; $("#mMoneda").value = r.moneda; $("#mTc").value = r.tc;
+  }else{
+    $("#modalRegTit").textContent = "Agregar registro";
+    $("#mFecha").value = ""; $("#mMoneda").value = ORIGEN.moneda; $("#mTc").value = "";
+  }
+  $("#modalReg").classList.remove("oculto");
+  setTimeout(() => $("#mFecha").focus(), 60);
+}
+
+/** Valida un registro capturado o importado. Devuelve {ok, msg, reg}. */
+function validarRegistro(fecha, moneda, tcRaw){
+  if(!fecha)  return { ok:false, msg:"La fecha es obligatoria." };
+  if(!fechaValida(fecha)) return { ok:false, msg:"La fecha <strong>" + esc(fecha) + "</strong> no existe en el calendario." };
+  const mon = String(moneda || "").trim();
+  if(!mon)    return { ok:false, msg:"La moneda o tipo de equivalencia es obligatoria." };
+  const tc = aNumero(tcRaw);
+  if(tc === null)   return { ok:false, msg:"El tipo de cambio debe ser un valor numérico." };
+  if(tc <= 0)       return { ok:false, msg:"El tipo de cambio debe ser mayor que cero. No se admiten valores negativos ni cero." };
+  if(tc >= 100)     return { ok:false, msg:"El valor <strong>" + fmtTC(tc) + "</strong> excede el rango razonable (menor a 100 pesos por dólar). Verifique la captura." };
+  return { ok:true, reg:{ fecha:fecha, moneda:mon, tc:r4(tc) } };
+}
+
+function guardarRegistro(){
+  const v = validarRegistro($("#mFecha").value, $("#mMoneda").value, $("#mTc").value);
+  if(!v.ok){ aviso("#avisoModal", v.msg, "a-err"); return; }
+  const nk = clave(v.reg);
+  const dup = S.registros.find(x => clave(x) === nk && clave(x) !== S.edicion);
+  if(dup){
+    aviso("#avisoModal", "Ya existe un registro para <strong>" + fechaMX(v.reg.fecha)
+      + "</strong> en <strong>" + esc(v.reg.moneda) + "</strong> con valor " + fmtTC(dup.tc)
+      + ". Edite ese registro o cambie la fecha.", "a-err");
+    return;
+  }
+  if(S.edicion){
+    const i = S.registros.findIndex(x => clave(x) === S.edicion);
+    if(i >= 0) S.registros[i] = v.reg; else S.registros.push(v.reg);
+    toast("Registro del " + fechaMX(v.reg.fecha) + " actualizado.", "ok");
+  }else{
+    S.registros.push(v.reg);
+    toast("Registro del " + fechaMX(v.reg.fecha) + " agregado.", "ok");
+  }
+  normalizar(); guardarLocal();
+  $("#modalReg").classList.add("oculto");
+  S.edicion = null;
+  pintarGeneral(); aplicarFiltros(); refrescarSelectores();
+}
+
+function eliminarRegistro(k){
+  const r = S.registros.find(x => clave(x) === k);
+  if(!r) return;
+  confirmar("¿Confirma eliminar el registro del <strong>" + fechaMX(r.fecha) + "</strong> ("
+    + esc(r.moneda) + ", tipo de cambio " + fmtTC(r.tc) + ")?<br><br>Esta acción no se puede deshacer.", () => {
+    S.registros = S.registros.filter(x => clave(x) !== k);
+    normalizar(); guardarLocal();
+    toast("Registro eliminado.", "ok");
+    pintarGeneral(); aplicarFiltros(); refrescarSelectores();
+  });
+}
+
+function editarCierre(mes){
+  const c = S.cierres.find(x => x.mes === mes);
+  const actual = c ? fmtTC(c.tc) : "";
+  const v = window.prompt("Tipo de cambio al cierre de " + MESES_LARGO[mes-1] + " (cuatro decimales):", actual);
+  if(v === null) return;
+  const val = validarRegistro("2026-01-01", ORIGEN.moneda, v);
+  if(!val.ok){ toast("Valor no válido: se requiere un número mayor que cero y menor que 100.", "err"); return; }
+  if(c) c.tc = val.reg.tc;
+  else  S.cierres.push({ mes:mes, moneda:ORIGEN.moneda, tc:val.reg.tc });
+  normalizar(); guardarLocal(); pintarCierres();
+  toast("Cierre de " + MESES_LARGO[mes-1] + " guardado.", "ok");
+}
+
+function eliminarCierre(mes){
+  confirmar("¿Confirma eliminar el cierre de <strong>" + MESES_LARGO[mes-1] + "</strong>?", () => {
+    S.cierres = S.cierres.filter(x => x.mes !== mes);
+    guardarLocal(); pintarCierres();
+    toast("Cierre eliminado.", "ok");
+  });
+}
+
+function nuevoCierre(){
+  const m = window.prompt("Número de mes (1 a 12):", "");
+  if(m === null) return;
+  const mes = parseInt(m, 10);
+  if(!(mes >= 1 && mes <= 12)){ toast("El mes debe estar entre 1 y 12.", "err"); return; }
+  editarCierre(mes);
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 9. IMPORTACIÓN DE ARCHIVOS
+   Reconoce dos formatos: matriz día × mes (como el original)
+   y tabla plana con columnas de fecha y tipo de cambio.
+   ------------------------------------------------------------ */
+function leerArchivo(file){
+  aviso("#avisoImport", "", "");
+  $("#secVistaPrevia").classList.add("oculto");
+  if(!file) return;
+  if(!hayLib("xlsx") && !/\.(csv|txt)$/i.test(file.name)){
+    aviso("#avisoImport","No fue posible cargar la biblioteca de lectura de Excel (SheetJS). Verifique su conexión a internet, o exporte su archivo a CSV e impórtelo así.","a-err");
+    return;
+  }
+  const lector = new FileReader();
+  lector.onerror = () => aviso("#avisoImport","No se pudo leer el archivo seleccionado.","a-err");
+  lector.onload = (ev) => {
+    try{
+      let filas;
+      if(/\.(csv|txt)$/i.test(file.name)){
+        filas = filasDesdeCSV(String(ev.target.result));
+      }else{
+        // bookVBA:false — las macros no se cargan ni se ejecutan; solo se leen valores.
+        const wb = XLSX.read(new Uint8Array(ev.target.result), { type:"array", cellDates:false, bookVBA:false });
+        const hoja = wb.Sheets[ wb.SheetNames.find(n => n.toLowerCase().includes("resumen")) || wb.SheetNames[0] ];
+        filas = XLSX.utils.sheet_to_json(hoja, { header:1, raw:true, defval:null, blankrows:true });
+      }
+      const det = interpretar(filas);
+      if(det.registros.length === 0 && det.rechazados.length === 0){
+        aviso("#avisoImport","No se identificó ninguna estructura de datos reconocible en el archivo. Revise que contenga la matriz día × mes, o bien columnas de fecha y tipo de cambio.","a-err");
+        return;
+      }
+      analizarPrevia(det);
+    }catch(e){
+      aviso("#avisoImport","Error al procesar el archivo: " + esc(e.message), "a-err");
+    }
+  };
+  if(/\.(csv|txt)$/i.test(file.name)) lector.readAsText(file, "UTF-8");
+  else lector.readAsArrayBuffer(file);
+}
+
+/** Convierte texto CSV (coma o punto y coma) en una matriz de filas. */
+function filasDesdeCSV(txt){
+  txt = txt.replace(/^﻿/, "");
+  const lineas = txt.split(/\r\n|\n|\r/).filter(l => l.trim() !== "");
+  if(lineas.length === 0) return [];
+  const sep = (lineas[0].split(";").length > lineas[0].split(",").length) ? ";" : ",";
+  return lineas.map(l => {
+    const celdas = []; let act = "", entre = false;
+    for(let i = 0; i < l.length; i++){
+      const ch = l[i];
+      if(ch === '"'){
+        if(entre && l[i+1] === '"'){ act += '"'; i++; }
+        else entre = !entre;
+      }else if(ch === sep && !entre){ celdas.push(act); act = ""; }
+      else act += ch;
+    }
+    celdas.push(act);
+    return celdas.map(c => c.trim());
+  });
+}
+
+/** Detecta el formato de la matriz de filas y devuelve registros, cierres y rechazados. */
+function interpretar(filas){
+  const registros = [], cierres = [], rechazados = [];
+  const norm = (v) => String(v == null ? "" : v).replace(/ /g," ").trim().toLowerCase();
+
+  // --- (a) Formato matriz día × mes -----------------------------------------
+  let filaEnc = -1, colDia = -1, mapaMes = {};
+  for(let i = 0; i < Math.min(filas.length, 30); i++){
+    const f = filas[i] || [];
+    const tmp = {}; let cd = -1, hits = 0;
+    for(let j = 0; j < f.length; j++){
+      const t = norm(f[j]);
+      if(t === "día" || t === "dia"){ if(cd < 0) cd = j; continue; }
+      const k = MESES_CORTO.findIndex(m => m.toLowerCase() === t.slice(0,3));
+      if(k >= 0 && tmp[k] === undefined){ tmp[k] = j; hits++; }
+    }
+    if(cd >= 0 && hits >= 3){ filaEnc = i; colDia = cd; mapaMes = tmp; break; }
+  }
+
+  if(filaEnc >= 0){
+    // Ejercicio: se busca un número de 4 dígitos entre 2000 y 2100 en las filas previas.
+    let ejercicio = ORIGEN.ejercicio;
+    for(let i = 0; i < filaEnc; i++){
+      const f = filas[i] || [];
+      for(let j = 0; j < f.length; j++){
+        const n = parseInt(aNumero(f[j]), 10);
+        if(n >= 2000 && n <= 2100){ ejercicio = n; break; }
+      }
+    }
+    const bisiesto = (ejercicio % 4 === 0 && ejercicio % 100 !== 0) || ejercicio % 400 === 0;
+    const diasMes  = [31, bisiesto ? 29 : 28, 31,30,31,30,31,31,30,31,30,31];
+
+    for(let i = filaEnc+1; i < filas.length; i++){
+      const f = filas[i] || [];
+      const etiqueta = norm(f[colDia]);
+      // Fila de cierre mensual
+      if(etiqueta.includes("fin mes") || etiqueta.includes("fin de mes") || etiqueta.includes("t.c. fin")){
+        Object.keys(mapaMes).forEach(k => {
+          const v = aNumero(f[mapaMes[k]]);
+          if(v !== null && v > 0 && v < 100) cierres.push({ mes:(+k)+1, moneda:ORIGEN.moneda, tc:r4(v) });
+        });
+        continue;
+      }
+      const dia = parseInt(aNumero(f[colDia]), 10);
+      if(!(dia >= 1 && dia <= 31)) continue;
+      Object.keys(mapaMes).forEach(k => {
+        const mes = (+k)+1, col = mapaMes[k];
+        const bruto = f[col];
+        const v = aNumero(bruto);
+        if(v === null) return;                                   // celda vacía: se omite
+        const iso = ejercicio + "-" + String(mes).padStart(2,"0") + "-" + String(dia).padStart(2,"0");
+        if(dia > diasMes[mes-1] || !fechaValida(iso)){
+          rechazados.push({ fecha:iso, moneda:ORIGEN.moneda, tc:v, motivo:"La fecha no existe en el calendario de " + ejercicio });
+          return;
+        }
+        if(v <= 0){ rechazados.push({ fecha:iso, moneda:ORIGEN.moneda, tc:v, motivo:"Tipo de cambio menor o igual a cero" }); return; }
+        if(v >= 100){ rechazados.push({ fecha:iso, moneda:ORIGEN.moneda, tc:v, motivo:"Valor fuera del rango razonable (1 a 100)" }); return; }
+        registros.push({ fecha:iso, moneda:ORIGEN.moneda, tc:r4(v) });
+      });
+    }
+    return { formato:"matriz", registros:registros, cierres:cierres, rechazados:rechazados, ejercicio:ejercicio };
+  }
+
+  // --- (b) Formato tabla plana ----------------------------------------------
+  let fe = -1, cF = -1, cT = -1, cM = -1;
+  for(let i = 0; i < Math.min(filas.length, 30); i++){
+    const f = (filas[i] || []).map(norm);
+    const bF = f.findIndex(t => t === "fecha" || t.includes("fecha"));
+    const bT = f.findIndex(t => t.includes("tipo de cambio") || t === "tc" || t.includes("equivalencia") || t.includes("valor") || t.includes("cambio"));
+    if(bF >= 0 && bT >= 0){
+      fe = i; cF = bF; cT = bT;
+      cM = f.findIndex(t => t.includes("moneda") || t.includes("divisa") || t.includes("categor"));
+      break;
+    }
+  }
+  if(fe < 0) return { formato:"desconocido", registros:[], cierres:[], rechazados:[] };
+
+  for(let i = fe+1; i < filas.length; i++){
+    const f = filas[i] || [];
+    if(f.every(c => c === null || String(c).trim() === "")) continue;
+    const iso = aFechaISO(f[cF]);
+    const mon = (cM >= 0 && f[cM] != null && String(f[cM]).trim() !== "") ? String(f[cM]).trim() : ORIGEN.moneda;
+    const v   = aNumero(f[cT]);
+    if(!iso){ rechazados.push({ fecha:String(f[cF] == null ? "(vacía)" : f[cF]), moneda:mon, tc:v, motivo:"Fecha inválida o ilegible" }); continue; }
+    if(v === null){ rechazados.push({ fecha:iso, moneda:mon, tc:null, motivo:"Tipo de cambio vacío o no numérico" }); continue; }
+    if(v <= 0){ rechazados.push({ fecha:iso, moneda:mon, tc:v, motivo:"Tipo de cambio menor o igual a cero" }); continue; }
+    if(v >= 100){ rechazados.push({ fecha:iso, moneda:mon, tc:v, motivo:"Valor fuera del rango razonable (1 a 100)" }); continue; }
+    registros.push({ fecha:iso, moneda:mon, tc:r4(v) });
+  }
+  return { formato:"plana", registros:registros, cierres:cierres, rechazados:rechazados };
+}
+
+/** Convierte a ISO una fecha en serial de Excel, texto dd/mm/aaaa, aaaa-mm-dd u objeto Date. */
+function aFechaISO(v){
+  if(v == null || v === "") return null;
+  if(v instanceof Date && !isNaN(v))
+    return v.getFullYear() + "-" + String(v.getMonth()+1).padStart(2,"0") + "-" + String(v.getDate()).padStart(2,"0");
+  if(typeof v === "number" && v > 20000 && v < 80000){
+    // Serial de Excel con el error histórico de 1900 ya considerado.
+    const d = new Date(Date.UTC(1899,11,30) + v*86400000);
+    return d.getUTCFullYear() + "-" + String(d.getUTCMonth()+1).padStart(2,"0") + "-" + String(d.getUTCDate()).padStart(2,"0");
+  }
+  const s = String(v).trim();
+  let m = s.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+  if(m){
+    const iso = m[1] + "-" + m[2].padStart(2,"0") + "-" + m[3].padStart(2,"0");
+    return fechaValida(iso) ? iso : null;
+  }
+  m = s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})/);   // dd/mm/aaaa
+  if(m){
+    const iso = m[3] + "-" + m[2].padStart(2,"0") + "-" + m[1].padStart(2,"0");
+    return fechaValida(iso) ? iso : null;
+  }
+  return null;
+}
+
+/** Compara lo importado contra lo existente y arma la vista previa. */
+function analizarPrevia(det){
+  const modo = $("#modoImport").value;
+  const actual = {}; S.registros.forEach(r => { actual[clave(r)] = r; });
+
+  // Duplicados dentro del propio archivo: prevalece el último renglón.
+  const entrada = {}; let dupArchivo = 0;
+  det.registros.forEach(r => { if(entrada[clave(r)]) dupArchivo++; entrada[clave(r)] = r; });
+
+  const filas = [];
+  let nuevos = 0, modificados = 0, iguales = 0, eliminados = 0;
+
+  Object.keys(entrada).forEach(k => {
+    const nu = entrada[k], vi = actual[k];
+    if(!vi){
+      nuevos++; filas.push({ tipo:"nuevo", fecha:nu.fecha, moneda:nu.moneda, ant:null, nue:nu.tc, obs:"Registro no existente en la tabla general" });
+    }else if(Math.abs(vi.tc - nu.tc) > 1e-9){
+      if(modo === "nuevos"){
+        iguales++; filas.push({ tipo:"duplicado", fecha:nu.fecha, moneda:nu.moneda, ant:vi.tc, nue:nu.tc, obs:"Difiere, pero el modo elegido solo agrega nuevos: no se modificará" });
+      }else{
+        modificados++; filas.push({ tipo:"modificado", fecha:nu.fecha, moneda:nu.moneda, ant:vi.tc, nue:nu.tc, obs:"Cambia de " + fmtTC(vi.tc) + " a " + fmtTC(nu.tc) });
+      }
+    }else{
+      iguales++; filas.push({ tipo:"duplicado", fecha:nu.fecha, moneda:nu.moneda, ant:vi.tc, nue:nu.tc, obs:"Idéntico al existente: sin cambio" });
+    }
+  });
+
+  if(modo === "reemplazar"){
+    Object.keys(actual).forEach(k => {
+      if(!entrada[k]){
+        eliminados++;
+        filas.push({ tipo:"eliminado", fecha:actual[k].fecha, moneda:actual[k].moneda, ant:actual[k].tc, nue:null, obs:"No viene en el archivo: se eliminará al reemplazar todo" });
+      }
+    });
+  }
+
+  det.rechazados.forEach(r => {
+    filas.push({ tipo:"rechazado", fecha:r.fecha, moneda:r.moneda, ant:null, nue:r.tc, obs:r.motivo });
+  });
+
+  filas.sort((a,b) => String(a.fecha) < String(b.fecha) ? -1 : 1);
+
+  // Advertencia por ejercicio distinto al filtrado
+  let advertencia = "";
+  const fEj = $("#fEjercicio").value;
+  if(fEj){
+    const otros = Object.values(entrada).filter(r => r.fecha.slice(0,4) !== fEj).length;
+    if(otros > 0) advertencia = "El archivo contiene <strong>" + otros + "</strong> registro(s) de un ejercicio distinto a " + fEj + ", el cual está seleccionado en el filtro de consulta. Se importarán de todos modos, pero no aparecerán mientras ese filtro siga activo.";
+  }
+  if(dupArchivo > 0){
+    advertencia += (advertencia ? "<br>" : "") + "Se detectaron <strong>" + dupArchivo + "</strong> renglón(es) duplicado(s) dentro del propio archivo. Prevalece el último de cada clave fecha + moneda.";
+  }
+
+  S.previa = { det:det, entrada:entrada, filas:filas, modo:modo,
+               nuevos:nuevos, modificados:modificados, iguales:iguales,
+               eliminados:eliminados, rechazados:det.rechazados.length, dupArchivo:dupArchivo };
+
+  const nombreModo = modo === "nuevos" ? "Solo registros nuevos"
+                   : modo === "actualizar" ? "Nuevos y actualización de existentes"
+                   : "Reemplazo total de la información";
+  $("#pillModo").textContent = nombreModo;
+  $("#kpisPrevia").innerHTML =
+      tarjeta("Formato detectado", det.formato === "matriz" ? "Matriz día × mes" : det.formato === "plana" ? "Tabla plana" : "No reconocido", "", "k-azul", true)
+    + tarjeta("Leídos del archivo", String(Object.keys(entrada).length), "claves únicas fecha + moneda", "k-azul")
+    + tarjeta("Registros nuevos", String(nuevos), "se agregarán", nuevos ? "k-ok" : "")
+    + tarjeta("Registros modificados", String(modificados), "cambian de valor", modificados ? "k-ambar" : "")
+    + tarjeta("Duplicados sin cambio", String(iguales), "se conservan igual", "")
+    + tarjeta("Registros rechazados", String(det.rechazados.length), "no cumplen validación", det.rechazados.length ? "k-err" : "")
+    + tarjeta("Se eliminarían", String(eliminados), modo === "reemplazar" ? "por reemplazo total" : "no aplica en este modo", eliminados ? "k-err" : "")
+    + tarjeta("Cierres en el archivo", String(det.cierres.length), "T.C. fin de mes", "");
+
+  aviso("#avisoImport",
+    "Archivo procesado correctamente. Revise la vista previa y confirme para aplicar los cambios. <strong>Mientras no pulse «Aplicar los cambios», nada se modifica.</strong>",
+    "a-ok");
+  if(advertencia) $("#avisoImport").insertAdjacentHTML("beforeend",
+    '<div class="aviso a-warn"><span class="ic">!</span><span>' + advertencia + "</span></div>");
+
+  $("#secVistaPrevia").classList.remove("oculto");
+  pintarPrevia();
+  $("#secVistaPrevia").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function pintarPrevia(){
+  if(!S.previa) return;
+  const f = $("#filtroPrevia").value;
+  const lista = f ? S.previa.filas.filter(x => x.tipo === f) : S.previa.filas;
+  const et = {
+    nuevo:      '<span class="et-tag t-nuevo">Nuevo</span>',
+    modificado: '<span class="et-tag t-rep">Modificado</span>',
+    duplicado:  '<span class="et-tag" style="background:var(--info-bg);color:var(--info-tx);border-color:var(--info-bd)">Duplicado</span>',
+    rechazado:  '<span class="et-tag" style="background:var(--err-bg);color:var(--err-tx);border-color:var(--err-bd)">Rechazado</span>',
+    eliminado:  '<span class="et-tag" style="background:var(--err-bg);color:var(--err-tx);border-color:var(--err-bd)">Se eliminará</span>'
+  };
+  const tb = $("#cuerpoPrevia");
+  const MAX = 500;
+  tb.innerHTML = lista.length === 0
+    ? '<tr><td colspan="6" class="vacio">No hay renglones de este tipo.</td></tr>'
+    : lista.slice(0, MAX).map(x =>
+        "<tr><td>" + et[x.tipo] + "</td>"
+        + '<td class="num">' + (fechaValida(String(x.fecha)) ? fechaMX(x.fecha) : esc(x.fecha)) + "</td>"
+        + "<td>" + esc(x.moneda) + "</td>"
+        + '<td class="tc" style="font-weight:400">' + (x.ant === null ? "—" : fmtTC(x.ant)) + "</td>"
+        + '<td class="tc">' + (x.nue === null || x.nue === undefined ? "—" : fmtTC(x.nue)) + "</td>"
+        + "<td>" + esc(x.obs) + "</td></tr>"
+      ).join("");
+  $("#notaPrevia").textContent = lista.length > MAX
+    ? "Se muestran los primeros " + MAX + " de " + lista.length + " renglones. Todos se aplicarán al confirmar."
+    : lista.length + " renglón(es) en la vista.";
+}
+
+function aplicarImportacion(){
+  if(!S.previa){ toast("No hay ninguna importación pendiente.", "warn"); return; }
+  const p = S.previa;
+  const resumen = "Se aplicarán los siguientes cambios:<br><br>"
+    + "&bull; Nuevos: <strong>" + p.nuevos + "</strong><br>"
+    + "&bull; Modificados: <strong>" + p.modificados + "</strong><br>"
+    + "&bull; Sin cambio: <strong>" + p.iguales + "</strong><br>"
+    + "&bull; Rechazados (no se cargan): <strong>" + p.rechazados + "</strong><br>"
+    + (p.modo === "reemplazar" ? "&bull; <span style='color:#A81D14'><strong>Se eliminarán " + p.eliminados + " registro(s) existentes</strong></span><br>" : "")
+    + "<br>¿Confirma aplicar la actualización?";
+  confirmar(resumen, () => {
+    const entrada = p.entrada;
+    if(p.modo === "reemplazar"){
+      S.registros = Object.values(entrada).map(r => ({ fecha:r.fecha, moneda:r.moneda, tc:r.tc }));
+      if(p.det.cierres.length) S.cierres = p.det.cierres.slice();
+    }else{
+      const mapa = {}; S.registros.forEach(r => { mapa[clave(r)] = r; });
+      Object.keys(entrada).forEach(k => {
+        const nu = entrada[k];
+        if(!mapa[k]) S.registros.push({ fecha:nu.fecha, moneda:nu.moneda, tc:nu.tc });
+        else if(p.modo === "actualizar") mapa[k].tc = nu.tc;
+      });
+      p.det.cierres.forEach(c => {
+        const ex = S.cierres.find(x => x.mes === c.mes);
+        if(!ex) S.cierres.push(c);
+        else if(p.modo === "actualizar") ex.tc = c.tc;
+      });
+    }
+    normalizar(); guardarLocal();
+    toast("Actualización aplicada. Total de registros: " + S.registros.length + ".", "ok");
+    S.previa = null;
+    $("#secVistaPrevia").classList.add("oculto");
+    $("#inputArchivo").value = "";
+    aviso("#avisoImport","Los cambios se aplicaron y quedaron guardados en este navegador.","a-ok");
+    refrescarSelectores(); aplicarFiltros(); pintarGeneral(); actualizarAyuda();
+  });
+}
+
+function cancelarImportacion(){
+  S.previa = null;
+  $("#secVistaPrevia").classList.add("oculto");
+  $("#inputArchivo").value = "";
+  aviso("#avisoImport","Actualización cancelada. No se modificó ningún dato.","a-info");
+  toast("Actualización cancelada.", "info");
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 10. EXPORTACIÓN — Excel, PDF y CSV
+   ------------------------------------------------------------ */
+const NOMBRE_BASE = "2026_Equivalencias_Dlls_Consulta";
+
+/** Encabezados originales usados en todas las exportaciones. */
+const ENCABEZADOS = ["Fecha","Día","Mes","Día del mes","Moneda","Tipo de cambio","Publicación"];
+
+function filasExport(lista){
+  return lista.map(r => {
+    const m = +r.fecha.slice(5,7), d = +r.fecha.slice(8,10);
+    return [ r.fecha, DIAS_SEMANA[diaSemana(r.fecha)], MESES_LARGO[m-1], d, r.moneda, r.tc,
+             r.repetido ? "Repite anterior" : "Publicación nueva" ];
+  });
+}
+
+function pintarKPIsExporta(){
+  const c = $("#kpisExporta");
+  if(!c) return;
+  const est = estadisticas(S.resultados);
+  c.innerHTML = tarjeta("Registros a exportar", S.resultados.length.toLocaleString("es-MX"), "según los filtros vigentes", "k-azul")
+    + tarjeta("Periodo", textoPeriodo(), "", "k-azul", true)
+    + tarjeta("Filtros aplicados", textoFiltros(), "", "", true)
+    + (est.length ? tarjeta("Promedio", fmtTC(est[0].prom), est[0].moneda, "k-ambar") : "");
+}
+
+/* ---------- Excel ---------- */
+function exportarXlsx(lista, nombre, incluirMatriz){
+  if(!hayLib("xlsx")){ toast("La biblioteca de Excel no está disponible. Verifique su conexión.", "err"); return; }
+  if(lista.length === 0){ toast("No hay registros que exportar.", "warn"); return; }
+
+  const wb  = XLSX.utils.book_new();
+  const est = estadisticas(lista);
+
+  /* Hoja Resumen */
+  const res = [
+    ["2026 Equivalencias Dlls"],
+    ["Consulta de equivalencias y tipos de cambio"],
+    ["C.P. Daniel Souza Vázquez · DSouza Consultores"],
+    ["Elaborado por " + MARCA_AGUA + " · Asesoría Fiscal y Capacitación"],
+    [],
+    ["Generado el", new Date().toLocaleString("es-MX")],
+    ["Archivo de origen", ORIGEN.archivo],
+    ["Nota del original", ORIGEN.nota],
+    ["Filtros aplicados", textoFiltros()],
+    ["Periodo consultado", textoPeriodo()],
+    [],
+    ["Moneda","Registros","Primer día","Último día","Mínimo","Máximo","Promedio","Último T.C.","Publicaciones nuevas"]
+  ];
+  est.forEach(e => res.push([ e.moneda, e.n, serialExcel(e.primero), serialExcel(e.ultimo),
+                              r4(e.min), r4(e.max), r4(e.prom), r4(e.ultimoTC), e.nuevos ]));
+  res.push([]);
+  res.push(["Tipo de cambio al cierre de mes"]);
+  res.push(["Mes","T.C. Fin mes"]);
+  S.cierres.forEach(c => res.push([ MESES_LARGO[c.mes-1], r4(c.tc) ]));
+
+  const wsR = XLSX.utils.aoa_to_sheet(res);
+  wsR["!cols"] = [{wch:26},{wch:18},{wch:14},{wch:14},{wch:12},{wch:12},{wch:12},{wch:12},{wch:20}];
+  // Las columnas C y D del bloque estadístico llevan formato de fecha.
+  for(let R = 12; R < 12 + est.length; R++){
+    ["C","D"].forEach(col => { const c = wsR[col + (R+1)]; if(c){ c.t = "n"; c.z = "dd/mm/yyyy"; } });
+    ["E","F","G","H"].forEach(col => { const c = wsR[col + (R+1)]; if(c){ c.t = "n"; c.z = "0.0000"; } });
+  }
+  XLSX.utils.book_append_sheet(wb, wsR, "Resumen");
+
+  /* Hoja Detalle: fechas como fechas, tipo de cambio como número */
+  const det = [ENCABEZADOS].concat(filasExport(lista).map(f => {
+    const c = f.slice(); c[0] = serialExcel(f[0]); return c;
+  }));
+  const wsD = XLSX.utils.aoa_to_sheet(det);
+  wsD["!cols"] = [{wch:12},{wch:11},{wch:12},{wch:12},{wch:12},{wch:15},{wch:19}];
+  const rango = XLSX.utils.decode_range(wsD["!ref"]);
+  for(let R = 1; R <= rango.e.r; R++){
+    const cf = XLSX.utils.encode_cell({ r:R, c:0 });
+    if(wsD[cf]){ wsD[cf].t = "n"; wsD[cf].z = "dd/mm/yyyy"; }
+    const ct = XLSX.utils.encode_cell({ r:R, c:5 });
+    if(wsD[ct]){ wsD[ct].t = "n"; wsD[ct].z = "0.0000"; }
+  }
+  wsD["!autofilter"] = { ref: wsD["!ref"] };
+  XLSX.utils.book_append_sheet(wb, wsD, "Detalle");
+
+  /* Hoja Cierres */
+  const cie = [["Mes","Número de mes","T.C. Fin mes","Último día con dato","Diferencia"]];
+  const ultimoPorMes = {};
+  S.registros.filter(r => r.moneda === ORIGEN.moneda).forEach(r => { ultimoPorMes[+r.fecha.slice(5,7)] = r.tc; });
+  S.cierres.forEach(c => {
+    const ud = ultimoPorMes[c.mes];
+    cie.push([ MESES_LARGO[c.mes-1], c.mes, r4(c.tc),
+               ud === undefined ? "" : r4(ud),
+               ud === undefined ? "" : r4(c.tc - ud) ]);
+  });
+  const wsC = XLSX.utils.aoa_to_sheet(cie);
+  wsC["!cols"] = [{wch:14},{wch:15},{wch:14},{wch:20},{wch:12}];
+  XLSX.utils.book_append_sheet(wb, wsC, "Cierres");
+
+  /* Hoja Matriz opcional: réplica de la disposición del archivo original */
+  if(incluirMatriz){
+    const mat = [
+      ["C.P. Daniel Souza Vázquez"], ["DSouza Consultores"],
+      ["Tipo de Cambio Aplicable a 2026"], ["Equivalencia del Dólar (USD)"], [],
+      [ORIGEN.nota], [ORIGEN.ejercicio],
+      ["Día"].concat(MESES_CORTO).concat(["Día"])
+    ];
+    const mapa = {};
+    lista.filter(r => r.moneda === ORIGEN.moneda).forEach(r => { mapa[r.fecha] = r.tc; });
+    for(let d = 1; d <= 31; d++){
+      const fila = [d];
+      for(let m = 1; m <= 12; m++){
+        const iso = ORIGEN.ejercicio + "-" + String(m).padStart(2,"0") + "-" + String(d).padStart(2,"0");
+        fila.push(mapa[iso] !== undefined ? r4(mapa[iso]) : null);
+      }
+      fila.push(d);
+      mat.push(fila);
+    }
+    const fin = ["T.C. Fin mes"];
+    for(let m = 1; m <= 12; m++){ const c = S.cierres.find(x => x.mes === m); fin.push(c ? r4(c.tc) : null); }
+    mat.push(fin);
+    mat.push(["Día"].concat(MESES_CORTO).concat(["Día"]));
+    const wsM = XLSX.utils.aoa_to_sheet(mat);
+    wsM["!cols"] = [{wch:12}].concat(MESES_CORTO.map(() => ({wch:11}))).concat([{wch:12}]);
+    XLSX.utils.book_append_sheet(wb, wsM, "Matriz día x mes");
+  }
+
+  XLSX.writeFile(wb, nombre);
+  toast("Archivo Excel generado: " + nombre, "ok");
+}
+
+/* ---------- PDF ---------- */
+/** Puente hacia jsPDF-AutoTable. La versión 3.x añade doc.autoTable();
+    la 5.x expone autoTable(doc, opciones). Se admiten ambas. */
+function tablaPdf(doc, opciones){
+  if(typeof doc.autoTable === "function") return doc.autoTable(opciones);
+  if(window.jspdf && typeof window.jspdf.autoTable === "function") return window.jspdf.autoTable(doc, opciones);
+  if(typeof window.autoTable === "function") return window.autoTable(doc, opciones);
+  throw new Error("El complemento AutoTable de jsPDF no está disponible.");
+}
+
+function exportarPdf(){
+  if(!hayLib("pdf")){ toast("La biblioteca de PDF no está disponible. Verifique su conexión.", "err"); return; }
+  if(S.resultados.length === 0){ toast("No hay registros que exportar.", "warn"); return; }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:"landscape", unit:"mm", format:"a4" });
+  const anchoPag = doc.internal.pageSize.getWidth();
+  const est = estadisticas(S.resultados);
+  const ahora = new Date().toLocaleString("es-MX");
+
+  /* Encabezado */
+  doc.setFillColor(10,37,64); doc.rect(0,0,anchoPag,24,"F");
+  doc.setTextColor(255,255,255);
+  doc.setFont("helvetica","bold");  doc.setFontSize(16);
+  doc.text("2026 Equivalencias Dlls", 14, 11);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
+  doc.text("Consulta de equivalencias y tipos de cambio", 14, 17.5);
+  doc.setFontSize(8.5);
+  doc.text("C.P. Daniel Souza Vázquez · DSouza Consultores", anchoPag-14, 11, { align:"right" });
+  doc.text("Generado: " + ahora, anchoPag-14, 17.5, { align:"right" });
+
+  let y = 31;
+  doc.setTextColor(43,49,56); doc.setFontSize(8.6);
+  const nota = doc.splitTextToSize("Nota del documento original: " + ORIGEN.nota, anchoPag-28);
+  doc.text(nota, 14, y); y += nota.length*3.7 + 2.5;
+
+  doc.setFont("helvetica","bold"); doc.setFontSize(9.5);
+  doc.text("Filtros aplicados:", 14, y);
+  doc.setFont("helvetica","normal");
+  const filt = doc.splitTextToSize(textoFiltros(), anchoPag-52);
+  doc.text(filt, 46, y); y += Math.max(filt.length*4, 4) + 3;
+
+  /* Resumen estadístico */
+  if(est.length){
+    tablaPdf(doc, {
+      startY: y,
+      head: [["Moneda","Registros","Primer día","Último día","Mínimo","Máximo","Promedio","Último T.C."]],
+      body: est.map(e => [ e.moneda, e.n, fechaMX(e.primero), fechaMX(e.ultimo),
+                           fmtTC(e.min), fmtTC(e.max), fmtTC(e.prom), fmtTC(e.ultimoTC) ]),
+      theme: "grid", margin: { left:14, right:14 },
+      styles: { fontSize:8.4, cellPadding:1.9, textColor:[43,49,56] },
+      headStyles: { fillColor:[27,74,120], textColor:255, fontStyle:"bold", fontSize:8.4 },
+      columnStyles: { 1:{halign:"right"}, 4:{halign:"right"}, 5:{halign:"right"}, 6:{halign:"right"}, 7:{halign:"right"} }
+    });
+    y = (doc.lastAutoTable || {}).finalY ? doc.lastAutoTable.finalY + 5 : y + 8 + est.length*7;
+  }
+
+  /* Tabla de resultados */
+  tablaPdf(doc, {
+    startY: y,
+    head: [ENCABEZADOS],
+    body: filasExport(S.resultados).map(f => { const c = f.slice(); c[0] = fechaMX(f[0]); c[5] = fmtTC(f[5]); return c; }),
+    theme: "striped", margin: { left:14, right:14, top:30, bottom:16 },
+    styles: { fontSize:8, cellPadding:1.7, textColor:[43,49,56], overflow:"linebreak" },
+    headStyles: { fillColor:[10,37,64], textColor:255, fontStyle:"bold", fontSize:8.2 },
+    alternateRowStyles: { fillColor:[247,246,244] },
+    columnStyles: { 0:{halign:"center",cellWidth:24}, 3:{halign:"center",cellWidth:22},
+                    5:{halign:"right",cellWidth:28,fontStyle:"bold"}, 6:{cellWidth:34} },
+    showHead: "everyPage",
+    didDrawPage: (d) => {
+      const pag = doc.internal.getNumberOfPages();
+      const alto = doc.internal.pageSize.getHeight();
+      /* Marca de agua diagonal en cada página */
+      doc.saveGraphicsState();
+      doc.setGState(new doc.GState({ opacity: 0.08 }));
+      doc.setFont("helvetica", "bold"); doc.setFontSize(52); doc.setTextColor(10, 37, 64);
+      doc.text(MARCA_AGUA, anchoPag / 2, alto / 2, { align: "center", angle: 22 });
+      doc.restoreGraphicsState();
+      if(d.pageNumber > 1){
+        doc.setFillColor(10,37,64); doc.rect(0,0,anchoPag,13,"F");
+        doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(11);
+        doc.text("2026 Equivalencias Dlls — Consulta de equivalencias y tipos de cambio", 14, 8.5);
+      }
+      doc.setFontSize(7.6); doc.setTextColor(97,105,119); doc.setFont("helvetica","normal");
+      doc.text("2026 Equivalencias Dlls · DSouza Consultores · " + ahora, 14, alto-7);
+      doc.text("Página " + d.pageNumber + " de " + pag, anchoPag-14, alto-7, { align:"right" });
+    }
+  });
+
+  doc.save(NOMBRE_BASE + ".pdf");
+  toast("Archivo PDF generado.", "ok");
+}
+
+/* ---------- CSV ----------
+   Se generan DOS variantes, siguiendo la práctica del despacho:
+   · coma (,)          — configuración regional México (decimal punto, listas coma) y sistemas contables
+   · punto y coma (;)  — equipos con configuración europea (decimal coma)
+   Una de las dos siempre abre correctamente en Excel con doble clic. */
+function csvTexto(lista, SEP){
+  const q = (v) => {
+    const s = String(v == null ? "" : v);
+    return (s.includes('"') || s.includes(SEP) || s.includes("\n") || s.includes("\r"))
+      ? '"' + s.replace(/"/g,'""') + '"' : s;
+  };
+  const lineas = [ ENCABEZADOS.map(q).join(SEP) ];
+  filasExport(lista).forEach(f => {
+    const c = f.slice();
+    c[0] = fechaMX(f[0]);
+    c[5] = fmtTC(f[5]);                             // decimal con punto, cuatro decimales
+    lineas.push(c.map(q).join(SEP));
+  });
+  return "\uFEFF" + lineas.join("\r\n");
+}
+function exportarCsv(lista, nombreBase, sep){
+  if(lista.length === 0){ toast("No hay registros que exportar.", "warn"); return; }
+  const base = String(nombreBase).replace(/\.csv$/i, "");
+  const nombre = base + (sep === ";" ? "_puntoycoma.csv" : "_coma.csv");
+  descargar(new Blob([csvTexto(lista, sep)], { type:"text/csv;charset=utf-8;" }), nombre);
+  toast("Archivo CSV generado: " + nombre, "ok");
+}
+
+/* ---------- Respaldo JSON ---------- */
+function descargarRespaldo(){
+  const datos = {
+    aplicacion: "2026 Equivalencias Dlls",
+    version: 1,
+    generado: new Date().toISOString(),
+    origen: { archivo: ORIGEN.archivo, hoja: ORIGEN.hoja, nota: ORIGEN.nota },
+    registros: S.registros.map(r => ({ fecha:r.fecha, moneda:r.moneda, tc:r.tc })),
+    cierres: S.cierres
+  };
+  const f = new Date().toISOString().slice(0,10).replace(/-/g,"");
+  descargar(new Blob([JSON.stringify(datos,null,2)], { type:"application/json" }),
+            "2026_Equivalencias_Dlls_Respaldo_" + f + ".json");
+  toast("Respaldo descargado.", "ok");
+}
+
+function restaurarRespaldo(file){
+  if(!file) return;
+  const lr = new FileReader();
+  lr.onload = (ev) => {
+    try{
+      const d = JSON.parse(String(ev.target.result));
+      if(!d || !Array.isArray(d.registros)) throw new Error("El archivo no tiene la estructura de un respaldo válido.");
+      confirmar("El respaldo contiene <strong>" + d.registros.length + "</strong> registro(s) y <strong>"
+        + (Array.isArray(d.cierres) ? d.cierres.length : 0) + "</strong> cierre(s).<br><br>"
+        + "Al restaurar se <strong>reemplaza por completo</strong> la información actual. ¿Confirma?", () => {
+        S.registros = d.registros.map(r => ({ fecha:r.fecha, moneda:r.moneda || ORIGEN.moneda, tc:r4(aNumero(r.tc)) }))
+                                 .filter(r => fechaValida(r.fecha) && r.tc > 0);
+        S.cierres = Array.isArray(d.cierres) ? d.cierres : [];
+        normalizar(); guardarLocal(); refrescarSelectores();
+        aplicarFiltros(); pintarGeneral(); actualizarAyuda();
+        toast("Respaldo restaurado: " + S.registros.length + " registros.", "ok");
+      });
+    }catch(e){ toast("No se pudo leer el respaldo: " + e.message, "err"); }
+  };
+  lr.readAsText(file, "UTF-8");
+  $("#inputRespaldo").value = "";
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 11. INTERFAZ — pestañas, selectores y eventos
+   ------------------------------------------------------------ */
+function cambiarPestana(id){
+  if((id === "pGeneral" || id === "pActualiza") && !edicionActiva()){
+    toast("Sección disponible solo con el modo edición del despacho (candado en la barra de pestañas).", "warn");
+    return;
+  }
+  $$(".tab").forEach(t => { if(t.dataset.panel) t.setAttribute("aria-selected", String(t.dataset.panel === id)); });
+  $$(".panel").forEach(p => p.classList.toggle("oculto", p.id !== id));
+  if(id === "pGeneral")  pintarGeneral();
+  if(id === "pExporta")  pintarKPIsExporta();
+  if(id === "pAyuda")    actualizarAyuda();
+  if(id === "pConsulta" && S.grafica) S.grafica.resize();
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+/** Recarga los selectores dependientes de los datos. */
+function refrescarSelectores(){
+  const ejercicios = Array.from(new Set(S.registros.map(r => r.fecha.slice(0,4)))).sort();
+  const selE = $("#fEjercicio"), valE = selE.value;
+  selE.innerHTML = '<option value="">Todos</option>'
+    + ejercicios.map(a => '<option value="' + a + '">' + a + "</option>").join("");
+  selE.value = ejercicios.includes(valE) ? valE : (ejercicios.length === 1 ? ejercicios[0] : "");
+  /* Con un solo ejercicio, el selector no decide nada: se oculta. Reaparece
+     automáticamente cuando exista más de un ejercicio cargado. */
+  $("#campoEjercicio").classList.toggle("oculto", ejercicios.length <= 1);
+
+  const monedas = Array.from(new Set(S.registros.map(r => r.moneda))).sort();
+  const selM = $("#fMoneda"), valM = selM.value;
+  selM.innerHTML = '<option value="">Todas</option>'
+    + monedas.map(m => '<option value="' + esc(m) + '">' + esc(m) + "</option>").join("");
+  selM.value = monedas.includes(valM) ? valM : "";
+  $("#pillMoneda").textContent = monedas.length === 1 ? monedas[0] : monedas.length + " monedas";
+  $("#campoMoneda").classList.toggle("oculto", monedas.length <= 1);
+
+  const fechas = S.registros.map(r => r.fecha).sort();
+  if(fechas.length){
+    ["#fFecha","#fIni","#fFin"].forEach(s => {
+      $(s).min = fechas[0]; $(s).max = fechas[fechas.length-1];
+    });
+  }
+}
+
+function actualizarAyuda(){
+  const n = $("#ayudaN"), c = $("#ayudaC");
+  if(n) n.textContent = S.registros.length.toLocaleString("es-MX");
+  if(c) c.textContent = S.cierres.length;
+}
+
+function limpiarFiltros(){
+  ["#fFecha","#fMes","#fIni","#fFin","#fMoneda","#fBuscar"].forEach(s => { $(s).value = ""; });
+  const ejercicios = Array.from(new Set(S.registros.map(r => r.fecha.slice(0,4))));
+  $("#fEjercicio").value = ejercicios.length === 1 ? ejercicios[0] : "";
+  S.ordenCampo = "fecha"; S.ordenAsc = true;
+  marcarOrden("#tablaConsulta", "fecha", true);
+  aviso("#avisoFiltros", "", "");
+  aplicarFiltros();
+  toast("Filtros restablecidos.", "info");
+}
+
+function marcarOrden(tabla, campo, asc){
+  $$(tabla + " thead th.orden").forEach(th => {
+    const act = th.dataset.campo === campo;
+    th.classList.toggle("activo", act);
+    const fl = th.querySelector(".flecha");
+    if(fl) fl.textContent = act ? (asc ? "▲" : "▼") : "↕";
+  });
+}
+
+/* ---------- Modo edición del despacho ---------- */
+function edicionActiva(){
+  try{ return localStorage.getItem(CLAVE_EDIT) === "1"; }catch(e){ return false; }
+}
+function aplicarModoEdicion(activo){
+  $$(".tab-edicion").forEach(t => t.classList.toggle("oculto", !activo));
+  if(typeof S !== "undefined" && S.registros.length) pintarCierres();
+  const c = $("#btnCandado");
+  c.textContent = activo ? "🔓" : "🔒";
+  c.title = activo ? "Modo edición activo — clic para bloquear" : "Acceso del despacho";
+  if(!activo){
+    // Si el usuario estaba en una pestaña de edición, se le regresa a Consulta.
+    const visible = $$(".panel").find(x => !x.classList.contains("oculto"));
+    if(visible && (visible.id === "pGeneral" || visible.id === "pActualiza")) cambiarPestana("pConsulta");
+  }
+}
+function alternarEdicion(){
+  if(edicionActiva()){
+    try{ localStorage.setItem(CLAVE_EDIT, "0"); }catch(e){}
+    aplicarModoEdicion(false);
+    toast("Modo edición bloqueado.", "info");
+    return;
+  }
+  const c = window.prompt("Clave de acceso del despacho:", "");
+  if(c === null) return;
+  if(c === CLAVE_EDICION){
+    try{ localStorage.setItem(CLAVE_EDIT, "1"); }catch(e){}
+    aplicarModoEdicion(true);
+    toast("Modo edición activo. Las pestañas Tabla general y Actualización están disponibles.", "ok");
+  }else{
+    toast("Clave incorrecta.", "err");
+  }
+}
+
+/* ---------- Tamaño de texto ---------- */
+function fijarFs(px, boton){
+  document.documentElement.style.setProperty("--fs-root", px + "px");
+  ["#fsA","#fsA1","#fsA2"].forEach(s => $(s).setAttribute("aria-pressed", String(s === boton)));
+  try{ localStorage.setItem(CLAVE_FS, JSON.stringify({ px:px, b:boton })); }catch(e){}
+}
+
+/* ------------------------------------------------------------
+   MÓDULO 12. ARRANQUE Y REGISTRO DE EVENTOS
+   ------------------------------------------------------------ */
+function iniciar(){
+  // Datos: primero lo guardado en el navegador; si no hay, los originales del archivo.
+  if(cargarLocal()){
+    normalizar();
+    toast("Se recuperaron los datos guardados en este navegador (" + S.registros.length + " registros).", "info");
+  }else{
+    cargarOriginales();
+  }
+
+  refrescarSelectores();
+  actualizarAyuda();
+  if(S.avisoFusion){ toast(S.avisoFusion, "ok"); S.avisoFusion = null; }
+  try{
+    const fs = JSON.parse(localStorage.getItem(CLAVE_FS) || "null");
+    if(fs && fs.px) fijarFs(fs.px, fs.b);
+  }catch(e){}
+
+  // Pestañas
+  $$(".tab").forEach(t => { if(t.dataset.panel) t.onclick = () => cambiarPestana(t.dataset.panel); });
+
+  // Mostrar / ocultar la tabla de resultados (oculta por defecto)
+  $("#btnToggleTabla").onclick = () => fijarTablaVisible($("#zonaResultados").classList.contains("oculto"));
+
+  // Filtros
+  $("#btnConsultar").onclick = aplicarFiltros;
+  $("#btnLimpiar").onclick   = limpiarFiltros;
+  $("#btnHoy").onclick = () => {
+    if(S.registros.length === 0) return;
+    const ult = S.registros[S.registros.length-1].fecha;
+    limpiarFiltrosSilencioso();
+    $("#fFecha").value = ult;
+    aplicarFiltros();
+    toast("Mostrando el último día disponible: " + fechaMX(ult), "info");
+  };
+  /* Exclusión mutua amigable: elegir una fecha concreta limpia mes y periodo;
+     elegir mes o periodo limpia la fecha concreta. Así el empresario nunca
+     combina filtros contradictorios sin darse cuenta. */
+  $("#fFecha").addEventListener("change", () => {
+    if($("#fFecha").value){ $("#fMes").value = ""; $("#fIni").value = ""; $("#fFin").value = ""; }
+    aplicarFiltros();
+  });
+  ["#fMes","#fIni","#fFin"].forEach(s => {
+    $(s).addEventListener("change", () => {
+      if($(s).value) $("#fFecha").value = "";
+      aplicarFiltros();
+    });
+  });
+  ["#fEjercicio","#fMoneda"].forEach(s => {
+    $(s).addEventListener("change", aplicarFiltros);
+  });
+
+  // Convertidor de montos
+  $("#convMonto").addEventListener("input", pintarConvertidor);
+  $("#convDir").addEventListener("change", pintarConvertidor);
+  let tmr = null;
+  $("#fBuscar").addEventListener("input", () => { clearTimeout(tmr); tmr = setTimeout(aplicarFiltros, 260); });
+
+  // Orden y paginación de la consulta
+  $$("#tablaConsulta thead th.orden").forEach(th => {
+    th.onclick = () => {
+      const c = th.dataset.campo;
+      if(S.ordenCampo === c) S.ordenAsc = !S.ordenAsc;
+      else { S.ordenCampo = c; S.ordenAsc = true; }
+      marcarOrden("#tablaConsulta", S.ordenCampo, S.ordenAsc);
+      ordenarResultados(); S.pagina = 1; pintarTablaConsulta();
+    };
+  });
+  $("#porPagina").onchange = (e) => {
+    S.porPagina = e.target.value === "todos" ? "todos" : parseInt(e.target.value,10);
+    S.pagina = 1; pintarTablaConsulta();
+  };
+
+  // Gráfica
+  const botonesGraf = { "#btnGrafLinea":"linea", "#btnGrafArea":"area", "#btnGrafCierre":"cierre" };
+  Object.keys(botonesGraf).forEach(sel => {
+    $(sel).onclick = () => {
+      S.tipoGrafica = botonesGraf[sel];
+      Object.keys(botonesGraf).forEach(s => $(s).setAttribute("aria-pressed", String(s === sel)));
+      pintarGrafica();
+    };
+  });
+  $("#btnGrafPNG").onclick = () => {
+    if(!S.grafica){ toast("La gráfica no está disponible.", "warn"); return; }
+    const a = document.createElement("a");
+    a.href = S.grafica.toBase64Image("image/png", 1);
+    a.download = "2026_Equivalencias_Dlls_Grafica.png";
+    a.click();
+    toast("Gráfica descargada en PNG.", "ok");
+  };
+
+  // Tabla general
+  $("#btnNuevoReg").onclick    = () => abrirModalReg(null);
+  $("#btnGuardarReg").onclick  = guardarRegistro;
+  $("#btnCancelarReg").onclick = () => { $("#modalReg").classList.add("oculto"); S.edicion = null; };
+  $("#cerrarModalReg").onclick = () => { $("#modalReg").classList.add("oculto"); S.edicion = null; };
+  $("#btnNuevoCierre").onclick = nuevoCierre;
+  $("#gBuscar").addEventListener("input", () => { S.gPagina = 1; pintarGeneral(); });
+  $("#gMes").addEventListener("change", () => { S.gPagina = 1; pintarGeneral(); });
+  $("#gPorPagina").onchange = (e) => {
+    S.gPorPagina = e.target.value === "todos" ? "todos" : parseInt(e.target.value,10);
+    S.gPagina = 1; pintarGeneral();
+  };
+  $$("#tablaGeneral thead th.orden").forEach(th => {
+    th.onclick = () => {
+      const c = th.dataset.campo;
+      if(S.gOrdenCampo === c) S.gOrdenAsc = !S.gOrdenAsc;
+      else { S.gOrdenCampo = c; S.gOrdenAsc = true; }
+      marcarOrden("#tablaGeneral", S.gOrdenCampo, S.gOrdenAsc);
+      S.gPagina = 1; pintarGeneral();
+    };
+  });
+
+  // Respaldo y restablecimiento
+  $("#btnRespaldo").onclick   = descargarRespaldo;
+  $("#btnRestaurar").onclick  = () => $("#inputRespaldo").click();
+  $("#inputRespaldo").onchange = (e) => restaurarRespaldo(e.target.files[0]);
+  $("#btnRestablecer").onclick = () => confirmar(
+    "Se descartarán todos los cambios y se recargarán los <strong>" + ORIGEN.serie.length
+    + "</strong> registros originales del archivo «" + ORIGEN.archivo + "».<br><br>¿Confirma?", () => {
+      cargarOriginales(); guardarLocal(); refrescarSelectores();
+      aplicarFiltros(); pintarGeneral(); actualizarAyuda();
+      toast("Datos originales restablecidos.", "ok");
+    });
+  $("#btnBorrarLocal").onclick = () => confirmar(
+    "Se eliminará toda la información guardada en este navegador y se recargarán los datos originales del archivo.<br><br>"
+    + "Si tiene capturas o importaciones que desee conservar, cancele y descargue antes el respaldo JSON.<br><br>¿Confirma?", () => {
+      try{ localStorage.removeItem(CLAVE_LS); }catch(e){}
+      cargarOriginales(); refrescarSelectores();
+      aplicarFiltros(); pintarGeneral(); actualizarAyuda();
+      toast("Datos locales eliminados. Se recargaron los originales.", "ok");
+    });
+
+  // Importación
+  $("#inputArchivo").onchange   = (e) => leerArchivo(e.target.files[0]);
+  $("#modoImport").onchange     = () => { if(S.previa) analizarPrevia(S.previa.det); };
+  $("#filtroPrevia").onchange   = pintarPrevia;
+  $("#btnAplicar").onclick      = aplicarImportacion;
+  $("#btnCancelarImport").onclick = cancelarImportacion;
+
+  // Exportación
+  $("#btnXlsx").onclick   = () => exportarXlsx(S.resultados, NOMBRE_BASE + ".xlsx", false);
+  $("#btnPdf").onclick    = exportarPdf;
+  $("#btnCsv").onclick    = () => exportarCsv(S.resultados, NOMBRE_BASE + ".csv", ",");
+  $("#btnCsvPyc").onclick = () => exportarCsv(S.resultados, NOMBRE_BASE + ".csv", ";");
+  $("#btnImprimir").onclick = () => window.print();
+  $("#btnXlsxTodo").onclick = () => exportarXlsx(S.registros, "2026_Equivalencias_Dlls_Completo.xlsx", false);
+  $("#btnCsvTodo").onclick    = () => exportarCsv(S.registros, "2026_Equivalencias_Dlls_Completo.csv", ",");
+  $("#btnCsvTodoPyc").onclick = () => exportarCsv(S.registros, "2026_Equivalencias_Dlls_Completo.csv", ";");
+  $("#btnXlsxMatriz").onclick = () => exportarXlsx(S.registros, "2026_Equivalencias_Dlls_Matriz.xlsx", true);
+
+  // Confirmación
+  $("#btnConfSi").onclick = () => {
+    const cb = S.confirmarCb; S.confirmarCb = null;
+    $("#modalConf").classList.add("oculto");
+    if(typeof cb === "function") cb();
+  };
+  $("#btnConfNo").onclick      = () => { S.confirmarCb = null; $("#modalConf").classList.add("oculto"); };
+  $("#cerrarModalConf").onclick = () => { S.confirmarCb = null; $("#modalConf").classList.add("oculto"); };
+
+  // Modo edición del despacho
+  $("#btnCandado").onclick = alternarEdicion;
+  aplicarModoEdicion(edicionActiva());
+
+  // Tamaño de texto
+  $("#fsA").onclick  = () => fijarFs(17, "#fsA");
+  $("#fsA1").onclick = () => fijarFs(20, "#fsA1");
+  $("#fsA2").onclick = () => fijarFs(23, "#fsA2");
+
+  // Cierre de modales con Escape y clic en el fondo
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape"){
+      $("#modalReg").classList.add("oculto");
+      $("#modalConf").classList.add("oculto");
+      S.confirmarCb = null; S.edicion = null;
+    }
+  });
+  $$(".modal-fondo").forEach(m => {
+    m.addEventListener("click", (e) => {
+      if(e.target === m){ m.classList.add("oculto"); S.confirmarCb = null; S.edicion = null; }
+    });
+  });
+
+  // Consulta inicial: todo el ejercicio 2026
+  marcarOrden("#tablaConsulta", "fecha", true);
+  marcarOrden("#tablaGeneral", "fecha", true);
+  aplicarFiltros();
+
+  /* Las bibliotecas cargan en paralelo con CDN de respaldo. Cuando una termina,
+     se pinta lo que estuviera pendiente (típicamente la gráfica). */
+  window.__alCargarLib = function(){
+    if(hayLib("chart") && !S.grafica) pintarGrafica();
+  };
+  window.__alCargarLib();
+
+  /* Advertencia solo si tras 8 segundos alguna biblioteca sigue sin llegar. */
+  setTimeout(() => {
+    if(!hayLib("chart")){
+      aviso("#avisoGrafica",
+        "No fue posible cargar la biblioteca de gráficas desde ninguno de los CDN. " +
+        "Verifique su conexión a internet; la consulta y las tablas funcionan con normalidad.", "a-warn");
+    }
+    const faltan = [];
+    if(!hayLib("xlsx"))  faltan.push("Excel");
+    if(!hayLib("pdf"))   faltan.push("PDF");
+    if(faltan.length) toast("Sin conexión a las bibliotecas de exportación a " + faltan.join(" y ") + ". El resto funciona con normalidad.", "warn");
+  }, 8000);
+}
+
+/** Limpia los filtros sin recalcular ni avisar (uso interno). */
+function limpiarFiltrosSilencioso(){
+  ["#fFecha","#fMes","#fIni","#fFin","#fBuscar"].forEach(s => { $(s).value = ""; });
+}
+
+document.addEventListener("DOMContentLoaded", iniciar);
+</script>
+</body>
+</html>
