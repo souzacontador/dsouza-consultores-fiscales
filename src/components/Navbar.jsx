@@ -71,7 +71,10 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <WhatsAppButton className="hidden !px-4 !py-2.5 text-sm sm:inline-flex">
+          <WhatsAppButton
+            variant="whatsapp"
+            className="hidden !px-4 !py-2.5 text-sm sm:inline-flex"
+          >
             WhatsApp
           </WhatsAppButton>
 
@@ -111,7 +114,7 @@ export default function Navbar() {
               </li>
             ))}
             <li className="mt-2">
-              <WhatsAppButton className="w-full" />
+              <WhatsAppButton variant="whatsapp" className="w-full" />
             </li>
           </ul>
         </div>

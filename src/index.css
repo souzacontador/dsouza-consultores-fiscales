@@ -124,6 +124,11 @@
     @apply btn border border-white/30 bg-transparent text-white hover:bg-white/10 focus-visible:ring-white;
   }
 
+  /* Botón con el verde distintivo de WhatsApp (#25D366) y texto blanco. */
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white hover:bg-whatsapp/90 focus-visible:ring-whatsapp;
+  }
+
   /* --- Tarjetas --- */
   .card {
     @apply rounded-md border border-line bg-base p-6 shadow-card;
