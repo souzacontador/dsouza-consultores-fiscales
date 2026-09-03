@@ -7,6 +7,36 @@
     "dateLabel": "1–7 de septiembre de 2026",
     "preview": "/comunicados/Comunicado-DSouza-01-07-sep-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 177
+    "sizeKB": 178
+  },
+  {
+    "slug": "circular-imss-campo-2026/",
+    "title": "Beneficios fiscales IMSS 2026 al campo | DSouza",
+    "description": "Circular para patrones del campo: beneficios fiscales del IMSS 2026 y las nuevas reglas que entran en vigor hacia el 8 de agosto de 2026.",
+    "dateISO": "2026-08-08",
+    "dateLabel": "8 de agosto de 2026",
+    "preview": "/comunicados/circular-imss-campo-2026/og-image.png",
+    "previewFromRepo": true,
+    "sizeKB": 110
+  },
+  {
+    "slug": "Analisis_Criterio_43ISRPI_DSouza.html",
+    "title": "Análisis: Criterio 43/ISR/PI (RMF 2026) | DSouza",
+    "description": "Análisis técnico preventivo del Criterio 43/ISR/PI (RMF 2026, DOF 17-jul-2026): bonos vía A.C., riesgos y recomendaciones.",
+    "dateISO": "2026-07-17",
+    "dateLabel": "17 de julio de 2026",
+    "preview": "/comunicados/og-analisis-43-isr-pi.png",
+    "previewFromRepo": true,
+    "sizeKB": 319
+  },
+  {
+    "slug": "circular-npie-efirma-sat/",
+    "title": "IMSS elimina el NPIE: e.firma obligatoria | DSouza",
+    "description": "El IMSS deroga el NPIE; la e.firma del SAT será el único medio válido para movimientos afiliatorios (DOF 16-jul-2026). Transición de 90 días.",
+    "dateISO": "2026-07-16",
+    "dateLabel": "16 de julio de 2026",
+    "preview": "/comunicados/circular-npie-efirma-sat/og-image.png",
+    "previewFromRepo": true,
+    "sizeKB": 24
   }
 ]
