@@ -1,6 +1,6 @@
 import { Section, SectionHeader } from '../ui'
 import { CONTACT } from '../../data/site'
-import { IconLinkedIn, IconRadar, IconShield, IconChat, IconUser } from '../Icons'
+import { IconLinkedIn, IconRadar, IconShield, IconChat } from '../Icons'
 
 // Equipo. No se inventan años de experiencia, certificaciones ni premios.
 // Cualquier dato específico debe verificarse antes de publicar.
@@ -17,14 +17,16 @@ export default function Equipo({ bg = 'tint' }) {
         {/* Titular */}
         <article className="card md:col-span-3">
           <div className="flex items-center gap-4">
-            {/* Placeholder de foto profesional — reemplazar por retrato real */}
-            <span
-              role="img"
-              aria-label="Espacio reservado para la foto profesional del titular"
-              className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-md border border-line bg-tint text-muted"
-            >
-              <IconUser className="h-9 w-9" />
-            </span>
+            {/* Retrato real del titular: recorte cuadrado 512x512 (se muestra a 112px). */}
+            <img
+              src="/equipo/daniel-souza-vazquez.webp"
+              alt="Retrato de C.P. Daniel Souza Vázquez, titular de DSouza Consultores Fiscales"
+              width="112"
+              height="112"
+              loading="lazy"
+              decoding="async"
+              className="h-28 w-28 shrink-0 rounded-md border border-line object-cover"
+            />
             <div>
               <h3 className="font-heading text-xl font-semibold text-secondary">
                 C.P. Daniel Souza Vázquez
