@@ -84,6 +84,21 @@ carga y no se mide nada.
   en dsouza-app y añade su slug + textos de tarjeta en `CALCULADORAS` dentro
   de `scripts/sync-calculadoras.mjs`. El sitemap la incluye solo en el build.
 
+## Pre-render del cuerpo (HTML completo sin JavaScript)
+
+El build genera el HTML de **cada ruta con el contenido ya renderizado**
+(`vite build --ssr src/entry-server.jsx` → `scripts/postbuild-meta.mjs`
+inyecta el cuerpo en `<div id="root">`). Crawlers, scrapers sociales y
+asistentes de IA que no ejecutan JavaScript ven la página completa; en el
+navegador React **hidrata** ese HTML (`hydrateRoot` en `src/main.jsx`; en
+`npm run dev` sigue renderizando en cliente).
+
+**Regla para componentes nuevos (SSR-safe):** en el cuerpo del render no usar
+`window`, `document`, `localStorage`, `Math.random()` ni fechas actuales —
+solo dentro de `useEffect` o en manejadores de eventos. El estado inicial de
+`useState` debe ser el mismo en servidor y cliente. Si se rompe esta regla,
+React avisa en consola de un error de hidratación y la página puede parpadear.
+
 ## Publicar un boletín nuevo (flujo)
 
 1. Sube el boletín al repo `BOLETIN-DSOUZA` con la convención

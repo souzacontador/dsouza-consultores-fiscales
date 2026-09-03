@@ -1,12 +1,14 @@
 // Post-build: genera dist/<ruta>/index.html con el <head> correcto por URL
-// (title, description, canonical, robots, Open Graph y Twitter), a partir de
-// la fuente única src/data/seoMeta.js. Así los crawlers y scrapers sociales
-// que NO ejecutan JavaScript ven los metadatos correctos de cada página.
+// (title, description, canonical, robots, Open Graph y Twitter) y con el
+// CUERPO pre-renderizado (React en servidor, dist-ssr/entry-server.js), a
+// partir de la fuente única src/data/seoMeta.js. Así crawlers, scrapers
+// sociales y asistentes de IA que NO ejecutan JavaScript ven el contenido
+// completo de cada página; en el navegador, React hidrata ese HTML.
 // También genera dist/404.html (noindex): Vercel la sirve con HTTP 404 real
 // para cualquier ruta inexistente (ya no hay rewrite global a index.html), y
 // añade el JSON-LD FAQPage SOLO en Inicio, donde el bloque de FAQ es visible.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SEO_META } from '../src/data/seoMeta.js'
 import { SITE_URL, FAQS } from '../src/data/site.js'
@@ -14,6 +16,9 @@ import { SITE_URL, FAQS } from '../src/data/site.js'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const template = readFileSync(join(dist, 'index.html'), 'utf8')
+
+// Bundle de servidor generado por `vite build --ssr src/entry-server.jsx`.
+const { render } = await import(pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).href)
 
 const esc = (s) => s.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
 
@@ -93,6 +98,12 @@ function buildHtml(path) {
     (path === '/' ? faqJsonLd() : '') +
     (path === '/recursos' ? videosJsonLd() : '')
   html = html.replace('</head>', `${extra}  </head>`)
+
+  // Cuerpo pre-renderizado. El 404 se renderiza con una ruta inexistente
+  // para que React Router resuelva la página NotFound.
+  const body = render(is404 ? '/404' : path)
+  if (!html.includes('<div id="root"></div>')) throw new Error('No se encontró <div id="root"></div> en la plantilla')
+  html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`)
   return html
 }
 
@@ -110,4 +121,6 @@ for (const path of Object.keys(SEO_META)) {
   }
   count++
 }
-console.log(`OK → metadatos pre-renderizados para ${count} rutas en dist/ (incluye 404.html)`)
+// El bundle de servidor solo sirve para este paso; no se despliega.
+rmSync(join(root, 'dist-ssr'), { recursive: true, force: true })
+console.log(`OK → ${count} rutas pre-renderizadas (head + cuerpo) en dist/ (incluye 404.html)`)
