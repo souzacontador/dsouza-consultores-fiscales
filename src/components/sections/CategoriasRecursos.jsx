@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Barra de categorías de /recursos: permite identificar de un vistazo los tipos
 // de recurso y saltar al bloque correspondiente. Cada categoría publicada lleva
@@ -101,7 +101,17 @@ function useActiveSection(ids, offset) {
 
 export default function CategoriasRecursos({ categorias }) {
   const headerHeight = useHeaderHeight()
-  const barHeight = 57 // py-3 + chip; se usa solo para detectar la sección visible
+  // Altura real de la barra (medida): se usa para detectar la sección visible.
+  const navRef = useRef(null)
+  const [barHeight, setBarHeight] = useState(60)
+  useEffect(() => {
+    if (!navRef.current) return
+    const update = () => setBarHeight(navRef.current.getBoundingClientRect().height)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(navRef.current)
+    return () => ro.disconnect()
+  }, [])
   const active = useActiveSection(
     categorias.filter((c) => !c.soon).map((c) => c.id),
     headerHeight + barHeight
@@ -109,6 +119,7 @@ export default function CategoriasRecursos({ categorias }) {
 
   return (
     <nav
+      ref={navRef}
       aria-label="Categorías de recursos"
       className="sticky z-40 border-b border-line bg-base/95 backdrop-blur"
       style={{ top: headerHeight }}
