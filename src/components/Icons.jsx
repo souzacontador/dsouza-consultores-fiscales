@@ -22,6 +22,14 @@ export function IconLedger(props) {
   )
 }
 
+export function IconPlay(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8 5.5v13l10-6.5L8 5.5Z" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export function IconShield(props) {
   return (
     <svg {...base} {...props}>

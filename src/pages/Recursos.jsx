@@ -3,10 +3,17 @@ import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import EstadoVacio from '../components/sections/EstadoVacio'
 import CategoriasRecursos, { SectionPill } from '../components/sections/CategoriasRecursos'
+import VideoCard from '../components/sections/VideoCard'
 import { Section, SectionHeader } from '../components/ui'
-import { IconDocument, IconLedger, IconChat, IconLayers, IconCheck, IconArrowRight } from '../components/Icons'
+import { IconDocument, IconLedger, IconChat, IconLayers, IconCheck, IconPlay, IconArrowRight } from '../components/Icons'
 import boletines from '../data/boletines.json'
 import comunicados from '../data/comunicados.json'
+import videosData from '../data/videos.json'
+
+// Videoteca: videos del canal de YouTube del titular, sincronizados desde el
+// feed público (ver scripts/sync-videos.mjs). Miniatura local; el reproductor
+// se carga solo al hacer clic.
+const videos = videosData.videos
 
 // Boletines: HTML autocontenidos copiados desde el repo BOLETIN-DSOUZA a
 // public/boletines/ (ver scripts/sync-boletines.mjs). Comunicados: ídem desde
@@ -19,6 +26,7 @@ import comunicados from '../data/comunicados.json'
 const CATEGORIAS = [
   { id: 'boletines', label: 'Boletines', icon: <IconDocument />, accent: 'primary', count: boletines.length },
   { id: 'comunicados', label: 'Comunicados', icon: <IconChat />, accent: 'secondary', count: comunicados.length },
+  { id: 'videoteca', label: 'Videoteca', icon: <IconPlay />, accent: 'accent', count: videos.length },
   { id: 'blog', label: 'Blog', icon: <IconLayers />, soon: true },
   { id: 'articulos', label: 'Artículos', icon: <IconLedger />, soon: true },
   { id: 'guias', label: 'Guías', icon: <IconCheck />, soon: true },
@@ -34,7 +42,7 @@ export default function Recursos() {
       <Hero
         eyebrow="Recursos"
         title="Recursos para entender cómo te fiscalizan"
-        subtitle={`Boletines fiscales semanales y comunicados puntuales sobre lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} boletines y ${comunicados.length} comunicados publicados; blog, artículos y guías en camino.`}
+        subtitle={`Boletines fiscales semanales, comunicados puntuales y videos sobre lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} boletines, ${comunicados.length} comunicados y ${videos.length} videos publicados; blog, artículos y guías en camino.`}
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
         ctaLabel="Pregunta por WhatsApp"
       />
@@ -136,6 +144,34 @@ export default function Recursos() {
               </li>
             ))}
           </ul>
+        </Section>
+      )}
+
+      {videos.length > 0 && (
+        <Section bg="base" id="videoteca" className="scroll-mt-36">
+          <SectionHeader
+            eyebrow={<SectionPill accent="accent">Videoteca</SectionPill>}
+            title="Videoteca DSouza"
+            subtitle="Videos del canal de YouTube del titular: explicaciones breves sobre obligaciones, plazos y cambios fiscales. Se reproducen aquí mismo."
+          />
+
+          <ul className="mt-12 grid gap-6 md:grid-cols-2">
+            {videos.map((v, i) => (
+              <VideoCard key={v.id} video={v} eager={i < 2} />
+            ))}
+          </ul>
+
+          <p className="mt-8 text-center text-sm text-muted">
+            <a
+              href={videosData.channelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-primary-dark"
+            >
+              Ver todos los videos en el canal de YouTube
+              <IconArrowRight className="h-4 w-4" />
+            </a>
+          </p>
         </Section>
       )}
 

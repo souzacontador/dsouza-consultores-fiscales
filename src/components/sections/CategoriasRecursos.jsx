@@ -15,20 +15,24 @@ import { useEffect, useRef, useState } from 'react'
 //   - sin `soon`  → enlace de ancla a `#${id}` con el conteo de elementos
 
 // Tinte por acento: fondo suave + borde del color + ícono en el tono oscuro.
+// Acentos disponibles: primary (cian) · secondary (azul marino) · accent (ámbar).
 const CHIP = {
   primary: 'border-primary/40 bg-primary/10 hover:border-primary hover:bg-primary/15',
   secondary: 'border-secondary/30 bg-secondary/10 hover:border-secondary hover:bg-secondary/15',
+  accent: 'border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20',
 }
 // Chip activo: borde sólido del color y fondo más presente.
 const CHIP_ACTIVE = {
   primary: 'border-primary bg-primary/20',
   secondary: 'border-secondary bg-secondary/20',
+  accent: 'border-accent bg-accent/25',
 }
-const ICON = { primary: 'text-primary-dark', secondary: 'text-secondary' }
-const DOT = { primary: 'bg-primary', secondary: 'bg-secondary', none: 'bg-line' }
+const ICON = { primary: 'text-primary-dark', secondary: 'text-secondary', accent: 'text-status-warn' }
+const DOT = { primary: 'bg-primary', secondary: 'bg-secondary', accent: 'bg-accent', none: 'bg-line' }
 const PILL = {
   primary: 'border-primary/40 bg-primary/10 text-primary-dark',
   secondary: 'border-secondary/30 bg-secondary/10 text-secondary',
+  accent: 'border-accent/50 bg-accent/10 text-status-warn',
 }
 
 export function AccentDot({ accent = 'none', className = '' }) {

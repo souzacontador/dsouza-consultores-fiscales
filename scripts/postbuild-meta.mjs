@@ -39,6 +39,39 @@ function faqJsonLd() {
   return `    <script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>\n`
 }
 
+// ItemList de VideoObject para /recursos (Videoteca): mismos datos que se
+// muestran en la página (título, descripción, fecha, miniatura, URL del video).
+function videosJsonLd() {
+  let data
+  try {
+    data = JSON.parse(readFileSync(join(root, 'src', 'data', 'videos.json'), 'utf8'))
+  } catch {
+    return ''
+  }
+  if (!data?.videos?.length) return ''
+  const list = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Videoteca DSouza',
+    itemListElement: data.videos.map((v, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'VideoObject',
+        name: v.title,
+        description: v.description,
+        thumbnailUrl: `${SITE_URL}${v.thumb}`,
+        uploadDate: v.dateISO,
+        contentUrl: v.url,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+        url: v.url,
+        publisher: { '@type': 'Organization', name: 'DSouza Consultores Fiscales', url: SITE_URL },
+      },
+    })),
+  }
+  return `    <script type="application/ld+json">${JSON.stringify(list).replace(/</g, '\\u003c')}</script>\n`
+}
+
 function buildHtml(path) {
   const { title, description, noindex } = SEO_META[path]
   const is404 = path === '/404'
@@ -57,7 +90,8 @@ function buildHtml(path) {
   const extra =
     (is404 ? '' : `    <link rel="canonical" href="${url}" />\n`) +
     `    <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}" />\n` +
-    (path === '/' ? faqJsonLd() : '')
+    (path === '/' ? faqJsonLd() : '') +
+    (path === '/recursos' ? videosJsonLd() : '')
   html = html.replace('</head>', `${extra}  </head>`)
   return html
 }
