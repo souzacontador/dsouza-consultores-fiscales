@@ -16,8 +16,9 @@ export default function Footer() {
               DSouza
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
-              Despacho contable y fiscal en Mexicali. Contabilidad al día, asesoría preventiva y
-              auditoría algorítmica de CFDI.
+              Despacho contable y fiscal en Mexicali, B.C. Contabilidad al día, asesoría
+              preventiva y auditoría algorítmica de CFDI. Atención a distancia en Baja California y
+              Puerto Peñasco, Sonora.
             </p>
             <a
               href={CONTACT.linkedin}

@@ -1,20 +1,10 @@
 import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import MediaTexto from '../components/sections/MediaTexto'
-import Testimonios from '../components/sections/Testimonios'
 import Cta from '../components/sections/Cta'
 import { IloContabilidad, IloAuditoria } from '../components/sections/illustrations'
 
-// Cita ilustrativa destacada de esta página.
-const SERVICIOS_QUOTE = [
-  {
-    // TESTIMONIO DE EJEMPLO — reemplazar por real
-    quote:
-      'Por fin entendí en qué operaciones estaba mi riesgo y qué corregir primero. El mapa con semáforo hizo que priorizar fuera obvio para todo el equipo.',
-    name: 'Empresaria de servicios',
-    role: 'Mexicali, B.C.',
-  },
-]
+// Sin cita ilustrativa: se añadirá un testimonio real con autorización del cliente.
 
 export default function ServiciosPage() {
   return (
@@ -62,14 +52,6 @@ export default function ServiciosPage() {
           'Informe con los focos rojos detectados y recomendaciones concretas',
           'Capacitación con casos y simulaciones para equipo, contadores y empresarios',
         ]}
-      />
-
-      <Testimonios
-        bg="base"
-        variant="featured"
-        items={SERVICIOS_QUOTE}
-        title="La tranquilidad de entender tu riesgo"
-        subtitle="Ejemplo ilustrativo del tipo de claridad que buscamos entregar. Se reemplazará por un testimonio real con autorización del cliente."
       />
 
       <Cta />

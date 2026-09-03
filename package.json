@@ -9,6 +9,7 @@
     "build": "vite build && node scripts/postbuild-meta.mjs && node scripts/generate-sitemap.mjs",
     "preview": "vite preview",
     "og": "node scripts/generate-og.mjs",
+    "icons": "node scripts/generate-icons.mjs",
     "boletines": "node scripts/sync-boletines.mjs && node scripts/generate-boletin-preview.mjs --keep",
     "calculadoras": "node scripts/sync-calculadoras.mjs"
   },

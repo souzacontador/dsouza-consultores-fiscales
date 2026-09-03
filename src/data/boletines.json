@@ -7,7 +7,7 @@
     "dateLabel": "19–28 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-19-28-ago-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 182
+    "sizeKB": 183
   },
   {
     "slug": "Boletin-Fiscal-DSouza-07-11-ago-2026.html",
@@ -17,7 +17,7 @@
     "dateLabel": "7–11 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-07-11-ago-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 70
+    "sizeKB": 71
   },
   {
     "slug": "Boletin-Fiscal-DSouza-27-jul-03-ago-2026.html",
@@ -27,7 +27,7 @@
     "dateLabel": "27 de julio – 3 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-27-jul-03-ago-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 115
+    "sizeKB": 116
   },
   {
     "slug": "Boletin-Fiscal-DSouza-03-23-jul-2026.html",
@@ -37,7 +37,7 @@
     "dateLabel": "3–23 de julio de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-03-23-jul-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 66
+    "sizeKB": 67
   },
   {
     "slug": "Boletin-Fiscal-DSouza-30-abr-2026.html",
@@ -46,8 +46,8 @@
     "dateISO": "2026-04-30",
     "dateLabel": "23–30 de abril de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-30-abr-2026-preview.png",
-    "previewFromRepo": false,
-    "sizeKB": 755
+    "previewFromRepo": true,
+    "sizeKB": 756
   },
   {
     "slug": "Boletin-Fiscal-DSouza-21-24-abr-2026.html",
@@ -56,7 +56,7 @@
     "dateISO": "2026-04-24",
     "dateLabel": "21–24 de abril de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-21-24-abr-2026-preview.png",
-    "previewFromRepo": false,
-    "sizeKB": 60
+    "previewFromRepo": true,
+    "sizeKB": 61
   }
 ]

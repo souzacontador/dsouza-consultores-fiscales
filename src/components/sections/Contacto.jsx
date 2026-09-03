@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Section } from '../ui'
 import { CONTACT, WHATSAPP_URL } from '../../data/site'
 import { IconMapPin, IconClock, IconMail, IconWhatsApp } from '../Icons'
@@ -196,7 +197,14 @@ export default function Contacto() {
               </p>
             )}
             <p className="text-xs text-muted">
-              Al enviar se abrirá WhatsApp con tu mensaje ya redactado para que solo confirmes.
+              Al enviar aceptas nuestro{' '}
+              <Link
+                to="/aviso-de-privacidad"
+                className="font-medium text-primary-dark hover:text-secondary"
+              >
+                Aviso de Privacidad
+              </Link>
+              . Se abrirá WhatsApp con tu mensaje ya redactado para que solo confirmes.
               ¿Prefieres correo? Escríbenos a{' '}
               <a href={`mailto:${CONTACT.email}`} className="font-medium text-primary-dark hover:text-secondary">
                 {CONTACT.email}
@@ -218,6 +226,10 @@ export default function Contacto() {
               <li className="flex gap-3">
                 <IconClock className="mt-0.5 h-5 w-5 shrink-0 text-primary-dark" />
                 <span className="text-ink">{CONTACT.hours}</span>
+              </li>
+              <li className="flex gap-3">
+                <IconMapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary-dark" />
+                <span className="text-ink">{CONTACT.serviceArea}</span>
               </li>
               <li className="flex gap-3">
                 <IconMail className="mt-0.5 h-5 w-5 shrink-0 text-primary-dark" />

@@ -3,8 +3,8 @@ import Hero from '../components/sections/Hero'
 import { Section } from '../components/ui'
 import { CONTACT } from '../data/site'
 
-// Página placeholder. El texto legal definitivo debe revisarse conforme a la
-// LFPDPPP antes de publicar. [VERIFICAR] con asesoría legal.
+// Texto base del aviso. Está en noindex (src/data/seoMeta.js) hasta que se
+// valide conforme a la LFPDPPP. [VERIFICAR] con asesoría legal.
 export default function AvisoPrivacidad() {
   return (
     <>
@@ -18,12 +18,6 @@ export default function AvisoPrivacidad() {
 
       <Section bg="base">
         <div className="mx-auto max-w-reading">
-          <div className="mb-8 rounded-md border border-accent/40 bg-accent/10 p-4 text-sm text-secondary">
-            <strong>Aviso preliminar (placeholder).</strong> Este texto es una versión base y debe
-            ajustarse y validarse legalmente conforme a la Ley Federal de Protección de Datos
-            Personales en Posesión de los Particulares (LFPDPPP) antes de su publicación definitiva.
-          </div>
-
           <div className="prose-body">
             <h2 className="font-heading text-2xl font-semibold text-secondary">Responsable</h2>
             <p>

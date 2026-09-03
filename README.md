@@ -17,7 +17,7 @@ Sitio de conversión del despacho **DSouza Consultores Fiscales** (Mexicali, B.C
 | Estilos | Tailwind CSS 3.4 | Usa `tailwind.config.js` (tokens de diseño), mobile-first. |
 | Ruteo | react-router-dom 6 | 8 páginas con rutas reales, sin recarga. |
 | Tokens | CSS variables en `src/index.css` + mapeo en `tailwind.config.js` | Los componentes nunca usan hex; solo clases semánticas (`bg-primary`, `text-ink`, `rounded-md`, …). |
-| Tipografías | Lora (títulos) + Inter (texto), `display: swap` | Cargadas en `index.html`. |
+| Tipografías | Lora (títulos) + Inter (texto), `display: swap` | Auto-hospedadas en `public/fonts` (fuentes variables, subset latin, SIL OFL); `@font-face` en `src/index.css` y `preload` en `index.html`. Sin petición a Google Fonts. |
 
 ### Tokens de diseño
 
@@ -27,7 +27,7 @@ Sitio de conversión del despacho **DSouza Consultores Fiscales** (Mexicali, B.C
 
 ## Páginas
 
-`/` Inicio · `/servicios` · `/nosotros` · `/testimonios` · `/recursos` · `/calculadoras` · `/calculadoras-premium` · `/contacto` · más `/aviso-de-privacidad` (placeholder) y 404.
+`/` Inicio · `/servicios` · `/nosotros` · `/testimonios` (noindex, ilustrativa) · `/recursos` · `/calculadoras` · `/calculadoras-premium` (noindex, en construcción) · `/contacto` · más `/aviso-de-privacidad` (noindex hasta validación legal) y 404 real (`dist/404.html`).
 
 ## Instalación y uso
 
@@ -40,10 +40,12 @@ npm run preview  # previsualiza el build
 
 ## Publicación (en un paso)
 
-- **Vercel:** importar el repo o `vercel` (usa `vercel.json` para el fallback de SPA).
-- **Netlify:** arrastrar la carpeta `dist/` o conectar el repo (usa `public/_redirects`).
-
-Ambos casos ya incluyen el rewrite `/* → index.html` para que las rutas no den 404.
+- **Vercel:** importar el repo (auto-deploy en cada push a `main`; cada rama genera un preview).
+  `vercel.json` **no** reescribe todo a `index.html`: cada ruta existe pre-renderizada en `dist/`
+  (`scripts/postbuild-meta.mjs`) y las URLs inexistentes reciben un **404 real** con
+  `dist/404.html` (noindex). El mismo archivo define las cabeceras de seguridad y la caché
+  inmutable de `/assets` y `/fonts`.
+- Netlify ya no está contemplado (se eliminó `public/_redirects`).
 
 ## Medición y tráfico (condiciones para el objetivo de 4 diagnósticos/mes)
 
@@ -58,18 +60,20 @@ carga y no se mide nada.
    business.google.com con la dirección real, horario, teléfono y link al sitio.
    Para búsquedas locales "contador Mexicali / cerca de mí" rinde más que todo
    el SEO on-page.
-2. **Dominio propio** (p. ej. `dsouzaconsultores.mx`): comprarlo y conectarlo en
-   Vercel → Settings → Domains. Al hacerlo, actualizar `SITE_URL` en
-   `src/data/site.js` y las URLs de `public/robots.txt` e
-   `index.html`.
+2. **Dominio propio — hecho:** `dsouzaconsultores.mx` conectado en Vercel (HTTPS en raíz
+   y www; `SITE_URL` ya apunta al dominio). Siguiente paso: verificar el dominio en
+   **Google Search Console** (registro TXT en GoDaddy, sin tocar MX) y enviar
+   `https://dsouzaconsultores.mx/sitemap.xml`.
 3. **Contenido en LinkedIn** enlazando al sitio (skills del despacho:
    `linkedin-fiscal-mx`, `generador-contenido-fiscal-social`).
 
 ## Scripts
 
 - `npm run dev` — desarrollo · `npm run build` — build + pre-render de metadatos
-  por ruta (`scripts/postbuild-meta.mjs`) · `npm run og` — regenera
-  `public/og-image.png` desde `scripts/og-image.svg`.
+  por ruta, `404.html` y JSON-LD FAQPage en Inicio (`scripts/postbuild-meta.mjs`) ·
+  `npm run og` — regenera `public/og-image.png` desde `scripts/og-image.svg` ·
+  `npm run icons` — regenera `favicon.ico`, `apple-touch-icon.png` e
+  `icon-192/512.png` desde `public/favicon.svg`.
 - `npm run boletines` — sincroniza los boletines desde el repo público
   `souzacontador/BOLETIN-DSOUZA` a `public/boletines/` y regenera
   `src/data/boletines.json` (título, descripción y fecha leídos de cada archivo).
@@ -97,10 +101,13 @@ Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
 
 ## Pendientes / DoD (por marcar en prompts posteriores)
 
-- [ ] **Activar Web Analytics** en el dashboard de Vercel (ver arriba).
+- [x] **Web Analytics** activado en el dashboard de Vercel.
 - [ ] Reemplazar **testimonios de ejemplo** por reales (buscar `TESTIMONIO DE EJEMPLO`).
-      `/testimonios` está fuera del navbar (sigue en footer) hasta tener 1–2 reales.
-- [ ] Revisar y validar legalmente el **Aviso de Privacidad** (LFPDPPP).
+      Mientras tanto `/testimonios` está en `noindex`, fuera del navbar y del footer, e
+      Inicio/Servicios no muestran bloques de testimonios.
+- [ ] Revisar y validar legalmente el **Aviso de Privacidad** (LFPDPPP). Mientras tanto la
+      página está en `noindex` (quitarlo en `src/data/seoMeta.js` al validar el texto).
+- [ ] Crear la ficha de **Google Business Profile** y verificar **Search Console** (enviar sitemap).
 - [ ] Verificar datos `[VERIFICAR]`: cédula/colegios del titular, fecha de
       fundación, geo exacta del JSON-LD (hoy: centroide del C.P. 21280) y
       `SITE_URL` al conectar dominio propio.
@@ -113,5 +120,6 @@ Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
 ## Notas de contenido (reglas del proyecto)
 
 - **Cero datos inventados:** no hay cifras de clientes, años de experiencia, certificaciones ni premios. Las señales de confianza son genéricas y verificables.
+- **Zona de atención (fuente única `CONTACT.serviceArea` en `src/data/site.js`):** presencial en Mexicali; a distancia en el resto de Baja California y en Puerto Peñasco, Sonora. Se refleja en Confianza, Nosotros, Contacto, footer, FAQ y en `areaServed` del JSON-LD (`index.html`). Sin páginas por ciudad sin contenido real.
 - **Tono preventivo y educativo:** no se prometen resultados garantizados ante el SAT.
 - **Un solo H1 por página** (el del hero) y una sola acción primaria por sección.

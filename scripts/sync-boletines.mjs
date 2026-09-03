@@ -1,6 +1,9 @@
 // Sincroniza los boletines desde el repo público souzacontador/BOLETIN-DSOUZA:
 //   - descarga cada Boletin-*.html y su *-preview.png a public/boletines/
-//   - ajusta SOLO og:url / og:image / canonical para que apunten al sitio
+//   - ajusta SOLO metadatos de ubicación (og:url / og:image / canonical) para
+//     que apunten al sitio; añade og:image si el boletín no lo trae
+//   - inyecta (idempotente) una barra superior de regreso a /recursos y un
+//     JSON-LD Article con el título, la fecha y el autor ya conocidos
 //   - genera src/data/boletines.json (título, descripción, fecha) leyendo
 //     los meta de cada archivo — nada se inventa.
 // Uso: npm run boletines   → luego commit + push (auto-deploy en Vercel).
@@ -58,6 +61,51 @@ const metaContent = (html, attr, key) =>
   pick(html, new RegExp(`<meta\\s[^>]*${attr}=["']${key}["'][^>]*content=["']([^"']*)["']`, 'i')) ||
   pick(html, new RegExp(`<meta\\s[^>]*content=["']([^"']*)["'][^>]*${attr}=["']${key}["']`, 'i'))
 
+// Barra superior de regreso al sitio (estilos inline, identificada por id
+// para no duplicarse en re-sync).
+const BAR_ID = 'dsz-site-bar'
+function siteBar() {
+  return (
+    `<div id="${BAR_ID}" style="font:600 14px/1.4 Inter,system-ui,sans-serif;background:#0A2540;color:#fff;padding:10px 16px;text-align:center">` +
+    `<a href="${SITE_URL}/recursos" style="color:#00B8D9;text-decoration:none">&larr; Volver a Recursos</a>` +
+    `<span style="opacity:.5;margin:0 10px">|</span>` +
+    `<a href="${SITE_URL}/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a>` +
+    `</div>\n`
+  )
+}
+function injectBar(html) {
+  if (html.includes(`id="${BAR_ID}"`)) return html
+  return html.replace(/<body([^>]*)>/i, (tag) => `${tag}\n${siteBar()}`)
+}
+
+// JSON-LD Article: solo datos que ya existen (título y descripción del propio
+// boletín, fecha de la edición, autor/publicador del sitio).
+function articleJsonLd({ title, description, dateISO, url, img }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    ...(description ? { description } : {}),
+    datePublished: dateISO,
+    dateModified: dateISO,
+    inLanguage: 'es-MX',
+    mainEntityOfPage: url,
+    image: img,
+    author: { '@type': 'Person', name: 'Daniel Souza Vázquez', url: `${SITE_URL}/nosotros` },
+    publisher: {
+      '@type': 'Organization',
+      name: 'DSouza Consultores Fiscales',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
+    },
+  }
+  return `<script type="application/ld+json" data-dsz="article">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>\n`
+}
+function injectArticle(html, info) {
+  if (html.includes('data-dsz="article"')) return html
+  return html.replace(/<\/head>/i, `${articleJsonLd(info)}</head>`)
+}
+
 const list = await (await fetch(API, { headers: { 'User-Agent': 'dsouza-site-sync' } })).json()
 if (!Array.isArray(list)) throw new Error('No se pudo listar el repo: ' + JSON.stringify(list).slice(0, 200))
 
@@ -77,12 +125,18 @@ for (const f of htmlFiles) {
   const date = DATE_OVERRIDE[slug] || dateFromName(slug)
   if (!title || !date) throw new Error(`Sin título o fecha para ${f.name}`)
 
-  // Solo metadatos de ubicación: el contenido no se toca.
+  // Solo metadatos de ubicación y navegación: el contenido no se toca.
   const url = `${SITE_URL}/boletines/${slug}`
-  const img = `${SITE_URL}/boletines/${previewSlug}`
+  const img = `${SITE_URL}/boletines/${previewSlug}` // la vista previa existe siempre (repo o generada)
   html = html.replace(/(<meta\s+property=["']og:url["']\s+content=)["'][^"']*["']/i, `$1"${url}"`)
-  html = html.replace(/(<meta\s+property=["']og:image["']\s+content=)["'][^"']*["']/i, `$1"${img}"`)
+  if (/<meta\s+property=["']og:image["']/i.test(html)) {
+    html = html.replace(/(<meta\s+property=["']og:image["']\s+content=)["'][^"']*["']/i, `$1"${img}"`)
+  } else {
+    html = html.replace(/<\/head>/i, `<meta property="og:image" content="${img}">\n</head>`)
+  }
   if (!/rel=["']canonical["']/i.test(html)) html = html.replace(/<\/head>/i, `<link rel="canonical" href="${url}">\n</head>`)
+  html = injectArticle(html, { title, description, dateISO: date.iso, url, img })
+  html = injectBar(html)
   writeFileSync(join(outDir, slug), html)
 
   if (hasPreview) {

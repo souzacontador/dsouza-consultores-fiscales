@@ -6,7 +6,7 @@
     "icon": "calculator",
     "path": "/calculadoras/iva-retenciones/",
     "pageTitle": "Calculadora de IVA y Retenciones 2026 · DSouza Consultores Fiscales",
-    "sizeKB": 728
+    "sizeKB": 730
   },
   {
     "slug": "equivalencias-dlls",
@@ -15,6 +15,6 @@
     "icon": "currency",
     "path": "/calculadoras/equivalencias-dlls/",
     "pageTitle": "2026 Equivalencias Dlls — DSouza Consultores",
-    "sizeKB": 160
+    "sizeKB": 161
   }
 ]

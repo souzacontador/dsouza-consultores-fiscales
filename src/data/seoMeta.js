@@ -26,6 +26,7 @@ export const SEO_META = {
     title: 'Testimonios | DSouza Consultores Fiscales',
     description:
       'Lo que buscamos que vivan PyMEs, profesionistas y empresas de servicios con nuestra asesoría fiscal preventiva en Mexicali. Agenda tu diagnóstico.',
+    noindex: true, // solo testimonios ilustrativos; indexar cuando haya reales autorizados
   },
   '/recursos': {
     title: 'Boletín fiscal semanal | DSouza Consultores',
@@ -52,6 +53,7 @@ export const SEO_META = {
     title: 'Aviso de Privacidad | DSouza Consultores Fiscales',
     description:
       'Aviso de privacidad de DSouza Consultores Fiscales sobre el tratamiento de tus datos personales conforme a la LFPDPPP.',
+    noindex: true, // texto base pendiente de validación legal (LFPDPPP)
   },
   '/404': {
     title: 'Página no encontrada | DSouza Consultores Fiscales',

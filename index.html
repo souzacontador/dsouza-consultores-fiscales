@@ -12,6 +12,9 @@
       content="Contabilidad, asesoría fiscal preventiva y auditoría de CFDI en Mexicali. Detecta los focos rojos antes que el SAT y agenda tu diagnóstico fiscal."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Open Graph (por defecto: inicio) -->
     <meta property="og:type" content="website" />
@@ -34,47 +37,75 @@
     />
     <meta name="twitter:image" content="https://dsouzaconsultores.mx/og-image.png" />
 
-    <!-- Tipografías: Lora (títulos) + Inter (texto), con display: swap -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Tipografías auto-hospedadas: Lora (títulos) + Inter (texto), fuentes variables
+         subset latin en /public/fonts (licencia SIL OFL). @font-face en src/index.css. -->
+    <link rel="preload" href="/fonts/lora-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Datos estructurados del negocio (AccountingService / LocalBusiness).
-         geo = centroide del C.P. 21280 (OpenStreetMap). [VERIFICAR] afinar al pin
-         exacto de la oficina desde Google Maps cuando se cree la ficha de Google. -->
+    <!-- Datos estructurados: despacho (AccountingService) + titular (Person), enlazados por @id.
+         Todo lo declarado es visible en el sitio: dirección, horario, zona de atención
+         (Mexicali; resto de Baja California; Puerto Peñasco, Sonora), titular y su LinkedIn.
+         geo = centroide del C.P. 21280 (OpenStreetMap). [VERIFICAR] afinar al pin exacto
+         de la oficina desde Google Maps cuando se cree la ficha de Google Business Profile. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "AccountingService",
-        "name": "DSouza Consultores Fiscales",
-        "description": "Despacho contable y fiscal en Mexicali: contabilidad al día, asesoría fiscal preventiva, auditoría algorítmica de CFDI y capacitación.",
-        "image": "https://dsouzaconsultores.mx/og-image.png",
-        "url": "https://dsouzaconsultores.mx",
-        "email": "daniel@dsouzaconsultores.mx",
-        "telephone": "+526862567293",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. Molino del Rey No. 311, Col. Insurgentes Este",
-          "addressLocality": "Mexicali",
-          "addressRegion": "B.C.",
-          "postalCode": "21280",
-          "addressCountry": "MX"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 32.6289,
-          "longitude": -115.45
-        },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "18:00"
-        },
-        "areaServed": "Mexicali, Baja California"
+        "@graph": [
+          {
+            "@type": "AccountingService",
+            "@id": "https://dsouzaconsultores.mx/#despacho",
+            "name": "DSouza Consultores Fiscales",
+            "description": "Despacho contable y fiscal en Mexicali: contabilidad al día, asesoría fiscal preventiva, auditoría algorítmica de CFDI y capacitación.",
+            "url": "https://dsouzaconsultores.mx",
+            "image": "https://dsouzaconsultores.mx/og-image.png",
+            "logo": "https://dsouzaconsultores.mx/icon-512.png",
+            "email": "daniel@dsouzaconsultores.mx",
+            "telephone": "+526862567293",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Molino del Rey No. 311, Col. Insurgentes Este",
+              "addressLocality": "Mexicali",
+              "addressRegion": "B.C.",
+              "postalCode": "21280",
+              "addressCountry": "MX"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 32.6289,
+              "longitude": -115.45
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Mexicali",
+                "containedInPlace": { "@type": "State", "name": "Baja California" }
+              },
+              { "@type": "State", "name": "Baja California" },
+              {
+                "@type": "City",
+                "name": "Puerto Peñasco",
+                "containedInPlace": { "@type": "State", "name": "Sonora" }
+              }
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://dsouzaconsultores.mx/#titular",
+            "name": "Daniel Souza Vázquez",
+            "honorificPrefix": "C.P.",
+            "jobTitle": "Titular",
+            "worksFor": { "@id": "https://dsouzaconsultores.mx/#despacho" },
+            "image": "https://dsouzaconsultores.mx/equipo/daniel-souza-vazquez.webp",
+            "url": "https://dsouzaconsultores.mx/nosotros",
+            "sameAs": ["https://www.linkedin.com/in/daniel-souza-vazquez/"]
+          }
+        ]
       }
     </script>
   </head>

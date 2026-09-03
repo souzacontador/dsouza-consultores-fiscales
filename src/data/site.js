@@ -17,6 +17,10 @@ export const CONTACT = {
   address: 'Av. Molino del Rey No. 311, Col. Insurgentes Este, C.P. 21280, Mexicali, B.C.',
   addressShort: 'Av. Molino del Rey No. 311, Col. Insurgentes Este',
   hours: 'Lun–Vie 9:00–18:00',
+  // Zona de atención real (confirmada por el titular): presencial en Mexicali;
+  // a distancia en el resto de Baja California y en Puerto Peñasco, Sonora.
+  serviceArea:
+    'Atención presencial en Mexicali, B.C.; a distancia en el resto de Baja California y en Puerto Peñasco, Sonora.',
   email: 'daniel@dsouzaconsultores.mx',
   phoneDisplay: '+52 686 256 7293',
   linkedin: 'https://www.linkedin.com/in/daniel-souza-vazquez/',
@@ -37,15 +41,15 @@ export const NAV_LINKS = [
   { label: 'Contacto', to: '/contacto' },
 ]
 
-// Enlaces rápidos del footer — las 8 páginas completas.
+// Enlaces rápidos del footer — solo páginas con contenido real publicado.
+// Testimonios (ilustrativos) y Calculadoras Premium (en construcción) vuelven
+// al footer cuando tengan contenido; siguen accesibles por URL directa (noindex).
 export const FOOTER_LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/servicios' },
   { label: 'Nosotros', to: '/nosotros' },
-  { label: 'Testimonios', to: '/testimonios' },
   { label: 'Recursos', to: '/recursos' },
   { label: 'Calculadoras', to: '/calculadoras' },
-  { label: 'Calculadoras Premium', to: '/calculadoras-premium' },
   { label: 'Contacto', to: '/contacto' },
 ]
 
@@ -76,7 +80,7 @@ export const SERVICES = [
 // Señales de confianza — genéricas y verificables (sin cifras inventadas).
 export const TRUST_SIGNALS = [
   'Especialización en fiscalización algorítmica del SAT, IMSS e INFONAVIT',
-  'Despacho establecido en Mexicali, B.C.',
+  'Despacho en Mexicali, B.C. · Atención a distancia en Baja California y Puerto Peñasco, Sonora',
   'Atención directa del titular del despacho',
   'Enfoque preventivo: primero el riesgo, luego el trámite',
 ]
@@ -140,7 +144,7 @@ export const FAQS = [
   },
   {
     q: '¿Trabajas con clientes fuera de Mexicali?',
-    a: 'Soy un despacho establecido en Mexicali, B.C., y atiendo de forma presencial en la ciudad. Buena parte del trabajo —diagnóstico, revisión de CFDI, contabilidad y asesoría— también se puede llevar a distancia, así que puedo apoyar a clientes de otras zonas.',
+    a: 'Sí. Soy un despacho establecido en Mexicali, B.C., donde atiendo de forma presencial. El diagnóstico, la revisión de CFDI, la contabilidad y la asesoría también se llevan a distancia, por lo que atiendo a clientes en el resto de Baja California (Tijuana, Ensenada, Tecate, Rosarito y San Felipe) y en Puerto Peñasco, Sonora.',
   },
   {
     q: '¿Qué pasa si ya recibí una carta invitación del SAT?',

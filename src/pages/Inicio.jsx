@@ -5,7 +5,6 @@ import Confianza from '../components/sections/Confianza'
 import Servicios from '../components/sections/Servicios'
 import PorQue from '../components/sections/PorQue'
 import Proceso from '../components/sections/Proceso'
-import Testimonios from '../components/sections/Testimonios'
 import Faq from '../components/sections/Faq'
 import Cta from '../components/sections/Cta'
 
@@ -33,30 +32,8 @@ const HOME_REASONS = [
   },
 ]
 
-// Testimonios ilustrativos por rol (sin nombres de personas o empresas reales).
-const HOME_TESTIMONIALS = [
-  {
-    // TESTIMONIO DE EJEMPLO — reemplazar por real
-    quote:
-      'Llevábamos años solo timbrando y declarando. Con el diagnóstico entendí por primera vez dónde estaba mi riesgo real y qué corregir antes de que llegara un requerimiento.',
-    name: 'Empresaria de servicios',
-    role: 'Mexicali, B.C.',
-  },
-  {
-    // TESTIMONIO DE EJEMPLO — reemplazar por real
-    quote:
-      'Me explicó en lenguaje claro cómo me podía revisar el SAT con sus algoritmos. Salí de la reunión sabiendo qué decisiones tomar, no solo firmando papeles.',
-    name: 'Profesionista independiente',
-    role: 'Mexicali, B.C.',
-  },
-  {
-    // TESTIMONIO DE EJEMPLO — reemplazar por real
-    quote:
-      'La revisión preventiva de nuestros CFDI nos ayudó a ordenar la operación a tiempo. El semáforo de riesgo lo volvió muy fácil de priorizar para el equipo.',
-    name: 'Administrador de PyME',
-    role: 'Empresa de servicios · Mexicali',
-  },
-]
+// Testimonios: Inicio no muestra el bloque hasta contar con testimonios reales
+// autorizados (los ilustrativos viven solo en /testimonios, que está en noindex).
 
 export default function Inicio() {
   return (
@@ -76,7 +53,6 @@ export default function Inicio() {
       <Servicios bg="tint" />
       <PorQue bg="base" reasons={HOME_REASONS} />
       <Proceso bg="tint" />
-      <Testimonios bg="base" items={HOME_TESTIMONIALS} />
       <Faq bg="tint" />
       <Cta
         title="Tu diagnóstico fiscal empieza con un mensaje"
