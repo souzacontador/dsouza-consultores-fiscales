@@ -2,9 +2,9 @@ import { track } from '@vercel/analytics'
 import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import EstadoVacio from '../components/sections/EstadoVacio'
-import CategoriasRecursos from '../components/sections/CategoriasRecursos'
+import CategoriasRecursos, { AccentDot } from '../components/sections/CategoriasRecursos'
 import { Section, SectionHeader } from '../components/ui'
-import { IconDocument, IconLedger, IconChat, IconLayers, IconArrowRight } from '../components/Icons'
+import { IconDocument, IconLedger, IconChat, IconLayers, IconCheck, IconArrowRight } from '../components/Icons'
 import boletines from '../data/boletines.json'
 import comunicados from '../data/comunicados.json'
 
@@ -15,12 +15,13 @@ import comunicados from '../data/comunicados.json'
 //
 // Categorías de la página: las publicadas llevan conteo y ancla; Blog,
 // Artículos y Guías se anuncian como "Próximamente" hasta tener contenido.
+// Ícono y acento por categoría (solo tokens de la paleta: cian / azul marino / gris).
 const CATEGORIAS = [
-  { id: 'boletines', label: 'Boletines', count: boletines.length },
-  { id: 'comunicados', label: 'Comunicados', count: comunicados.length },
-  { id: 'blog', label: 'Blog', soon: true },
-  { id: 'articulos', label: 'Artículos', soon: true },
-  { id: 'guias', label: 'Guías', soon: true },
+  { id: 'boletines', label: 'Boletines', icon: <IconDocument />, accent: 'primary', count: boletines.length },
+  { id: 'comunicados', label: 'Comunicados', icon: <IconChat />, accent: 'secondary', count: comunicados.length },
+  { id: 'blog', label: 'Blog', icon: <IconLayers />, soon: true },
+  { id: 'articulos', label: 'Artículos', icon: <IconLedger />, soon: true },
+  { id: 'guias', label: 'Guías', icon: <IconCheck />, soon: true },
 ]
 
 export default function Recursos() {
@@ -42,7 +43,12 @@ export default function Recursos() {
 
       <Section bg="base" id="boletines" className="scroll-mt-24">
         <SectionHeader
-          eyebrow="Boletines fiscales"
+          eyebrow={
+            <span className="inline-flex items-center gap-2">
+              <AccentDot accent="primary" />
+              Boletines fiscales
+            </span>
+          }
           title="Boletín Fiscal Semanal DSouza"
           subtitle="Novedades de fiscalización, plazos clave y qué hacer al respecto. Del más reciente al más antiguo."
         />
@@ -91,7 +97,12 @@ export default function Recursos() {
       {comunicados.length > 0 && (
         <Section bg="tint" id="comunicados" className="scroll-mt-24">
           <SectionHeader
-            eyebrow="Comunicados"
+            eyebrow={
+              <span className="inline-flex items-center gap-2">
+                <AccentDot accent="secondary" />
+                Comunicados
+              </span>
+            }
             title="Comunicados DSouza"
             subtitle="Avisos puntuales sobre obligaciones y plazos concretos ante el SAT, el IMSS y el INFONAVIT. Del más reciente al más antiguo."
           />
@@ -156,7 +167,7 @@ export default function Recursos() {
             desc: 'Casos y explicaciones claras sobre CFDI, SAT, IMSS e INFONAVIT.',
           },
           {
-            icon: <IconChat className="h-5 w-5" />,
+            icon: <IconCheck className="h-5 w-5" />,
             label: 'Guías descargables',
             desc: 'Checklists y pasos para ordenar tu cumplimiento.',
           },
