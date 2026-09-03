@@ -1,8 +1,14 @@
+import { useEffect, useState } from 'react'
+
 // Barra de categorías de /recursos: permite identificar de un vistazo los tipos
 // de recurso y saltar al bloque correspondiente. Cada categoría publicada lleva
 // su ícono y un tinte de color de la paleta de marca (fondo y borde, nunca el
 // texto, para no comprometer el contraste). Las categorías sin contenido todavía
 // se muestran atenuadas con la etiqueta "Próximamente" y no son clicables.
+//
+// La barra es FIJA (sticky) justo debajo del menú superior al hacer scroll y
+// resalta la categoría cuya sección está visible, así el visitante siempre
+// puede cambiar de categoría sin volver arriba.
 //
 // categorias: [{ id, label, icon: ReactNode, accent?: 'primary'|'secondary', count?, soon? }]
 //   - con `soon`  → chip deshabilitado (aria-disabled), sin enlace, gris
@@ -12,6 +18,11 @@
 const CHIP = {
   primary: 'border-primary/40 bg-primary/10 hover:border-primary hover:bg-primary/15',
   secondary: 'border-secondary/30 bg-secondary/10 hover:border-secondary hover:bg-secondary/15',
+}
+// Chip activo: borde sólido del color y fondo más presente.
+const CHIP_ACTIVE = {
+  primary: 'border-primary bg-primary/20',
+  secondary: 'border-secondary bg-secondary/20',
 }
 const ICON = { primary: 'text-primary-dark', secondary: 'text-secondary' }
 const DOT = { primary: 'bg-primary', secondary: 'bg-secondary', none: 'bg-line' }
@@ -39,9 +50,69 @@ export function SectionPill({ accent = 'primary', children }) {
   )
 }
 
+// Altura real del menú superior (cambia al compactarse con el scroll): se mide
+// para pegar la barra exactamente debajo y para calcular la categoría visible.
+function useHeaderHeight() {
+  const [height, setHeight] = useState(64)
+  useEffect(() => {
+    const header = document.querySelector('header')
+    if (!header) return
+    const update = () => setHeight(header.getBoundingClientRect().height)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(header)
+    return () => ro.disconnect()
+  }, [])
+  return height
+}
+
+// Id de la sección visible (la última cuyo inicio ya pasó bajo la barra).
+function useActiveSection(ids, offset) {
+  const [active, setActive] = useState(null)
+  useEffect(() => {
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean)
+    if (!sections.length) return
+    let raf = 0
+    const measure = () => {
+      raf = 0
+      let current = null
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top - offset <= 8) current = s.id
+      }
+      setActive(current)
+    }
+    // Una medición por frame como máximo: el scroll dispara muchos eventos.
+    const update = () => {
+      if (!raf) raf = requestAnimationFrame(measure)
+    }
+    measure()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    window.addEventListener('hashchange', update)
+    return () => {
+      if (raf) cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+      window.removeEventListener('hashchange', update)
+    }
+  }, [ids.join(','), offset])
+  return active
+}
+
 export default function CategoriasRecursos({ categorias }) {
+  const headerHeight = useHeaderHeight()
+  const barHeight = 57 // py-3 + chip; se usa solo para detectar la sección visible
+  const active = useActiveSection(
+    categorias.filter((c) => !c.soon).map((c) => c.id),
+    headerHeight + barHeight
+  )
+
   return (
-    <nav aria-label="Categorías de recursos" className="border-b border-line bg-base">
+    <nav
+      aria-label="Categorías de recursos"
+      className="sticky z-40 border-b border-line bg-base/95 backdrop-blur"
+      style={{ top: headerHeight }}
+    >
       <div className="container-site">
         <ul className="-mx-1 flex gap-2 overflow-x-auto px-1 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categorias.map((c) =>
@@ -63,7 +134,10 @@ export default function CategoriasRecursos({ categorias }) {
               <li key={c.id} className="shrink-0">
                 <a
                   href={`#${c.id}`}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-md border px-3 py-2 text-sm font-semibold text-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${CHIP[c.accent] || CHIP.primary}`}
+                  aria-current={active === c.id ? 'true' : undefined}
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-md border px-3 py-2 text-sm font-semibold text-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                    active === c.id ? CHIP_ACTIVE[c.accent] || CHIP_ACTIVE.primary : CHIP[c.accent] || CHIP.primary
+                  }`}
                 >
                   <span className={`[&>svg]:h-4 [&>svg]:w-4 ${ICON[c.accent] || ICON.primary}`}>{c.icon}</span>
                   {c.label}

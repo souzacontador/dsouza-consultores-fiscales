@@ -41,7 +41,7 @@ export default function Recursos() {
 
       <CategoriasRecursos categorias={CATEGORIAS} />
 
-      <Section bg="base" id="boletines" className="scroll-mt-24">
+      <Section bg="base" id="boletines" className="scroll-mt-32">
         <SectionHeader
           eyebrow={<SectionPill accent="primary">Boletines fiscales</SectionPill>}
           title="Boletín Fiscal Semanal DSouza"
@@ -90,7 +90,7 @@ export default function Recursos() {
       </Section>
 
       {comunicados.length > 0 && (
-        <Section bg="tint" id="comunicados" className="scroll-mt-24">
+        <Section bg="tint" id="comunicados" className="scroll-mt-32">
           <SectionHeader
             eyebrow={<SectionPill accent="secondary">Comunicados</SectionPill>}
             title="Comunicados DSouza"
