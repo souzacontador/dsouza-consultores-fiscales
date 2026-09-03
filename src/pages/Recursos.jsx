@@ -2,7 +2,7 @@ import { track } from '@vercel/analytics'
 import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import EstadoVacio from '../components/sections/EstadoVacio'
-import CategoriasRecursos, { AccentDot } from '../components/sections/CategoriasRecursos'
+import CategoriasRecursos, { SectionPill } from '../components/sections/CategoriasRecursos'
 import { Section, SectionHeader } from '../components/ui'
 import { IconDocument, IconLedger, IconChat, IconLayers, IconCheck, IconArrowRight } from '../components/Icons'
 import boletines from '../data/boletines.json'
@@ -43,19 +43,14 @@ export default function Recursos() {
 
       <Section bg="base" id="boletines" className="scroll-mt-24">
         <SectionHeader
-          eyebrow={
-            <span className="inline-flex items-center gap-2">
-              <AccentDot accent="primary" />
-              Boletines fiscales
-            </span>
-          }
+          eyebrow={<SectionPill accent="primary">Boletines fiscales</SectionPill>}
           title="Boletín Fiscal Semanal DSouza"
           subtitle="Novedades de fiscalización, plazos clave y qué hacer al respecto. Del más reciente al más antiguo."
         />
 
         <ul className="mt-12 grid gap-6 md:grid-cols-2">
           {boletines.map((b, i) => (
-            <li key={b.slug} className="card flex flex-col overflow-hidden !p-0 transition-shadow hover:shadow-card-hover">
+            <li key={b.slug} className="card flex flex-col overflow-hidden !p-0 border-t-4 border-t-primary transition-shadow hover:shadow-card-hover">
               <a
                 href={`/boletines/${b.slug}`}
                 target="_blank"
@@ -97,19 +92,14 @@ export default function Recursos() {
       {comunicados.length > 0 && (
         <Section bg="tint" id="comunicados" className="scroll-mt-24">
           <SectionHeader
-            eyebrow={
-              <span className="inline-flex items-center gap-2">
-                <AccentDot accent="secondary" />
-                Comunicados
-              </span>
-            }
+            eyebrow={<SectionPill accent="secondary">Comunicados</SectionPill>}
             title="Comunicados DSouza"
             subtitle="Avisos puntuales sobre obligaciones y plazos concretos ante el SAT, el IMSS y el INFONAVIT. Del más reciente al más antiguo."
           />
 
           <ul className="mt-12 grid gap-6 md:grid-cols-2">
             {comunicados.map((c, i) => (
-              <li key={c.slug} className="card flex flex-col overflow-hidden !p-0 transition-shadow hover:shadow-card-hover">
+              <li key={c.slug} className="card flex flex-col overflow-hidden !p-0 border-t-4 border-t-secondary transition-shadow hover:shadow-card-hover">
                 <a
                   href={`/comunicados/${c.slug}`}
                   target="_blank"
