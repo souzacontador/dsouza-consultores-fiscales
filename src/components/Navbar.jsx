@@ -14,9 +14,9 @@ function Brand({ onClick }) {
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-secondary font-heading text-base font-bold text-primary">
         D
       </span>
+      {/* En pantallas pequeñas solo "DSouza"; el nombre completo aparece desde sm. */}
       <span>
         DSouza <span className="hidden text-muted sm:inline">Consultores Fiscales</span>
-        <span className="text-muted sm:hidden">C.F.</span>
       </span>
     </Link>
   )
