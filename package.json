@@ -11,6 +11,7 @@
     "og": "node scripts/generate-og.mjs",
     "icons": "node scripts/generate-icons.mjs",
     "boletines": "node scripts/sync-boletines.mjs && node scripts/generate-boletin-preview.mjs --keep",
+    "comunicados": "node scripts/sync-comunicados.mjs",
     "calculadoras": "node scripts/sync-calculadoras.mjs"
   },
   "dependencies": {

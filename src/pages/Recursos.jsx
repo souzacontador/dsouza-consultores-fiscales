@@ -5,6 +5,7 @@ import EstadoVacio from '../components/sections/EstadoVacio'
 import { Section, SectionHeader } from '../components/ui'
 import { IconDocument, IconLedger, IconChat, IconArrowRight } from '../components/Icons'
 import boletines from '../data/boletines.json'
+import comunicados from '../data/comunicados.json'
 
 // Boletines: HTML autocontenidos copiados desde el repo BOLETIN-DSOUZA a
 // public/boletines/ (ver scripts/sync-boletines.mjs). Abren en pestaña nueva
@@ -71,6 +72,56 @@ export default function Recursos() {
           ))}
         </ul>
       </Section>
+
+      {comunicados.length > 0 && (
+        <Section bg="tint" id="comunicados">
+          <SectionHeader
+            eyebrow="Comunicados"
+            title="Comunicados DSouza"
+            subtitle="Avisos puntuales sobre obligaciones y plazos concretos ante el SAT, el IMSS y el INFONAVIT. Del más reciente al más antiguo."
+          />
+
+          <ul className="mt-12 grid gap-6 md:grid-cols-2">
+            {comunicados.map((c, i) => (
+              <li key={c.slug} className="card flex flex-col overflow-hidden !p-0 transition-shadow hover:shadow-card-hover">
+                <a
+                  href={`/comunicados/${c.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track('comunicado_open', { comunicado: c.slug })}
+                  className="group flex h-full flex-col focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label={`Leer ${c.title} (abre en pestaña nueva)`}
+                >
+                  <img
+                    src={c.preview}
+                    alt={`Vista previa del ${c.title}`}
+                    width="1200"
+                    height="630"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    className="aspect-[1200/630] w-full border-b border-line object-cover"
+                  />
+                  <div className="flex flex-1 flex-col p-6">
+                    <time dateTime={c.dateISO} className="text-sm font-semibold uppercase tracking-wider text-primary-dark">
+                      {c.dateLabel}
+                    </time>
+                    <h3 className="mt-2 font-heading text-lg font-semibold leading-snug text-secondary group-hover:text-primary-dark">
+                      {c.title}
+                    </h3>
+                    {c.description && (
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{c.description}</p>
+                    )}
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-secondary">
+                      Leer comunicado
+                      <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <EstadoVacio
         bg="tint"
