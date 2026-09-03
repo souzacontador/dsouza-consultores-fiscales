@@ -2,8 +2,10 @@
 //   - descarga cada Boletin-*.html y su *-preview.png a public/boletines/
 //   - ajusta SOLO metadatos de ubicación (og:url / og:image / canonical) para
 //     que apunten al sitio; añade og:image si el boletín no lo trae
-//   - inyecta (idempotente) una barra superior de regreso a /recursos y un
-//     JSON-LD Article con el título, la fecha y el autor ya conocidos
+//   - inyecta (idempotente) una barra superior de regreso a /recursos, un JSON-LD
+//     Article con el título, la fecha y el autor ya conocidos, y un script de
+//     refuerzo en runtime (ver scripts/lib/site-inject.mjs: algunos boletines
+//     reconstruyen el documento al cargar)
 //   - genera src/data/boletines.json (título, descripción, fecha) leyendo
 //     los meta de cada archivo — nada se inventa.
 // Uso: npm run boletines   → luego commit + push (auto-deploy en Vercel).
@@ -11,12 +13,15 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SITE_URL } from '../src/data/site.js'
+import { injectStaticBar, injectRuntimeEnsure } from './lib/site-inject.mjs'
 
 const REPO = 'souzacontador/BOLETIN-DSOUZA'
 const API = `https://api.github.com/repos/${REPO}/contents`
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const outDir = join(root, 'public', 'boletines')
 mkdirSync(outDir, { recursive: true })
+
+const BACK = { href: `${SITE_URL}/recursos`, label: 'Volver a Recursos' }
 
 // Nombres irregulares en el repo → nombre normalizado en el sitio.
 const RENAME = {
@@ -61,27 +66,10 @@ const metaContent = (html, attr, key) =>
   pick(html, new RegExp(`<meta\\s[^>]*${attr}=["']${key}["'][^>]*content=["']([^"']*)["']`, 'i')) ||
   pick(html, new RegExp(`<meta\\s[^>]*content=["']([^"']*)["'][^>]*${attr}=["']${key}["']`, 'i'))
 
-// Barra superior de regreso al sitio (estilos inline, identificada por id
-// para no duplicarse en re-sync).
-const BAR_ID = 'dsz-site-bar'
-function siteBar() {
-  return (
-    `<div id="${BAR_ID}" style="font:600 14px/1.4 Inter,system-ui,sans-serif;background:#0A2540;color:#fff;padding:10px 16px;text-align:center">` +
-    `<a href="${SITE_URL}/recursos" style="color:#00B8D9;text-decoration:none">&larr; Volver a Recursos</a>` +
-    `<span style="opacity:.5;margin:0 10px">|</span>` +
-    `<a href="${SITE_URL}/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a>` +
-    `</div>\n`
-  )
-}
-function injectBar(html) {
-  if (html.includes(`id="${BAR_ID}"`)) return html
-  return html.replace(/<body([^>]*)>/i, (tag) => `${tag}\n${siteBar()}`)
-}
-
 // JSON-LD Article: solo datos que ya existen (título y descripción del propio
 // boletín, fecha de la edición, autor/publicador del sitio).
-function articleJsonLd({ title, description, dateISO, url, img }) {
-  const data = {
+function articleData({ title, description, dateISO, url, img }) {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
@@ -99,11 +87,11 @@ function articleJsonLd({ title, description, dateISO, url, img }) {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
     },
   }
-  return `<script type="application/ld+json" data-dsz="article">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>\n`
 }
-function injectArticle(html, info) {
+function injectArticle(html, data) {
   if (html.includes('data-dsz="article"')) return html
-  return html.replace(/<\/head>/i, `${articleJsonLd(info)}</head>`)
+  const json = JSON.stringify(data).replace(/</g, '\\u003c') // `<` escapado: no puede cerrar el <script>
+  return html.replace(/<\/head>/i, `<script type="application/ld+json" data-dsz="article">${json}</script>\n</head>`)
 }
 
 const list = await (await fetch(API, { headers: { 'User-Agent': 'dsouza-site-sync' } })).json()
@@ -135,8 +123,10 @@ for (const f of htmlFiles) {
     html = html.replace(/<\/head>/i, `<meta property="og:image" content="${img}">\n</head>`)
   }
   if (!/rel=["']canonical["']/i.test(html)) html = html.replace(/<\/head>/i, `<link rel="canonical" href="${url}">\n</head>`)
-  html = injectArticle(html, { title, description, dateISO: date.iso, url, img })
-  html = injectBar(html)
+  const article = articleData({ title, description, dateISO: date.iso, url, img })
+  html = injectArticle(html, article)
+  html = injectStaticBar(html, BACK)
+  html = injectRuntimeEnsure(html, { canonical: url, back: BACK, ld: article })
   writeFileSync(join(outDir, slug), html)
 
   if (hasPreview) {

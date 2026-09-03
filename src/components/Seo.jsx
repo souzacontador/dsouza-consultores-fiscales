@@ -36,7 +36,9 @@ export default function Seo({ path = '/' }) {
     document.title = title
     upsertMeta('name', 'description', description)
     upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')
-    upsertLink('canonical', url)
+    // La página 404 no tiene URL canónica (el servidor responde 404 real).
+    if (path === '/404') document.head.querySelector('link[rel="canonical"]')?.remove()
+    else upsertLink('canonical', url)
 
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)

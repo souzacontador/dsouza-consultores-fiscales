@@ -3,7 +3,8 @@
 //   - inyecta SOLO metadatos y navegación (nunca toca la lógica ni los resultados):
 //       · <link rel="canonical"> al sitio
 //       · lang="es-MX", viewport, description, Open Graph y Twitter — solo si faltan
-//       · una barra superior con enlace de regreso a /calculadoras (idempotente)
+//       · barra superior de regreso a /calculadoras + script de refuerzo en runtime
+//         (ver scripts/lib/site-inject.mjs: estas páginas reconstruyen el documento al cargar)
 //   - genera src/data/calculadoras.json con el título/descripción que el propio
 //     repo usa en su página menú (index.html raíz) — nada se inventa.
 // Uso: npm run calculadoras   → luego commit + push.
@@ -11,6 +12,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SITE_URL } from '../src/data/site.js'
+import { injectStaticBar, injectRuntimeEnsure } from './lib/site-inject.mjs'
 
 const RAW = 'https://raw.githubusercontent.com/souzacontador/dsouza-app/main'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -35,21 +37,9 @@ const CALCULADORAS = [
   },
 ]
 
+const BACK = { href: `${SITE_URL}/calculadoras`, label: 'Volver a Calculadoras' }
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
 const has = (html, re) => re.test(html)
-
-// Barra superior de regreso al sitio. Estilos inline para no depender del CSS
-// de cada calculadora; se identifica por id para no duplicarse en re-sync.
-const BAR_ID = 'dsz-site-bar'
-function siteBar(backHref, backLabel) {
-  return (
-    `<div id="${BAR_ID}" style="font:600 14px/1.4 Inter,system-ui,sans-serif;background:#0A2540;color:#fff;padding:10px 16px;text-align:center">` +
-    `<a href="${backHref}" style="color:#00B8D9;text-decoration:none">&larr; ${backLabel}</a>` +
-    `<span style="opacity:.5;margin:0 10px">|</span>` +
-    `<a href="${SITE_URL}/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a>` +
-    `</div>\n`
-  )
-}
 
 function injectHead(html, c, url) {
   const inserts = []
@@ -85,11 +75,6 @@ function injectLang(html) {
   )
 }
 
-function injectBar(html, backHref, backLabel) {
-  if (html.includes(`id="${BAR_ID}"`)) return html
-  return html.replace(/<body([^>]*)>/i, (tag) => `${tag}\n${siteBar(backHref, backLabel)}`)
-}
-
 const manifest = []
 for (const c of CALCULADORAS) {
   const res = await fetch(`${RAW}/${c.slug}/index.html`)
@@ -99,7 +84,8 @@ for (const c of CALCULADORAS) {
   const url = `${SITE_URL}/calculadoras/${c.slug}/`
   html = injectLang(html)
   html = injectHead(html, c, url)
-  html = injectBar(html, `${SITE_URL}/calculadoras`, 'Volver a Calculadoras')
+  html = injectStaticBar(html, BACK)
+  html = injectRuntimeEnsure(html, { canonical: url, back: BACK, description: c.description })
 
   const dir = join(root, 'public', 'calculadoras', c.slug)
   mkdirSync(dir, { recursive: true })
