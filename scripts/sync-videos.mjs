@@ -73,7 +73,7 @@ const SEO_OVERRIDE = {
   '9lKGtKdYoPA': {
     title: 'Reforma INFONAVIT 2025 y nuevo SUA 3.6.7',
     description:
-      'Qué cambió en INFONAVIT para 2025, implicaciones en cálculos y reportes, ajustes clave del SUA 3.6.7 y recomendaciones de cumplimiento para patrones y despachos.',
+      'Qué cambió en INFONAVIT para 2025, implicaciones en cálculos y reportes, ajustes clave del SUA 3.6.7 y recomendaciones de cumplimiento para patrones.',
   },
   LYmt4zFRQS4: {
     title: '5 errores frecuentes al emitir el CFDI 4.0 de ingreso',
