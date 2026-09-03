@@ -99,6 +99,12 @@ solo dentro de `useEffect` o en manejadores de eventos. El estado inicial de
 `useState` debe ser el mismo en servidor y cliente. Si se rompe esta regla,
 React avisa en consola de un error de hidratación y la página puede parpadear.
 
+**Al verificar en local con `npm run preview`:** usa las rutas **con barra final**
+(`/recursos/`, `/contacto/`). `vite preview` responde a `/recursos` (sin barra)
+con el `index.html` de la raíz (fallback SPA), y eso produce falsos errores de
+hidratación (#418/#425) que NO ocurren en Vercel, donde `/recursos` sirve
+`recursos/index.html`.
+
 ## Publicar un boletín nuevo (flujo)
 
 1. Sube el boletín al repo `BOLETIN-DSOUZA` con la convención
