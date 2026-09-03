@@ -61,6 +61,63 @@ function dateFromName(slug) {
   return null
 }
 
+// Títulos y descriptions SEO aprobados por el titular (≤60 / ≤160 caracteres),
+// redactados únicamente a partir del contenido de cada boletín. Se aplican al
+// <title>, og:title, description y og:description del archivo, al JSON-LD
+// Article y al listado de /recursos. Si un boletín no está aquí, se usan los
+// metadatos que trae el propio archivo.
+const SEO_OVERRIDE = {
+  'Boletin-Fiscal-DSouza-19-28-ago-2026.html': {
+    title: 'Boletín Fiscal 19–28 de agosto de 2026 | DSouza Consultores',
+    description:
+      'El SAT intensifica la fiscalización con las facultades que ya tiene. Plazos clave antes del cierre de 2026: Regularización (31-oct) y Antilavado (30-nov).',
+  },
+  'Boletin-Fiscal-DSouza-07-11-ago-2026.html': {
+    title: 'Boletín Fiscal 7–11 de agosto de 2026 | DSouza Consultores',
+    description:
+      'Reforma integral antilavado (Acuerdo 115/2026), Programa de Regularización Fiscal 2026 (límite 31-oct) y fiscalización algorítmica del SAT.',
+  },
+  'Boletin-Fiscal-DSouza-27-jul-03-ago-2026.html': {
+    title: 'Boletín Fiscal 27 jul – 3 ago 2026 | DSouza Consultores',
+    description:
+      'El SAT reanuda plazos el 3 de agosto: calendario de vencimientos, Plan Maestro de Fiscalización, antilavado, prórroga de la MVE y Carta Porte.',
+  },
+  'Boletin-Fiscal-DSouza-03-23-jul-2026.html': {
+    title: 'Boletín Fiscal 3–23 de julio de 2026 | DSouza Consultores',
+  },
+  'Boletin-Fiscal-DSouza-30-abr-2026.html': {
+    title: 'Boletín Fiscal 23–30 de abril de 2026 | DSouza Consultores',
+    description:
+      'Vence la Anual 2025 de personas físicas; 1ª Modificación a la RMF 2026 (estímulo al diésel), aranceles en 185 fracciones y complemento de hidrocarburos.',
+  },
+  'Boletin-Fiscal-DSouza-21-24-abr-2026.html': {
+    title: 'Boletín Fiscal 21–24 de abril de 2026 | DSouza Consultores',
+    description:
+      'Complemento CFDI Hidrocarburos, reforma LFPIORPI, SCJN-UIF, Plan Maestro SAT 2026, Declaración Anual PF 2025 y jornada de 40 horas.',
+  },
+}
+
+const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
+
+// Sustituye (o inserta) el <title> y las metas de título/descripción del archivo.
+function applySeoMeta(html, title, description) {
+  html = /<title>[\s\S]*?<\/title>/i.test(html)
+    ? html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escAttr(title)}</title>`)
+    : html.replace(/<\/head>/i, `<title>${escAttr(title)}</title>\n</head>`)
+  const setMeta = (attr, key, value) => {
+    if (!value) return
+    const a = new RegExp(`(<meta\\s[^>]*${attr}=["']${key}["'][^>]*content=)["'][^"']*["']`, 'i')
+    const b = new RegExp(`(<meta\\s[^>]*content=)["'][^"']*["']([^>]*${attr}=["']${key}["'])`, 'i')
+    if (a.test(html)) html = html.replace(a, `$1"${escAttr(value)}"`)
+    else if (b.test(html)) html = html.replace(b, `$1"${escAttr(value)}"$2`)
+    else html = html.replace(/<\/head>/i, `<meta ${attr}="${key}" content="${escAttr(value)}">\n</head>`)
+  }
+  setMeta('property', 'og:title', title)
+  setMeta('name', 'description', description)
+  setMeta('property', 'og:description', description)
+  return html
+}
+
 const pick = (html, re) => (html.match(re) || [null, null])[1]?.trim() || null
 const metaContent = (html, attr, key) =>
   pick(html, new RegExp(`<meta\\s[^>]*${attr}=["']${key}["'][^>]*content=["']([^"']*)["']`, 'i')) ||
@@ -108,10 +165,14 @@ for (const f of htmlFiles) {
   const hasPreview = pngNames.has(previewSrc)
 
   let html = await (await fetch(f.download_url)).text()
-  const title = metaContent(html, 'property', 'og:title') || pick(html, /<title>([\s\S]*?)<\/title>/i)
-  const description = metaContent(html, 'property', 'og:description') || metaContent(html, 'name', 'description')
+  const fileTitle = metaContent(html, 'property', 'og:title') || pick(html, /<title>([\s\S]*?)<\/title>/i)
+  const fileDescription = metaContent(html, 'property', 'og:description') || metaContent(html, 'name', 'description')
+  const seo = SEO_OVERRIDE[slug] || {}
+  const title = seo.title || fileTitle
+  const description = seo.description || fileDescription
   const date = DATE_OVERRIDE[slug] || dateFromName(slug)
   if (!title || !date) throw new Error(`Sin título o fecha para ${f.name}`)
+  if (seo.title || seo.description) html = applySeoMeta(html, title, description)
 
   // Solo metadatos de ubicación y navegación: el contenido no se toca.
   const url = `${SITE_URL}/boletines/${slug}`
@@ -126,7 +187,8 @@ for (const f of htmlFiles) {
   const article = articleData({ title, description, dateISO: date.iso, url, img })
   html = injectArticle(html, article)
   html = injectStaticBar(html, BACK)
-  html = injectRuntimeEnsure(html, { canonical: url, back: BACK, ld: article })
+  const force = !!(seo.title || seo.description)
+  html = injectRuntimeEnsure(html, { canonical: url, back: BACK, ld: article, title, description, force })
   writeFileSync(join(outDir, slug), html)
 
   if (hasPreview) {

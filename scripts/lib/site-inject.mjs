@@ -31,7 +31,11 @@ export function injectStaticBar(html, back) {
   return html.replace(/<body([^>]*)>/i, (tag) => `${tag}\n${barHtml(back)}\n`)
 }
 
-// Script de refuerzo en runtime. cfg: { canonical, back:{href,label}, ld?, description? }
+// Script de refuerzo en runtime.
+// cfg: { canonical, back:{href,label}, ld?, description?, title?, force? }
+//   - description sin `force`: solo se añade si la página no trae una.
+//   - title / description con `force`: se imponen (metadatos SEO aprobados) aunque
+//     la plantilla interna de la página traiga otros.
 export function injectRuntimeEnsure(html, cfg) {
   if (html.includes('id="dsz-inject"')) return html
   // `<` escapado para que ningún texto pueda cerrar el <script>.
@@ -45,7 +49,8 @@ export function injectRuntimeEnsure(html, cfg) {
     `<span style="opacity:.5;margin:0 10px">|</span><a href="${SITE_URL}/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a>';` +
     `b.insertBefore(d,b.firstChild)}` +
     `if(C.canonical&&!h.querySelector('link[rel="canonical"]')){var l=document.createElement('link');l.rel='canonical';l.href=C.canonical;h.appendChild(l)}` +
-    `if(C.description&&!h.querySelector('meta[name="description"]')){var m=document.createElement('meta');m.name='description';m.content=C.description;h.appendChild(m)}` +
+    `if(C.title&&C.force&&document.title!==C.title){document.title=C.title}` +
+    `if(C.description){var m=h.querySelector('meta[name="description"]');if(!m){m=document.createElement('meta');m.name='description';m.content=C.description;h.appendChild(m)}else if(C.force&&m.content!==C.description){m.content=C.description}}` +
     `if(C.ld&&!h.querySelector('script[data-dsz]')){var s=document.createElement('script');s.type='application/ld+json';s.setAttribute('data-dsz','1');s.textContent=JSON.stringify(C.ld);h.appendChild(s)}}` +
     // Reintenta durante ~8 s: cubre reconstrucciones asíncronas del documento.
     `var t=setInterval(function(){ensure();if(++n>16)clearInterval(t)},500);ensure();window.addEventListener('load',ensure)})();`

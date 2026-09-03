@@ -1,8 +1,8 @@
 [
   {
     "slug": "Boletin-Fiscal-DSouza-19-28-ago-2026.html",
-    "title": "Boletín Fiscal 19–28 de agosto de 2026 · DSouza Consultores",
-    "description": "El SAT intensifica la fiscalización con las facultades que ya tiene. Plazos clave antes del cierre de 2026: Regularización (31-oct), Antilavado (30-nov) y el nuevo soporte para reducir el coeficiente de utilidad.",
+    "title": "Boletín Fiscal 19–28 de agosto de 2026 | DSouza Consultores",
+    "description": "El SAT intensifica la fiscalización con las facultades que ya tiene. Plazos clave antes del cierre de 2026: Regularización (31-oct) y Antilavado (30-nov).",
     "dateISO": "2026-08-28",
     "dateLabel": "19–28 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-19-28-ago-2026-preview.png",
@@ -11,8 +11,8 @@
   },
   {
     "slug": "Boletin-Fiscal-DSouza-07-11-ago-2026.html",
-    "title": "Boletín Fiscal Semanal · 7–11 de agosto de 2026 — DSouza Consultores Fiscales",
-    "description": "Reforma integral antilavado (Acuerdo 115/2026), Programa de Regularización Fiscal 2026 (límite 31-oct), fiscalización algorítmica del SAT y más. Boletín interactivo: filtre por prioridad y expanda cada nota.",
+    "title": "Boletín Fiscal 7–11 de agosto de 2026 | DSouza Consultores",
+    "description": "Reforma integral antilavado (Acuerdo 115/2026), Programa de Regularización Fiscal 2026 (límite 31-oct) y fiscalización algorítmica del SAT.",
     "dateISO": "2026-08-11",
     "dateLabel": "7–11 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-07-11-ago-2026-preview.png",
@@ -21,8 +21,8 @@
   },
   {
     "slug": "Boletin-Fiscal-DSouza-27-jul-03-ago-2026.html",
-    "title": "Boletín Fiscal Semanal — 27 de julio al 3 de agosto de 2026",
-    "description": "El SAT reanuda plazos el 3 de agosto, calendario de vencimientos, Plan Maestro de Fiscalización, antilavado, prórroga de la MVE, Carta Porte y régimen fiscal del Mundial. DSouza Consultores Fiscales.",
+    "title": "Boletín Fiscal 27 jul – 3 ago 2026 | DSouza Consultores",
+    "description": "El SAT reanuda plazos el 3 de agosto: calendario de vencimientos, Plan Maestro de Fiscalización, antilavado, prórroga de la MVE y Carta Porte.",
     "dateISO": "2026-08-03",
     "dateLabel": "27 de julio – 3 de agosto de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-27-jul-03-ago-2026-preview.png",
@@ -31,7 +31,7 @@
   },
   {
     "slug": "Boletin-Fiscal-DSouza-03-23-jul-2026.html",
-    "title": "Boletín Fiscal Semanal — 3 al 23 de julio de 2026",
+    "title": "Boletín Fiscal 3–23 de julio de 2026 | DSouza Consultores",
     "description": "Edición ampliada: RMF 2026 en el DOF, antilavado LFPIORPI, e.firma del IMSS, Lista 69-B, CFDI y comercio exterior.",
     "dateISO": "2026-07-23",
     "dateLabel": "3–23 de julio de 2026",
@@ -41,22 +41,22 @@
   },
   {
     "slug": "Boletin-Fiscal-DSouza-30-abr-2026.html",
-    "title": "Boletín Fiscal Semanal #2 · DSouza Consultores · 23–30 Abril 2026",
-    "description": null,
+    "title": "Boletín Fiscal 23–30 de abril de 2026 | DSouza Consultores",
+    "description": "Vence la Anual 2025 de personas físicas; 1ª Modificación a la RMF 2026 (estímulo al diésel), aranceles en 185 fracciones y complemento de hidrocarburos.",
     "dateISO": "2026-04-30",
     "dateLabel": "23–30 de abril de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-30-abr-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 758
+    "sizeKB": 759
   },
   {
     "slug": "Boletin-Fiscal-DSouza-21-24-abr-2026.html",
-    "title": "Boletín Fiscal Semanal | 21–24 abr 2026 | DSouza Consultores Fiscales",
-    "description": "Boletín Fiscal Semanal DSouza Consultores — Semana del 21 al 24 de abril de 2026. Complemento CFDI Hidrocarburos, reforma LFPIORPI, SCJN-UIF, Plan Maestro SAT 2026, Declaración Anual PF 2025, Jornada 40 horas.",
+    "title": "Boletín Fiscal 21–24 de abril de 2026 | DSouza Consultores",
+    "description": "Complemento CFDI Hidrocarburos, reforma LFPIORPI, SCJN-UIF, Plan Maestro SAT 2026, Declaración Anual PF 2025 y jornada de 40 horas.",
     "dateISO": "2026-04-24",
     "dateLabel": "21–24 de abril de 2026",
     "preview": "/boletines/Boletin-Fiscal-DSouza-21-24-abr-2026-preview.png",
     "previewFromRepo": true,
-    "sizeKB": 63
+    "sizeKB": 64
   }
 ]

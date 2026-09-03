@@ -97,7 +97,12 @@ a partir de las rutas indexables, `boletines.json` y `calculadoras.json`; no
 existe un sitemap manual que actualizar.
 
 Nombres fuera de la convención se mapean en `RENAME`/`DATE_OVERRIDE` dentro de
-`scripts/sync-boletines.mjs`.
+`scripts/sync-boletines.mjs`. Los títulos/descriptions SEO aprobados (≤60/≤160
+caracteres) viven en `SEO_OVERRIDE` del mismo script: se aplican al `<title>`,
+`og:title`, `description`, `og:description`, al JSON-LD `Article` y a `/recursos`;
+el contenido del boletín no se toca. El sync también inyecta (idempotente) una barra
+de regreso al sitio y un script de refuerzo (`scripts/lib/site-inject.mjs`) porque
+algunos boletines y calculadoras reconstruyen el documento al cargar.
 
 ## Pendientes / DoD (por marcar en prompts posteriores)
 
