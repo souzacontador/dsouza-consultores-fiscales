@@ -2,14 +2,27 @@ import { track } from '@vercel/analytics'
 import Seo from '../components/Seo'
 import Hero from '../components/sections/Hero'
 import EstadoVacio from '../components/sections/EstadoVacio'
+import CategoriasRecursos from '../components/sections/CategoriasRecursos'
 import { Section, SectionHeader } from '../components/ui'
-import { IconDocument, IconLedger, IconChat, IconArrowRight } from '../components/Icons'
+import { IconDocument, IconLedger, IconChat, IconLayers, IconArrowRight } from '../components/Icons'
 import boletines from '../data/boletines.json'
 import comunicados from '../data/comunicados.json'
 
 // Boletines: HTML autocontenidos copiados desde el repo BOLETIN-DSOUZA a
-// public/boletines/ (ver scripts/sync-boletines.mjs). Abren en pestaña nueva
-// porque no llevan la navegación del sitio.
+// public/boletines/ (ver scripts/sync-boletines.mjs). Comunicados: ídem desde
+// souzacontador/Comunicados (scripts/sync-comunicados.mjs). Ambos abren en
+// pestaña nueva porque no llevan la navegación del sitio.
+//
+// Categorías de la página: las publicadas llevan conteo y ancla; Blog,
+// Artículos y Guías se anuncian como "Próximamente" hasta tener contenido.
+const CATEGORIAS = [
+  { id: 'boletines', label: 'Boletines', count: boletines.length },
+  { id: 'comunicados', label: 'Comunicados', count: comunicados.length },
+  { id: 'blog', label: 'Blog', soon: true },
+  { id: 'articulos', label: 'Artículos', soon: true },
+  { id: 'guias', label: 'Guías', soon: true },
+]
+
 export default function Recursos() {
   const total = boletines.length
 
@@ -20,12 +33,14 @@ export default function Recursos() {
       <Hero
         eyebrow="Recursos"
         title="Recursos para entender cómo te fiscalizan"
-        subtitle={`Boletines fiscales semanales con lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} ediciones publicadas; artículos y guías en camino.`}
+        subtitle={`Boletines fiscales semanales y comunicados puntuales sobre lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} boletines y ${comunicados.length} comunicados publicados; blog, artículos y guías en camino.`}
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
         ctaLabel="Pregunta por WhatsApp"
       />
 
-      <Section bg="base" id="boletines">
+      <CategoriasRecursos categorias={CATEGORIAS} />
+
+      <Section bg="base" id="boletines" className="scroll-mt-24">
         <SectionHeader
           eyebrow="Boletines fiscales"
           title="Boletín Fiscal Semanal DSouza"
@@ -74,7 +89,7 @@ export default function Recursos() {
       </Section>
 
       {comunicados.length > 0 && (
-        <Section bg="tint" id="comunicados">
+        <Section bg="tint" id="comunicados" className="scroll-mt-24">
           <SectionHeader
             eyebrow="Comunicados"
             title="Comunicados DSouza"
@@ -127,9 +142,14 @@ export default function Recursos() {
         bg="tint"
         icon={<IconDocument className="h-8 w-8" />}
         statusLabel="Próximamente"
-        title="Artículos y guías en camino"
-        description="Además de los boletines, estamos preparando material práctico para entender tu riesgo fiscal y cómo prevenirlo."
+        title="Blog, artículos y guías en camino"
+        description="Además de los boletines y comunicados, estamos preparando material práctico para entender tu riesgo fiscal y cómo prevenirlo."
         items={[
+          {
+            icon: <IconLayers className="h-5 w-5" />,
+            label: 'Blog',
+            desc: 'Actualidad fiscal comentada, en lenguaje de negocio.',
+          },
           {
             icon: <IconLedger className="h-5 w-5" />,
             label: 'Artículos prácticos',
