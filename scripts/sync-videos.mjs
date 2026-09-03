@@ -123,7 +123,7 @@ const SEO_OVERRIDE = {
     description: 'Recomendaciones prácticas para el cierre fiscal del ejercicio.',
   },
   xpuVVrn5efA: {
-    title: '¿Se facturan los depósitos en garantía en renta de inmuebles?',
+    title: 'Depósitos en garantía en renta de inmuebles: ¿se facturan?',
     description:
       'Una de las dudas más comunes en facturación: si los depósitos en garantía en la renta de bienes inmuebles se facturan. El video la resuelve.',
   },
