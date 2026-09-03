@@ -33,10 +33,29 @@ const EXCLUIR = new Set([
   'LoutznqnfLE', // Reforma INFONAVIT 2025 y SUA 3.6.7 — repetido (se conserva 9lKGtKdYoPA)
 ])
 
-// Videos adicionales por id (más antiguos que los 15 del feed). Se declaran a
-// mano con título, descripción y fecha reales del video.
-//   { id, title, description, dateISO }
-const EXTRA = []
+// Videos adicionales por id (más antiguos que los 15 del feed). Basta el id del
+// enlace de YouTube: título, descripción y fecha se leen de la página del video.
+const EXTRA_IDS = [
+  'xpuVVrn5efA', // Depósitos de garantía en renta de inmuebles ¿facturables? (2020-10-30)
+  '1JjhG0NEcz4', // El León y la Gacela / El SAT y el Contribuyente (2020-10-29)
+]
+
+// Lee título, descripción y fecha de publicación de la página de un video.
+const field = (html, key) => {
+  const m = html.match(new RegExp(String.raw`"${key}":"((?:[^"\\]|\\.)*)"`))
+  return m ? JSON.parse('"' + m[1] + '"') : ''
+}
+async function fetchVideoMeta(id) {
+  const r = await fetch(`https://www.youtube.com/watch?v=${id}`, {
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0', 'Accept-Language': 'es-MX,es;q=0.9' },
+  })
+  const html = await r.text()
+  const title = field(html, 'title')
+  const dateISO = field(html, 'publishDate').slice(0, 10)
+  if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(dateISO)) throw new Error(`No se pudieron leer los datos del video ${id}`)
+  if (field(html, 'channelId') !== CHANNEL_ID) throw new Error(`El video ${id} no pertenece al canal configurado`)
+  return { id, title, description: field(html, 'shortDescription'), dateISO }
+}
 
 // Títulos y descripciones SEO aprobados por el titular (≤60 / ≤160), redactados
 // únicamente a partir de lo que cada video dice en YouTube. Si un video no está
@@ -103,6 +122,16 @@ const SEO_OVERRIDE = {
     title: 'Recomendaciones para el cierre fiscal del ejercicio',
     description: 'Recomendaciones prácticas para el cierre fiscal del ejercicio.',
   },
+  xpuVVrn5efA: {
+    title: '¿Se facturan los depósitos en garantía en renta de inmuebles?',
+    description:
+      'Una de las dudas más comunes en facturación: si los depósitos en garantía en la renta de bienes inmuebles se facturan. El video la resuelve.',
+  },
+  '1JjhG0NEcz4': {
+    title: 'El león y la gacela: el SAT y el contribuyente',
+    description:
+      'Fábula del león y la gacela aplicada a la relación entre el SAT y el contribuyente: cada mañana hay que correr, o nos devoran.',
+  },
 }
 
 // "𝗔𝗥𝗧 𝟰𝟵" (símbolos matemáticos en negrita/cursiva) → "ART 49". NFKD descompone
@@ -134,7 +163,14 @@ let videos = entries.map((e) => ({
   description: normalize(pick(e, /<media:description>([\s\S]*?)<\/media:description>/)),
   dateISO: pick(e, /<published>([^<]{10})/),
 }))
-videos = videos.filter((v) => !EXCLUIR.has(v.id)).concat(EXTRA)
+const feedIds = new Set(videos.map((v) => v.id))
+const extra = []
+for (const id of EXTRA_IDS) {
+  if (feedIds.has(id)) continue // ya viene en el feed
+  const m = await fetchVideoMeta(id)
+  extra.push({ ...m, title: normalize(m.title), description: normalize(m.description) })
+}
+videos = videos.filter((v) => !EXCLUIR.has(v.id)).concat(extra)
 
 const manifest = []
 for (const v of videos) {
