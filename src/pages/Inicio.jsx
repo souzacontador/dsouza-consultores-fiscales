@@ -23,7 +23,7 @@ const HOME_REASONS = [
   {
     icon: 'clock',
     title: 'Prevención, no reacción',
-    desc: 'Reviso y corrijo antes de la carta invitación o la revisión electrónica, cuando todavía se puede ordenar sin multas ni actualizaciones evitables.',
+    desc: 'Reviso y corrijo oportunamente, antes de que una inconsistencia escale a una acción de vigilancia o comprobación.',
   },
   {
     icon: 'chat',
@@ -41,11 +41,11 @@ export default function Inicio() {
       <Seo path="/" />
       <Hero
         layout="split"
-        eyebrow="Contabilidad · Fiscal preventivo · Auditoría algorítmica"
-        title="Cumple con el SAT sin sustos, con quien entiende cómo te fiscalizan los algoritmos."
+        eyebrow="Despacho contable y fiscal en Mexicali · Prevención fiscal · Auditoría algorítmica de CFDI"
+        title="Cumple con el SAT sin sustos, con quien entiende cómo funciona la fiscalización basada en datos y modelos de riesgo."
         subtitle="Ayudo a PyMEs, profesionistas y empresas de servicios con contabilidad al día, asesoría fiscal preventiva y capacitación — detectando los focos rojos en tus CFDI antes de que lo haga el SAT."
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
         trustSignal="Despacho establecido en Mexicali · Atención directa del titular"
         visual={<RiskCardVisual />}
       />
@@ -57,7 +57,7 @@ export default function Inicio() {
       <Cta
         title="Tu diagnóstico fiscal empieza con un mensaje"
         subtitle="Cuéntame tu situación por WhatsApp y te digo con claridad cómo puedo ayudarte a cumplir sin sustos. Sin compromiso."
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
       />
     </>
   )

@@ -71,7 +71,7 @@ export default function TestimoniosPage() {
         title="Lo que dicen quienes ya trabajan con nosotros"
         subtitle="Historias del tipo de tranquilidad y claridad que buscamos entregar. Se reemplazarán por testimonios reales con la autorización de cada cliente."
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
       />
 
       <Testimonios

@@ -15,7 +15,7 @@ export default function ServiciosPage() {
         title="Servicios contables y fiscales con visión algorítmica"
         subtitle="Contabilidad al día, asesoría fiscal preventiva, auditoría algorítmica de CFDI y capacitación — cuatro frentes para que cumplas con el SAT, el IMSS y el INFONAVIT y entiendas tu riesgo real."
         secondary={{ label: 'Ir a contacto', to: '/contacto' }}
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
       />
 
       <MediaTexto

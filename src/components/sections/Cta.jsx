@@ -18,7 +18,13 @@ export default function Cta({
         <div className="mt-8 flex justify-center">
           <WhatsAppButton>{ctaLabel}</WhatsAppButton>
         </div>
-        <p className="mt-6 text-sm text-white/60">
+        {/* Expectativas claras: la conversación inicial no compromete; el alcance y los
+            honorarios se confirman antes de revisar documentación. */}
+        <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/75">
+          La primera conversación es sin compromiso. Antes de revisar documentación, confirmamos
+          alcance, información necesaria y honorarios aplicables.
+        </p>
+        <p className="mt-4 text-sm text-white/60">
           {CONTACT.hours} · {CONTACT.city} · {CONTACT.phoneDisplay}
         </p>
       </div>

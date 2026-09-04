@@ -39,7 +39,7 @@ export default function Nosotros() {
         title="Un despacho que entiende los algoritmos del SAT"
         subtitle="Integramos contabilidad, asesoría preventiva y capacitación con un mismo eje: entender cómo te fiscaliza la autoridad para que cumplas con tranquilidad."
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
       />
 
       {/* [VERIFICAR] fecha de fundación y trayectoria — no se afirman por no estar confirmadas. */}
@@ -49,7 +49,7 @@ export default function Nosotros() {
         eyebrow="Nuestra historia y filosofía"
         title="Por qué existimos para prevenir, no para reaccionar"
         paragraphs={[
-          'La fiscalización cambió. Hoy el SAT, el IMSS y el INFONAVIT cruzan de forma automática tus CFDI, tu nómina, tu DIOT y tus declaraciones con algoritmos e inteligencia artificial: las inconsistencias saltan solas y las cartas invitación llegan sin previo aviso.',
+          'La fiscalización cambió. Hoy el SAT, el IMSS y el INFONAVIT utilizan información digital, CFDI, declaraciones y herramientas tecnológicas para identificar inconsistencias y seleccionar operaciones o contribuyentes de mayor riesgo. Una inconsistencia puede convertirse en una carta invitación o en una acción de comprobación sin previo aviso.',
           'Frente a eso, capturar, timbrar y declarar ya no alcanza. Por eso nuestra respuesta es prevenir: leer tu información con esa misma lógica y corregir a tiempo, cuando todavía se puede hacer de forma ordenada.',
           'Somos un despacho establecido en Mexicali, B.C., enfocado en PyMEs, profesionistas independientes y empresas de servicios que quieren cumplir bien y entender su riesgo real. Atendemos de forma presencial en Mexicali y a distancia en el resto de Baja California y en Puerto Peñasco, Sonora.',
         ]}

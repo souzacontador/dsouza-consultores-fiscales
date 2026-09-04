@@ -11,7 +11,7 @@ export default function ContactoPage() {
         title="Hablemos de tu situación fiscal"
         subtitle="Cuéntanos tu caso y te respondemos en horario hábil (Lun–Vie 9:00–18:00). Atención directa del titular, sin compromiso."
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
-        ctaLabel="Agenda tu diagnóstico"
+        ctaLabel="Solicita tu diagnóstico por WhatsApp"
       />
       <Contacto />
     </>

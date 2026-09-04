@@ -136,7 +136,7 @@ export const FAQS = [
   },
   {
     q: '¿Qué es la auditoría algorítmica de CFDI?',
-    a: 'El SAT cruza de forma automática tus comprobantes, declaraciones, DIOT y nómina para detectar inconsistencias. La auditoría algorítmica aplica esa misma forma de analizar a tus CFDI y operaciones, para encontrar los focos rojos antes de que la autoridad los marque. No es una promesa de invisibilidad ante el SAT: es prevención informada.',
+    a: 'El SAT utiliza información digital, CFDI, declaraciones y herramientas tecnológicas para identificar inconsistencias y seleccionar operaciones o contribuyentes de mayor riesgo. Nuestra auditoría algorítmica reproduce cruces y pruebas de consistencia para detectar señales de riesgo antes de que se conviertan en una contingencia. No es una promesa de invisibilidad ante el SAT: es prevención informada.',
   },
   {
     q: '¿Me sirve si ya tengo contador?',

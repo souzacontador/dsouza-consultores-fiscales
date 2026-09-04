@@ -8,7 +8,7 @@ export default function PorQue({
   bg = 'base',
   eyebrow = 'Por qué DSouza',
   title = 'La diferencia: anticiparse al algoritmo',
-  subtitle = 'El SAT, el IMSS y el INFONAVIT ya fiscalizan con modelos automáticos e inteligencia artificial. Trabajamos con esa misma lógica para que tu cumplimiento deje de ser una apuesta.',
+  subtitle = 'El SAT, IMSS e INFONAVIT utilizan herramientas tecnológicas, cruces de información y modelos de riesgo para orientar sus acciones de vigilancia y fiscalización. Analizo tus CFDI y operaciones mediante una lógica de riesgo basada en patrones, cruces e inconsistencias documentados por las autoridades fiscales.',
   reasons = REASONS,
 }) {
   return (

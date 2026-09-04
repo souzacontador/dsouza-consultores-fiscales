@@ -110,6 +110,10 @@ export default function Contacto() {
             Completa el formulario y te respondemos en horario de oficina. ¿Prefieres algo más
             directo? Escríbenos por WhatsApp aquí al lado.
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">
+            La primera conversación es sin compromiso. Antes de revisar documentación, confirmamos
+            alcance, información necesaria y honorarios aplicables.
+          </p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5" noValidate>
             <div>
