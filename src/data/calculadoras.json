@@ -16,5 +16,14 @@
     "path": "/calculadoras/equivalencias-dlls/",
     "pageTitle": "2026 Equivalencias Dlls — DSouza Consultores",
     "sizeKB": 163
+  },
+  {
+    "slug": "asimilados-salarios",
+    "title": "Calculadora de ISR · Asimilados a salarios",
+    "description": "Retención de ISR sobre percepciones asimiladas a salarios conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual.",
+    "icon": "calculator",
+    "path": "/calculadoras/asimilados-salarios/",
+    "pageTitle": "Calculadora de ISR · Asimilados a salarios 2026 · DSouza Consultores Fiscales",
+    "sizeKB": 46
   }
 ]

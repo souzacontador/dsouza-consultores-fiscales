@@ -35,6 +35,13 @@ const CALCULADORAS = [
       'Tipo de cambio USD/MXN aplicable a cada día de 2026, con conversión de montos, gráfica de evolución y cierres mensuales.',
     icon: 'currency',
   },
+  {
+    slug: 'asimilados-salarios',
+    title: 'Calculadora de ISR · Asimilados a salarios',
+    description:
+      'Retención de ISR sobre percepciones asimiladas a salarios conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual.',
+    icon: 'calculator',
+  },
 ]
 
 const BACK = { href: `${SITE_URL}/calculadoras`, label: 'Volver a Calculadoras' }

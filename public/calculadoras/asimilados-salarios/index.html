@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de ISR · Asimilados a salarios 2026 · DSouza Consultores Fiscales</title>
+<meta name="description" content="Calcula la retención de ISR sobre percepciones asimiladas a salarios (honorarios asimilados, consejeros, cooperativas y más) conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual.">
+<meta name="author" content="C.P. Daniel Souza Vázquez — DSouza Consultores Fiscales">
+<style>/* Calculadora ISR Asimilados 2026 — estilos.
+ * Design System DSouza: marino #003366 (jerarquía), cian #00B8D9 (acento tecnológico),
+ * gris medio #999999 (secundario/decorativo), blanco #FFFFFF (lectura). Títulos Georgia
+ * (serif), cuerpo Arial/Calibri. Ver DESIGN_SYSTEM_CALCULADORA.md. */
+:root {
+  --navy: #003366; /* marino: barras, jerarquía, totales */
+  --navy2: #004a99; /* marino claro: degradado del encabezado */
+  --accent: #00b8d9; /* cian: acentos tecnológicos */
+  --accent-dark: #0086a8; /* cian oscuro: hover/enlaces (AA sobre blanco) */
+  --ink: #1a1a1a; /* texto principal */
+  --gray-med: #999999; /* gris medio de marca: bordes de énfasis, texto decorativo grande */
+  --muted: #6b7280; /* secundario legible (AA en tamaño normal); hue del gris de marca oscurecido */
+  --muted2: #9aa3af; /* terciario/placeholder */
+  --line: #e2e8f0;
+  --line2: #f3f5f8;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --ok: #0f766e;
+  --ok-bg: #ecfdf5;
+  --ok-line: #a7f3d0;
+  --rose: #e11d48;
+  --amber: #b45309;
+  --amber-bg: #fffbeb;
+  --amber-line: #fcd34d;
+  --radius: 16px;
+  --shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+#app {
+  /* Cuerpo: Calibri/Arial para máxima legibilidad. */
+  font-family: Calibri, Arial, 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+/* Títulos principales: serifa Georgia (respaldo Times New Roman), según la marca.
+ * Solo el título principal del encabezado; los encabezados de sección van en sans. */
+.hero h1, .serif { font-family: Georgia, 'Times New Roman', 'Times', serif; }
+
+/* Encabezado */
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  color: #fff;
+  padding: 32px 20px 40px;
+}
+.hero .wrap { max-width: 960px; margin: 0 auto; }
+.hero .brand {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  opacity: 0.85; font-weight: 700; margin-bottom: 10px;
+}
+.hero h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; margin-bottom: 8px; }
+.hero p { opacity: 0.85; font-size: 15px; max-width: 560px; }
+.hero .fuente {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 14px; border-radius: 999px; font-size: 12px; font-weight: 600;
+}
+.hero .fuente .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+/* Layout */
+main { max-width: 960px; margin: -24px auto 0; padding: 0 20px 48px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 860px) { .grid { grid-template-columns: 360px 1fr; align-items: start; } }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px; box-shadow: var(--shadow);
+}
+.card h2 {
+  font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 18px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line2);
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Controles */
+.campo { margin-bottom: 18px; }
+.campo > label.tit {
+  display: block; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--muted); margin-bottom: 8px;
+}
+.segmento { display: flex; background: var(--line2); padding: 4px; border-radius: 12px; gap: 4px; }
+.segmento button {
+  flex: 1; border: 0; background: transparent; cursor: pointer;
+  padding: 10px 8px; font-size: 13px; font-weight: 700; border-radius: 9px;
+  color: var(--muted); transition: all 0.15s; font-family: inherit;
+}
+.segmento button[aria-pressed='true'] { background: #fff; color: var(--navy); box-shadow: var(--shadow); }
+.segmento button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+select, input[type='text'] {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--ink);
+  background: var(--line2); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px; transition: border-color 0.15s;
+}
+select { cursor: pointer; font-weight: 600; }
+select:focus, input[type='text']:focus { outline: none; border-color: var(--accent); }
+
+.periodos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.periodos button {
+  border: 1px solid var(--line); background: #fff; cursor: pointer;
+  padding: 10px 4px; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  border-radius: 10px; color: var(--muted); transition: all 0.15s; font-family: inherit;
+}
+.periodos button[aria-pressed='true'] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.periodos button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.monto-wrap { position: relative; }
+.monto-wrap .signo {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-weight: 700; font-size: 18px; pointer-events: none;
+}
+.monto-wrap input {
+  padding-left: 30px; font-size: 22px; font-weight: 700;
+  border-radius: 14px; padding-top: 14px; padding-bottom: 14px;
+}
+.error {
+  color: var(--rose); font-size: 13px; margin-top: 8px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.check {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 8px;
+  padding: 12px; background: var(--line2); border-radius: 10px;
+}
+.check input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--navy); cursor: pointer; }
+.check label { font-size: 13px; color: var(--muted); cursor: pointer; }
+.check label b { color: var(--ink); }
+
+.acciones { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.acciones button {
+  flex: 1; min-width: 120px; border: 1px solid var(--line); background: #fff;
+  cursor: pointer; padding: 11px; font-size: 13px; font-weight: 700;
+  border-radius: 10px; color: var(--navy); transition: all 0.15s; font-family: inherit;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.acciones button:hover { border-color: var(--accent); color: var(--accent-dark); }
+.acciones button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.copiado { color: var(--accent-dark); }
+
+/* Resultado — tarjeta principal en lenguaje institucional (marino sobre blanco, acento cian) */
+.resultado { display: flex; flex-direction: column; gap: 20px; }
+.neto-card {
+  background: linear-gradient(135deg, #ffffff, #f0f7fb);
+  border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 20px;
+  padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 16px; box-shadow: var(--shadow);
+}
+.neto-card .etq { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-dark); margin-bottom: 6px; }
+.neto-card .valor { font-size: clamp(32px, 8vw, 52px); font-weight: 800; color: var(--navy); letter-spacing: -1px; }
+.neto-card .tasa {
+  background: var(--navy); border: 1px solid var(--navy);
+  border-radius: 14px; padding: 12px 18px; text-align: center;
+}
+.neto-card .tasa .etq { color: rgba(255, 255, 255, 0.75); }
+.neto-card .tasa .n { font-size: 22px; font-weight: 800; color: #fff; }
+
+.aviso {
+  border-radius: 12px; padding: 14px 16px; font-size: 13px; font-weight: 600;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.aviso.cercano { background: var(--amber-bg); border: 1px solid var(--amber-line); color: var(--amber); }
+.aviso.excede { background: #fef2f2; border: 1px solid #fecaca; color: var(--rose); }
+.aviso .ico { flex-shrink: 0; }
+
+.dos-col { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 560px) { .dos-col { grid-template-columns: 1fr 1fr; } }
+
+.mov .fila, .desglose .fila {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--line2); font-size: 14px;
+}
+.mov .fila:last-child, .desglose .fila:last-child { border-bottom: 0; }
+.mov .fila .k { color: var(--muted); font-weight: 600; }
+.mov .fila .v { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.mov .fila.resta .k, .mov .fila.resta .v { color: var(--rose); }
+.mov .fila.total { padding-top: 14px; margin-top: 4px; border-top: 2px solid var(--line); border-bottom: 0; }
+.mov .fila.total .k { color: var(--navy); font-weight: 800; text-transform: uppercase; font-size: 13px; }
+.mov .fila.total .v { color: var(--navy); font-size: 20px; font-weight: 800; }
+
+.desglose .fila .op { color: var(--muted2); font-weight: 700; margin-right: 6px; }
+.desglose .fila .k small { display: block; color: var(--muted2); font-weight: 500; font-size: 11px; }
+.badge-tasa { background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+.min35 { background: var(--line2); border: 1px solid var(--line); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--ink); font-style: italic; }
+
+.claves h2 { color: #fff; border-color: rgba(255,255,255,0.15); }
+.claves { background: var(--navy); border-color: var(--navy); }
+.claves .grid4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 460px) { .claves .grid4 { grid-template-columns: repeat(4, 1fr); } }
+.claves .clave { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; }
+.claves .clave .k { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+.claves .clave .v { font-size: 16px; font-weight: 800; color: #fff; font-family: 'Courier New', monospace; }
+
+.proy .fila { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--line2); }
+.proy .fila .k { color: var(--muted); font-weight: 600; }
+.proy .fila .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.vacio { text-align: center; padding: 48px 24px; color: var(--muted); }
+.vacio .ico { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+.vacio h3 { font-size: 17px; color: var(--ink); margin-bottom: 6px; }
+
+.nota-legal {
+  margin-top: 20px; background: #fff; border: 1px solid var(--line);
+  border-radius: 14px; padding: 18px; font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+.nota-legal b { color: var(--ink); }
+.nota-legal .leyenda {
+  margin-top: 12px; padding: 12px 14px; background: #f0f7fb;
+  border-left: 4px solid var(--accent); border-radius: 8px;
+  color: var(--ink); font-weight: 600; font-style: italic;
+}
+.pie {
+  max-width: 960px; margin: 24px auto 0; padding: 22px 20px;
+  text-align: center; border-top: 3px solid var(--navy);
+}
+.pie .atrib { color: var(--ink); font-size: 14px; font-weight: 600; }
+.pie .atrib strong { color: var(--navy); font-weight: 800; }
+.pie .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.pie a { color: var(--accent-dark); text-decoration: none; font-weight: 700; }
+.pie a:hover { text-decoration: underline; }
+
+/* Impresión: papel de trabajo */
+@media print {
+  #app { background: #fff; font-size: 12px; }
+  .hero { background: #fff; color: var(--ink); border-bottom: 2px solid var(--navy); padding: 0 0 12px; }
+  .hero .fuente { background: none; border: 0; padding: 0; }
+  .config, .acciones, .segmento, .no-print { display: none !important; }
+  main { grid-template-columns: 1fr; margin: 12px 0 0; padding: 0; max-width: 100%; }
+  .grid { grid-template-columns: 1fr; }
+  .card, .neto-card, .claves { box-shadow: none; border: 1px solid var(--line); break-inside: avoid; }
+  .claves { background: #fff; }
+  .claves h2, .claves .clave .v { color: var(--ink); }
+  .neto-card { background: #fff; }
+  .neto-card .valor { color: var(--ink); }
+}</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DSouza Consultores Fiscales">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Calculadora de ISR · Asimilados a salarios 2026 · DSouza Consultores Fiscales">
+<meta property="og:description" content="Retención de ISR sobre percepciones asimiladas a salarios conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual.">
+<meta property="og:url" content="https://dsouzaconsultores.mx/calculadoras/asimilados-salarios/">
+<meta property="og:image" content="https://dsouzaconsultores.mx/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dsouzaconsultores.mx/calculadoras/asimilados-salarios/">
+</head>
+<body>
+<div id="dsz-site-bar" style="font:600 14px/1.4 Inter,system-ui,sans-serif;background:#0A2540;color:#fff;padding:10px 16px;text-align:center"><a href="https://dsouzaconsultores.mx/calculadoras" style="color:#00B8D9;text-decoration:none">&larr; Volver a Calculadoras</a><span style="opacity:.5;margin:0 10px">|</span><a href="https://dsouzaconsultores.mx/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a></div>
+
+<div id="app"></div>
+<noscript style="display:block;max-width:640px;margin:40px auto;padding:24px;font-family:sans-serif;color:#0f172a">Esta calculadora necesita JavaScript activado para funcionar.</noscript>
+<script>"use strict";(()=>{function a(e,o={},...n){let t=document.createElement(e);for(let[r,i]of Object.entries(o))r.startsWith("on")&&typeof i=="function"?t.addEventListener(r.slice(2).toLowerCase(),i):i===!0?t.setAttribute(r,""):i!==!1&&t.setAttribute(r,String(i));for(let r of n)r==null||r===!1||t.append(typeof r=="string"?document.createTextNode(r):r);return t}function y(e,o){let n=document.createElement("span");n.innerHTML=e;let t=n.firstElementChild;return o&&t.setAttribute("class",o),t}function $(e){for(;e.firstChild;)e.removeChild(e.firstChild)}var E=e=>`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${e}</svg>`,I={calculadora:E('<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/>'),ajustes:E('<circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),documento:E('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>'),desglose:E('<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>'),calendario:E('<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>'),alerta:E('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'),imprimir:E('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),enlace:E('<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>'),reiniciar:E('<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>'),info:E('<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>'),check:E('<path d="M20 6 9 17l-5-5"/>'),excel:E('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 13 6 5"/><path d="m15 13-6 5"/>')};var F=[{id:"05",etiqueta:"Miembros de sociedades cooperativas de producción",fraccionArt94:"II",usaRetencionMinima35:!1,cuentaParaUmbral75M:!1},{id:"06",etiqueta:"Integrantes de sociedades y asociaciones civiles",fraccionArt94:"II",usaRetencionMinima35:!1,cuentaParaUmbral75M:!1},{id:"07",etiqueta:"Miembros de consejos, administradores, comisarios y gerentes generales",fraccionArt94:"III",usaRetencionMinima35:!0,cuentaParaUmbral75M:!1},{id:"08",etiqueta:"Comisionistas (personas físicas)",fraccionArt94:"IV",usaRetencionMinima35:!1,cuentaParaUmbral75M:!0},{id:"09",etiqueta:"Honorarios asimilados a salarios",fraccionArt94:"IV / V",usaRetencionMinima35:!1,cuentaParaUmbral75M:!0},{id:"10",etiqueta:"Ingresos por acciones o títulos valor (opción de compra)",fraccionArt94:"VII",usaRetencionMinima35:!1,cuentaParaUmbral75M:!1},{id:"11",etiqueta:"Otros ingresos asimilados a salarios",fraccionArt94:"VI",usaRetencionMinima35:!1,cuentaParaUmbral75M:!0}];function P(e){return F.find(o=>o.id===e)}var K=75e8,w="09",U="046",O={diario:"01",semanal:"02",decenal:"10",quincenal:"04",mensual:"05"};function M(e){return Number.isFinite(e)?(e<0?-1:1)*Math.round(Math.abs(e)*100):0}function V(e){return e/100}function X(e,o){return(e<0?-1:1)*Math.round(Math.abs(e)*o)}var me=new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",minimumFractionDigits:2,maximumFractionDigits:2});function x(e){return me.format(V(e))}function Q(e){return`${(e*100).toFixed(2)}%`}var T={diario:{apartado:"Anexo 8, B.I",claveSat:"01",etiqueta:"Diario",periodosPorAnio:365},semanal:{apartado:"Anexo 8, B.II",claveSat:"02",etiqueta:"Semanal",periodosPorAnio:52},decenal:{apartado:"Anexo 8, B.III",claveSat:"10",etiqueta:"Decenal",periodosPorAnio:36},quincenal:{apartado:"Anexo 8, B.IV",claveSat:"04",etiqueta:"Quincenal",periodosPorAnio:24},mensual:{apartado:"Anexo 8, B.V",claveSat:"05",etiqueta:"Mensual",periodosPorAnio:12}},D="Anexo 8 RMF 2026 · DOF 28-12-2025",j="2026.1",fe=[{inferior:.01,superior:27.78,cuota:0,tasa:.0192},{inferior:27.79,superior:235.81,cuota:.53,tasa:.064},{inferior:235.82,superior:414.41,cuota:13.85,tasa:.1088},{inferior:414.42,superior:481.73,cuota:33.28,tasa:.16},{inferior:481.74,superior:576.76,cuota:44.05,tasa:.1792},{inferior:576.77,superior:1163.25,cuota:61.08,tasa:.2136},{inferior:1163.26,superior:1833.44,cuota:186.35,tasa:.2352},{inferior:1833.45,superior:3500.35,cuota:343.98,tasa:.3},{inferior:3500.36,superior:4667.13,cuota:844.05,tasa:.32},{inferior:4667.14,superior:14001.38,cuota:1217.42,tasa:.34},{inferior:14001.39,superior:null,cuota:4391.07,tasa:.35}],ge=[{inferior:.01,superior:194.46,cuota:0,tasa:.0192},{inferior:194.47,superior:1650.67,cuota:3.71,tasa:.064},{inferior:1650.68,superior:2900.87,cuota:96.95,tasa:.1088},{inferior:2900.88,superior:3372.11,cuota:232.96,tasa:.16},{inferior:3372.12,superior:4037.32,cuota:308.35,tasa:.1792},{inferior:4037.33,superior:8142.75,cuota:427.56,tasa:.2136},{inferior:8142.76,superior:12834.08,cuota:1304.45,tasa:.2352},{inferior:12834.09,superior:24502.45,cuota:2407.86,tasa:.3},{inferior:24502.46,superior:32669.91,cuota:5908.35,tasa:.32},{inferior:32669.92,superior:98009.66,cuota:8521.94,tasa:.34},{inferior:98009.67,superior:null,cuota:30737.49,tasa:.35}],xe=[{inferior:.01,superior:277.8,cuota:0,tasa:.0192},{inferior:277.81,superior:2358.1,cuota:5.3,tasa:.064},{inferior:2358.11,superior:4144.1,cuota:138.5,tasa:.1088},{inferior:4144.11,superior:4817.3,cuota:332.8,tasa:.16},{inferior:4817.31,superior:5767.6,cuota:440.5,tasa:.1792},{inferior:5767.61,superior:11632.5,cuota:610.8,tasa:.2136},{inferior:11632.51,superior:18334.4,cuota:1863.5,tasa:.2352},{inferior:18334.41,superior:35003.5,cuota:3439.8,tasa:.3},{inferior:35003.51,superior:46671.3,cuota:8440.5,tasa:.32},{inferior:46671.31,superior:140013.8,cuota:12174.2,tasa:.34},{inferior:140013.81,superior:null,cuota:43910.7,tasa:.35}],be=[{inferior:.01,superior:416.7,cuota:0,tasa:.0192},{inferior:416.71,superior:3537.15,cuota:7.95,tasa:.064},{inferior:3537.16,superior:6216.15,cuota:207.75,tasa:.1088},{inferior:6216.16,superior:7225.95,cuota:499.2,tasa:.16},{inferior:7225.96,superior:8651.4,cuota:660.75,tasa:.1792},{inferior:8651.41,superior:17448.75,cuota:916.2,tasa:.2136},{inferior:17448.76,superior:27501.6,cuota:2795.25,tasa:.2352},{inferior:27501.61,superior:52505.25,cuota:5159.7,tasa:.3},{inferior:52505.26,superior:70006.95,cuota:12660.75,tasa:.32},{inferior:70006.96,superior:210020.7,cuota:18261.3,tasa:.34},{inferior:210020.71,superior:null,cuota:65866.05,tasa:.35}],ye=[{inferior:.01,superior:844.59,cuota:0,tasa:.0192},{inferior:844.6,superior:7168.51,cuota:16.22,tasa:.064},{inferior:7168.52,superior:12598.02,cuota:420.95,tasa:.1088},{inferior:12598.03,superior:14644.64,cuota:1011.68,tasa:.16},{inferior:14644.65,superior:17533.64,cuota:1339.14,tasa:.1792},{inferior:17533.65,superior:35362.83,cuota:1856.84,tasa:.2136},{inferior:35362.84,superior:55736.68,cuota:5665.16,tasa:.2352},{inferior:55736.69,superior:106410.5,cuota:10457.09,tasa:.3},{inferior:106410.51,superior:141880.66,cuota:25659.23,tasa:.32},{inferior:141880.67,superior:425641.99,cuota:37009.69,tasa:.34},{inferior:425642,superior:null,cuota:133488.54,tasa:.35}];function N(e){return{inferior:M(e.inferior),superior:e.superior===null?null:M(e.superior),cuota:M(e.cuota),tasa:e.tasa}}var W={diario:fe.map(N),semanal:ge.map(N),decenal:xe.map(N),quincenal:be.map(N),mensual:ye.map(N)};var Z=.35;function Ie(e,o){return W[o].find(t=>e>=t.inferior&&(t.superior===null||e<=t.superior))}function J(e,o){let n=Ie(e,o);if(!n)return{isr:0,detalle:null};let t=e-n.inferior,r=X(t,n.tasa);return{isr:r+n.cuota,detalle:{inferior:n.inferior,superior:n.superior,cuota:n.cuota,tasa:n.tasa,excedente:t,impuestoMarginal:r}}}function S(e,o,n,t=!1){let r=Math.max(0,Math.round(e)),i,s,l;if(n.usaRetencionMinima35&&!t){let d=X(r,Z),v=J(r,o);d>=v.isr?(i=d,s="retencion-minima-35",l=null):(i=v.isr,s="tarifa",l=v.detalle)}else{let d=J(r,o);i=d.isr,s="tarifa",l=d.detalle}let u=r-i,g=r>0?i/r:0;return{periodicidad:o,regimenId:n.id,bruto:r,isr:i,neto:u,tasaEfectiva:g,metodo:s,detalle:l}}function H(e,o,n,t=!1){let r=Math.max(0,Math.round(e)),i=d=>S(d,o,n,t).neto,s=Math.ceil(r/(1-Z))+100,l=r;for(;l<s;){let d=Math.ceil((l+s+1)/2);i(d)<=r?l=d:s=d-1}let c=l,u=i(c);for(;c>0&&i(c-1)===u;)c-=1;let g=S(c,o,n,t);return{resultado:g,netoSolicitado:r,exacto:g.neto===r}}function z(e,o){let n=T[e.periodicidad].periodosPorAnio,t=e.bruto*n,r=e.isr*n,i=t-r,s=o.cuentaParaUmbral75M,l=s?t/K:0,c="ninguna";return s&&(l>=1?c="excede":l>=.8&&(c="cercano")),{brutoAnual:t,isrAnual:r,netoAnual:i,periodosPorAnio:n,aplicaUmbral:s,proporcionUmbral:l,alerta:c}}var ve=9999999999;function B(e){let o=e.trim();if(o==="")return{ok:!1,error:"Escribe un monto."};let n=o.replace(/[\s,$]/g,"");if(/[eE]/.test(n))return{ok:!1,error:"No se acepta notación científica."};if(n.startsWith("-"))return{ok:!1,error:"El monto no puede ser negativo."};if(!/^\d+(\.\d{1,2})?$/.test(n))return{ok:!1,error:"Usa solo números con hasta dos decimales (por ejemplo 12345.67)."};let t=Number(n);if(!Number.isFinite(t))return{ok:!1,error:"Monto inválido."};let r=M(t);return r>ve?{ok:!1,error:"El monto supera el máximo permitido ($99,999,999.99)."}:{ok:!0,centavos:r}}var ee=["diario","semanal","decenal","quincenal","mensual"];function oe(e,o){let n=a("button",{type:"button","aria-pressed":e.modo==="directo",onClick:()=>o.onCambio({modo:"directo"})},"Bruto → Neto"),t=a("button",{type:"button","aria-pressed":e.modo==="inverso",onClick:()=>o.onCambio({modo:"inverso"})},"Neto → Bruto"),r=a("div",{class:"segmento",role:"group","aria-label":"Dirección del cálculo"},n,t),i=a("select",{id:"regimen",onChange:b=>o.onCambio({regimenId:b.target.value})});for(let b of F){let G=a("option",{value:b.id},`${b.id} · ${b.etiqueta}`);b.id===e.regimenId&&(G.selected=!0),i.append(G)}let s=ee.map(b=>a("button",{type:"button","aria-pressed":e.periodicidad===b,onClick:()=>o.onCambio({periodicidad:b})},T[b].etiqueta)),l=a("div",{class:"periodos",role:"group","aria-label":"Frecuencia de pago"},...s),c=a("label",{class:"tit",for:"monto"},ne(e.modo)),u=a("input",{type:"text",id:"monto",inputmode:"decimal",autocomplete:"off",placeholder:"0.00","aria-describedby":"error-monto",value:e.montoTexto,onInput:b=>o.onCambio({montoTexto:b.target.value})}),g=a("div",{class:"error",id:"error-monto",role:"alert",hidden:!0}),d=a("div",{class:"monto-wrap"},a("span",{class:"signo"},"$"),u),v=a("input",{type:"checkbox",id:"laboral",onChange:b=>o.onCambio({consejeroConRelacionLaboral:b.target.checked})});v.checked=e.consejeroConRelacionLaboral;let A=a("div",{class:"check"},v,a("label",{for:"laboral"},a("b",{},"Existe además relación laboral")," con el retenedor. Aplica la tarifa ordinaria en lugar del 35% (art. 96, párr. 5)."));A.hidden=!re(e.regimenId);let L=a("span",{class:"copiado",hidden:!0},y(I.check)," Enlace copiado"),pe=a("div",{class:"acciones no-print"},a("button",{type:"button",onClick:o.onDescargarExcel},y(I.excel),"Descargar Excel"),a("button",{type:"button",onClick:o.onImprimir},y(I.imprimir),"Imprimir / PDF"),a("button",{type:"button",onClick:o.onCopiarEnlace},y(I.enlace),"Copiar enlace"),a("button",{type:"button",onClick:o.onReiniciar},y(I.reiniciar),"Reiniciar"));return{raiz:a("section",{class:"card config"},a("h2",{},y(I.ajustes),"Configuración"),a("div",{class:"campo"},a("span",{class:"tit"},"Dirección del cálculo"),r),a("div",{class:"campo"},a("label",{class:"tit",for:"regimen"},"Tipo de régimen (SAT)"),i),a("div",{class:"campo"},a("span",{class:"tit"},"Frecuencia de pago"),l),a("div",{class:"campo"},c,d,g,A),pe,L),inputMonto:u,labelMonto:c,errorMonto:g,btnsModo:[n,t],btnsPeriodo:s,select:i,checkConsejero:A,checkInput:v,copiado:L}}function ae(e,o){e.btnsModo[0].setAttribute("aria-pressed",String(o.modo==="directo")),e.btnsModo[1].setAttribute("aria-pressed",String(o.modo==="inverso")),e.btnsPeriodo.forEach((n,t)=>n.setAttribute("aria-pressed",String(o.periodicidad===ee[t]))),e.labelMonto.textContent=ne(o.modo),e.checkConsejero.hidden=!re(o.regimenId),e.select.value!==o.regimenId&&(e.select.value=o.regimenId),e.checkInput.checked!==o.consejeroConRelacionLaboral&&(e.checkInput.checked=o.consejeroConRelacionLaboral)}function ne(e){return e==="directo"?"Percepción bruta gravada":"Monto neto deseado"}function re(e){return P(e)?.usaRetencionMinima35??!1}function te(e){let o=P(e.regimenId),n=B(e.montoTexto);if(!n.ok){let l=e.montoTexto.trim()==="";return a("section",{class:"resultado"},a("div",{class:"card vacio"},a("div",{class:"ico"},y(I.calculadora)),a("h3",{},l?"Escribe un monto para comenzar":"Revisa el monto"),a("p",{},l?`Se calculará la retención de ISR ${e.modo==="directo"?"sobre la percepción bruta":"a partir del neto deseado"} conforme al Anexo 8 RMF 2026.`:n.error)))}let t=e.modo==="inverso",r,i=null;if(t){let l=H(n.centavos,e.periodicidad,o,e.consejeroConRelacionLaboral);r=l.resultado,l.exacto||(i=l.netoSolicitado)}else r=S(n.centavos,e.periodicidad,o,e.consejeroConRelacionLaboral);let s=z(r,o);return a("section",{class:"resultado"},Re(r,i),he(s),a("div",{class:"dos-col"},Ee(r),Te(r)),Ce(r,s),Ae(e,o))}function Re(e,o){return a("div",{class:"neto-card"},a("div",{},a("div",{class:"etq"},"Monto neto a pagar"),a("div",{class:"valor"},x(e.neto)),o!==null?a("div",{class:"error",style:"margin-top:8px"},y(I.info),` El neto exacto de ${x(o)} no es alcanzable; se muestra el más cercano posible.`):null),a("div",{class:"tasa"},a("div",{class:"etq"},"Tasa efectiva"),a("div",{class:"n"},Q(e.tasaEfectiva))))}function he(e){if(e.alerta==="ninguna")return null;let o=(e.proporcionUmbral*100).toFixed(1),n=e.alerta==="excede"?`El ingreso anual proyectado (${x(e.brutoAnual)}) excede $75,000,000. A partir del año siguiente deberá tributar en el régimen de actividad empresarial y profesional, y avisar por escrito al prestatario (art. 94, último párrafo, LISR; regla 3.12.4 RMF 2026).`:`El ingreso anual proyectado (${x(e.brutoAnual)}) alcanza el ${o}% del umbral de $75,000,000 del art. 94, último párrafo, LISR. Vigila el acumulado del ejercicio.`;return a("div",{class:`aviso ${e.alerta}`},a("span",{class:"ico"},y(I.alerta)),a("span",{},n))}function Ee(e){return a("div",{class:"card mov"},a("h2",{},y(I.documento),"Resumen de movimientos"),_("Percepción gravada (base)",x(e.bruto)),Me("(−) ISR retenido",`(${x(e.isr)})`),a("div",{class:"fila total"},a("span",{class:"k"},"(=) Neto a pagar"),a("span",{class:"v"},x(e.neto))))}function Te(e){let o=a("div",{class:"card desglose"},a("h2",{},y(I.desglose),"Determinación del ISR"));if(e.metodo==="retencion-minima-35"||!e.detalle)return o.append(a("div",{class:"min35"},"Régimen 07: la retención no puede ser inferior al 35% del ingreso total (art. 96, párrafo 5, LISR), tasa máxima del art. 152. Se aplicó ese 35% directo por ser mayor que la tarifa ordinaria.")),o.append(k("=","ISR retenido (35%)",x(e.isr))),o;let n=e.detalle;return o.append(_("Base gravable",x(e.bruto)),k("−","Límite inferior",x(n.inferior)),k("=","Excedente",x(n.excedente)),Se("×","Tasa marginal",Q(n.tasa)),k("=","Impuesto marginal",x(n.impuestoMarginal)),k("+","Cuota fija",x(n.cuota)),a("div",{class:"fila total"},a("span",{class:"k"},"(=) ISR retenido"),a("span",{class:"v"},x(e.isr)))),o}function Ce(e,o){let n=T[e.periodicidad];return a("div",{class:"card proy"},a("h2",{},y(I.calendario),`Proyección anual (${n.periodosPorAnio} periodos)`),_("Percepción anual",x(o.brutoAnual)),_("ISR anual estimado",x(o.isrAnual)),_("Neto anual",x(o.netoAnual)))}function Ae(e,o){let n=(t,r)=>a("div",{class:"clave"},a("div",{class:"k"},t),a("div",{class:"v"},r));return a("div",{class:"card claves"},a("h2",{},y(I.documento),"Claves para timbrado de nómina 4.0"),a("div",{class:"grid4"},n("Tipo régimen",o.id),n("Tipo contrato",w),n("Percepción",U),n("Periodicidad",O[e.periodicidad])))}function _(e,o){return a("div",{class:"fila"},a("span",{class:"k"},e),a("span",{class:"v"},o))}function Me(e,o){return a("div",{class:"fila resta"},a("span",{class:"k"},e),a("span",{class:"v"},o))}function k(e,o,n){return a("div",{class:"fila"},a("span",{class:"k"},a("span",{class:"op"},e),o),a("span",{class:"v"},n))}function Se(e,o,n){return a("div",{class:"fila"},a("span",{class:"k"},a("span",{class:"op"},e),o),a("span",{class:"badge-tasa"},n))}var Le=["diario","semanal","decenal","quincenal","mensual"];function q(){return{modo:"directo",regimenId:"09",periodicidad:"mensual",consejeroConRelacionLaboral:!1,montoTexto:""}}function ie(e){let o=q(),n=new URLSearchParams(e),t=n.get("modo");(t==="directo"||t==="inverso")&&(o.modo=t);let r=n.get("regimen");r&&F.some(l=>l.id===r)&&(o.regimenId=r);let i=n.get("periodo");i&&Le.includes(i)&&(o.periodicidad=i),n.get("laboral")==="1"&&(o.consejeroConRelacionLaboral=!0);let s=n.get("monto");return s&&/^\d+(\.\d{1,2})?$/.test(s)&&(o.montoTexto=s),o}function Y(e){let o=new URLSearchParams;o.set("modo",e.modo),o.set("regimen",e.regimenId),o.set("periodo",e.periodicidad),e.consejeroConRelacionLaboral&&o.set("laboral","1");let n=e.montoTexto.replace(/[\s,$]/g,"");return/^\d+(\.\d{1,2})?$/.test(n)&&o.set("monto",n),o.toString()}var C=new TextEncoder,Fe=(()=>{let e=new Uint32Array(256);for(let o=0;o<256;o++){let n=o;for(let t=0;t<8;t++)n=n&1?3988292384^n>>>1:n>>>1;e[o]=n>>>0}return e})();function Pe(e){let o=4294967295;for(let n=0;n<e.length;n++)o=Fe[(o^e[n])&255]^o>>>8;return(o^4294967295)>>>0}function f(e){return[e&255,e>>>8&255]}function R(e){return[e&255,e>>>8&255,e>>>16&255,e>>>24&255]}function Oe(e){let o=[],n=[],t=0;for(let s of e){let l=C.encode(s.nombre),c=Pe(s.datos),u=s.datos.length,g=[...R(67324752),...f(20),...f(2048),...f(0),...f(0),...f(0),...R(c),...R(u),...R(u),...f(l.length),...f(0),...l];o.push(...g,...s.datos),n.push(...R(33639248),...f(20),...f(20),...f(2048),...f(0),...f(0),...f(0),...R(c),...R(u),...R(u),...f(l.length),...f(0),...f(0),...f(0),...f(0),...R(0),...R(t),...l),t+=g.length+u}let r=t,i=[...R(101010256),...f(0),...f(0),...f(e.length),...f(e.length),...R(n.length),...R(r),...f(0)];return Uint8Array.from([...o,...n,...i])}var p={NORMAL:0,TITULO:1,SUBTITULO:2,SECCION:3,ETIQUETA:4,ETIQUETA_BOLD:5,MONEDA:6,MONEDA_BOLD:7,PORCENTAJE:8,TOTAL_ETQ:9,TOTAL_MONEDA:10,LEYENDA:11,META:12,VALOR_NAVY:13};function le(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function se(e){let o="",n=e;do o=String.fromCharCode(65+n%26)+o,n=Math.floor(n/26)-1;while(n>=0);return o}function Ne(e){return typeof e=="number"&&Number.isFinite(e)}var De=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>`,ke=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;function _e(e){return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="${le(e)}" sheetId="1" r:id="rId1"/></sheets></workbook>`}var $e=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`,we=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+<numFmts count="2"><numFmt numFmtId="164" formatCode="&quot;$&quot;#,##0.00"/><numFmt numFmtId="165" formatCode="0.00%"/></numFmts>
+<fonts count="6">
+<font><sz val="11"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><name val="Calibri"/></font>
+<font><b/><sz val="16"/><color rgb="FF003366"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><color rgb="FF003366"/><name val="Calibri"/></font>
+<font><i/><sz val="9"/><color rgb="FF6B7280"/><name val="Calibri"/></font>
+</fonts>
+<fills count="4">
+<fill><patternFill patternType="none"/></fill>
+<fill><patternFill patternType="gray125"/></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF003366"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFF0F7FB"/></patternFill></fill>
+</fills>
+<borders count="2">
+<border><left/><right/><top/><bottom/><diagonal/></border>
+<border><left style="thin"><color rgb="FFD9D9D9"/></left><right style="thin"><color rgb="FFD9D9D9"/></right><top style="thin"><color rgb="FFD9D9D9"/></top><bottom style="thin"><color rgb="FFD9D9D9"/></bottom><diagonal/></border>
+</borders>
+<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
+<cellXfs count="14">
+<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+<xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/>
+<xf numFmtId="0" fontId="5" fillId="0" borderId="0" xfId="0" applyFont="1"/>
+<xf numFmtId="0" fontId="3" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="left"/></xf>
+<xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1"><alignment horizontal="left" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="1" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1"/>
+<xf numFmtId="164" fontId="0" fillId="0" borderId="1" xfId="0" applyNumberFormat="1" applyBorder="1"><alignment horizontal="right"/></xf>
+<xf numFmtId="164" fontId="1" fillId="0" borderId="1" xfId="0" applyNumberFormat="1" applyFont="1" applyBorder="1"><alignment horizontal="right"/></xf>
+<xf numFmtId="165" fontId="0" fillId="0" borderId="1" xfId="0" applyNumberFormat="1" applyBorder="1"><alignment horizontal="right"/></xf>
+<xf numFmtId="0" fontId="4" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"/>
+<xf numFmtId="164" fontId="4" fillId="3" borderId="1" xfId="0" applyNumberFormat="1" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="right"/></xf>
+<xf numFmtId="0" fontId="5" fillId="0" borderId="0" xfId="0" applyFont="1"><alignment wrapText="1"/></xf>
+<xf numFmtId="0" fontId="5" fillId="0" borderId="0" xfId="0" applyFont="1"/>
+<xf numFmtId="0" fontId="4" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1"/>
+</cellXfs>
+<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>
+</styleSheet>`;function Ue(e){let o=e.anchos.map((l,c)=>`<col min="${c+1}" max="${c+1}" width="${l}" customWidth="1"/>`).join(""),n=e.filas.map((l,c)=>{let u=c+1,g=l.map((d,v)=>{if(!d)return"";let A=`${se(v)}${u}`,L=d.s?` s="${d.s}"`:"";return Ne(d.v)?`<c r="${A}"${L}><v>${d.v}</v></c>`:`<c r="${A}"${L} t="inlineStr"><is><t xml:space="preserve">${le(String(d.v))}</t></is></c>`}).join("");return`<row r="${u}">${g}</row>`}).join(""),t=e.combinar&&e.combinar.length?`<mergeCells count="${e.combinar.length}">${e.combinar.map(l=>`<mergeCell ref="${l}"/>`).join("")}</mergeCells>`:"",r=Math.max(1,e.filas.length),i=Math.max(1,...e.filas.map(l=>l.length));return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><dimension ref="${`A1:${se(i-1)}${r}`}"/><cols>${o}</cols><sheetData>${n}</sheetData>${t}</worksheet>`}function ce(e){let o=[{nombre:"[Content_Types].xml",datos:C.encode(De)},{nombre:"_rels/.rels",datos:C.encode(ke)},{nombre:"xl/workbook.xml",datos:C.encode(_e(e.nombre))},{nombre:"xl/_rels/workbook.xml.rels",datos:C.encode($e)},{nombre:"xl/styles.xml",datos:C.encode(we)},{nombre:"xl/worksheets/sheet1.xml",datos:C.encode(Ue(e))}];return Oe(o)}var Ve="Los resultados son estimativos e informativos. No sustituyen asesoría profesional ni una determinación fiscal definitiva. Verifique la información y la normativa vigente antes de presentar declaraciones o realizar pagos.";function je(){return new Intl.DateTimeFormat("es-MX",{year:"numeric",month:"long",day:"numeric"}).format(new Date)}function He(){return new Date().toISOString().slice(0,10)}function m(e,o){return o===void 0?{v:e}:{v:e,s:o}}function h(e,o=p.MONEDA){return{v:V(e),s:o}}function ze(e){let o=B(e.montoTexto);if(!o.ok)return null;let n=P(e.regimenId),t=e.modo==="inverso",r,i=null;if(t){let d=H(o.centavos,e.periodicidad,n,e.consejeroConRelacionLaboral);r=d.resultado,d.exacto||(i=d.netoSolicitado)}else r=S(o.centavos,e.periodicidad,n,e.consejeroConRelacionLaboral);let s=z(r,n),l=T[e.periodicidad],c=[],u=(d,v)=>{c.push([m(d,p.ETIQUETA),v])},g=d=>{c.push([]),c.push([m(d,p.SECCION),m("",p.SECCION)])};if(c.push([m("Cálculo de ISR — Asimilados a salarios 2026",p.TITULO)]),c.push([m("DSouza Consultores Fiscales",p.SUBTITULO)]),c.push([m(`${D} · datos v${j}`,p.META)]),c.push([m(`Elaborado: ${je()}`,p.META)]),g("Datos de entrada"),u("Régimen (SAT)",m(`${n.id} · ${n.etiqueta}`)),u("Frecuencia de pago",m(`${l.etiqueta} (clave ${O[e.periodicidad]})`)),u("Dirección del cálculo",m(t?"Neto → Bruto":"Bruto → Neto")),n.usaRetencionMinima35&&u("Relación laboral con retenedor",m(e.consejeroConRelacionLaboral?"Sí (tarifa ordinaria)":"No (retención mínima 35%)")),g("Resumen de movimientos"),u("Percepción gravada (base)",h(r.bruto)),u("(−) ISR retenido",h(r.isr)),c.push([m("(=) Neto a pagar",p.TOTAL_ETQ),h(r.neto,p.TOTAL_MONEDA)]),c.push([m("Tasa efectiva",p.ETIQUETA),{v:r.tasaEfectiva,s:p.PORCENTAJE}]),i!==null&&c.push([m(`Nota: el neto exacto de ${new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN"}).format(V(i))} no es alcanzable; se muestra el más cercano posible.`,p.META)]),g("Determinación del ISR (art. 96 LISR)"),r.metodo==="retencion-minima-35"||!r.detalle)u("Método",m("Retención mínima 35% (art. 96, párr. 5)")),u("Tasa aplicada",{v:.35,s:p.PORCENTAJE}),c.push([m("(=) ISR retenido",p.TOTAL_ETQ),h(r.isr,p.TOTAL_MONEDA)]);else{let d=r.detalle;u("Base gravable",h(r.bruto)),u("(−) Límite inferior",h(d.inferior)),u("(=) Excedente",h(d.excedente)),c.push([m("(×) Tasa marginal",p.ETIQUETA),{v:d.tasa,s:p.PORCENTAJE}]),u("(=) Impuesto marginal",h(d.impuestoMarginal)),u("(+) Cuota fija",h(d.cuota)),c.push([m("(=) ISR retenido",p.TOTAL_ETQ),h(r.isr,p.TOTAL_MONEDA)])}if(g(`Proyección anual (${s.periodosPorAnio} periodos)`),u("Percepción anual",h(s.brutoAnual)),u("ISR anual estimado",h(s.isrAnual)),u("Neto anual",h(s.netoAnual)),s.aplicaUmbral){let d=(s.proporcionUmbral*100).toFixed(1),v=s.alerta==="excede"?"Excede el umbral de $75,000,000 (art. 94, últ. párr. LISR; regla 3.12.4). Deberá tributar en actividad empresarial y profesional el año siguiente.":s.alerta==="cercano"?`Alcanza el ${d}% del umbral de $75,000,000 (art. 94, últ. párr. LISR). Vigile el acumulado del ejercicio.`:`Representa el ${d}% del umbral de $75,000,000 (art. 94, últ. párr. LISR).`;c.push([m(v,p.META)])}return g("Claves para timbrado de nómina 4.0"),u("Tipo de régimen",m(n.id,p.VALOR_NAVY)),u("Tipo de contrato",m(w,p.VALOR_NAVY)),u("Tipo de percepción",m(U,p.VALOR_NAVY)),u("Periodicidad de pago",m(O[e.periodicidad],p.VALOR_NAVY)),c.push([]),c.push([m(Ve,p.LEYENDA)]),c.push([m("Elaborado por C.P. Daniel Souza Vázquez | daniel@dsouzaconsultores.mx",p.META)]),{nombre:"Cálculo ISR",anchos:[34,30],filas:c,combinar:[]}}function de(e){let o=ze(e);if(!o)return;let n=ce(o),t=new Blob([n],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}),r=URL.createObjectURL(t),i=document.createElement("a");i.href=r,i.download=`Calculo_ISR_Asimilados_${He()}.xlsx`,document.body.appendChild(i),i.click(),document.body.removeChild(i),setTimeout(()=>URL.revokeObjectURL(r),1e3)}function Be(e){let o={...q(),...ie(window.location.search)},n=a("div",{id:"panel-resultado"}),t=oe(o,{onCambio:s=>{o={...o,...s},r()},onCopiarEnlace:i,onImprimir:()=>window.print(),onDescargarExcel:()=>de(o),onReiniciar:()=>{o=q(),t.inputMonto.value="",r(),t.inputMonto.focus()}});function r(){ae(t,o),$(n),n.append(te(o));let s=Y(o),l=`${window.location.pathname}?${s}`;window.history.replaceState(null,"",l)}function i(){let s=`${window.location.origin}${window.location.pathname}?${Y(o)}`,l=()=>{t.copiado.hidden=!1,window.setTimeout(()=>t.copiado.hidden=!0,2500)};navigator.clipboard?.writeText?navigator.clipboard.writeText(s).then(l).catch(()=>prompt("Copia el enlace:",s)):prompt("Copia el enlace:",s)}$(e),e.append(qe(),a("main",{},a("div",{class:"grid"},t.raiz,n)),Xe(),Qe()),r()}function qe(){return a("header",{class:"hero"},a("div",{class:"wrap"},a("div",{class:"brand"},"DSouza Consultores Fiscales"),a("h1",{},"Calculadora de ISR · Asimilados a salarios 2026"),a("p",{},"Retención de ISR sobre percepciones asimiladas a salarios, conforme al artículo 96 de la Ley del ISR."),a("div",{class:"fuente"},a("span",{class:"dot"}),`${D} · datos v${j}`)))}function Xe(){return a("div",{class:"nota-legal",style:"max-width:960px;margin-left:auto;margin-right:auto"},a("p",{},a("b",{},"Alcance. "),"Este régimen no genera cuotas del IMSS ni INFONAVIT y no da derecho al subsidio para el empleo; los asimilados solo causan ISR con la tarifa de sueldos y salarios. "),a("p",{style:"margin-top:8px"},a("b",{},"No incluido. "),"La retención es un pago provisional a cuenta del impuesto anual (art. 96 LISR); no se calcula aquí el impuesto anual (art. 97), el impuesto local a salarios ni la exención de un salario mínimo del art. 96, párrafo 1, que la ley reserva a trabajadores con salario."),a("p",{class:"leyenda"},"Los resultados son estimativos e informativos. No sustituyen asesoría profesional ni una determinación fiscal definitiva. Verifique la información y la normativa vigente antes de presentar declaraciones o realizar pagos."))}function Qe(){return a("footer",{class:"pie"},a("p",{class:"atrib"},"Elaborado por ",a("strong",{},"C.P. Daniel Souza Vázquez")," | ",a("a",{href:"mailto:daniel@dsouzaconsultores.mx"},"daniel@dsouzaconsultores.mx")),a("p",{class:"sub"},"DSouza Consultores Fiscales · Mexicali, B.C."))}var ue=document.getElementById("app");ue&&Be(ue);})();
+</script>
+<script id="dsz-inject">(function(){var C={"canonical":"https://dsouzaconsultores.mx/calculadoras/asimilados-salarios/","back":{"href":"https://dsouzaconsultores.mx/calculadoras","label":"Volver a Calculadoras"},"description":"Retención de ISR sobre percepciones asimiladas a salarios conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual."};var n=0;function ensure(){var b=document.body,h=document.head;if(!b||!h)return;if(!document.getElementById('dsz-site-bar')){var d=document.createElement('div');d.id='dsz-site-bar';d.setAttribute('style','font:600 14px/1.4 Inter,system-ui,sans-serif;background:#0A2540;color:#fff;padding:10px 16px;text-align:center');d.innerHTML='<a href="'+C.back.href+'" style="color:#00B8D9;text-decoration:none">&larr; '+C.back.label+'</a><span style="opacity:.5;margin:0 10px">|</span><a href="https://dsouzaconsultores.mx/" style="color:#fff;text-decoration:none">dsouzaconsultores.mx</a>';b.insertBefore(d,b.firstChild)}if(C.canonical&&!h.querySelector('link[rel="canonical"]')){var l=document.createElement('link');l.rel='canonical';l.href=C.canonical;h.appendChild(l)}if(C.title&&C.force&&document.title!==C.title){document.title=C.title}if(C.description){var m=h.querySelector('meta[name="description"]');if(!m){m=document.createElement('meta');m.name='description';m.content=C.description;h.appendChild(m)}else if(C.force&&m.content!==C.description){m.content=C.description}}if(C.ld&&!h.querySelector('script[data-dsz]')){var s=document.createElement('script');s.type='application/ld+json';s.setAttribute('data-dsz','1');s.textContent=JSON.stringify(C.ld);h.appendChild(s)}}var t=setInterval(function(){ensure();if(++n>16)clearInterval(t)},500);ensure();window.addEventListener('load',ensure)})();</script>
+</body>
+</html>
