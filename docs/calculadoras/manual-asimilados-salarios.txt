@@ -1,0 +1,107 @@
+====================================================================
+ MINI MANUAL DE USO
+ Calculadora de ISR - Asimilados a salarios 2026
+ DSouza Consultores Fiscales
+ https://dsouzaconsultores.mx/calculadoras/asimilados-salarios/
+====================================================================
+
+QUE HACE
+--------------------------------------------------------------------
+Calcula la retencion de ISR sobre percepciones asimiladas a salarios
+(honorarios asimilados, consejeros, comisionistas, cooperativas y
+mas), conforme al Anexo 8 de la Resolucion Miscelanea Fiscal 2026.
+Entrega el desglose completo, la proyeccion anual y las claves listas
+para el timbrado de nomina CFDI 4.0.
+
+Herramienta de apoyo. No sustituye el analisis del caso concreto.
+
+
+PASO A PASO
+--------------------------------------------------------------------
+1) Elige la DIRECCION DEL CALCULO:
+   - Bruto -> Neto: partes de la percepcion antes de impuesto y
+     obtienes el ISR y el neto a pagar.
+   - Neto -> Bruto: partes del monto que quieres entregar en mano y
+     obtienes el bruto necesario y su ISR.
+
+2) Selecciona el TIPO DE REGIMEN (SAT). Opciones disponibles:
+   05 - Miembros de sociedades cooperativas de produccion
+   06 - Integrantes de sociedades y asociaciones civiles
+   07 - Miembros de consejos, administradores, comisarios y
+        gerentes generales
+   08 - Comisionistas (personas fisicas)
+   09 - Honorarios asimilados a salarios
+   10 - Ingresos por acciones o titulos valor (opcion de compra)
+   11 - Otros ingresos asimilados a salarios
+
+3) Elige la FRECUENCIA DE PAGO:
+   Diario / Semanal / Decenal / Quincenal / Mensual.
+
+4) Captura la PERCEPCION BRUTA GRAVADA (o el neto, si elegiste el
+   calculo inverso). El resultado se actualiza automaticamente.
+
+
+QUE MUESTRA EL RESULTADO
+--------------------------------------------------------------------
+- Monto neto a pagar y Tasa efectiva de retencion.
+- Resumen de movimientos:
+    Percepcion gravada (base)
+    (-) ISR retenido
+    (=) Neto a pagar
+- Determinacion del ISR (mecanica de la tarifa):
+    Base gravable
+    (-) Limite inferior
+    (=) Excedente
+    (x) Tasa marginal
+    (=) Impuesto marginal
+    (+) Cuota fija
+    (=) ISR retenido
+- Proyeccion anual (12 periodos): percepcion, ISR e ingreso neto
+  anual estimados.
+- Claves para timbrado de nomina CFDI 4.0:
+    Tipo de regimen, Tipo de contrato, Clave de percepcion y
+    Periodicidad de pago.
+
+
+ACCIONES DISPONIBLES
+--------------------------------------------------------------------
+- Descargar Excel: exporta el calculo a hoja de calculo.
+- Imprimir / PDF: genera una version imprimible o en PDF.
+- Copiar enlace: comparte el calculo con los parametros actuales.
+- Reiniciar: limpia los campos para un nuevo calculo.
+
+
+EJEMPLO (datos reales de la herramienta)
+--------------------------------------------------------------------
+Regimen: 09 - Honorarios asimilados a salarios
+Frecuencia: Mensual
+Percepcion bruta gravada: $50,000.00
+
+Resultado:
+  ISR retenido ............... $9,107.82
+  Neto a pagar ............... $40,892.18
+  Tasa efectiva .............. 18.22%
+
+Proyeccion anual (12 periodos):
+  Percepcion anual ........... $600,000.00
+  ISR anual estimado ......... $109,293.84
+  Neto anual ................. $490,706.16
+
+
+BASE LEGAL
+--------------------------------------------------------------------
+Anexo 8 de la Resolucion Miscelanea Fiscal (RMF) 2026 - tarifas de
+ISR aplicables a pagos por percepciones asimiladas a salarios.
+
+
+ACCESO
+--------------------------------------------------------------------
+Directo:   https://dsouzaconsultores.mx/calculadoras/asimilados-salarios/
+Desde el sitio: dsouzaconsultores.mx  >  Calculadoras  >
+                Calculadora de ISR - Asimilados a salarios
+
+Gratuita y sin registro. Funciona en computadora, tablet y celular.
+
+====================================================================
+ DSouza Consultores Fiscales - Mexicali, B.C.
+====================================================================
