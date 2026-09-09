@@ -50,6 +50,14 @@ const BACK = { href: `${SITE_URL}/recursos`, label: 'Volver a Recursos' }
 //   description descripción SEO aprobada (≤160 caracteres)
 const COMUNICADOS = [
   {
+    slug: 'Comunicado-DSouza-Paquete-Economico-2027.html',
+    dateISO: '2026-09-09',
+    dateLabel: '9 de septiembre de 2026',
+    title: 'Paquete Económico 2027 para empresas y PYMES | DSouza',
+    description:
+      'Iniciativa del Paquete Económico 2027 (aún no es ley): 8 cambios para empresarios y PYMES —RESICO, IVA 7%, intereses, grupos, repatriación— y qué hacer.',
+  },
+  {
     slug: 'Comunicado-DSouza-01-07-sep-2026.html',
     dateISO: '2026-09-07',
     dateLabel: '1–7 de septiembre de 2026',
