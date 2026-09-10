@@ -50,6 +50,14 @@ const BACK = { href: `${SITE_URL}/recursos`, label: 'Volver a Recursos' }
 //   description descripción SEO aprobada (≤160 caracteres)
 const COMUNICADOS = [
   {
+    slug: 'Comunicado-DSouza-Paquete-Economico-2027-MIPYMES.html',
+    dateISO: '2026-09-10',
+    dateLabel: '10 de septiembre de 2026',
+    title: 'Paquete Económico 2027 para MIPYMES | DSouza',
+    description:
+      'Qué anunció el Paquete Económico 2027 para micro y pequeñas empresas: RESICO ampliado, IVA 7%, simplificaciones del IMSS y créditos. Aún son propuestas.',
+  },
+  {
     slug: 'Comunicado-DSouza-Paquete-Economico-2027.html',
     dateISO: '2026-09-09',
     dateLabel: '9 de septiembre de 2026',
