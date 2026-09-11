@@ -29,9 +29,9 @@ export const SEO_META = {
     noindex: true, // solo testimonios ilustrativos; indexar cuando haya reales autorizados
   },
   '/recursos': {
-    title: 'Recursos fiscales: boletines, comunicados y videos | DSouza',
+    title: 'Recursos fiscales: boletines, guías y más | DSouza',
     description:
-      'Boletines fiscales semanales, comunicados y videos de DSouza Consultores: novedades del SAT, IMSS e INFONAVIT, plazos clave y qué hacer a tiempo. Gratis y en línea.',
+      'Boletines fiscales semanales, comunicados, guías prácticas y videos de DSouza: novedades del SAT, IMSS e INFONAVIT, plazos clave y qué hacer a tiempo.',
   },
   '/calculadoras': {
     title: 'Calculadoras fiscales 2026 | DSouza Consultores',
