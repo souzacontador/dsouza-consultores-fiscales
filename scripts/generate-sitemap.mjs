@@ -57,6 +57,15 @@ read('src/data/comunicados.json').forEach((c, i) => {
   })
 })
 
+// Guías prácticas (mismo criterio: ordenadas del más reciente al más antiguo).
+read('src/data/guias.json').forEach((g, i) => {
+  entries.push({
+    loc: `${SITE_URL}/guias/${g.slug}`,
+    lastmod: g.dateISO,
+    priority: i === 0 ? 0.7 : i < 4 ? 0.6 : 0.5,
+  })
+})
+
 const xml =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<!-- Generado automáticamente por scripts/generate-sitemap.mjs en cada build. No editar a mano. -->\n` +
