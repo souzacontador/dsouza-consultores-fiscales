@@ -50,6 +50,14 @@ const BACK = { href: `${SITE_URL}/recursos`, label: 'Volver a Recursos' }
 //   description descripción SEO aprobada (≤160 caracteres)
 const COMUNICADOS = [
   {
+    slug: 'Comunicado-DSouza-69B-CFF-18-sep-2026.html',
+    dateISO: '2026-09-18',
+    dateLabel: '18 de septiembre de 2026',
+    title: '69-B: 137 presuntos y 83 definitivos del SAT | DSouza',
+    description:
+      'SAT publica tres listados del 69-B con 220 contribuyentes: 137 presuntos y 83 definitivos. Revise si sus proveedores aparecen.',
+  },
+  {
     slug: 'Comunicado-DSouza-Paquete-Economico-2027-MIPYMES.html',
     dateISO: '2026-09-10',
     dateLabel: '10 de septiembre de 2026',
