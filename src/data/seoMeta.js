@@ -28,6 +28,11 @@ export const SEO_META = {
       'Lo que buscamos que vivan PyMEs, profesionistas y empresas de servicios con nuestra asesoría fiscal preventiva en Mexicali. Agenda tu diagnóstico.',
     noindex: true, // solo testimonios ilustrativos; indexar cuando haya reales autorizados
   },
+  '/capacitacion': {
+    title: 'Capacitación | DSouza Consultores Fiscales',
+    description:
+      'Explora nuestros cursos, talleres y jornadas de actualización profesional. Consulta los detalles de cada evento y solicita informes o inscríbete por WhatsApp.',
+  },
   '/recursos': {
     title: 'Recursos fiscales: boletines, guías y más | DSouza',
     description:

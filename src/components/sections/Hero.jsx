@@ -12,6 +12,7 @@ export default function Hero({
   layout = 'centered',
   visual = null,
   ctaLabel,
+  showCta = true, // false: sin botón de WhatsApp genérico (p. ej. /capacitacion, cuyas tarjetas llevan su propio enlace)
   trustSignal = null, // señal de confianza discreta bajo los CTAs (opcional)
 }) {
   const isSplit = layout === 'split'
@@ -40,17 +41,19 @@ export default function Hero({
               <p className={`lead mt-5 ${isSplit ? '' : 'mx-auto max-w-2xl'}`}>{subtitle}</p>
             )}
 
-            <div
-              className={`mt-8 flex flex-wrap gap-3 ${isSplit ? 'justify-start' : 'justify-center'}`}
-            >
-              <WhatsAppButton>{ctaLabel}</WhatsAppButton>
-              {secondary && (
-                <Link to={secondary.to} className="btn-secondary">
-                  {secondary.label}
-                  <IconArrowRight className="h-5 w-5" />
-                </Link>
-              )}
-            </div>
+            {(showCta || secondary) && (
+              <div
+                className={`mt-8 flex flex-wrap gap-3 ${isSplit ? 'justify-start' : 'justify-center'}`}
+              >
+                {showCta && <WhatsAppButton>{ctaLabel}</WhatsAppButton>}
+                {secondary && (
+                  <Link to={secondary.to} className="btn-secondary">
+                    {secondary.label}
+                    <IconArrowRight className="h-5 w-5" />
+                  </Link>
+                )}
+              </div>
+            )}
 
             {trustSignal && (
               <p

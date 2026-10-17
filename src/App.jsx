@@ -4,6 +4,7 @@ import Inicio from './pages/Inicio'
 import ServiciosPage from './pages/Servicios'
 import Nosotros from './pages/Nosotros'
 import TestimoniosPage from './pages/TestimoniosPage'
+import Capacitacion from './pages/Capacitacion'
 import Recursos from './pages/Recursos'
 import Calculadoras from './pages/Calculadoras'
 import CalculadorasPremium from './pages/CalculadorasPremium'
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="servicios" element={<ServiciosPage />} />
         <Route path="nosotros" element={<Nosotros />} />
         <Route path="testimonios" element={<TestimoniosPage />} />
+        <Route path="capacitacion" element={<Capacitacion />} />
         <Route path="recursos" element={<Recursos />} />
         <Route path="calculadoras" element={<Calculadoras />} />
         <Route path="calculadoras-premium" element={<CalculadorasPremium />} />

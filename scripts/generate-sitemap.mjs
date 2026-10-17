@@ -21,6 +21,7 @@ const ROUTES = {
   '/': { priority: 1.0, changefreq: 'monthly' },
   '/servicios': { priority: 0.9, changefreq: 'monthly' },
   '/nosotros': { priority: 0.8, changefreq: 'monthly' },
+  '/capacitacion': { priority: 0.8, changefreq: 'weekly' },
   '/recursos': { priority: 0.8, changefreq: 'weekly' },
   '/calculadoras': { priority: 0.8, changefreq: 'monthly' },
   '/contacto': { priority: 0.8, changefreq: 'monthly' },
@@ -64,6 +65,11 @@ read('src/data/guias.json').forEach((g, i) => {
     lastmod: g.dateISO,
     priority: i === 0 ? 0.7 : i < 4 ? 0.6 : 0.5,
   })
+})
+
+// Cursos de capacitación (flyers): una URL por curso.
+read('src/data/capacitacion.json').forEach((c) => {
+  entries.push({ loc: `${SITE_URL}/capacitacion/${c.slug}`, lastmod: c.startISO.slice(0, 10), priority: 0.6 })
 })
 
 const xml =

@@ -21,7 +21,13 @@ export default function Servicios({ bg = 'tint', showCta = true }) {
               <ResolveIcon name={service.icon} className="h-6 w-6" />
             </span>
             <h3 className="mt-5 font-heading text-lg font-semibold text-secondary">
-              {service.title}
+              {service.to ? (
+                <Link to={service.to} className="hover:text-primary-dark">
+                  {service.title}
+                </Link>
+              ) : (
+                service.title
+              )}
             </h3>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.desc}</p>
           </article>

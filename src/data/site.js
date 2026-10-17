@@ -36,6 +36,7 @@ export const NAV_LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/servicios' },
   { label: 'Nosotros', to: '/nosotros' },
+  { label: 'Capacitación', to: '/capacitacion' },
   { label: 'Recursos', to: '/recursos' },
   { label: 'Calculadoras', to: '/calculadoras' },
   { label: 'Contacto', to: '/contacto' },
@@ -48,6 +49,7 @@ export const FOOTER_LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/servicios' },
   { label: 'Nosotros', to: '/nosotros' },
+  { label: 'Capacitación', to: '/capacitacion' },
   { label: 'Recursos', to: '/recursos' },
   { label: 'Calculadoras', to: '/calculadoras' },
   { label: 'Contacto', to: '/contacto' },
@@ -73,6 +75,7 @@ export const SERVICES = [
   {
     icon: 'graduation',
     title: 'Capacitación',
+    to: '/capacitacion',
     desc: 'Formo a tu equipo, contadores y empresarios en cómo el SAT fiscaliza con IA, con casos y simulaciones.',
   },
 ]
