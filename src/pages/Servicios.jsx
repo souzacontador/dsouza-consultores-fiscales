@@ -52,6 +52,7 @@ export default function ServiciosPage() {
           'Informe con los focos rojos detectados y recomendaciones concretas',
           'Capacitación con casos y simulaciones para equipo, contadores y empresarios',
         ]}
+        secondary={{ label: 'Ver capacitación', to: '/capacitacion' }}
       />
 
       <Cta />
