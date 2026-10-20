@@ -13,6 +13,7 @@
     "boletines": "node scripts/sync-boletines.mjs && node scripts/generate-boletin-preview.mjs --keep",
     "comunicados": "node scripts/sync-comunicados.mjs",
     "guias": "node scripts/sync-guias.mjs",
+    "blog": "node scripts/sync-blog.mjs",
     "capacitacion": "node scripts/sync-capacitacion.mjs",
     "videos": "node scripts/sync-videos.mjs",
     "calculadoras": "node scripts/sync-calculadoras.mjs"

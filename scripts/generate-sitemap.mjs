@@ -1,6 +1,7 @@
 // Genera dist/sitemap.xml en cada build a partir de:
 //   - las rutas indexables de src/data/seoMeta.js (sin noindex, sin excluidas)
 //   - src/data/boletines.json   (una URL por boletín, con lastmod)
+//   - src/data/blog.json        (una URL por publicación del blog, con lastmod)
 //   - src/data/calculadoras.json (una URL por calculadora, con barra final)
 // No hay sitemap manual: al publicar un boletín o calculadora nuevos basta
 // con correr el sync correspondiente y hacer push.
@@ -63,6 +64,15 @@ read('src/data/guias.json').forEach((g, i) => {
   entries.push({
     loc: `${SITE_URL}/guias/${g.slug}`,
     lastmod: g.dateISO,
+    priority: i === 0 ? 0.7 : i < 4 ? 0.6 : 0.5,
+  })
+})
+
+// Blog (carruseles web; mismo criterio: del más reciente al más antiguo).
+read('src/data/blog.json').forEach((b, i) => {
+  entries.push({
+    loc: `${SITE_URL}/blog/${b.slug}`,
+    lastmod: b.dateISO,
     priority: i === 0 ? 0.7 : i < 4 ? 0.6 : 0.5,
   })
 })

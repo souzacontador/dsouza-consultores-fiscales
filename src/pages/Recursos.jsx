@@ -9,6 +9,7 @@ import { IconDocument, IconLedger, IconChat, IconLayers, IconCheck, IconPlay, Ic
 import boletines from '../data/boletines.json'
 import comunicados from '../data/comunicados.json'
 import guias from '../data/guias.json'
+import blog from '../data/blog.json'
 import videosData from '../data/videos.json'
 
 // Videoteca: videos del canal de YouTube del titular, sincronizados desde el
@@ -21,15 +22,18 @@ const videos = videosData.videos
 // souzacontador/Comunicados (scripts/sync-comunicados.mjs). Ambos abren en
 // pestaña nueva porque no llevan la navegación del sitio.
 //
-// Categorías de la página: las publicadas llevan conteo y ancla; Blog,
-// Artículos y Guías se anuncian como "Próximamente" hasta tener contenido.
+// Blog: carruseles HTML responsivos copiados desde content/blog a public/blog/
+// (ver scripts/sync-blog.mjs).
+//
+// Categorías de la página: las publicadas llevan conteo y ancla; Artículos se
+// anuncia como "Próximamente" hasta tener contenido.
 // Ícono y acento por categoría (solo tokens de la paleta: cian / azul marino / gris).
 const CATEGORIAS = [
   { id: 'boletines', label: 'Boletines', icon: <IconDocument />, accent: 'primary', count: boletines.length },
   { id: 'comunicados', label: 'Comunicados', icon: <IconChat />, accent: 'secondary', count: comunicados.length },
   { id: 'guias', label: 'Guías', icon: <IconCheck />, accent: 'primary', count: guias.length },
   { id: 'videoteca', label: 'Videoteca', icon: <IconPlay />, accent: 'accent', count: videos.length },
-  { id: 'blog', label: 'Blog', icon: <IconLayers />, soon: true },
+  { id: 'blog', label: 'Blog', icon: <IconLayers />, accent: 'secondary', count: blog.length },
   { id: 'articulos', label: 'Artículos', icon: <IconLedger />, soon: true },
 ]
 
@@ -43,7 +47,7 @@ export default function Recursos() {
       <Hero
         eyebrow="Recursos"
         title="Recursos para entender cómo te fiscalizan"
-        subtitle={`Boletines fiscales semanales, comunicados puntuales, guías prácticas y videos sobre lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} boletines, ${comunicados.length} comunicados, ${guias.length} ${guias.length === 1 ? 'guía' : 'guías'} y ${videos.length} videos publicados; blog y artículos en camino.`}
+        subtitle={`Boletines fiscales semanales, comunicados puntuales, guías prácticas, videos y carruseles sobre lo que el SAT, el IMSS y el INFONAVIT están haciendo, explicado a tiempo. ${total} boletines, ${comunicados.length} comunicados, ${guias.length} ${guias.length === 1 ? 'guía' : 'guías'}, ${videos.length} videos y ${blog.length} ${blog.length === 1 ? 'carrusel' : 'carruseles'} en el blog publicados; artículos en camino.`}
         secondary={{ label: 'Conoce los servicios', to: '/servicios' }}
         ctaLabel="Pregunta por WhatsApp"
       />
@@ -226,18 +230,63 @@ export default function Recursos() {
         </Section>
       )}
 
+      {blog.length > 0 && (
+        <Section bg="base" id="blog" className="scroll-mt-36">
+          <SectionHeader
+            eyebrow={<SectionPill accent="secondary">Blog</SectionPill>}
+            title="Blog DSouza"
+            subtitle="Carruseles breves para leer en el celular o en la computadora: un tema fiscal, lo que debes cuidar y su fundamento. Navega con flechas, puntos o deslizando. Del más reciente al más antiguo."
+          />
+
+          <ul className="mt-12 grid gap-6 md:grid-cols-2">
+            {blog.map((b, i) => (
+              <li key={b.slug} className="card flex flex-col overflow-hidden !p-0 border-t-4 border-t-secondary transition-shadow hover:shadow-card-hover">
+                <a
+                  href={`/blog/${b.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track('blog_open', { post: b.slug })}
+                  className="group flex h-full flex-col focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label={`Abrir ${b.title} (abre en pestaña nueva)`}
+                >
+                  <img
+                    src={b.preview}
+                    alt={`Vista previa de ${b.title}`}
+                    width="1200"
+                    height="630"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    className="aspect-[1200/630] w-full border-b border-line object-cover"
+                  />
+                  <div className="flex flex-1 flex-col p-6">
+                    <time dateTime={b.dateISO} className="text-sm font-semibold uppercase tracking-wider text-primary-dark">
+                      {b.dateLabel}
+                    </time>
+                    <h3 className="mt-2 font-heading text-lg font-semibold leading-snug text-secondary group-hover:text-primary-dark">
+                      {b.title}
+                    </h3>
+                    {b.description && (
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{b.description}</p>
+                    )}
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-secondary">
+                      Leer carrusel
+                      <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
       <EstadoVacio
-        bg="base"
+        bg="tint"
         icon={<IconDocument className="h-8 w-8" />}
         statusLabel="Próximamente"
-        title="Blog y artículos en camino"
-        description="Además de los boletines, comunicados y guías, estamos preparando material práctico para entender tu riesgo fiscal y cómo prevenirlo."
+        title="Artículos en camino"
+        description="Además de los boletines, comunicados, guías y el blog, estamos preparando material práctico para entender tu riesgo fiscal y cómo prevenirlo."
         items={[
-          {
-            icon: <IconLayers className="h-5 w-5" />,
-            label: 'Blog',
-            desc: 'Actualidad fiscal comentada, en lenguaje de negocio.',
-          },
           {
             icon: <IconLedger className="h-5 w-5" />,
             label: 'Artículos prácticos',
