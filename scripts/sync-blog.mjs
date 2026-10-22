@@ -55,6 +55,16 @@ const POSTS = [
     cardTitle: 'Tres descuidos fiscales que pueden salirle caros',
     eyebrow: 'BLOG · CUMPLIMIENTO FISCAL',
   },
+  {
+    file: '2026-10-22-constancia-situacion-fiscal.html',
+    dateISO: '2026-10-22',
+    dateLabel: '22 de octubre de 2026',
+    title: 'Constancia fiscal: no es requisito para facturar | DSouza',
+    description:
+      'Desde 2026 condicionar el CFDI a la Constancia de Situación Fiscal es infracción: fundamento, multa y para qué sirve. Carrusel de DSouza.',
+    cardTitle: 'Constancia fiscal: no es requisito para facturar',
+    eyebrow: 'BLOG · FACTURACIÓN 2026',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
