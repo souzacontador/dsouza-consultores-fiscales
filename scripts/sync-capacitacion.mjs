@@ -48,6 +48,12 @@ const CURSOS = [
     slug: 'jornada-actualizacion-fiscal-cierre-2026-perspectivas-2027',
     finISO: '2026-11-25T19:00:00-07:00',
   },
+  {
+    dir: join('2026', '11 Noviembre 2026', 'Flyer_Sesion1_28oct'),
+    file: 'Flyer_Sesion1_El_SAT_ya_sabe_web.html',
+    slug: 'el-sat-ya-sabe-y-usted-sesion-1',
+    finISO: '2026-10-28T19:00:00-07:00',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
