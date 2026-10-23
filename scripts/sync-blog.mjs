@@ -65,6 +65,16 @@ const POSTS = [
     cardTitle: 'Constancia fiscal: no es requisito para facturar',
     eyebrow: 'BLOG · FACTURACIÓN 2026',
   },
+  {
+    file: '2026-10-23-gastos-deducibles.html',
+    dateISO: '2026-10-23',
+    dateLabel: '23 de octubre de 2026',
+    title: 'Un CFDI no basta para deducir un gasto | DSouza',
+    description:
+      'Tener el CFDI no basta: el gasto debe ser estrictamente indispensable (LISR art. 27). Requisitos, criterio 6/ISR/PI y qué revisar. Carrusel de DSouza.',
+    cardTitle: 'Un CFDI no basta para deducir un gasto',
+    eyebrow: 'BLOG · DEDUCCIONES',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
