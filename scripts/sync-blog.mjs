@@ -75,6 +75,16 @@ const POSTS = [
     cardTitle: 'Un CFDI no basta para deducir un gasto',
     eyebrow: 'BLOG · DEDUCCIONES',
   },
+  {
+    file: '2026-10-26-alta-imss.html',
+    dateISO: '2026-10-26',
+    dateLabel: '26 de octubre de 2026',
+    title: 'Alta en el IMSS: cuatro datos que revisar | DSouza',
+    description:
+      'Cuatro datos que revisar al dar de alta a un trabajador en el IMSS: plazo de cinco días hábiles (LSS art. 15) y avisos de cambio de salario. Carrusel de DSouza.',
+    cardTitle: 'Alta en el IMSS: cuatro datos que revisar',
+    eyebrow: 'BLOG · NÓMINA E IMSS',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
