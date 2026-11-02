@@ -54,6 +54,12 @@ const CURSOS = [
     slug: 'el-sat-ya-sabe-y-usted-sesion-1',
     finISO: '2026-10-28T19:00:00-07:00',
   },
+  {
+    dir: join('2026', '11 Noviembre 2026', 'Flyer_Sesion2_4nov'),
+    file: 'Flyer_Sesion2_Que_cambia_2027_web.html',
+    slug: '2027-que-cambia-en-sus-impuestos-sesion-2',
+    finISO: '2026-11-04T19:00:00-08:00',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
