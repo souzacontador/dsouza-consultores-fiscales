@@ -60,6 +60,12 @@ const CURSOS = [
     slug: '2027-que-cambia-en-sus-impuestos-sesion-2',
     finISO: '2026-11-04T19:00:00-08:00',
   },
+  {
+    dir: join('2026', '11 Noviembre 2026', 'Flyer_Sesion4_18nov'),
+    file: 'Flyer_Sesion4_Fiscalizacion_algoritmica_CFDI_web.html',
+    slug: 'fiscalizacion-algoritmica-aplicada-al-cfdi-sesion-4',
+    finISO: '2026-11-18T19:00:00-08:00',
+  },
 ]
 
 const escAttr = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
