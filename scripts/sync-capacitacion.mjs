@@ -46,7 +46,7 @@ const CURSOS = [
     dir: join('2026', '11 Noviembre 2026', 'Flyer_Jornada_2027'),
     file: 'Flyer_Jornada_Actualizacion_Fiscal_2027.html',
     slug: 'jornada-actualizacion-fiscal-cierre-2026-perspectivas-2027',
-    finISO: '2026-11-25T19:00:00-07:00',
+    finISO: '2026-11-25T19:00:00-08:00',
   },
   {
     dir: join('2026', '11 Noviembre 2026', 'Flyer_Sesion1_28oct'),
