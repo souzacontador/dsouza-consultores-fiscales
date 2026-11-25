@@ -25,5 +25,14 @@
     "path": "/calculadoras/asimilados-salarios/",
     "pageTitle": "Calculadora de ISR · Asimilados a salarios 2026 · DSouza Consultores Fiscales",
     "sizeKB": 46
+  },
+  {
+    "slug": "nomina-2026",
+    "title": "Calculadora Nómina 2026 y Carga Social",
+    "description": "ISR por salarios (Anexo 8 RMF 2026), subsidio para el empleo, cuotas IMSS e INFONAVIT y tiempo extra. Incluye aguinaldo y PTU, finiquito y liquidación, ISR anual y SBC variable.",
+    "icon": "calculator",
+    "path": "/calculadoras/nomina-2026/",
+    "pageTitle": "Calculadora Nómina 2026 y Carga Social",
+    "sizeKB": 1013
   }
 ]

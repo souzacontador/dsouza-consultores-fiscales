@@ -83,6 +83,11 @@ carga y no se mide nada.
   `src/data/calculadoras.json`. Para una calculadora nueva: súbela a su carpeta
   en dsouza-app y añade su slug + textos de tarjeta en `CALCULADORAS` dentro
   de `scripts/sync-calculadoras.mjs`. El sitemap la incluye solo en el build.
+  Excepción: `nomina-2026` viene de `souzacontador/dsouza-nomina-2026` (app
+  Vite/React). Para actualizarla: clonar ese repo, `npm ci`,
+  `npx vite build -c vite.config.singlefile.ts` y correr
+  `NOMINA_2026_DIST=<ruta>/dist-single/index.html npm run calculadoras`
+  (sin la variable se conserva el archivo ya publicado).
 
 ## Pre-render del cuerpo (HTML completo sin JavaScript)
 

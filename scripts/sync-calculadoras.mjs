@@ -8,7 +8,7 @@
 //   - genera src/data/calculadoras.json con el título/descripción que el propio
 //     repo usa en su página menú (index.html raíz) — nada se inventa.
 // Uso: npm run calculadoras   → luego commit + push.
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SITE_URL } from '../src/data/site.js'
@@ -41,6 +41,19 @@ const CALCULADORAS = [
     description:
       'Retención de ISR sobre percepciones asimiladas a salarios conforme al Anexo 8 de la RMF 2026. Cálculo directo, inverso y proyección anual.',
     icon: 'calculator',
+  },
+  // Calculadora de nómina: vive en el repo souzacontador/dsouza-nomina-2026 (app
+  // Vite/React, no es un HTML suelto). Se publica desde su build de un solo archivo
+  // (`npx vite build -c vite.config.singlefile.ts` → dist-single/index.html):
+  //   NOMINA_2026_DIST=<ruta a dist-single/index.html> npm run calculadoras
+  // Sin esa variable se conserva el archivo ya publicado en public/.
+  {
+    slug: 'nomina-2026',
+    title: 'Calculadora Nómina 2026 y Carga Social',
+    description:
+      'ISR por salarios (Anexo 8 RMF 2026), subsidio para el empleo, cuotas IMSS e INFONAVIT y tiempo extra. Incluye aguinaldo y PTU, finiquito y liquidación, ISR anual y SBC variable.',
+    icon: 'calculator',
+    local: true,
   },
 ]
 
@@ -82,24 +95,56 @@ function injectLang(html) {
   )
 }
 
+// Los bundles de Vite traen cadenas como "<body>" o "</head>" dentro del JS inline
+// (p. ej. SheetJS) que los helpers de inyección tomarían por las etiquetas reales.
+// Se enmascaran en la parte previa al </head> real, se inyecta y se restauran.
+function conEtiquetasEnmascaradas(html, fn) {
+  const i = html.lastIndexOf('</head>')
+  if (i < 0) return fn(html)
+  // Marcadores @@DSZ-...@@ : no aparecen en los bundles.
+  const PARES = [
+    ['</head>', '@@DSZ-HC@@'],
+    ['<body', '@@DSZ-BO@@'],
+    ['</body>', '@@DSZ-BC@@'],
+  ]
+  if (PARES.some(([, m]) => html.includes(m))) throw new Error('El HTML ya contiene un marcador @@DSZ-')
+  const mask = (t) => PARES.reduce((x, [orig, m]) => x.replaceAll(orig, m), t)
+  const unmask = (t) => PARES.reduce((x, [orig, m]) => x.replaceAll(m, orig), t)
+  return unmask(fn(mask(html.slice(0, i)) + html.slice(i)))
+}
+
 const manifest = []
 for (const c of CALCULADORAS) {
-  const res = await fetch(`${RAW}/${c.slug}/index.html`)
-  if (!res.ok) throw new Error(`No se pudo descargar ${c.slug}: HTTP ${res.status}`)
-  let html = await res.text()
-
-  const url = `${SITE_URL}/calculadoras/${c.slug}/`
-  html = injectLang(html)
-  html = injectHead(html, c, url)
-  html = injectStaticBar(html, BACK)
-  html = injectRuntimeEnsure(html, { canonical: url, back: BACK, description: c.description })
-
   const dir = join(root, 'public', 'calculadoras', c.slug)
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, 'index.html'), html)
+  const file = join(dir, 'index.html')
+  const url = `${SITE_URL}/calculadoras/${c.slug}/`
+  let html
+
+  if (c.local && !process.env.NOMINA_2026_DIST) {
+    if (!existsSync(file)) throw new Error(`Falta ${file}; define NOMINA_2026_DIST con el build de ${c.slug}`)
+    html = readFileSync(file, 'utf8') // ya procesado en una ejecución previa
+  } else {
+    if (c.local) {
+      html = readFileSync(process.env.NOMINA_2026_DIST, 'utf8')
+    } else {
+      const res = await fetch(`${RAW}/${c.slug}/index.html`)
+      if (!res.ok) throw new Error(`No se pudo descargar ${c.slug}: HTTP ${res.status}`)
+      html = await res.text()
+    }
+    const procesar = (h) => {
+      h = injectLang(h)
+      h = injectHead(h, c, url)
+      h = injectStaticBar(h, BACK)
+      return injectRuntimeEnsure(h, { canonical: url, back: BACK, description: c.description })
+    }
+    html = c.local ? conEtiquetasEnmascaradas(html, procesar) : procesar(html)
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(file, html)
+  }
 
   const pageTitle = (html.match(/<title>([\s\S]*?)<\/title>/i) || [null, null])[1]?.trim() || null
-  manifest.push({ ...c, path: `/calculadoras/${c.slug}/`, pageTitle, sizeKB: Math.round(html.length / 1024) })
+  const { local, ...meta } = c
+  manifest.push({ ...meta, path: `/calculadoras/${c.slug}/`, pageTitle, sizeKB: Math.round(html.length / 1024) })
   console.log(`✓ ${c.slug} (${Math.round(html.length / 1024)} KB)`)
 }
 
