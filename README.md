@@ -87,7 +87,10 @@ carga y no se mide nada.
   Vite/React). Para actualizarla: clonar ese repo, `npm ci`,
   `npx vite build -c vite.config.singlefile.ts` y correr
   `NOMINA_2026_DIST=<ruta>/dist-single/index.html npm run calculadoras`
-  (sin la variable se conserva el archivo ya publicado).
+  (sin la variable se conserva el archivo ya publicado). El commit de origen
+  publicado queda anotado en `local.fuente` de esa entrada en
+  `scripts/sync-calculadoras.mjs` (hoy `c9a4e01`): actualizarlo al republicar.
+  Esta página oculta la barra del sitio al imprimir/guardar PDF.
 
 ## Pre-render del cuerpo (HTML completo sin JavaScript)
 

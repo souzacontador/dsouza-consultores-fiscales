@@ -41,7 +41,7 @@ export const SEO_META = {
   '/calculadoras': {
     title: 'Calculadoras fiscales 2026 | DSouza Consultores',
     description:
-      'Calculadora de nómina, IVA y retenciones y equivalencias USD/MXN 2026, gratuitas. Herramientas de apoyo de DSouza Consultores Fiscales en Mexicali.',
+      'Calculadora de nómina, asimilados a salarios, IVA y retenciones y equivalencias USD/MXN 2026, gratuitas. Herramientas de apoyo de DSouza Consultores Fiscales en Mexicali.',
   },
   '/calculadoras-premium': {
     title: 'Calculadoras premium | DSouza Consultores',

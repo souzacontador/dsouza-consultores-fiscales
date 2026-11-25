@@ -47,13 +47,16 @@ const CALCULADORAS = [
   // (`npx vite build -c vite.config.singlefile.ts` → dist-single/index.html):
   //   NOMINA_2026_DIST=<ruta a dist-single/index.html> npm run calculadoras
   // Sin esa variable se conserva el archivo ya publicado en public/.
+  // `fuente` registra de qué commit del repo de origen salió el HTML publicado:
+  // actualizarlo cada vez que se republique.
   {
     slug: 'nomina-2026',
     title: 'Calculadora Nómina 2026 y Carga Social',
     description:
       'ISR por salarios (Anexo 8 RMF 2026), subsidio para el empleo, cuotas IMSS e INFONAVIT y tiempo extra. Incluye aguinaldo y PTU, finiquito y liquidación, ISR anual y SBC variable.',
     icon: 'calculator',
-    local: true,
+    local: { env: 'NOMINA_2026_DIST', fuente: 'souzacontador/dsouza-nomina-2026@c9a4e01' },
+    ocultarBarraAlImprimir: true,
   },
 ]
 
@@ -89,6 +92,15 @@ function injectHead(html, c, url) {
   return html.replace(/<\/head>/i, `${inserts.join('\n')}\n</head>`)
 }
 
+// La barra de regreso es solo de navegación: no debe salir en el PDF/impresión.
+function injectPrintHide(html) {
+  if (html.includes('id="dsz-print-hide"')) return html
+  return html.replace(
+    /<\/head>/i,
+    '<style id="dsz-print-hide">@media print{#dsz-site-bar{display:none!important}}</style>\n</head>'
+  )
+}
+
 function injectLang(html) {
   return html.replace(/<html(\s[^>]*)?>/i, (tag, attrs = '') =>
     /\blang=/i.test(tag) ? tag : `<html lang="es-MX"${attrs || ''}>`
@@ -120,12 +132,14 @@ for (const c of CALCULADORAS) {
   const url = `${SITE_URL}/calculadoras/${c.slug}/`
   let html
 
-  if (c.local && !process.env.NOMINA_2026_DIST) {
-    if (!existsSync(file)) throw new Error(`Falta ${file}; define NOMINA_2026_DIST con el build de ${c.slug}`)
+  const envVar = c.local?.env
+  if (c.local && !process.env[envVar]) {
+    if (!existsSync(file)) throw new Error(`Falta ${file}; define ${envVar} con el build de ${c.slug}`)
     html = readFileSync(file, 'utf8') // ya procesado en una ejecución previa
   } else {
     if (c.local) {
-      html = readFileSync(process.env.NOMINA_2026_DIST, 'utf8')
+      html = readFileSync(process.env[envVar], 'utf8')
+      console.log(`  fuente: ${c.local.fuente}`)
     } else {
       const res = await fetch(`${RAW}/${c.slug}/index.html`)
       if (!res.ok) throw new Error(`No se pudo descargar ${c.slug}: HTTP ${res.status}`)
@@ -134,16 +148,19 @@ for (const c of CALCULADORAS) {
     const procesar = (h) => {
       h = injectLang(h)
       h = injectHead(h, c, url)
+      if (c.ocultarBarraAlImprimir) h = injectPrintHide(h)
       h = injectStaticBar(h, BACK)
       return injectRuntimeEnsure(h, { canonical: url, back: BACK, description: c.description })
     }
     html = c.local ? conEtiquetasEnmascaradas(html, procesar) : procesar(html)
     mkdirSync(dir, { recursive: true })
-    writeFileSync(file, html)
+    const lf = (t) => t.replace(/\r\n/g, '\n')
+    // Evita diffs falsos: git normaliza CRLF/LF; solo se escribe si el contenido cambió.
+    if (!existsSync(file) || lf(readFileSync(file, 'utf8')) !== lf(html)) writeFileSync(file, html)
   }
 
   const pageTitle = (html.match(/<title>([\s\S]*?)<\/title>/i) || [null, null])[1]?.trim() || null
-  const { local, ...meta } = c
+  const { local, ocultarBarraAlImprimir, ...meta } = c
   manifest.push({ ...meta, path: `/calculadoras/${c.slug}/`, pageTitle, sizeKB: Math.round(html.length / 1024) })
   console.log(`✓ ${c.slug} (${Math.round(html.length / 1024)} KB)`)
 }
